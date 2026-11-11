@@ -24,7 +24,7 @@ def carrega(rel, cod):
 def calcula(itens, modo):
     """modo: ('liq', +1) débito positivo; ('liq', -1) crédito positivo; ('deb', +1) só débitos na receita."""
     tipo, s0 = modo
-    m = dict(rec=0.0, liq=0.0, base=0.0, semnat=0.0, rl=0.0, leg=0.0, div=0.0, prec=0.0, min_=0.0, folha=0.0)
+    m = dict(rec=0.0, liq=0.0, base=0.0, semnat=0.0, rl=0.0, leg=0.0, div=0.0, prec=0.0, min_=0.0, folha=0.0, fpm_de=0.0)
     for i in itens:
         cc = i['conta_contabil']; sg = (1 if i['natureza_conta'] == 'D' else -1) * s0; v = i['valor'] * sg
         fr = (i['fonte_recursos'] or '')[1:]
@@ -35,6 +35,7 @@ def calcula(itens, modo):
                 m['rec'] += vv
                 if nr == '': m['semnat'] += vv
                 if nr[:3] == '111' or nr[:4] in ('1711', '1721'): m['base'] += vv
+                if nr[:6] == '171151' and nr[6:8] != '11': m['fpm_de'] += vv   # FPM art. 159, I, d e e: entra na base do ensino, não na da saúde (D29)
                 if fr in LIVRE: m['rl'] += vv
         elif cc in ('622130300', '622130400', '622130700'):
             m['liq'] += v
@@ -83,7 +84,7 @@ for c in cods:
     else:
         nome, modo, m = 'nenhuma', ('liq', 1), calcula([], ('liq', 1))
     r['fonte_msc'] = nome; r['convencao'] = modo[0] + ('+' if modo[1] > 0 else '-')
-    r['rec_msc'] = m['rec']; r['liq_msc'] = m['liq']; r['base_impostos'] = m['base']; r['minimos_exigidos'] = 0.40 * m['base']
+    r['rec_msc'] = m['rec']; r['liq_msc'] = m['liq']; r['base_impostos'] = m['base']; r['fpm_parcela_de'] = m['fpm_de']; r['minimos_exigidos'] = 0.25 * m['base'] + 0.15 * (m['base'] - m['fpm_de'])  # D29: 25% ensino + 15% saúde
     r.update(rec_livre=m['rl'], leg=m['leg'], divida=m['div'], prec=m['prec'], minimos_funcao=m['min_'], folha_livre=m['folha'])
     r['rec_dif'] = (m['rec'] / r['dca_rec'] - 1) if r['dca_rec'] and m['rec'] else None
     r['liq_dif'] = (m['liq'] / r['dca_liq'] - 1) if r['dca_liq'] and m['liq'] else None

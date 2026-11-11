@@ -57,3 +57,10 @@ Amostra: Serra Negra do Norte e Timbaúba dos Batistas (indicados) + 10 sorteado
 - **Timbaúba:** o mínimo é cumprido com a contribuição ao FUNDEB (MDE com impostos R$ 2,26 mi + FUNDEB = R$ 5,56 mi, 29,85% contra 25%), o que é coerente com a receita bruta (D25).
 - Todos os 12 cumprem 25% em MDE e 15% em ASPS.
 - Em aberto: a receita livre (fontes 1500/1501) não tem equivalente nos anexos 11 e 12; falta conferi-la, por exemplo, pelo Anexo 1 (balanço orçamentário) e a natureza 171251 de Serra Negra do Norte.
+
+## D29 — Refinamento do mínimo constitucional (25% ensino + 15% saúde sem FPM d/e)
+- Mínimos exigidos = 25% × base de impostos (MDE) + 15% × (base − parcelas FPM art. 159, I, "d" e "e": naturezas 17115121/17115122) (ASPS), conforme critério do TCE/RN.
+- Validação externa (SIAI/TCE-RN, RREO 6º bim. 2023, 12 municípios do RN): regra antiga (40% da base) +2,2% de erro mediano; regra refinada |Δ| mediana 0,08%, máximo 1,8% (Triunfo Potiguar).
+- Resultado: 850 municípios calculados; mediana margem ampla/RCL 31,89%. Ex.: Caicó 34,9→35,2%; Serra Negra do Norte 50,8→51,4%; Timbaúba dos Batistas 50,9→51,3%.
+- Limitações: 56 municípios calculados sem parcela d/e identificada (GO 23, BA 11, RN 7, ES 7…) — mínimo da saúde pode ficar levemente superestimado; mínimo da saúde fora do RN sem conferência externa (SIOPS inacessível por script).
+- Receita livre (fontes 1500/1501) não tem equivalente nos anexos 11/12; o RREO Anexo 1 é agregado por categoria e não mostra a natureza 17125101 (R$ 5,11 mi em Serra Negra do Norte), classificada como transferência da União fora da base de impostos (compensação financeira), corretamente excluída da base de mínimos e mantida como receita livre.
