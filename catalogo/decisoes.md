@@ -121,3 +121,8 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 - `analisar.py` ganhou a coluna `consorcios` e a coluna `margem_ampla_p` (margem ampla menos consórcios). A margem ampla e a estrita não mudam, para manter a série comparável; o bloco P entra à parte.
 - Piloto 2023 (850 calculados): 785 têm gasto com consórcio; mediana de 2,1% da receita livre. A mediana da margem ampla sobre a receita livre cai de 52,3% para 49,8% após o bloco P. Nenhum município fica negativo por causa dele.
 - Pendente: decidir quais outros itens da matriz entram no bloco P (contrapartidas de convênios, programas com adesão) e se a margem principal passa a descontá-lo.
+
+### Correção da D37 (11/11/2026)
+
+- Conferido o mapeamento de 3.1.3: H = bloco I, L = bloco II, margem = bloco III, P = bloco IV. Portanto o bloco P não é desconto da margem: é medido à parte. Contrapartidas de convênios e programas com adesão também são P (confirmado pelo autor).
+- `margem_ampla_p` fica como sensibilidade (quanto a margem cairia se o bloco P fosse tratado como desconto), não como margem principal. A margem ampla e a estrita não mudam.
