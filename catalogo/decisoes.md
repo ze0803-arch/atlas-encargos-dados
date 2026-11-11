@@ -132,3 +132,12 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 - Receita por fonte vinculada de transferência da União, sobre a receita total, nos 696 calculados com MSCE (medianas): SUS 1600-1604 8,1%; FNDE 1550-1553 e 1569 1,5%; convênios 1570 e 1700 0,8%; FNAS 1660 0,7%. Soma: 11,8% da receita (p10 7,1%; p90 19,4%; máx. 35,6%).
 - Leitura: é o tamanho do que a União financia com recurso vinculado, não o encargo líquido do município. Limite de classificação: parte dessas fontes não depende de adesão (salário-educação 1550 e transferências SUS fundo a fundo têm base legal); a soma é teto do bloco P, não medida dele.
 - Contrapartida não aparece separada na MSC. A fonte possível é o Transferegov (convênios). Do ambiente do Claude o site não abre (403/502; o endereço antigo do repositório siconv.zip retorna 404). Qualquer coleta precisa rodar no computador do autor, e o endereço correto do conjunto de dados abertos deve ser confirmado por ele na página do portal.
+
+## D39. Contrapartida de convênios da União, 2023 (11/11/2026)
+
+- Fonte: Portal da Transparência, arquivo 20261023_Convenios.zip (Convenios.csv e Convenios_OrdensBancarias.csv; dados do SIAFI e do SICONV até 23/10/2026), enviado pelo autor. Do ambiente do Claude o servidor de download retorna 403. O endereço do portal `download-de-dados/convenios/<ano>` redireciona para `dadosabertos-download.cgu.gov.br/PortalDaTransparencia/saida/convenios/<ano>_Convenios.zip`.
+- O arquivo tem a coluna VALOR CONTRAPARTIDA. VALOR CONVÊNIO é o repasse da União (liberado/convênio tem mediana 1,0). Contrapartida total tem mediana de 5% do repasse.
+- Método (`app_coleta/convenios.py`): liga a prefeitura pelo CNPJ de `entes.json` (429.283 de 431.429 convênios de municípios ligaram); contrapartida de 2023 = contrapartida total x (liberado em 2023 pelas ordens bancárias / valor do convênio), teto 1. É um rateio proporcional, não o gasto efetivo de contrapartida em 2023.
+- Resultado nos 850 calculados: 633 têm repasse liberado em 2023. Repasse liberado = 1,2% da receita livre em mediana (p90 7,5%; máx. 85%). Contrapartida = 0,01% da receita livre em mediana (p90 0,45%; máx. 3,0%); contrapartida/liberado = 5,9%.
+- Leitura: a contrapartida de convênios da União pesa pouco na margem; o bloco P relevante em valor é consórcios (2,0%) e a receita vinculada da União (11,8%, teto). Cobre só convênios; não cobre SUS fundo a fundo nem FNDE.
+- Saída em `catalogo/convenios_2023.csv` (4.107 municípios, todos os que tiveram liberação em 2023).

@@ -20,6 +20,10 @@ Etapas, em ordem: `siconfi`, `mscc`, `verificar`, `siops`, `analisar`, `comparar
 
 Programas que o `atlas.py` chama: `coletar.py` (Siconfi; `--verificar` refaz meses vazios), `coletar_siops.py` (SIOPS, mínimo de saúde), `analisar.py`, `confianca.py` (testes de consistência), `comparar_siops.py`.
 
+## Convênios da União (bloco P)
+
+Baixe `<ano>_Convenios.zip` em portaldatransparencia.gov.br/download-de-dados/convenios/<ano>, descompacte e rode `python convenios.py --pasta dados --csvs pasta_dos_csv --ano 2023`. Gera `dados/convenios_<ano>.csv` com repasse e contrapartida por município.
+
 ## Coletar
 
 ```
