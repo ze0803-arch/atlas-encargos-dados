@@ -97,3 +97,12 @@ Amostra: Serra Negra do Norte e Timbaúba dos Batistas (indicados) + 10 sorteado
 - Decisão: o SIOPS passa a ser o teste T9 de confiança (|diferença| ≤ 10%). Município calculado que falha em T9 perde o selo de alta confiança (não deixa de ser calculado). No `atlas.py`, a etapa `comparar` passa a rodar antes de `confianca`.
 - Efeito no piloto: alta confiança de 90% dos calculados (761 de 850); 34 falharam em T9.
 - Limite: T9 só vale onde o SIOPS existe. O mínimo de saúde conferido não prova a receita livre nem as despesas por fonte.
+
+## D35. Matriz de encargos e primeira medição (11/11/2026)
+
+- Planilha "Matriz de encargos do Atlas" (artefato) lista 24 encargos por bloco (H heterônoma, L autovinculação, P pactuada), com norma, se entra na margem e se é mensurável na MSC. Normas e artigos a conferir no texto oficial antes de citar na tese.
+- Códigos de fonte confirmados na Tabela Padrão de Fontes (TCE-RN, V3, baseada na Portaria Conjunta STN/SOF 20/2021): 1500 não vinculados de impostos; 1501 outros não vinculados; 1540 a 1543 FUNDEB (impostos, VAAF, VAAT, VAAR); 1544 precatórios do FUNDEF; 1550 a 1553 e 1569 FNDE; 1600/1601 SUS; 1604 vencimento de ACS/ACE; 1660 FNAS; 1700 convênios da União; 1751 COSIP.
+- FUNDEB 70% (696 municípios com MSCE, convenção liq+): pessoal é 70% ou mais da despesa nas fontes do FUNDEB em 634 de 692 (92%); mediana 88,5%. Aproximação, porque a regra incide sobre a receita do Fundo. Não é encargo adicional: a dedução do FUNDEB já conta como aplicação em educação (D-anterior sobre receita bruta).
+- Precatórios: elemento 91 em qualquer fonte; 609 de 696 com valor, mediana 0,4% da base. Não existe fonte própria de precatórios municipais. Elemento 91 pode incluir outras sentenças judiciais.
+- COSIP (fonte 1751): receita em 467 de 696; despesa paga com ela cobre em mediana 86% da receita. O custo acima da COSIP sai de outra fonte e não se separa.
+- Limite: a medição cobre só os 696 municípios calculados com MSCE na convenção liq+; os 153 por soma de MSCC mensais ficaram de fora.
