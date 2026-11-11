@@ -20,6 +20,10 @@ Etapas, em ordem: `siconfi`, `mscc`, `verificar`, `siops`, `analisar`, `comparar
 
 Programas que o `atlas.py` chama: `coletar.py` (Siconfi; `--verificar` refaz meses vazios), `coletar_siops.py` (SIOPS, mínimo de saúde), `analisar.py`, `confianca.py` (testes de consistência), `comparar_siops.py`.
 
+## Transferências da União por programa (bloco P)
+
+`python transferencias.py --pasta dados --ano 2023` baixa os 12 meses de "Recursos Transferidos" do Portal da Transparência e grava `dados/transferencias_2023.csv` e `dados/transferencias_2023_por_acao.csv`. Precisa de `pandas` (`pip install -r requirements.txt`).
+
 ## Convênios da União (bloco P)
 
 Baixe `<ano>_Convenios.zip` em portaldatransparencia.gov.br/download-de-dados/convenios/<ano>, descompacte e rode `python convenios.py --pasta dados --csvs pasta_dos_csv --ano 2023`. Gera `dados/convenios_<ano>.csv` com repasse e contrapartida por município.
