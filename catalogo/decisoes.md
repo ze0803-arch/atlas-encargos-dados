@@ -27,3 +27,10 @@ D23. Brutos de Siconfi/SIOPE em escala nacional (~2 GB) vão para o Zenodo; GitH
 - Validação externa (RGF/RREO de Caicó informados pelo usuário): RCL 202.863.507,54 confere; DTP do Executivo 122.101.866,86 (61,50% da RCL **ajustada** de 198.532.923,54, não da RCL) confere; receita do RREO Anexo 1 (216.535.235,53) = receita bruta da DCA I-C (234.960.908,29) − dedução FUNDEB (18.425.672,76).
 - Correção: o resultado passa a trazer `rcl_ajustada`, `dtp_leg`, `dtp_exec_pct_rcla` (como publicado no RGF), `dtp_total_pct_rcla` (Executivo + Legislativo), `deducao_fundeb` e `rec_liquida_fundeb`. O "pessoal/RCL" mostrado antes usava a RCL (não a ajustada) e só o Executivo.
 - `receita` do sistema = bruta (antes da dedução do FUNDEB), por construção, para fechar com a DCA I-C. Margens não mudaram (nenhuma das 1.250 linhas).
+
+## D25 · Método da margem confirmado pelo pesquisador (11/11/2026)
+Respostas do questionário de validação:
+- Mínimos de saúde e educação: descontar **só o exigido** (40% da base de impostos). O que o município executa acima disso é escolha do gestor e conta como espaço de decisão exercido (a coluna `minimos_funcao` fica só como informação).
+- FUNDEB: receita livre **bruta**; a receita líquida (`rec_liquida_fundeb`) e a dedução (`deducao_fundeb`) ficam como colunas informativas.
+- Margem estrita: desconta **apenas a folha** paga com fonte livre (sem serviços essenciais, restos a pagar ou contrapartidas).
+- Fonte livre: continua 1500/1501; município com codificação diferente (ex.: BA com receita livre ~0) fica **marcado e não calculado** (regra D5).
