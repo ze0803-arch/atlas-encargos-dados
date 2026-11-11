@@ -88,3 +88,12 @@ Amostra: Serra Negra do Norte e Timbaúba dos Batistas (indicados) + 10 sorteado
 - Sem parcela d/e identificada (118 casos): |Δ| mediana 1,85% (45% dentro de 1%); com d/e: 0,16%. Confirma que a parcela d/e ausente explica parte da diferença.
 - O selo de confiança (D31) discrimina pouco: >10% de diferença em 3,9% dos de alta confiança e 7,1% dos com ressalva.
 - Extremos (acima de 100%) em poucos municípios (Lagoa da Canoa/AL, Jiquiriçá/BA, Ribeira do Amparo/BA, Esplanada/BA, Tapiramutá/BA, Ipu/CE): possível diferença de base declarada no SIOPS ou erro na MSC; a investigar.
+
+## D34. Exceções do SIOPS e teste T9 (11/11/2026)
+
+- Das 827 prefeituras calculadas com SIOPS, 34 (4%) divergem mais de 10% do mínimo de saúde (BA 19, GO 5, CE 3, RN 3, AM 2, ES 1, AL 1). Entre as 347 não calculadas com SIOPS, 121 divergem: a divergência acompanha os problemas já sinalizados.
+- Causa identificada em parte dos casos extremos (Jiquiriçá, Ribeira do Amparo, Laje, Ituaçu, Santa Rita de Cássia, Barra do Choça, BA; Lagoa da Canoa, AL): a prefeitura lançou praticamente toda a receita, inclusive transferências, sob uma natureza de imposto (11125001) na MSC. A receita total fecha com a DCA, mas a "base de impostos" vira a receita total. Os testes de receita não detectam isso.
+- Detector próprio (natureza 111* contra a receita tributária do RREO) tem falsos positivos demais; foi descartado.
+- Decisão: o SIOPS passa a ser o teste T9 de confiança (|diferença| ≤ 10%). Município calculado que falha em T9 perde o selo de alta confiança (não deixa de ser calculado). No `atlas.py`, a etapa `comparar` passa a rodar antes de `confianca`.
+- Efeito no piloto: alta confiança de 90% dos calculados (761 de 850); 34 falharam em T9.
+- Limite: T9 só vale onde o SIOPS existe. O mínimo de saúde conferido não prova a receita livre nem as despesas por fonte.

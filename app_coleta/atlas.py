@@ -7,12 +7,12 @@ Uso:
   python atlas.py --pasta dados --etapas analisar confianca comparar relatorio     # só estas etapas
   python atlas.py --pasta dados --ano 2024
 
-Etapas, na ordem: siconfi, mscc, verificar, siops, analisar, confianca, comparar, relatorio, empacotar.
+Etapas, na ordem: siconfi, mscc, verificar, siops, analisar, comparar, confianca, relatorio, empacotar.
 Cada etapa é retomável. Se uma falhar, o programa para e diz qual; basta rodar de novo.
 """
 import argparse, collections, csv, json, os, statistics as st, subprocess, sys, time
 AQUI = os.path.dirname(os.path.abspath(__file__))
-ETAPAS = ['siconfi', 'mscc', 'verificar', 'siops', 'analisar', 'confianca', 'comparar', 'relatorio', 'empacotar']
+ETAPAS = ['siconfi', 'mscc', 'verificar', 'siops', 'analisar', 'comparar', 'confianca', 'relatorio', 'empacotar']
 ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 ap.add_argument('--pasta', default='dados'); ap.add_argument('--ano', default='2023'); ap.add_argument('--uf', nargs='*', default=[])
 ap.add_argument('--etapas', nargs='*', default=ETAPAS, choices=ETAPAS); ap.add_argument('--trabalhadores', default='4')

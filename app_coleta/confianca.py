@@ -13,6 +13,10 @@ TESTES = [
  ('T7', lambda r: 0 <= f(r,'margem_ampla_pct_rcl') <= 0.8 if r['margem_ampla_pct_rcl'] else None),
  ('T8', lambda r: r['rcl_suspeita'] != 'True'),
 ]
+# T9 (D34): mínimo de saúde do sistema x SIOPS dentro de 10%; só roda onde existe comparacao_siops_<ano>.csv
+_cp = os.path.join(A.pasta, f'comparacao_siops_{A.ano}.csv')
+SIOPS = {l['cod_ibge']: abs(float(l['diferenca_pct'])) for l in csv.DictReader(open(_cp, encoding='utf-8'))} if os.path.exists(_cp) else {}
+TESTES.append(('T9', lambda r: SIOPS[r['cod_ibge']] <= 10 if r['cod_ibge'] in SIOPS else None))
 rows = [r for r in csv.DictReader(open(os.path.join(A.pasta, f'resultado_{A.ano}.csv'), encoding='utf-8')) if r['status'] == 'calculado']
 out = {r['cod_ibge']: [n for n, t in TESTES if t(r) is False] for r in rows}
 json.dump(out, open(os.path.join(A.pasta, f'confianca_{A.ano}.json'), 'w'))
