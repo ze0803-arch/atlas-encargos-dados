@@ -22,3 +22,8 @@ D20. Receita sem natureza na MSC (21 de 22 municípios do AC, entre outros): rec
 D21. Divergências restantes (359 municípios, 29%) são heterogêneas, não sistemáticas: despesa liquidada com contas 6221 ausentes na MSCC (liq_dif vazio), diferenças de 2% a 60% em despesa e de 1% a 30% em receita. Seguem marcados e não calculados.
 D22. Coleta nacional passa a ser feita pelo aplicativo independente (app_coleta/coletar.py), rodado pelo próprio usuário no computador, com envio ao GitHub; pacotes em partes de até 80 MB. A coleta rodando na sessão do Claude foi pausada em 11/11 com 9 UFs completas (RN, AC, AP, AL, AM, BA, CE, DF, ES).
 D23. Brutos de Siconfi/SIOPE em escala nacional (~2 GB) vão para o Zenodo; GitHub fica com scripts, catálogo e resultados. O --enviar do coletor envia só o catálogo; dados/raw e dados/pacotes são ignorados pelo Git. (Decisão do usuário em 11/11.)
+
+## D24 · Conferência de Caicó e correção do % de pessoal (11/11/2026)
+- Validação externa (RGF/RREO de Caicó informados pelo usuário): RCL 202.863.507,54 confere; DTP do Executivo 122.101.866,86 (61,50% da RCL **ajustada** de 198.532.923,54, não da RCL) confere; receita do RREO Anexo 1 (216.535.235,53) = receita bruta da DCA I-C (234.960.908,29) − dedução FUNDEB (18.425.672,76).
+- Correção: o resultado passa a trazer `rcl_ajustada`, `dtp_leg`, `dtp_exec_pct_rcla` (como publicado no RGF), `dtp_total_pct_rcla` (Executivo + Legislativo), `deducao_fundeb` e `rec_liquida_fundeb`. O "pessoal/RCL" mostrado antes usava a RCL (não a ajustada) e só o Executivo.
+- `receita` do sistema = bruta (antes da dedução do FUNDEB), por construção, para fechar com a DCA I-C. Margens não mudaram (nenhuma das 1.250 linhas).

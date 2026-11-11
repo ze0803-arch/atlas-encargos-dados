@@ -61,7 +61,15 @@ for c in cods:
     r['dca_liq'] = next((i['valor'] for i in dd if i['cod_conta'] == 'TotalDespesas' and i['coluna'] == 'Despesas Liquidadas'), None)
     rc = carrega('rreo_anexo03', c); r['n_rreo3'] = len(rc)
     r['rcl_rreo'] = next((i['valor'] for i in rc if i['cod_conta'] == 'RREO3ReceitaCorrenteLiquida' and i['coluna'].startswith('TOTAL')), None)
-    r['pessoal_rgf'] = next((i['valor'] for i in carrega('rgf_anexo01_E', c) if i['cod_conta'] == 'DespesaComPessoalTotal'), None)
+    rgfe = carrega('rgf_anexo01_E', c); rgfl = carrega('rgf_anexo01_L', c)
+    pick = lambda its, cod, col: next((i['valor'] for i in its if i['cod_conta'] == cod and i['coluna'] == col), None)
+    r['pessoal_rgf'] = pick(rgfe, 'DespesaComPessoalTotal', 'Valor')          # DTP do Poder Executivo (RGF Anexo 01)
+    r['dtp_leg'] = pick(rgfl, 'DespesaComPessoalTotal', 'Valor')              # DTP do Poder Legislativo
+    r['rcl_ajustada'] = pick(rgfe, 'ReceitaCorrenteLiquidaAjustada', 'Valor')  # base dos limites da LRF (art. 20)
+    r['dtp_exec_pct_rcla'] = pick(rgfe, 'DespesaComPessoalTotal', '% sobre a RCL Ajustada')  # % como publicado no RGF
+    r['dtp_total_pct_rcla'] = (100 * (r['pessoal_rgf'] + r['dtp_leg']) / r['rcl_ajustada']) if r['pessoal_rgf'] is not None and r['dtp_leg'] is not None and r['rcl_ajustada'] else None
+    r['deducao_fundeb'] = next((i['valor'] for i in dc if i['cod_conta'] == 'ReceitasExcetoIntraOrcamentarias' and i['coluna'] == 'Deduções - FUNDEB'), None)
+    r['rec_liquida_fundeb'] = (r['dca_rec'] - (r['deducao_fundeb'] or 0)) if r['dca_rec'] is not None else None  # = receita realizada do RREO Anexo 01
     # escolhe a melhor combinação (fonte, convenção) contra a DCA
     cand = []
     for nome, itens in (('MSCE', msce), ('MSCC_12m', mscc)):
