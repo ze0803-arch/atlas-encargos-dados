@@ -106,3 +106,11 @@ Amostra: Serra Negra do Norte e Timbaúba dos Batistas (indicados) + 10 sorteado
 - Precatórios: elemento 91 em qualquer fonte; 609 de 696 com valor, mediana 0,4% da base. Não existe fonte própria de precatórios municipais. Elemento 91 pode incluir outras sentenças judiciais.
 - COSIP (fonte 1751): receita em 467 de 696; despesa paga com ela cobre em mediana 86% da receita. O custo acima da COSIP sai de outra fonte e não se separa.
 - Limite: a medição cobre só os 696 municípios calculados com MSCE na convenção liq+; os 153 por soma de MSCC mensais ficaram de fora.
+
+## D36. Segunda medição de encargos (11/11/2026)
+
+Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a despesa liquidada total ou a receita livre:
+- Elemento 13 (obrigações patronais): 6,1% da despesa (4,7% da receita livre). Já dentro da folha livre; não somar de novo.
+- Elemento 47 (obrigações tributárias e contributivas, inclui PASEP): 0,84% da despesa. Compatível com 1% do PASEP, mas o elemento mistura outros tributos.
+- Função 08 (assistência social): 3,5% da despesa (3,9% da receita livre); fonte FNAS (1660) cobre 20% em mediana. Sem gasto mínimo em lei.
+- Elemento 71 (consórcios, contrato de rateio): 637 de 696 têm o gasto; 2,4% da despesa (2,0% da receita livre; máx. 12,6%). Ainda fora da margem; decidir se entra no bloco P.
