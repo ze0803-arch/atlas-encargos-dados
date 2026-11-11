@@ -34,15 +34,18 @@ python analisar.py --pasta dados
 
 Gera `dados/resultado_2023.csv`: por município, conferência MSC × DCA, sinalizações e margem de decisão (ampla, estrita e % da RCL). Município com problema nos dados fica marcado e não calculado.
 
-## Enviar ao GitHub
+## Onde ficam os dados
 
-O destino dos dados é o repositório privado `ze0803-arch/atlas-encargos-dados`. Para o computador poder enviar:
+- **GitHub** (repositório privado `ze0803-arch/atlas-encargos-dados`): scripts, catálogo (`diario_extracao.csv`, `resultado_2023.csv`) e registro de decisões. É leve.
+- **Zenodo**: os pacotes de brutos de `dados/pacotes` (cerca de 2 GB no país), com DOI para citar na tese. Envio pelo navegador, em zenodo.org (Novo envio, arrastar os arquivos .tar).
+
+### Enviar o catálogo ao GitHub
 
 1. Instale o Git para Windows (git-scm.com, instalação padrão).
-2. No terminal: `git clone https://github.com/ze0803-arch/atlas-encargos-dados`. Na primeira vez abre uma janela do navegador para entrar na conta do GitHub.
-3. Trabalhe dentro da pasta clonada: `cd atlas-encargos-dados\app_coleta`. Os comandos de coleta e análise são os mesmos; a pasta `dados` fica dentro do clone.
-4. Rode a coleta com `python coletar.py --enviar`. A cada UF concluída ele envia os pacotes e o catálogo (nunca os arquivos soltos de `raw/`).
-5. No fim, depois de `--completar-mscc` e de `analisar.py`, rode `python coletar.py --empacotar --enviar`. Isso refaz os pacotes com as matrizes mensais, em partes de até 80 MB, e envia junto o catálogo e o `resultado_2023.csv`.
+2. No terminal: `git clone https://github.com/ze0803-arch/atlas-encargos-dados`. Na primeira vez abre o navegador para entrar na conta do GitHub.
+3. Trabalhe dentro da pasta clonada: `cd atlas-encargos-dados\app_coleta`. A pasta `dados` fica dentro do clone (os arquivos pesados de `dados/` são ignorados pelo Git).
+4. Rode a coleta com `python coletar.py --enviar`. A cada UF concluída ele envia só o catálogo.
+5. No fim, depois de `--completar-mscc` e de `analisar.py`, rode `python coletar.py --empacotar --enviar`. Refaz os pacotes com as matrizes mensais (em partes de até 80 MB) e envia o catálogo e o `resultado_2023.csv`. Os pacotes ficam em `dados/pacotes` para você subir ao Zenodo.
 
 ## Regras de cálculo
 

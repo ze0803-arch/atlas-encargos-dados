@@ -10,7 +10,7 @@ Uso:
   python coletar.py                      # todas as UFs, exercício 2023, pasta ./dados
   python coletar.py --uf RN PB           # só estas UFs
   python coletar.py --uf RN --limite 3   # teste rápido com 3 municípios
-  python coletar.py --enviar             # após cada UF, git add/commit/push (pasta dentro de um repositório)
+  python coletar.py --enviar             # após cada UF, envia o catálogo ao GitHub (pasta dentro de um repositório)
 """
 import argparse, csv, datetime, gzip, hashlib, json, os, subprocess, sys, tarfile, threading, time
 from concurrent.futures import ThreadPoolExecutor
@@ -27,7 +27,7 @@ ap.add_argument('--uf', nargs='*', default=[], help='siglas das UFs (padrão: to
 ap.add_argument('--trabalhadores', type=int, default=4, help='requisições simultâneas (máx. 4 recomendado)')
 ap.add_argument('--limite', type=int, default=0, help='processa só N municípios (teste)')
 ap.add_argument('--empacotar', action='store_true', help='reempacota as UFs concluídas (inclui as matrizes mensais) e, com --enviar, envia ao GitHub')
-ap.add_argument('--enviar', action='store_true', help='git add/commit/push ao concluir cada UF')
+ap.add_argument('--enviar', action='store_true', help='git add/commit/push do catálogo ao concluir cada UF (os pacotes de brutos não vão ao GitHub)')
 ap.add_argument('--completar-mscc', action='store_true', help='nos municípios já concluídos, busca as 12 matrizes mensais onde a MSCE não fecha com a DCA')
 A = ap.parse_args()
 ANO = A.ano
@@ -150,8 +150,9 @@ def empacotar(uf, cods, enviar=None):
     if A.enviar: enviar_git(f'Siconfi {ANO}: UF {uf} completa')
 
 def enviar_git(msg):
-    """Envia só os pacotes e o catálogo (nunca os arquivos soltos de raw/)."""
-    itens = [p for p in ('pacotes', 'diario_extracao.csv', f'resultado_{ANO}.csv', 'entes.json') if os.path.exists(os.path.join(A.pasta, p))]
+    """Envia só o catálogo (diário, resultado, lista de entes). Os pacotes de brutos são grandes demais para o GitHub
+    (cerca de 2 GB no país) e vão para o Zenodo; nunca se enviam os arquivos soltos de raw/."""
+    itens = [p for p in ('diario_extracao.csv', f'resultado_{ANO}.csv', 'entes.json') if os.path.exists(os.path.join(A.pasta, p))]
     subprocess.run(['git', 'add'] + itens, cwd=A.pasta)
     subprocess.run(['git', 'commit', '-q', '-m', msg], cwd=A.pasta)
     subprocess.run(['git', 'push'], cwd=A.pasta)
