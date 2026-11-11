@@ -141,3 +141,11 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 - Resultado nos 850 calculados: 633 têm repasse liberado em 2023. Repasse liberado = 1,2% da receita livre em mediana (p90 7,5%; máx. 85%). Contrapartida = 0,01% da receita livre em mediana (p90 0,45%; máx. 3,0%); contrapartida/liberado = 5,9%.
 - Leitura: a contrapartida de convênios da União pesa pouco na margem; o bloco P relevante em valor é consórcios (2,0%) e a receita vinculada da União (11,8%, teto). Cobre só convênios; não cobre SUS fundo a fundo nem FNDE.
 - Saída em `catalogo/convenios_2023.csv` (4.107 municípios, todos os que tiveram liberação em 2023).
+
+## D40. Transferências da União por programa, Portal da Transparência "Recursos Transferidos" (11/11/2026)
+
+- Arquivo `<ano><mês>_Transferencias.zip` (portaldatransparencia.gov.br/download-de-dados/transferencias/<ano><mês>), testado com janeiro de 2023 (enviado pelo autor). Traz tipo de transferência, favorecido, município (código SIAFI), função, órgão, ação e valor.
+- Os repasses fundo a fundo do SUS aparecem com favorecido "Administração Pública" (fundos municipais) e por ação: Piso de Atenção Primária, Média e Alta Complexidade, vencimentos de ACS e ACE, assistência farmacêutica. O cofinanciamento do FNAS também. Constitucionais, FUNDEB e salário-educação estão como favorecido municipal. PNAE, PNATE e PDDE não apareceram em janeiro; podem estar em outros meses (a conferir com o ano completo).
+- Ligação com o IBGE por UF e nome normalizado: 5.549 de 5.569 municípios (20 com nome truncado no arquivo, ex.: Itapajé/CE).
+- `app_coleta/transferencias.py` baixa os 12 meses (precisa de internet, no computador do autor), classifica por grupo e grava `transferencias_<ano>.csv` e `transferencias_<ano>_por_acao.csv`.
+- Pendente: rodar com os 12 meses, comparar com as fontes da MSC (1600, 1604, 1660, 1550) e decidir quais ações entram no bloco P (adesão) e quais são transferência legal.
