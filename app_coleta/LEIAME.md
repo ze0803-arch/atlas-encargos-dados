@@ -34,9 +34,15 @@ python analisar.py --pasta dados
 
 Gera `dados/resultado_2023.csv`: por município, conferência MSC × DCA, sinalizações e margem de decisão (ampla, estrita e % da RCL). Município com problema nos dados fica marcado e não calculado.
 
-## Enviar ao GitHub (opcional)
+## Enviar ao GitHub
 
-Se a pasta `dados` estiver dentro de um repositório git, `python coletar.py --enviar` faz commit e push a cada UF concluída.
+O destino dos dados é o repositório privado `ze0803-arch/atlas-encargos-dados`. Para o computador poder enviar:
+
+1. Instale o Git para Windows (git-scm.com, instalação padrão).
+2. No terminal: `git clone https://github.com/ze0803-arch/atlas-encargos-dados`. Na primeira vez abre uma janela do navegador para entrar na conta do GitHub.
+3. Trabalhe dentro da pasta clonada: `cd atlas-encargos-dados\app_coleta`. Os comandos de coleta e análise são os mesmos; a pasta `dados` fica dentro do clone.
+4. Rode a coleta com `python coletar.py --enviar`. A cada UF concluída ele envia os pacotes e o catálogo (nunca os arquivos soltos de `raw/`).
+5. No fim, depois de `--completar-mscc` e de `analisar.py`, rode `python coletar.py --empacotar --enviar`. Isso refaz os pacotes com as matrizes mensais, em partes de até 80 MB, e envia junto o catálogo e o `resultado_2023.csv`.
 
 ## Regras de cálculo
 

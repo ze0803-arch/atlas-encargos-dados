@@ -26,6 +26,7 @@ ap.add_argument('--ano', type=int, default=2023)
 ap.add_argument('--uf', nargs='*', default=[], help='siglas das UFs (padrão: todas)')
 ap.add_argument('--trabalhadores', type=int, default=4, help='requisições simultâneas (máx. 4 recomendado)')
 ap.add_argument('--limite', type=int, default=0, help='processa só N municípios (teste)')
+ap.add_argument('--empacotar', action='store_true', help='reempacota as UFs concluídas (inclui as matrizes mensais) e, com --enviar, envia ao GitHub')
 ap.add_argument('--enviar', action='store_true', help='git add/commit/push ao concluir cada UF')
 ap.add_argument('--completar-mscc', action='store_true', help='nos municípios já concluídos, busca as 12 matrizes mensais onde a MSCE não fecha com a DCA')
 A = ap.parse_args()
@@ -127,18 +128,33 @@ def concluidos():
     d = os.path.join(RAW, 'dca_IE')
     return set(f.split('_')[2] for f in os.listdir(d)) if os.path.isdir(d) else set()
 
-def empacotar(uf, cods):
+def empacotar(uf, cods, enviar=None):
+    """Empacota os brutos da UF em partes de até 80 MB (limite do GitHub: 100 MB por arquivo)."""
     saida = os.path.join(A.pasta, 'pacotes'); os.makedirs(saida, exist_ok=True)
-    alvo = os.path.join(saida, f'{uf}_completo.tar')
-    cods = set(cods)
-    with tarfile.open(alvo, 'w') as tf:
-        for rel in sorted(os.listdir(RAW)):
-            for f in sorted(os.listdir(os.path.join(RAW, rel))):
-                if f.split('_')[2] in cods: tf.add(os.path.join(RAW, rel, f), arcname=f'raw/siconfi/{ANO}/{rel}/{f}')
-    dizer(f'{uf}: pacote {os.path.getsize(alvo)//1024} KB')
-    if A.enviar:
-        subprocess.run(['git','add','-A'], cwd=A.pasta); subprocess.run(['git','commit','-q','-m',f'Siconfi {ANO}: UF {uf} completa'], cwd=A.pasta)
-        subprocess.run(['git','push'], cwd=A.pasta)
+    cods = set(cods); arqs = []
+    for rel in sorted(os.listdir(RAW)):
+        for f in sorted(os.listdir(os.path.join(RAW, rel))):
+            if f.split('_')[2] in cods: arqs.append((rel, f))
+    partes = [[]]; tam = 0
+    for rel, f in arqs:
+        t = os.path.getsize(os.path.join(RAW, rel, f)) + 1024
+        if tam + t > 80_000_000 and partes[-1]: partes.append([]); tam = 0
+        partes[-1].append((rel, f)); tam += t
+    for antigo in os.listdir(saida):
+        if antigo.startswith(f'{uf}_completo'): os.remove(os.path.join(saida, antigo))
+    for k, parte in enumerate(partes, 1):
+        alvo = os.path.join(saida, f'{uf}_completo_p{k:02d}.tar')
+        with tarfile.open(alvo, 'w') as tf:
+            for rel, f in parte: tf.add(os.path.join(RAW, rel, f), arcname=f'raw/siconfi/{ANO}/{rel}/{f}')
+        dizer(f'{uf}: pacote {os.path.basename(alvo)} {os.path.getsize(alvo)//1024} KB')
+    if A.enviar: enviar_git(f'Siconfi {ANO}: UF {uf} completa')
+
+def enviar_git(msg):
+    """Envia só os pacotes e o catálogo (nunca os arquivos soltos de raw/)."""
+    itens = [p for p in ('pacotes', 'diario_extracao.csv', f'resultado_{ANO}.csv', 'entes.json') if os.path.exists(os.path.join(A.pasta, p))]
+    subprocess.run(['git', 'add'] + itens, cwd=A.pasta)
+    subprocess.run(['git', 'commit', '-q', '-m', msg], cwd=A.pasta)
+    subprocess.run(['git', 'push'], cwd=A.pasta)
 
 def completar_mscc(ufs, entes):
     por = {str(e['cod_ibge']): e for e in entes if e['uf'] in ufs}
@@ -156,6 +172,13 @@ def main():
         with open(arq_entes, 'w', encoding='utf-8') as f: json.dump(js['items'], f, ensure_ascii=False)
     entes = [e for e in json.load(open(arq_entes, encoding='utf-8')) if e['esfera'] == 'M']
     ufs = [u.upper() for u in A.uf] or sorted(set(e['uf'] for e in entes))
+    if A.empacotar:
+        feitos = concluidos()
+        for uf in ufs:
+            cods = [str(e['cod_ibge']) for e in entes if e['uf'] == uf]
+            if cods and all(c in feitos for c in cods): empacotar(uf, cods)
+        if A.enviar: enviar_git(f'Siconfi {ANO}: pacotes e catálogo')
+        dizer('CONCLUÍDO'); return
     if A.completar_mscc:
         completar_mscc(ufs, entes); dizer('CONCLUÍDO'); return
     for uf in ufs:
