@@ -126,3 +126,9 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 
 - Conferido o mapeamento de 3.1.3: H = bloco I, L = bloco II, margem = bloco III, P = bloco IV. Portanto o bloco P não é desconto da margem: é medido à parte. Contrapartidas de convênios e programas com adesão também são P (confirmado pelo autor).
 - `margem_ampla_p` fica como sensibilidade (quanto a margem cairia se o bloco P fosse tratado como desconto), não como margem principal. A margem ampla e a estrita não mudam.
+
+## D38. Bloco P: receita federal vinculada e acesso ao Transferegov (11/11/2026)
+
+- Receita por fonte vinculada de transferência da União, sobre a receita total, nos 696 calculados com MSCE (medianas): SUS 1600-1604 8,1%; FNDE 1550-1553 e 1569 1,5%; convênios 1570 e 1700 0,8%; FNAS 1660 0,7%. Soma: 11,8% da receita (p10 7,1%; p90 19,4%; máx. 35,6%).
+- Leitura: é o tamanho do que a União financia com recurso vinculado, não o encargo líquido do município. Limite de classificação: parte dessas fontes não depende de adesão (salário-educação 1550 e transferências SUS fundo a fundo têm base legal); a soma é teto do bloco P, não medida dele.
+- Contrapartida não aparece separada na MSC. A fonte possível é o Transferegov (convênios). Do ambiente do Claude o site não abre (403/502; o endereço antigo do repositório siconv.zip retorna 404). Qualquer coleta precisa rodar no computador do autor, e o endereço correto do conjunto de dados abertos deve ser confirmado por ele na página do portal.
