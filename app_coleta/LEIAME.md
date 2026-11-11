@@ -7,6 +7,19 @@ Dois programas em Python que fazem sozinhos a coleta do Siconfi e o cálculo, se
 1. Instale o Python 3.9 ou mais novo (python.org). No Windows, marque "Add Python to PATH".
 2. Abra o terminal nesta pasta e rode: `pip install -r requirements.txt`
 
+## Jeito mais simples: um comando só (`atlas.py`)
+
+```
+python atlas.py --pasta dados                 # todas as etapas, 2023
+python atlas.py --pasta dados --uf RN         # coleta só algumas UFs
+python atlas.py --pasta dados --etapas analisar confianca comparar relatorio   # só estas etapas
+python atlas.py --pasta dados --ano 2024
+```
+
+Etapas, em ordem: `siconfi`, `mscc`, `verificar`, `siops`, `analisar`, `confianca`, `comparar`, `relatorio`, `empacotar`. Cada uma é retomável; se uma falhar, o programa para e diz qual. No fim grava `dados/relatorio_<ano>.md` (cobertura por UF e porte, motivos dos não calculados, comparação com o SIOPS, maiores diferenças).
+
+Programas que o `atlas.py` chama: `coletar.py` (Siconfi; `--verificar` refaz meses vazios), `coletar_siops.py` (SIOPS, mínimo de saúde), `analisar.py`, `confianca.py` (testes de consistência), `comparar_siops.py`.
+
 ## Coletar
 
 ```
