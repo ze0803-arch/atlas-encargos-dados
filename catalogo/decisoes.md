@@ -48,3 +48,12 @@ Fonte: SIAI Consultas (TCE/RN), dados abertos, RREO 6º bimestre 2023, Anexos 11
 - Executado em saúde e educação com recursos de impostos: SIAI MDE R$ 5,85 mi + ASPS R$ 5,25 mi = R$ 11,10 mi × sistema (funções 10 e 12 em fonte livre) R$ 11,40 mi (+2,7%). Excesso sobre o mínimo: SIAI R$ 2,45 mi × sistema R$ 2,53 mi.
 - O SIAI conta a contribuição ao FUNDEB (R$ 3,80 mi) como aplicação em MDE, o que confirma a neutralidade da receita bruta na margem (D25).
 - Em aberto: natureza 171251 (R$ 5,11 mi na fonte livre, fora da base de impostos); Timbaúba dos Batistas (SIAI fora do ar durante a coleta); SIOPS (endereço `carregarDadosLC141.php` devolveu página malformada com zeros).
+
+## D28 · Validação em 12 municípios do RN contra o SIAI/TCE-RN (11/11/2026)
+Amostra: Serra Negra do Norte e Timbaúba dos Batistas (indicados) + 10 sorteados (semente 20261111) entre os 157 calculados do RN: Tibau, Lagoa de Velhos, Ouro Branco, Fernando Pedroza, Santana do Seridó, Montanhas, Triunfo Potiguar, Cerro Corá, Grossos e Brejinho. Fonte: RREO 6º bimestre 2023, anexos 11 (MDE) e 12 (ASPS) do SIAI Consultas (dados abertos), lidos pelo navegador do pesquisador. Resultado completo em `catalogo/validacao_siai_2023.csv`.
+- **Base de impostos:** diferença absoluta mediana de 0,01% e máxima de 0,17% (confirmada).
+- **Mínimos exigidos:** o sistema (40% da base) fica de 1,3% a 4,4% acima do SIAI (MDE 25% + ASPS 15%), mediana +2,2%. Causa: a base da saúde exclui parcelas do FPM (art. 159, I, d/e) e outras transferências, e a do ensino não. Efeito na margem: cerca de 1 a 2%. Refinamento possível: 25% da base + 15% da base sem as parcelas d/e.
+- **Executado em saúde e educação com impostos** (coluna informativa, fora da margem): diferença mediana de 2,3%, com casos de −17% a +7% (classificação por função e fonte versus apuração do TCE). Não afeta a margem (D25).
+- **Timbaúba:** o mínimo é cumprido com a contribuição ao FUNDEB (MDE com impostos R$ 2,26 mi + FUNDEB = R$ 5,56 mi, 29,85% contra 25%), o que é coerente com a receita bruta (D25).
+- Todos os 12 cumprem 25% em MDE e 15% em ASPS.
+- Em aberto: a receita livre (fontes 1500/1501) não tem equivalente nos anexos 11 e 12; falta conferi-la, por exemplo, pelo Anexo 1 (balanço orçamentário) e a natureza 171251 de Serra Negra do Norte.
