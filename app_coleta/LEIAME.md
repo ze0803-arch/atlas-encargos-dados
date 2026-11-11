@@ -16,7 +16,7 @@ python atlas.py --pasta dados --etapas analisar confianca comparar relatorio   #
 python atlas.py --pasta dados --ano 2024
 ```
 
-Etapas, em ordem: `siconfi`, `mscc`, `verificar`, `siops`, `analisar`, `comparar`, `confianca`, `relatorio`, `empacotar`. Cada uma é retomável; se uma falhar, o programa para e diz qual. No fim grava `dados/relatorio_<ano>.md` (cobertura por UF e porte, motivos dos não calculados, comparação com o SIOPS, maiores diferenças).
+Etapas, em ordem: `siconfi`, `mscc`, `verificar`, `siops`, `transferencias`, `convenios`, `analisar`, `comparar`, `confianca`, `relatorio`, `empacotar`. Cada uma é retomável; se uma falhar, o programa para e diz qual. No fim grava `dados/relatorio_<ano>.md` (cobertura por UF e porte, motivos dos não calculados, comparação com o SIOPS, maiores diferenças).
 
 Programas que o `atlas.py` chama: `coletar.py` (Siconfi; `--verificar` refaz meses vazios), `coletar_siops.py` (SIOPS, mínimo de saúde), `analisar.py`, `confianca.py` (testes de consistência), `comparar_siops.py`.
 

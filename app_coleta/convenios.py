@@ -8,14 +8,16 @@ ap = argparse.ArgumentParser(); ap.add_argument('--pasta', default='dados'); ap.
 import pandas as pd, numpy as np, json
 D=A.csvs.rstrip('/')+'/'
 ANO=int(A.ano)
-c=pd.read_csv(D+'20261023_Convenios.csv',sep=';',encoding='latin1',dtype=str); c.columns=[x.strip() for x in c.columns]
+import glob
+F1=sorted(glob.glob(D+'*_Convenios.csv'))[-1]; F2=sorted(glob.glob(D+'*_Convenios_OrdensBancarias.csv'))[-1]
+c=pd.read_csv(F1,sep=';',encoding='latin1',dtype=str); c.columns=[x.strip() for x in c.columns]
 for col in ['VALOR CONVÊNIO','VALOR LIBERADO','VALOR CONTRAPARTIDA']: c[col]=c[col].str.replace('.','',regex=False).str.replace(',','.',regex=False).astype(float)
 c['cnpj']=c['CÓDIGO CONVENENTE'].str.replace(r'\D','',regex=True).str.zfill(14)
 ent={str(e['cod_ibge']):str(e['cnpj']).zfill(14) for e in json.load(open(A.pasta+'/entes.json')) if e['esfera']=='M'}
 inv={v:k for k,v in ent.items()}
 m=c[c['cnpj'].isin(inv)].copy(); m['cod_ibge']=m['cnpj'].map(inv)
 print('convênios com convenente = prefeitura:',len(m),'de',len(c[c['TIPO CONVENENTE']=='Administração Pública Municipal']))
-o=pd.read_csv(D+'20261023_Convenios_OrdensBancarias.csv',sep=';',encoding='latin1',dtype=str); o.columns=[x.strip() for x in o.columns]
+o=pd.read_csv(F2,sep=';',encoding='latin1',dtype=str); o.columns=[x.strip() for x in o.columns]
 o['v']=o['VALOR LIBERADO'].str.replace('.','',regex=False).str.replace(',','.',regex=False).astype(float); o['ano']=pd.to_datetime(o['DATA EMISSÃO OB'],format='%d/%m/%Y',errors='coerce').dt.year
 o23=o[o.ano==ANO].groupby('NÚMERO CONVÊNIO')['v'].sum().rename('lib_ano')
 m=m.merge(o23,left_on='NÚMERO CONVÊNIO',right_index=True,how='inner'); m=m[m['VALOR CONVÊNIO']>0]
