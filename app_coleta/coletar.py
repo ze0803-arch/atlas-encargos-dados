@@ -28,6 +28,7 @@ ap.add_argument('--trabalhadores', type=int, default=4, help='requisições simu
 ap.add_argument('--limite', type=int, default=0, help='processa só N municípios (teste)')
 ap.add_argument('--empacotar', action='store_true', help='reempacota as UFs concluídas (inclui as matrizes mensais) e, com --enviar, envia ao GitHub')
 ap.add_argument('--enviar', action='store_true', help='git add/commit/push do catálogo ao concluir cada UF (os pacotes de brutos não vão ao GitHub)')
+ap.add_argument('--verificar', action='store_true', help='confere cada município concluído contra o extrato de entregas e refaz o que o município entregou mas veio vazio (matrizes mensais e MSCE); grava verificacao_coleta.csv')
 ap.add_argument('--completar-mscc', action='store_true', help='nos municípios já concluídos, busca as 12 matrizes mensais onde a MSCE não fecha com a DCA')
 A = ap.parse_args()
 ANO = A.ano
@@ -99,9 +100,22 @@ def precisa_mscc(e):
             else: cre += i['valor']
     return min(abs((deb - cre) / dca - 1), abs((cre - deb) / dca - 1), abs(sdeb / dca - 1)) > 0.01
 
-def busca_mscc(e):
+def entregas_msc(e):
+    """Do extrato de entregas: meses da MSC Agregada entregues pela Prefeitura e se há MSC de Encerramento."""
+    ex = [x for x in itens_raw('extrato_entregas', e) if str(x.get('instituicao', '')).startswith('Prefeitura')]
+    meses = {x['periodo'] for x in ex if x['entregavel'] == 'MSC Agregada'}
+    return meses, any('erramento' in x['entregavel'] for x in ex)
+
+def busca_mscc(e, so_faltantes=False):
+    """Busca as 12 matrizes mensais. Se o município entregou o mês (extrato) e a API devolve vazio, tenta de novo (3x)."""
+    entregues, _ = entregas_msc(e)
     for mes in range(1, 13):
-        paginado('mscc_m%02d' % mes, e, 'msc_orcamentaria', dict(id_ente=e, an_referencia=ANO, me_referencia=mes, co_tipo_matriz='MSCC', classe_conta=6, id_tv='period_change'))
+        rel = 'mscc_m%02d' % mes
+        if so_faltantes and itens_raw(rel, e): continue
+        for t in range(3):
+            r = paginado(rel, e, 'msc_orcamentaria', dict(id_ente=e, an_referencia=ANO, me_referencia=mes, co_tipo_matriz='MSCC', classe_conta=6, id_tv='period_change'))
+            if r or mes not in entregues: break
+            time.sleep(5 * (t + 1))
 
 def municipio(m):
     e = str(m['cod_ibge'])
@@ -161,10 +175,37 @@ def completar_mscc(ufs, entes):
     por = {str(e['cod_ibge']): e for e in entes if e['uf'] in ufs}
     d = os.path.join(RAW, 'mscc_m12')
     ja = set(f.split('_')[2] for f in os.listdir(d)) if os.path.isdir(d) else set()
-    alvo = [c for c in sorted(concluidos() & set(por)) if c not in ja and precisa_mscc(c)]
+    alvo = [c for c in sorted(concluidos() & set(por)) if c not in ja and precisa_mscc(c)]  # (use --verificar para lacunas em municípios que já têm algum mês)
     if A.limite: alvo = alvo[:A.limite]
     dizer(f'MSCC mensal: {len(alvo)} municípios a completar')
     with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(busca_mscc, alvo))
+
+def verificar(ufs, entes):
+    """Confere cada município concluído: mês entregue (extrato) sem dados no bruto -> busca de novo; MSCE entregue e vazia -> tenta de novo.
+    Registra o resultado em verificacao_coleta.csv (município, lacunas antes/depois, MSCE na API)."""
+    por = {str(e['cod_ibge']): e for e in entes if e['uf'] in ufs}
+    alvo = sorted(concluidos() & set(por))
+    if A.limite: alvo = alvo[:A.limite]
+    saida = os.path.join(A.pasta, 'verificacao_coleta.csv'); linhas = []
+    def um(c):
+        entregues, enc = entregas_msc(c)
+        faltam = lambda: [m for m in sorted(entregues) if not itens_raw('mscc_m%02d' % m, c)]
+        antes = faltam() if precisa_mscc(c) else []
+        if antes: busca_mscc(c, so_faltantes=True)
+        depois = faltam() if antes else []
+        msce_vazia = len(itens_raw('msce', c)) <= 30
+        if msce_vazia and enc:
+            for t in range(2):
+                if paginado('msce', c, 'msc_orcamentaria', dict(id_ente=c, an_referencia=ANO, me_referencia=12, co_tipo_matriz='MSCE', classe_conta=6, id_tv='period_change')): break
+                time.sleep(5)
+            msce_vazia = len(itens_raw('msce', c)) <= 30
+        with lock: linhas.append([c, por[c]['ente'], por[c]['uf'], ' '.join(map(str, antes)), ' '.join(map(str, depois)), 'sim' if (enc and msce_vazia) else 'nao'])
+    dizer(f'verificação: {len(alvo)} municípios concluídos')
+    with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(um, alvo))
+    with open(saida, 'w', newline='', encoding='utf-8') as f:
+        w = csv.writer(f); w.writerow(['cod_ibge', 'ente', 'uf', 'meses_faltando_antes', 'meses_faltando_depois', 'msce_entregue_e_vazia_na_api']); w.writerows(sorted(linhas))
+    rec = sum(1 for l in linhas if l[3] and not l[4]); aberto = sum(1 for l in linhas if l[4])
+    dizer(f'lacunas recuperadas: {rec}; ainda em aberto (entregues mas vazios na API): {aberto}; MSCE vazia na API: {sum(1 for l in linhas if l[5]=="sim")}. Detalhe em {saida}')
 
 def main():
     arq_entes = os.path.join(A.pasta, 'entes.json')
@@ -180,6 +221,8 @@ def main():
             if cods and all(c in feitos for c in cods): empacotar(uf, cods)
         if A.enviar: enviar_git(f'Siconfi {ANO}: pacotes e catálogo')
         dizer('CONCLUÍDO'); return
+    if A.verificar:
+        verificar(ufs, entes); dizer('CONCLUÍDO'); return
     if A.completar_mscc:
         completar_mscc(ufs, entes); dizer('CONCLUÍDO'); return
     for uf in ufs:
