@@ -114,3 +114,10 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 - Elemento 47 (obrigações tributárias e contributivas, inclui PASEP): 0,84% da despesa. Compatível com 1% do PASEP, mas o elemento mistura outros tributos.
 - Função 08 (assistência social): 3,5% da despesa (3,9% da receita livre); fonte FNAS (1660) cobre 20% em mediana. Sem gasto mínimo em lei.
 - Elemento 71 (consórcios, contrato de rateio): 637 de 696 têm o gasto; 2,4% da despesa (2,0% da receita livre; máx. 12,6%). Ainda fora da margem; decidir se entra no bloco P.
+
+## D37. Consórcios públicos como bloco P (11/11/2026)
+
+- Decisão do autor: a adesão a consórcio público (contrato de rateio, elemento de despesa 71, em fonte livre, fora do Legislativo) é pactuação (bloco P), não autovinculação.
+- `analisar.py` ganhou a coluna `consorcios` e a coluna `margem_ampla_p` (margem ampla menos consórcios). A margem ampla e a estrita não mudam, para manter a série comparável; o bloco P entra à parte.
+- Piloto 2023 (850 calculados): 785 têm gasto com consórcio; mediana de 2,1% da receita livre. A mediana da margem ampla sobre a receita livre cai de 52,3% para 49,8% após o bloco P. Nenhum município fica negativo por causa dele.
+- Pendente: decidir quais outros itens da matriz entram no bloco P (contrapartidas de convênios, programas com adesão) e se a margem principal passa a descontá-lo.

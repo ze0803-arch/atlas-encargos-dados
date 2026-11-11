@@ -24,7 +24,7 @@ def carrega(rel, cod):
 def calcula(itens, modo):
     """modo: ('liq', +1) débito positivo; ('liq', -1) crédito positivo; ('deb', +1) só débitos na receita."""
     tipo, s0 = modo
-    m = dict(rec=0.0, liq=0.0, base=0.0, semnat=0.0, rl=0.0, leg=0.0, div=0.0, prec=0.0, min_=0.0, folha=0.0, fpm_de=0.0)
+    m = dict(rec=0.0, liq=0.0, base=0.0, semnat=0.0, rl=0.0, leg=0.0, div=0.0, prec=0.0, min_=0.0, folha=0.0, fpm_de=0.0, cons=0.0)
     for i in itens:
         cc = i['conta_contabil']; sg = (1 if i['natureza_conta'] == 'D' else -1) * s0; v = i['valor'] * sg
         fr = (i['fonte_recursos'] or '')[1:]
@@ -41,6 +41,7 @@ def calcula(itens, modo):
             m['liq'] += v
             if fr in LIVRE:
                 nd = i['natureza_despesa'] or ''; g = nd[1:2]; e = nd[4:6]; po = (i['poder_orgao'] or '')[:1]
+                if e == '71' and po != '2': m['cons'] += v   # D37: consórcios (contrato de rateio) = bloco P (pactuação); coluna à parte
                 if po == '2': m['leg'] += v
                 elif g in ('2', '6'): m['div'] += v
                 elif e == '91': m['prec'] += v
@@ -85,7 +86,7 @@ for c in cods:
         nome, modo, m = 'nenhuma', ('liq', 1), calcula([], ('liq', 1))
     r['fonte_msc'] = nome; r['convencao'] = modo[0] + ('+' if modo[1] > 0 else '-')
     r['rec_msc'] = m['rec']; r['liq_msc'] = m['liq']; r['base_impostos'] = m['base']; r['fpm_parcela_de'] = m['fpm_de']; r['minimos_exigidos'] = 0.25 * m['base'] + 0.15 * (m['base'] - m['fpm_de'])  # D29: 25% ensino + 15% saúde
-    r.update(rec_livre=m['rl'], leg=m['leg'], divida=m['div'], prec=m['prec'], minimos_funcao=m['min_'], folha_livre=m['folha'])
+    r.update(rec_livre=m['rl'], leg=m['leg'], divida=m['div'], prec=m['prec'], minimos_funcao=m['min_'], folha_livre=m['folha'], consorcios=m['cons'])
     r['rec_dif'] = (m['rec'] / r['dca_rec'] - 1) if r['dca_rec'] and m['rec'] else None
     r['liq_dif'] = (m['liq'] / r['dca_liq'] - 1) if r['dca_liq'] and m['liq'] else None
     fl = []
@@ -108,10 +109,11 @@ for c in cods:
     if r['rcl_suspeita']: fl.append('RCL_SUSPEITA')
     r['flags'] = '|'.join(fl) or 'OK'
     if any(f in fl for f in ('SEM_MSCE', 'MSCE_INCOMPLETA', 'REC_DIVERGE', 'LIQ_DIVERGE', 'SEM_NATUREZA_RECEITA', 'FONTE_LIVRE_ATIPICA', 'LEGISLATIVO_ATIPICO')):
-        r['margem_ampla'] = r['margem_estrita'] = None; r['status'] = 'marcado_nao_calculado'
+        r['margem_ampla'] = r['margem_estrita'] = r['margem_ampla_p'] = None; r['status'] = 'marcado_nao_calculado'
     else:
         a = m['rl'] - r['minimos_exigidos'] - m['leg'] - m['div'] - m['prec']
         r['margem_ampla'] = a; r['margem_estrita'] = a - m['folha']; r['status'] = 'calculado'
+        r['margem_ampla_p'] = a - m['cons']   # D37: margem ampla depois do bloco P (consórcios)
     r['margem_ampla_pct_rcl'] = (r['margem_ampla'] / r['rcl_rreo']) if r['margem_ampla'] is not None and r['rcl_rreo'] and not r['rcl_suspeita'] else None
     rows.append(r)
 saida = os.path.join(A.pasta, 'resultado_' + A.ano + '.csv')
