@@ -95,13 +95,23 @@ for c in cods:
         if r['liq_dif'] is None or abs(r['liq_dif']) > TOL: fl.append('LIQ_DIVERGE')
         if m['rec'] and abs(m['semnat']) / abs(m['rec']) > 0.2: fl.append('SEM_NATUREZA_RECEITA')
     if not r['n_rreo3']: fl.append('RREO3_VAZIO')
+    # D26: codificação atípica da fonte livre (reclassificações entre fontes) -> marcar e não calcular
+    if m['base'] and not ('SEM_MSCE' in fl or 'MSCE_INCOMPLETA' in fl):
+        q = m['rl'] / m['base']
+        if q < 0.6 or q > 1.5: fl.append('FONTE_LIVRE_ATIPICA')
+    # D26: Legislativo muito acima do teto constitucional (7% da base) -> órgão codificado errado; marcar e não calcular
+    if m['base'] and m['leg'] / m['base'] > 0.12: fl.append('LEGISLATIVO_ATIPICO')
+    # D26: RCL do RREO inconsistente com a receita líquida da DCA -> não usar o percentual da RCL
+    rl_ = r['rec_liquida_fundeb']
+    r['rcl_suspeita'] = bool(not r['rcl_rreo'] or (rl_ and not 0.6 <= r['rcl_rreo'] / rl_ <= 1.10))
+    if r['rcl_suspeita']: fl.append('RCL_SUSPEITA')
     r['flags'] = '|'.join(fl) or 'OK'
-    if any(f in fl for f in ('SEM_MSCE', 'MSCE_INCOMPLETA', 'REC_DIVERGE', 'LIQ_DIVERGE', 'SEM_NATUREZA_RECEITA')):
+    if any(f in fl for f in ('SEM_MSCE', 'MSCE_INCOMPLETA', 'REC_DIVERGE', 'LIQ_DIVERGE', 'SEM_NATUREZA_RECEITA', 'FONTE_LIVRE_ATIPICA', 'LEGISLATIVO_ATIPICO')):
         r['margem_ampla'] = r['margem_estrita'] = None; r['status'] = 'marcado_nao_calculado'
     else:
         a = m['rl'] - r['minimos_exigidos'] - m['leg'] - m['div'] - m['prec']
         r['margem_ampla'] = a; r['margem_estrita'] = a - m['folha']; r['status'] = 'calculado'
-    r['margem_ampla_pct_rcl'] = (r['margem_ampla'] / r['rcl_rreo']) if r['margem_ampla'] is not None and r['rcl_rreo'] else None
+    r['margem_ampla_pct_rcl'] = (r['margem_ampla'] / r['rcl_rreo']) if r['margem_ampla'] is not None and r['rcl_rreo'] and not r['rcl_suspeita'] else None
     rows.append(r)
 saida = os.path.join(A.pasta, 'resultado_' + A.ano + '.csv')
 with open(saida, 'w', newline='', encoding='utf-8') as f:

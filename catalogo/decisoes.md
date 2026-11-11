@@ -34,3 +34,9 @@ Respostas do questionário de validação:
 - FUNDEB: receita livre **bruta**; a receita líquida (`rec_liquida_fundeb`) e a dedução (`deducao_fundeb`) ficam como colunas informativas.
 - Margem estrita: desconta **apenas a folha** paga com fonte livre (sem serviços essenciais, restos a pagar ou contrapartidas).
 - Fonte livre: continua 1500/1501; município com codificação diferente (ex.: BA com receita livre ~0) fica **marcado e não calculado** (regra D5).
+
+## D26 · Casos fora da curva: três flags novas (11/11/2026)
+Investigação dos 7 municípios com margem negativa e dos 7 com margem acima de 100% da RCL:
+- **Margem negativa (6 na BA + Silves/AM):** nos municípios da BA a fonte 1500 recebe lançamentos positivos e negativos de mesma natureza (reclassificação de FPM/ICMS/IPTU da fonte 1500 para outras, como 1540/1542/1715), e o líquido da fonte livre fica irreal (ex.: Boa Nova 54,3 positivos e −47,8 negativos). Encruzilhada lança 98% da receita na fonte 1001 (codificação antiga). Regra nova: `FONTE_LIVRE_ATIPICA` quando rec_livre/base_impostos < 0,6 ou > 1,5 (mediana 1,03; p1 = 0,69) → marcado e não calculado (D5). Pegou 42 municípios.
+- **Silves/AM:** R$ 25,3 mi de despesa do órgão 20231 (Legislativo) em fonte livre, contra teto constitucional de ~7% da base (R$ 2,3 mi); o órgão está codificado errado. Regra nova: `LEGISLATIVO_ATIPICO` quando leg/base_impostos > 0,12 (p99 = 0,078) → marcado e não calculado.
+- **Margem acima de 100% da RCL (7 municípios):** a margem em R$ está coerente; o erro é a RCL, que aparece de 5 a 27 mi para receitas de 35 a 214 mi (o RGF desses entes não traz RCL). Regra nova: `RCL_SUSPEITA` quando RCL do RREO 3 / receita líquida do FUNDEB fora de 0,6–1,10 → o percentual da RCL fica vazio; a margem em R$ continua calculada. Pegou 56 municípios.
