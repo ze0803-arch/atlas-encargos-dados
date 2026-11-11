@@ -64,3 +64,9 @@ Amostra: Serra Negra do Norte e Timbaúba dos Batistas (indicados) + 10 sorteado
 - Resultado: 850 municípios calculados; mediana margem ampla/RCL 31,89%. Ex.: Caicó 34,9→35,2%; Serra Negra do Norte 50,8→51,4%; Timbaúba dos Batistas 50,9→51,3%.
 - Limitações: 56 municípios calculados sem parcela d/e identificada (GO 23, BA 11, RN 7, ES 7…) — mínimo da saúde pode ficar levemente superestimado; mínimo da saúde fora do RN sem conferência externa (SIOPS inacessível por script).
 - Receita livre (fontes 1500/1501) não tem equivalente nos anexos 11/12; o RREO Anexo 1 é agregado por categoria e não mostra a natureza 17125101 (R$ 5,11 mi em Serra Negra do Norte), classificada como transferência da União fora da base de impostos (compensação financeira), corretamente excluída da base de mínimos e mantida como receita livre.
+
+## D30 — Teste de fontes automáticas de validação (Tesouro Transparente e DCA)
+- DCA (Siconfi) só publica I-AB, I-C, I-D, I-E, I-F, I-G e I-HI: não há Balanço Financeiro por fonte de recurso; a receita livre (1500/1501) segue sem conferência externa.
+- Tesouro Transparente: o portal web ficou em manutenção (503), mas a API CKAN (/ckan/api/3/action/package_show?id=af4e7c47-2132-4d9a-bd7c-34e28a210b03) entrega CSV mensal por município (FPM, FUNDEB, ICMS, royalties ANP/CFEM/FEP…). Cuidados: arquivos com nome de mês trocado/duplicado (ler a coluna Mês e deduplicar por chave), codificação latin-1, nome do município sem código IBGE.
+- Natureza 17125101 = CFEM: Serra Negra do Norte R$ 5.108.936,19 (Tesouro) = MSC, exato; Caicó R$ 8.657,44 (Tesouro) = DCA 1.7.1.2.51.
+- FPM: Tesouro difere da MSC/DCA (só 3% dos municípios dentro de 1%); 4 municípios do RN de mesmo coeficiente têm FPM idêntico na MSC (R$ 15.727.905) e valores distintos no Tesouro (hipótese: valor líquido de retenções, não confirmada). Tesouro não separa as alíneas d/e, logo não valida a parcela d/e; em Caicó a cota mensal da MSC (alínea b) bate com o Tesouro (−0,1%).
