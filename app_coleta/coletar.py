@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""Coletor do Siconfi para o Atlas de Encargos.
+
+Baixa, para cada município, as respostas originais da API do Siconfi (extrato de entregas,
+MSC de dezembro, RREO, RGF e DCA), grava cada resposta comprimida com hash SHA-256 e
+registra tudo no diário de extração. É retomável: município que já tem a última peça
+(DCA I-E) é pulado. Ao concluir uma UF, empacota em .tar.
+
+Uso:
+  python coletar.py                      # todas as UFs, exercício 2023, pasta ./dados
+  python coletar.py --uf RN PB           # só estas UFs
+  python coletar.py --uf RN --limite 3   # teste rápido com 3 municípios
+  python coletar.py --enviar             # após cada UF, git add/commit/push (pasta dentro de um repositório)
+"""
+import argparse, csv, datetime, gzip, hashlib, json, os, subprocess, sys, tarfile, threading, time
+from concurrent.futures import ThreadPoolExecutor
+try:
+    import requests
+except ImportError:
+    sys.exit('Falta o pacote requests. Instale com: pip install requests')
+
+API = 'https://apidatalake.tesouro.gov.br/ords/siconfi/tt/'
+ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+ap.add_argument('--pasta', default='dados')
+ap.add_argument('--ano', type=int, default=2023)
+ap.add_argument('--uf', nargs='*', default=[], help='siglas das UFs (padrão: todas)')
+ap.add_argument('--trabalhadores', type=int, default=4, help='requisições simultâneas (máx. 4 recomendado)')
+ap.add_argument('--limite', type=int, default=0, help='processa só N municípios (teste)')
+ap.add_argument('--enviar', action='store_true', help='git add/commit/push ao concluir cada UF')
+ap.add_argument('--completar-mscc', action='store_true', help='nos municípios já concluídos, busca as 12 matrizes mensais onde a MSCE não fecha com a DCA')
+A = ap.parse_args()
+ANO = A.ano
+RAW = os.path.join(A.pasta, 'raw', 'siconfi', str(ANO))
+os.makedirs(A.pasta, exist_ok=True)
+S = requests.Session()
+lock = threading.Lock()
+DIARIO = os.path.join(A.pasta, 'diario_extracao.csv')
+novo = not os.path.exists(DIARIO)
+df = open(DIARIO, 'a', newline='', encoding='utf-8'); dw = csv.writer(df)
+if novo:
+    dw.writerow(['data_hora_utc','fonte','relatorio','ente','url','http','linhas','resultado','tentativas','segundos','bytes_gz','sha256','arquivo'])
+def agora(): return datetime.datetime.now(datetime.timezone.utc)
+def dizer(m): print(agora().strftime('%H:%M:%S'), m, flush=True)
+
+def req(rel, ente, ep, params, pagina=1):
+    t0 = time.time(); http = None; body = None; err = ''; final = API + ep; tent = 0
+    for tent in range(1, 4):
+        try:
+            r = S.get(API + ep, params=params, timeout=180); http = r.status_code; final = r.url
+            if http == 200: body = r.content; break
+        except Exception as e: err = str(e)[:80]
+        time.sleep(2 * tent)
+    js = None; n = 0; arq = ''; sha = ''; nb = 0
+    if body is not None:
+        try:
+            js = json.loads(body); n = len(js.get('items', [])) if isinstance(js, dict) else 0
+        except Exception: js = None
+        d = os.path.join(RAW, rel); os.makedirs(d, exist_ok=True)
+        arq = os.path.join(d, f'siconfi_{ANO}_{ente}_{rel}_p{pagina:03d}_{agora().strftime("%Y%m%dT%H%M%S")}.json.gz')
+        gz = gzip.compress(body, mtime=0)
+        with open(arq, 'wb') as f: f.write(gz)
+        sha = hashlib.sha256(gz).hexdigest(); nb = len(gz)
+    res = 'sucesso' if (http == 200 and n > 0) else ('vazio' if http == 200 else 'erro')
+    with lock:
+        dw.writerow([agora().strftime('%Y-%m-%dT%H:%M:%SZ'),'siconfi',rel,ente,final,http or err,n,res,tent,round(time.time()-t0,1),nb,sha,os.path.relpath(arq, A.pasta) if arq else '']); df.flush()
+    time.sleep(0.25)
+    return js, n
+
+def paginado(rel, ente, ep, params):
+    out = []; off = 0; pg = 1
+    while True:
+        p = dict(params); p['offset'] = off
+        js, n = req(rel, ente, ep, p, pg)
+        if js is None: return out
+        out += js['items']
+        if not js.get('hasMore'): return out
+        off += js.get('limit', 5000); pg += 1
+
+
+def itens_raw(rel, cod):
+    d = os.path.join(RAW, rel); out = []
+    if os.path.isdir(d):
+        for f in sorted(os.listdir(d)):
+            if f.split('_')[2] == str(cod):
+                out += json.load(gzip.open(os.path.join(d, f))).get('items', [])
+    return out
+
+def precisa_mscc(e):
+    """A MSCE de dezembro não fecha com a DCA (receita, 1%) ou veio vazia/curta: testa as 12 matrizes mensais."""
+    msce = itens_raw('msce', e)
+    if len(msce) <= 30: return True
+    dca = next((i['valor'] for i in itens_raw('dca_IC', e) if i['cod_conta'] == 'ReceitasExcetoIntraOrcamentarias' and i['coluna'] == 'Receitas Brutas Realizadas'), None)
+    if not dca: return False
+    deb = cre = sdeb = 0.0
+    for i in msce:
+        if i['conta_contabil'] == '621200000' and (i['natureza_receita'] or '')[:1] in ('1', '2', ''):
+            if i['natureza_conta'] == 'D': deb += i['valor']; sdeb += i['valor']
+            else: cre += i['valor']
+    return min(abs((deb - cre) / dca - 1), abs((cre - deb) / dca - 1), abs(sdeb / dca - 1)) > 0.01
+
+def busca_mscc(e):
+    for mes in range(1, 13):
+        paginado('mscc_m%02d' % mes, e, 'msc_orcamentaria', dict(id_ente=e, an_referencia=ANO, me_referencia=mes, co_tipo_matriz='MSCC', classe_conta=6, id_tv='period_change'))
+
+def municipio(m):
+    e = str(m['cod_ibge'])
+    ex = paginado('extrato_entregas', e, 'extrato_entregas', dict(id_ente=e, an_referencia=ANO))
+    ent = set(x['entregavel'] for x in ex)
+    rreo_simp = any('Resumido de Execução Orçamentária Simplificado' in x for x in ent)
+    rgf_simp = any('Gestão Fiscal Simplificado' in x for x in ent)
+    paginado('msce', e, 'msc_orcamentaria', dict(id_ente=e, an_referencia=ANO, me_referencia=12, co_tipo_matriz='MSCE', classe_conta=6, id_tv='period_change'))
+    tipos = ['RREO Simplificado','RREO'] if rreo_simp else ['RREO','RREO Simplificado']
+    for an in ('03','01'):
+        for t in tipos:
+            if paginado('rreo_anexo'+an, e, 'rreo', dict(an_exercicio=ANO, nr_periodo=6, co_tipo_demonstrativo=t, no_anexo='RREO-Anexo '+an, id_ente=e)): break
+    combos = [('RGF Simplificado','S',2),('RGF','Q',3),('RGF','S',2)] if rgf_simp else [('RGF','Q',3),('RGF Simplificado','S',2),('RGF','S',2)]
+    for an, pod in (('01','E'),('01','L'),('02','E')):
+        for t, per, nr in combos:
+            if paginado(f'rgf_anexo{an}_{pod}', e, 'rgf', dict(an_exercicio=ANO, in_periodicidade=per, nr_periodo=nr, co_tipo_demonstrativo=t, no_anexo='RGF-Anexo '+an, co_esfera='M', co_poder=pod, id_ente=e)): break
+    for an in ('I-C','I-D'):
+        paginado('dca_'+an.replace('-',''), e, 'dca', dict(an_exercicio=ANO, no_anexo='DCA-Anexo '+an, id_ente=e))
+    if precisa_mscc(e): busca_mscc(e)
+    paginado('dca_IE', e, 'dca', dict(an_exercicio=ANO, no_anexo='DCA-Anexo I-E', id_ente=e))  # por último: marca município concluído
+    dizer('fim ' + m['ente'] + ' ' + m['uf'])
+
+def concluidos():
+    d = os.path.join(RAW, 'dca_IE')
+    return set(f.split('_')[2] for f in os.listdir(d)) if os.path.isdir(d) else set()
+
+def empacotar(uf, cods):
+    saida = os.path.join(A.pasta, 'pacotes'); os.makedirs(saida, exist_ok=True)
+    alvo = os.path.join(saida, f'{uf}_completo.tar')
+    cods = set(cods)
+    with tarfile.open(alvo, 'w') as tf:
+        for rel in sorted(os.listdir(RAW)):
+            for f in sorted(os.listdir(os.path.join(RAW, rel))):
+                if f.split('_')[2] in cods: tf.add(os.path.join(RAW, rel, f), arcname=f'raw/siconfi/{ANO}/{rel}/{f}')
+    dizer(f'{uf}: pacote {os.path.getsize(alvo)//1024} KB')
+    if A.enviar:
+        subprocess.run(['git','add','-A'], cwd=A.pasta); subprocess.run(['git','commit','-q','-m',f'Siconfi {ANO}: UF {uf} completa'], cwd=A.pasta)
+        subprocess.run(['git','push'], cwd=A.pasta)
+
+def completar_mscc(ufs, entes):
+    por = {str(e['cod_ibge']): e for e in entes if e['uf'] in ufs}
+    d = os.path.join(RAW, 'mscc_m12')
+    ja = set(f.split('_')[2] for f in os.listdir(d)) if os.path.isdir(d) else set()
+    alvo = [c for c in sorted(concluidos() & set(por)) if c not in ja and precisa_mscc(c)]
+    if A.limite: alvo = alvo[:A.limite]
+    dizer(f'MSCC mensal: {len(alvo)} municípios a completar')
+    with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(busca_mscc, alvo))
+
+def main():
+    arq_entes = os.path.join(A.pasta, 'entes.json')
+    if not os.path.exists(arq_entes):
+        js = S.get(API + 'entes', timeout=180).json()
+        with open(arq_entes, 'w', encoding='utf-8') as f: json.dump(js['items'], f, ensure_ascii=False)
+    entes = [e for e in json.load(open(arq_entes, encoding='utf-8')) if e['esfera'] == 'M']
+    ufs = [u.upper() for u in A.uf] or sorted(set(e['uf'] for e in entes))
+    if A.completar_mscc:
+        completar_mscc(ufs, entes); dizer('CONCLUÍDO'); return
+    for uf in ufs:
+        lista = sorted([e for e in entes if e['uf'] == uf], key=lambda e: e['cod_ibge'])
+        feitos = concluidos()
+        pend = [e for e in lista if str(e['cod_ibge']) not in feitos]
+        if A.limite: pend = pend[:A.limite]
+        dizer(f'{uf}: {len(lista)} municípios, {len(pend)} a coletar')
+        with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(municipio, pend))
+        if not A.limite and all(str(e['cod_ibge']) in concluidos() for e in lista):
+            empacotar(uf, [str(e['cod_ibge']) for e in lista])
+    dizer('CONCLUÍDO')
+main()
