@@ -1,0 +1,51 @@
+cod_ibge,ente,uf,regiao,populacao,faixa,motivo
+1300706,Boca do Acre,AM,NO,38792,3,caso problemático
+1303403,Parintins,AM,NO,101855,5,estratificado
+2906105,Canápolis,BA,NE,10641,2,caso problemático
+2305654,Ipaporanga,CE,NE,11963,2,caso problemático
+2307304,Juazeiro do Norte,CE,NE,305531,5,estratificado
+2310506,Pedra Branca,CE,NE,42227,3,caso problemático
+2311900,Saboeiro,CE,NE,13943,2,estratificado
+5203939,Buriti de Goiás,GO,CO,2800,0,estratificado
+5219605,Santa Tereza de Goiás,GO,CO,3172,0,caso problemático
+2110005,Santa Luzia,MA,NE,58839,4,estratificado
+2111763,Senador La Rocque,MA,NE,15044,2,estratificado
+3138104,Lassance,MG,SE,7398,1,estratificado
+3139201,Malacacheta,MG,SE,17691,2,caso problemático
+3153301,Presidente Kubitschek,MG,SE,3162,0,estratificado
+3169901,Ubá,MG,SE,107423,5,estratificado
+5003306,Coxim,MS,CO,33440,3,estratificado
+5100805,Apiacás,MT,CO,8693,1,estratificado
+5101803,Barra do Garças,MT,CO,73878,4,estratificado
+5105606,Matupá,MT,CO,21959,3,caso problemático
+1506187,Rondon do Pará,PA,NO,57031,4,estratificado
+1507102,São Caetano de Odivelas,PA,NO,17258,2,caso problemático
+1508407,Xinguara,PA,NO,57768,4,caso problemático
+2504801,Coremas,PB,NE,14987,2,caso problemático
+2507507,João Pessoa,PB,NE,897633,6,estratificado
+2512036,Poço Dantas,PB,NE,3934,0,caso problemático
+2514800,São José dos Cordeiros,PB,NE,3462,0,estratificado
+2200608,Angical do Piauí,PI,NE,6991,1,estratificado
+4104402,Cândido de Abreu,PR,SU,15081,2,estratificado
+4113700,Londrina,PR,SU,581382,6,estratificado
+4120804,Quatro Barras,PR,SU,25397,3,estratificado
+3301702,Duque de Caxias,RJ,SE,866225,6,estratificado
+2400109,Acari,RN,NE,10855,2,RN
+2400703,Alto do Rodrigues,RN,NE,12874,2,caso problemático
+2402006,Caicó,RN,NE,63338,4,RN
+2403103,Currais Novos,RN,NE,42922,3,RN
+2403608,Extremoz,RN,NE,68584,4,caso problemático
+2403806,Florânia,RN,NE,10556,2,RN
+2408102,Natal,RN,NE,784249,6,grande (volume)
+2408508,Ouro Branco,RN,NE,5084,1,RN
+2412005,São Gonçalo do Amarante,RN,NE,124495,5,RN
+4321303,Taquari,RS,SU,25963,3,estratificado
+4214607,Rio do Oeste,SC,SU,8071,1,estratificado
+4215109,Rodeio,SC,SU,13491,2,estratificado
+3507159,Bom Sucesso de Itararé,SP,SE,3609,0,estratificado
+3510609,Carapicuíba,SP,SE,398236,5,estratificado
+3516705,Garça,SP,SE,43081,3,estratificado
+3525201,Jarinu,SP,SE,40007,3,caso problemático
+3552205,Sorocaba,SP,SE,762172,6,estratificado
+3550308,São Paulo,SP,SE,11904961,6,grande (volume)
+3554805,Tremembé,SP,SE,53426,4,estratificado
