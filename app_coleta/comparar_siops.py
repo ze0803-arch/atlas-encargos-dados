@@ -8,11 +8,12 @@ res = {r['cod_ibge']: r for r in csv.DictReader(open(os.path.join(A.pasta, f'res
 sio = list(csv.DictReader(open(os.path.join(A.pasta, f'siops_{A.ano}.csv'), encoding='utf-8')))
 linhas = []
 for p in sio:
-    r = res.get(p['cod_ibge']); mn = f(p['minimo_asps_XVII'])
+    r = res.get(p['cod_ibge']); mn = f(p['minimo_asps_XVII']); lom = bool(f(p.get('minimo_lom')))
+    if lom and f(p.get('base_realizada_III')): mn = 0.15 * f(p['base_realizada_III'])  # município com % da Lei Orgânica: compara a base, não o mínimo declarado (D41)
     if not r or not mn or not f(r['base_impostos']): continue
     sis = 0.15 * (f(r['base_impostos']) - (f(r['fpm_parcela_de']) or 0))
     linhas.append(dict(cod_ibge=p['cod_ibge'], ente=r['ente'], uf=r['uf'], status=r['status'], minimo_sistema=round(sis, 2), minimo_siops=mn,
-                       diferenca_pct=round(100 * (sis / mn - 1), 3), parcela_de_identificada=bool(f(r['fpm_parcela_de']))))
+                       diferenca_pct=round(100 * (sis / mn - 1), 3), parcela_de_identificada=bool(f(r['fpm_parcela_de'])), lei_organica=lom))
 if linhas:
     with open(os.path.join(A.pasta, f'comparacao_siops_{A.ano}.csv'), 'w', newline='', encoding='utf-8') as fh:
         w = csv.DictWriter(fh, list(linhas[0])); w.writeheader(); w.writerows(linhas)

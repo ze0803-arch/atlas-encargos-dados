@@ -1,0 +1,1175 @@
+cod_ibge,ente,uf,status,minimo_sistema,minimo_siops,diferenca_pct,parcela_de_identificada,lei_organica
+2927408,Salvador,BA,calculado,926844824.63,882938583.22,4.973,True,False
+2927507,Santa Bárbara,BA,marcado_nao_calculado,-553300.17,5475211.59,-110.106,True,False
+2927606,Santa Brígida,BA,calculado,4844030.77,4843615.86,0.009,True,False
+2927705,Santa Cruz Cabrália,BA,calculado,10817361.76,10816687.5,0.006,True,False
+2927804,Santa Cruz da Vitória,BA,calculado,3057758.35,2906831.55,5.192,True,False
+2927903,Santa Inês,BA,marcado_nao_calculado,3160097.29,4208604.6,-24.913,True,False
+2928000,Santaluz,BA,marcado_nao_calculado,11768077.06,12473118.94,-5.652,True,False
+2928059,Santa Luzia,BA,marcado_nao_calculado,4874935.98,4619674.93,5.526,True,False
+2928109,Santa Maria da Vitória,BA,marcado_nao_calculado,12537170.49,11310952.49,10.841,True,False
+2928208,Santana,BA,calculado,7326816.0,7325282.23,0.021,True,False
+2928307,Santanópolis,BA,calculado,2974301.41,2974551.37,-0.008,True,False
+2928406,Santa Rita de Cássia,BA,calculado,9182364.34,8215088.15,11.774,False,False
+2928505,Santa Teresinha,BA,calculado,4048795.37,4061139.47,-0.304,True,False
+2928604,Santo Amaro,BA,calculado,14180752.71,14241074.97,-0.424,True,False
+2928703,Santo Antônio de Jesus,BA,marcado_nao_calculado,30087135.26,30037052.26,0.167,True,False
+2928802,Santo Estêvão,BA,calculado,13316762.44,13372608.91,-0.418,True,False
+2928901,São Desidério,BA,calculado,52339460.13,52339433.52,0.0,True,False
+2928950,São Domingos,BA,marcado_nao_calculado,2531446.75,3049151.82,-16.979,True,False
+2929008,São Félix,BA,calculado,4692490.06,4703509.29,-0.234,True,False
+2929057,São Félix do Coribe,BA,marcado_nao_calculado,5119357.24,5845943.63,-12.429,True,False
+2929107,São Felipe,BA,calculado,6125028.58,6119210.57,0.095,True,False
+2929206,São Francisco do Conde,BA,calculado,110951996.25,112921722.35,-1.744,True,False
+2929255,São Gabriel,BA,calculado,5697231.82,5660444.11,0.65,True,False
+2929305,São Gonçalo dos Campos,BA,marcado_nao_calculado,12520276.03,13727298.89,-8.793,True,False
+2929354,São José da Vitória,BA,calculado,2835169.44,2779356.1,2.008,True,False
+2929370,São José do Jacuípe,BA,marcado_nao_calculado,4068795.83,4064420.37,0.108,True,False
+2929404,São Miguel das Matas,BA,calculado,4101550.64,4101211.18,0.008,True,False
+2929503,São Sebastião do Passé,BA,calculado,19413308.32,19403775.69,0.049,True,False
+2929602,Sapeaçu,BA,marcado_nao_calculado,6700620.22,6698200.55,0.036,False,False
+2929701,Sátiro Dias,BA,calculado,6838600.61,6830772.18,0.115,True,False
+2929750,Saubara,BA,calculado,3838093.25,3767919.29,1.862,True,False
+2929800,Saúde,BA,marcado_nao_calculado,3859433.56,3859081.62,0.009,True,False
+2929909,Seabra,BA,calculado,13275390.08,13273076.78,0.017,True,False
+2930006,Sebastião Laranjeiras,BA,calculado,4197809.75,4064671.77,3.275,True,False
+2930105,Senhor do Bonfim,BA,marcado_nao_calculado,11042523.68,16447576.41,-32.862,True,False
+2930154,Serra do Ramalho,BA,marcado_nao_calculado,9330790.36,9145141.72,2.03,True,False
+2930204,Sento Sé,BA,marcado_nao_calculado,20754221.32,18393147.6,12.837,True,False
+2930303,Serra Dourada,BA,marcado_nao_calculado,5538653.97,6002126.2,-7.722,True,False
+2930402,Serra Preta,BA,marcado_nao_calculado,8978593.63,5413450.24,65.857,True,False
+2930501,Serrinha,BA,calculado,17521051.12,17519424.05,0.009,True,False
+2930600,Serrolândia,BA,calculado,5459077.46,4881701.57,11.827,True,False
+2930709,Simões Filho,BA,calculado,59656552.69,60321742.65,-1.103,True,False
+2930758,Sítio do Mato,BA,marcado_nao_calculado,4303775.93,3955713.35,8.799,False,False
+2930766,Sítio do Quinto,BA,calculado,5138151.99,4632957.34,10.904,True,False
+2930774,Sobradinho,BA,calculado,10989616.02,10988608.39,0.009,True,False
+2930808,Souto Soares,BA,marcado_nao_calculado,6096836.61,5931824.5,2.782,True,False
+2930907,Tabocas do Brejo Velho,BA,marcado_nao_calculado,414911.74,5675429.76,-92.689,False,False
+2931004,Tanhaçu,BA,marcado_nao_calculado,6678526.95,6555741.81,1.873,False,False
+2931053,Tanque Novo,BA,marcado_nao_calculado,6814096.31,6706166.84,1.609,False,False
+2931103,Tanquinho,BA,calculado,3230601.17,2944485.93,9.717,True,False
+2931202,Taperoá,BA,marcado_nao_calculado,6481279.1,6125954.35,5.8,True,False
+2931301,Tapiramutá,BA,marcado_nao_calculado,11609926.31,5729207.65,102.645,False,False
+2931350,Teixeira de Freitas,BA,marcado_nao_calculado,44722966.15,44719633.77,0.007,True,False
+2931400,Teodoro Sampaio,BA,calculado,2934577.28,2938057.42,-0.118,True,False
+2931509,Teofilândia,BA,marcado_nao_calculado,6156515.38,6261936.56,-1.684,True,False
+2931608,Teolândia,BA,marcado_nao_calculado,5795903.11,5731541.08,1.123,True,False
+2931707,Terra Nova,BA,marcado_nao_calculado,4252966.94,4252614.48,0.008,False,False
+2931806,Tremedal,BA,marcado_nao_calculado,5977534.43,6370794.66,-6.173,True,False
+2931905,Tucano,BA,marcado_nao_calculado,13509352.46,12448492.39,8.522,True,False
+2932002,Uauá,BA,calculado,8178909.64,7647267.01,6.952,False,False
+2932101,Ubaíra,BA,calculado,6082652.74,6075377.06,0.12,True,False
+2932200,Ubaitaba,BA,marcado_nao_calculado,6025287.28,6044962.7,-0.325,True,False
+2932309,Ubatã,BA,marcado_nao_calculado,2171811.3,7086419.02,-69.352,False,False
+2932408,Uibaí,BA,marcado_nao_calculado,5069802.08,5116971.4,-0.922,False,False
+2932457,Umburanas,BA,calculado,4230734.21,6175337.79,-31.49,True,False
+2932507,Una,BA,calculado,8691924.92,8630571.21,0.711,True,False
+2932606,Urandi,BA,calculado,7278514.64,7078815.39,2.821,True,False
+2932705,Uruçuca,BA,calculado,7123623.84,7073020.33,0.715,True,False
+2932804,Utinga,BA,marcado_nao_calculado,5493543.46,6007164.16,-8.55,True,False
+2932903,Valença,BA,calculado,21481272.26,21448785.58,0.151,True,False
+2933000,Valente,BA,marcado_nao_calculado,8278500.76,7314861.3,13.174,True,False
+2933059,Várzea da Roça,BA,marcado_nao_calculado,4781071.63,4776278.21,0.1,True,False
+2933109,Várzea do Poço,BA,marcado_nao_calculado,5117029.87,3169043.07,61.469,True,False
+2933158,Várzea Nova,BA,marcado_nao_calculado,5079056.54,4943504.65,2.742,True,False
+2933174,Varzedo,BA,calculado,3441784.99,3444650.41,-0.083,False,False
+2933208,Vera Cruz,BA,calculado,12227337.61,12148326.03,0.65,True,False
+2933257,Vereda,BA,calculado,3389141.51,3111224.89,8.933,True,False
+2933307,Vitória da Conquista,BA,calculado,91452221.7,91446936.0,0.006,True,False
+2933406,Wagner,BA,calculado,3160817.37,3259365.0,-3.024,True,False
+2933455,Wanderley,BA,marcado_nao_calculado,4248887.12,4927671.52,-13.775,False,False
+2933505,Wenceslau Guimarães,BA,calculado,6979014.35,7013846.03,-0.497,True,False
+2933604,Xique-Xique,BA,calculado,12815909.44,12859390.95,-0.338,True,False
+3200102,Afonso Cláudio,ES,calculado,12413180.98,12450592.87,-0.3,True,False
+3200136,Águia Branca,ES,calculado,5440139.05,5439750.31,0.007,True,False
+3200169,Água Doce do Norte,ES,calculado,5322131.47,5595298.3,-4.882,True,False
+3200201,Alegre,ES,marcado_nao_calculado,11213697.67,11293288.73,-0.705,True,False
+3200300,Alfredo Chaves,ES,calculado,8945975.8,8945346.45,0.007,True,False
+3200359,Alto Rio Novo,ES,calculado,3950280.68,3949915.18,0.009,False,False
+3200409,Anchieta,ES,calculado,35628025.13,35775547.29,-0.412,True,False
+3200508,Apiacá,ES,calculado,3925028.2,4106005.65,-4.408,True,False
+3200607,Aracruz,ES,calculado,58030311.95,58176412.65,-0.251,True,False
+3200706,Atilio Vivacqua,ES,calculado,5870074.72,5928009.15,-0.977,True,False
+3200805,Baixo Guandu,ES,calculado,13103061.11,13202163.58,-0.751,True,False
+3200904,Barra de São Francisco,ES,calculado,17817802.93,17986214.54,-0.936,True,False
+3201001,Boa Esperança,ES,calculado,7270076.98,6841769.04,6.26,False,False
+3201100,Bom Jesus do Norte,ES,calculado,4975435.2,5009201.23,-0.674,True,False
+3201159,Brejetuba,ES,calculado,6349307.92,6348794.74,0.008,True,False
+3201209,Cachoeiro de Itapemirim,ES,calculado,65534046.05,66042829.77,-0.77,True,False
+3201308,Cariacica,ES,calculado,105518654.95,106716340.47,-1.122,True,False
+3201407,Castelo,ES,calculado,15400147.98,15575461.24,-1.126,True,False
+3201506,Colatina,ES,calculado,40790373.27,40787222.31,0.008,True,False
+3201605,Conceição da Barra,ES,calculado,13155766.54,13154650.78,0.008,True,False
+3201704,Conceição do Castelo,ES,calculado,6657658.78,6743933.55,-1.279,True,False
+3201803,Divino de São Lourenço,ES,calculado,3587340.04,3595612.0,-0.23,True,False
+3201902,Domingos Martins,ES,calculado,17863373.7,17862222.03,0.006,True,False
+3202009,Dores do Rio Preto,ES,calculado,4464453.25,4464102.94,0.008,True,False
+3202108,Ecoporanga,ES,calculado,10858992.61,10858081.49,0.008,True,False
+3202207,Fundão,ES,calculado,8592101.46,8893315.28,-3.387,True,False
+3202256,Governador Lindenberg,ES,calculado,6206981.23,6292502.36,-1.359,True,False
+3202306,Guaçuí,ES,calculado,10518776.96,8909207.79,18.066,True,False
+3202405,Guarapari,ES,calculado,40574628.21,40702896.37,-0.315,True,False
+3202454,Ibatiba,ES,calculado,9356834.11,9355868.44,0.01,False,False
+3202504,Ibiraçu,ES,calculado,5488678.76,5489273.73,-0.011,True,False
+3202553,Ibitirama,ES,calculado,4287839.5,4491274.64,-4.53,True,False
+3202603,Iconha,ES,calculado,6945249.76,6991072.49,-0.655,True,False
+3202652,Irupi,ES,calculado,6129413.36,6128818.05,0.01,True,False
+3202702,Itaguaçu,ES,calculado,6257720.55,6309767.25,-0.825,True,False
+3202801,Itapemirim,ES,calculado,26399043.55,26875569.9,-1.773,True,False
+3202900,Itarana,ES,calculado,6132290.51,6131804.74,0.008,True,False
+3203007,Iúna,ES,calculado,10035176.31,10034138.64,0.01,True,False
+3203056,Jaguaré,ES,calculado,13734717.47,13733600.2,0.008,True,False
+3203106,Jerônimo Monteiro,ES,calculado,4813946.37,4813434.73,0.011,True,False
+3203130,João Neiva,ES,calculado,8713725.51,8784094.26,-0.801,True,False
+3203163,Laranja da Terra,ES,calculado,5854104.29,5872329.95,-0.31,True,False
+3203205,Linhares,ES,calculado,79319701.89,79308380.48,0.014,True,False
+3203304,Mantenópolis,ES,calculado,6162926.51,6105082.98,0.947,True,False
+3203320,Marataízes,ES,calculado,15993015.36,16097417.16,-0.649,True,False
+3203346,Marechal Floriano,ES,calculado,9972402.82,10720819.43,-6.981,True,False
+3203353,Marilândia,ES,calculado,6500283.56,6585411.19,-1.293,True,False
+3203403,Mimoso do Sul,ES,calculado,9694227.98,9774995.77,-0.826,True,False
+3203502,Montanha,ES,calculado,9559283.76,9558510.19,0.008,False,False
+3203601,Mucurici,ES,calculado,4462054.28,4461721.98,0.007,True,False
+3203700,Muniz Freire,ES,calculado,9657886.14,9657136.74,0.008,True,False
+3203809,Muqui,ES,calculado,6000380.62,6054939.33,-0.901,True,False
+3203908,Nova Venécia,ES,calculado,20532794.42,20563019.44,-0.147,False,False
+3204005,Pancas,ES,calculado,8276495.56,8275620.58,0.011,True,False
+3204054,Pedro Canário,ES,calculado,8674480.09,8673516.97,0.011,True,False
+3204104,Pinheiros,ES,calculado,12196491.52,12195514.45,0.008,False,False
+3204203,Piúma,ES,calculado,7938660.24,7961284.11,-0.284,True,False
+3204252,Ponto Belo,ES,calculado,4125292.4,3872486.58,6.528,False,False
+3204302,Presidente Kennedy,ES,marcado_nao_calculado,9487916.26,9503158.77,-0.16,True,False
+3204351,Rio Bananal,ES,calculado,12091842.84,12498689.49,-3.255,True,False
+3204401,Rio Novo do Sul,ES,calculado,5350784.3,5350222.12,0.011,True,False
+3204500,Santa Leopoldina,ES,calculado,7363767.26,7560223.77,-2.599,True,False
+3204559,Santa Maria de Jetibá,ES,calculado,25428260.06,25426920.91,0.005,True,False
+3204609,Santa Teresa,ES,calculado,11307785.1,11306858.96,0.008,True,False
+3204658,São Domingos do Norte,ES,calculado,5476804.63,5476427.94,0.007,True,False
+3204708,São Gabriel da Palha,ES,calculado,14162021.52,14210935.9,-0.344,True,False
+3204807,São José do Calçado,ES,calculado,5090265.43,5080382.16,0.195,True,False
+3204906,São Mateus,ES,calculado,39361554.53,40218632.24,-2.131,True,False
+3204955,São Roque do Canaã,ES,calculado,5563656.77,5614652.52,-0.908,True,False
+3205002,Serra,ES,calculado,218562291.07,221593157.61,-1.368,True,False
+3205010,Sooretama,ES,calculado,11674546.82,11792635.5,-1.001,True,False
+3205036,Vargem Alta,ES,calculado,8900448.78,8980700.62,-0.894,True,False
+3205069,Venda Nova do Imigrante,ES,calculado,12507339.2,12506381.12,0.008,True,False
+3205101,Viana,ES,calculado,38854509.24,38993233.15,-0.356,True,False
+3205150,Vila Pavão,ES,marcado_nao_calculado,4636975.51,4698661.83,-1.313,True,False
+3205176,Vila Valério,ES,calculado,8936693.69,8936072.57,0.007,True,False
+3205200,Vila Velha,ES,calculado,152374467.45,153358652.96,-0.642,True,False
+3205309,Vitória,ES,calculado,314373639.32,316187982.49,-0.574,True,False
+2301109,Aracati,CE,calculado,21243497.14,21241824.94,0.008,True,False
+2301208,Aracoiaba,CE,calculado,7515372.35,7514625.22,0.01,True,False
+2301257,Ararendá,CE,calculado,5248165.21,5247784.47,0.007,True,False
+2301307,Araripe,CE,calculado,6407116.84,6846671.9,-6.42,True,False
+2301406,Aratuba,CE,calculado,4475472.9,4475083.66,0.009,True,False
+2301505,Arneiroz,CE,calculado,3576514.93,3572845.22,0.103,True,False
+2301604,Assaré,CE,calculado,6564601.09,6563952.62,0.01,True,False
+2301703,Aurora,CE,calculado,6977682.53,6976957.67,0.01,True,False
+2301802,Baixio,CE,calculado,3651704.98,3651440.44,0.007,True,False
+2301851,Banabuiú,CE,calculado,6857679.62,6857088.37,0.009,True,False
+2301901,Barbalha,CE,calculado,17919213.61,17920733.87,-0.008,True,False
+2301950,Barreira,CE,calculado,6490403.46,6489764.0,0.01,True,False
+2302008,Barro,CE,calculado,6276001.16,6275360.39,0.01,True,False
+2302057,Barroquinha,CE,calculado,5670621.8,5670621.79,0.0,True,False
+2302107,Baturité,CE,calculado,9339908.85,9338992.27,0.01,True,False
+2302206,Beberibe,CE,calculado,14303273.73,14346290.8,-0.3,True,False
+2302305,Bela Cruz,CE,calculado,8242237.22,8241356.52,0.011,True,False
+2302404,Boa Viagem,CE,calculado,12004023.23,12024427.55,-0.17,True,False
+2302503,Brejo Santo,CE,marcado_nao_calculado,13284055.71,12843225.75,3.432,True,False
+2302602,Camocim,CE,calculado,14110075.67,14988958.7,-5.864,True,False
+2302800,Canindé,CE,calculado,15357604.67,15351549.98,0.039,True,False
+2302909,Capistrano,CE,calculado,6390850.75,6390264.79,0.009,True,False
+2303006,Caridade,CE,calculado,7273134.85,7272518.69,0.008,True,False
+2303105,Cariré,CE,calculado,6430858.2,6430265.23,0.009,True,False
+2303204,Caririaçu,CE,calculado,7282705.69,7281954.09,0.01,True,False
+2303303,Cariús,CE,calculado,6249689.31,6248316.4,0.022,True,False
+2303402,Carnaubal,CE,calculado,6019081.13,6018495.91,0.01,True,False
+2303501,Cascavel,CE,calculado,16472381.12,16529989.75,-0.349,True,False
+2303600,Catarina,CE,calculado,6083686.39,6192528.09,-1.758,True,False
+2303659,Catunda,CE,calculado,5100802.91,5100791.06,0.0,True,False
+2303709,Caucaia,CE,calculado,74669118.01,75054254.2,-0.513,True,False
+2303808,Cedro,CE,calculado,7514357.74,7513621.43,0.01,True,False
+2303907,Chaval,CE,calculado,4279317.67,4278872.96,0.01,True,False
+2303931,Choró,CE,calculado,5487163.49,5511833.62,-0.448,True,False
+2303956,Chorozinho,CE,calculado,7122561.65,7121948.79,0.009,True,False
+2304004,Coreaú,CE,calculado,6621390.35,6574649.42,0.711,True,False
+2304103,Crateús,CE,marcado_nao_calculado,16579074.79,16577404.24,0.01,True,False
+2304202,Crato,CE,calculado,28769871.83,28767233.1,0.009,True,False
+2304251,Cruz,CE,calculado,9412188.45,9411457.52,0.008,True,False
+2304269,Deputado Irapuan Pinheiro,CE,calculado,3886610.29,3907841.78,-0.543,True,False
+2304277,Ererê,CE,calculado,3786747.91,3786473.11,0.007,True,False
+2304285,Eusébio,CE,calculado,51287569.9,51286250.89,0.003,True,False
+2304301,Farias Brito,CE,calculado,6652137.96,6651535.56,0.009,True,False
+2304350,Forquilha,CE,marcado_nao_calculado,7916152.83,7915426.73,0.009,True,False
+2304400,Fortaleza,CE,calculado,928989172.35,928949441.94,0.004,True,False
+2304459,Fortim,CE,calculado,7636847.02,7612632.37,0.318,True,False
+2304509,Frecheirinha,CE,calculado,6324676.95,6364600.48,-0.627,True,False
+2304608,General Sampaio,CE,calculado,3956784.61,3956505.7,0.007,True,False
+2304657,Graça,CE,calculado,6015209.33,6014725.88,0.008,True,False
+2304707,Granja,CE,calculado,11299960.16,11298639.67,0.012,True,False
+2304806,Granjeiro,CE,calculado,3801821.93,3801574.2,0.007,True,False
+2304905,Groaíras,CE,calculado,5114411.47,5114028.14,0.007,True,False
+2304954,Guaiúba,CE,calculado,7592652.15,7628584.22,-0.471,True,False
+2305001,Guaraciaba do Norte,CE,calculado,10228390.91,10227346.1,0.01,True,False
+2305100,Guaramiranga,CE,calculado,4314514.22,4336196.48,-0.5,True,False
+2305209,Hidrolândia,CE,calculado,6407370.62,6798421.73,-5.752,True,False
+2305233,Horizonte,CE,calculado,25476908.07,25438759.98,0.15,True,False
+2305266,Ibaretama,CE,calculado,4817012.13,4816605.07,0.008,True,False
+2305308,Ibiapina,CE,calculado,7917869.3,7950767.21,-0.414,True,False
+2305332,Ibicuitinga,CE,calculado,4875585.58,4902396.71,-0.547,True,False
+2305357,Icapuí,CE,calculado,10000064.09,10065681.0,-0.652,True,False
+2305407,Icó,CE,calculado,13140216.27,13138686.82,0.012,True,False
+2305506,Iguatu,CE,marcado_nao_calculado,24430691.42,24432620.01,-0.008,True,False
+2305605,Independência,CE,calculado,7675744.04,7675001.34,0.01,True,False
+2305654,Ipaporanga,CE,calculado,4951633.16,4888023.08,1.301,True,False
+2305704,Ipaumirim,CE,calculado,4400108.79,4399711.35,0.009,True,False
+2305803,Ipu,CE,marcado_nao_calculado,61171.77,9939539.22,-99.385,False,False
+2305902,Ipueiras,CE,calculado,9013684.39,9012681.48,0.011,True,False
+2306009,Iracema,CE,calculado,6210615.21,6207517.87,0.05,True,False
+2306108,Irauçuba,CE,calculado,7507726.62,7507003.04,0.01,True,False
+2306207,Itaiçaba,CE,calculado,3882846.84,3882564.93,0.007,True,False
+2306256,Itaitinga,CE,calculado,18402931.42,18406110.97,-0.017,True,False
+2306306,Itapajé,CE,calculado,11795521.28,11794219.64,0.011,True,False
+2306405,Itapipoca,CE,calculado,24538971.76,24536357.42,0.011,True,False
+2306504,Itapiúna,CE,calculado,6546967.91,6546351.03,0.009,True,False
+2306553,Itarema,CE,calculado,11828469.42,11827416.88,0.009,True,False
+2306603,Itatira,CE,calculado,8273574.4,7223144.75,14.543,True,False
+2306702,Jaguaretama,CE,calculado,8120944.57,8143057.98,-0.272,True,False
+2306801,Jaguaribara,CE,calculado,4649689.13,4052118.99,14.747,True,False
+2306900,Jaguaribe,CE,calculado,10534839.26,10529756.15,0.048,True,False
+2307007,Jaguaruana,CE,calculado,9467440.69,9466547.84,0.009,True,False
+2307106,Jardim,CE,calculado,7400341.83,7399588.27,0.01,True,False
+2307205,Jati,CE,calculado,3722997.35,3722712.75,0.008,True,False
+2307254,Jijoca de Jericoacoara,CE,calculado,10987378.26,10984694.56,0.024,True,False
+2307304,Juazeiro do Norte,CE,calculado,61980501.06,61975240.19,0.008,True,False
+2307403,Jucás,CE,calculado,7826399.16,7825670.12,0.009,True,False
+2307502,Lavras da Mangabeira,CE,calculado,8380136.51,8403219.85,-0.275,True,False
+2307601,Limoeiro do Norte,CE,calculado,14958837.77,14958361.83,0.003,True,False
+2307635,Madalena,CE,calculado,6420869.28,6452060.88,-0.483,True,False
+2307650,Maracanaú,CE,calculado,90058315.12,90003075.26,0.061,True,False
+2307700,Maranguape,CE,calculado,24073009.62,24070395.38,0.011,True,False
+2307809,Marco,CE,marcado_nao_calculado,7670047.27,8278402.34,-7.349,True,False
+2307908,Martinópole,CE,calculado,4757257.95,4752745.57,0.095,True,False
+2308005,Massapê,CE,calculado,9610457.26,9609440.36,0.011,True,False
+2308104,Mauriti,CE,calculado,10566486.95,10597782.87,-0.295,True,False
+2308203,Meruoca,CE,calculado,5912010.19,5880161.94,0.542,True,False
+2308302,Milagres,CE,marcado_nao_calculado,7767480.95,7246491.59,7.19,True,False
+2308351,Milhã,CE,calculado,5650522.45,5694762.48,-0.777,True,False
+2308377,Miraíma,CE,calculado,5191525.66,5191047.14,0.009,True,False
+2308401,Missão Velha,CE,calculado,8602659.0,8601748.56,0.011,True,False
+2308500,Mombaça,CE,calculado,9925056.23,9923989.21,0.011,True,False
+2308609,Monsenhor Tabosa,CE,calculado,6544858.54,6499001.54,0.706,True,False
+2308708,Morada Nova,CE,calculado,16036709.88,16035253.96,0.009,True,False
+2308807,Moraújo,CE,calculado,3739573.01,3739280.93,0.008,True,False
+2308906,Morrinhos,CE,calculado,6594633.78,6606090.32,-0.173,True,False
+2309003,Mucambo,CE,marcado_nao_calculado,5802942.25,5715663.78,1.527,True,False
+2309102,Mulungu,CE,calculado,4630685.67,4635619.24,-0.106,True,False
+2309201,Nova Olinda,CE,calculado,5633861.73,5671060.77,-0.656,True,False
+2309300,Nova Russas,CE,calculado,9193715.32,9192838.6,0.01,True,False
+2309409,Novo Oriente,CE,calculado,7591668.38,7590897.85,0.01,True,False
+2309458,Ocara,CE,calculado,7404134.13,7403394.04,0.01,True,False
+2309508,Orós,CE,calculado,6759041.85,6758417.43,0.009,True,False
+2309607,Pacajus,CE,calculado,17701776.77,17700118.22,0.009,True,False
+2309706,Pacatuba,CE,calculado,20407851.62,20406001.98,0.009,False,False
+2309805,Pacoti,CE,calculado,4613858.65,4613463.34,0.009,True,False
+2309904,Pacujá,CE,calculado,4258268.49,4290343.44,-0.748,True,False
+2310001,Palhano,CE,calculado,3749345.55,3749046.62,0.008,True,False
+2310100,Palmácia,CE,calculado,4685796.64,4709529.03,-0.504,True,False
+2310209,Paracuru,CE,calculado,10600627.97,10599717.97,0.009,True,False
+2310258,Paraipaba,CE,calculado,9589018.96,9588134.17,0.009,True,False
+2310308,Parambu,CE,calculado,8085244.4,8084379.68,0.011,True,False
+2310407,Paramoti,CE,calculado,4436849.46,4436422.12,0.01,True,False
+2310506,Pedra Branca,CE,marcado_nao_calculado,9804709.94,9820924.46,-0.165,True,False
+2310605,Penaforte,CE,calculado,4058342.37,4058046.19,0.007,True,False
+2310704,Pentecoste,CE,calculado,10163306.55,10162303.84,0.01,True,False
+2310803,Pereiro,CE,calculado,6286526.43,6286021.73,0.008,True,False
+2310852,Pindoretama,CE,calculado,6841138.82,6824537.66,0.243,True,False
+2310902,Piquet Carneiro,CE,calculado,6456297.93,6492141.4,-0.552,True,False
+2310951,Pires Ferreira,CE,calculado,4824992.93,4824611.43,0.008,True,False
+2311009,Poranga,CE,calculado,4362935.7,4362539.9,0.009,True,False
+2311108,Porteiras,CE,calculado,5780981.37,5780492.39,0.008,True,False
+2311207,Potengi,CE,calculado,4176499.84,4176117.1,0.009,True,False
+2311231,Potiretama,CE,calculado,4058632.94,4058366.9,0.007,True,False
+2311264,Quiterianópolis,CE,calculado,6813517.43,7253077.53,-6.06,True,False
+2311306,Quixadá,CE,calculado,17944331.46,17942446.2,0.011,True,False
+2311355,Quixelô,CE,calculado,5406912.61,5406410.53,0.009,True,False
+2311405,Quixeramobim,CE,calculado,18146545.04,18144730.36,0.01,True,False
+2311504,Quixeré,CE,calculado,10164215.75,10178304.52,-0.138,True,False
+2311603,Redenção,CE,calculado,7982648.89,7981872.87,0.01,True,False
+2311702,Reriutaba,CE,calculado,6890667.92,6890077.04,0.009,True,False
+2311801,Russas,CE,calculado,16807980.37,16806262.62,0.01,True,False
+2311900,Saboeiro,CE,marcado_nao_calculado,5770152.4,5443259.06,6.005,False,False
+2311959,Salitre,CE,calculado,5645227.06,5644718.43,0.009,True,False
+2312007,Santana do Acaraú,CE,calculado,8097766.58,8096885.86,0.011,True,False
+2312106,Santana do Cariri,CE,marcado_nao_calculado,6068805.66,6068220.84,0.01,True,False
+2312205,Santa Quitéria,CE,marcado_nao_calculado,11205939.47,11129724.97,0.685,True,False
+2312304,São Benedito,CE,marcado_nao_calculado,10910110.14,10908929.41,0.011,True,False
+2312403,São Gonçalo do Amarante,CE,calculado,59072220.63,59071029.48,0.002,True,False
+2312502,São João do Jaguaribe,CE,calculado,3663599.79,3663321.68,0.008,True,False
+2312601,São Luís do Curu,CE,calculado,4224306.23,4223902.45,0.01,True,False
+2312700,Senador Pompeu,CE,calculado,8042816.69,8042082.51,0.009,True,False
+2312809,Senador Sá,CE,calculado,4203804.89,3936813.09,6.782,True,False
+2312908,Sobral,CE,calculado,61636058.16,62027390.24,-0.631,True,False
+2313005,Solonópole,CE,calculado,7082227.84,7110054.18,-0.391,True,False
+2313104,Tabuleiro do Norte,CE,calculado,8922613.83,8947099.55,-0.274,True,False
+2313203,Tamboril,CE,calculado,7806983.95,7806241.22,0.01,True,False
+2313252,Tarrafas,CE,calculado,3853263.43,3852974.39,0.008,True,False
+2313302,Tauá,CE,calculado,14510917.54,15292838.06,-5.113,True,False
+2313351,Tejuçuoca,CE,calculado,6228364.72,6227745.66,0.01,True,False
+2313401,Tianguá,CE,calculado,18577908.84,18600833.41,-0.123,True,False
+2313500,Trairi,CE,calculado,16463281.6,16461944.86,0.008,True,False
+2313559,Tururu,CE,calculado,5148154.54,5145007.06,0.061,True,False
+2313609,Ubajara,CE,calculado,10033932.15,10081675.45,-0.474,True,False
+2313708,Umari,CE,calculado,3593601.14,3593321.02,0.008,True,False
+2313757,Umirim,CE,calculado,6046015.41,6687268.43,-9.589,True,False
+2313807,Uruburetama,CE,calculado,6394713.32,6393956.89,0.012,True,False
+2313906,Uruoca,CE,calculado,6815716.6,6815237.83,0.007,True,False
+2313955,Varjota,CE,calculado,6957565.06,6956971.54,0.009,True,False
+2314003,Várzea Alegre,CE,calculado,9808816.77,9807780.85,0.011,True,False
+2314102,Viçosa do Ceará,CE,calculado,12366231.59,12610530.98,-1.937,True,False
+2400109,Acari,RN,calculado,4141599.52,4141241.43,0.009,True,False
+2400208,Açu,RN,calculado,19731375.87,19506306.25,1.154,True,False
+2400307,Afonso Bezerra,RN,calculado,3887761.72,3887399.45,0.009,True,False
+2400406,Água Nova,RN,calculado,2542540.23,2250585.82,12.972,True,False
+2400505,Alexandria,RN,calculado,4973115.3,4972665.76,0.009,False,False
+2400604,Almino Afonso,RN,calculado,2903571.21,2901488.99,0.072,False,False
+2400703,Alto do Rodrigues,RN,calculado,9641615.36,9676977.36,-0.365,True,False
+2400802,Angicos,RN,calculado,4568621.54,4568250.48,0.008,True,False
+2400901,Antônio Martins,RN,calculado,2704094.41,2703837.21,0.01,True,False
+2401008,Apodi,RN,marcado_nao_calculado,11052513.68,11616379.54,-4.854,True,False
+2401107,Areia Branca,RN,calculado,13647941.22,13647191.06,0.005,True,False
+2401206,Arês,RN,calculado,6088340.96,6087878.35,0.008,True,False
+2401305,Campo Grande,RN,calculado,3102633.18,3102342.89,0.009,True,False
+2401404,Baía Formosa,RN,calculado,4364266.86,4363980.68,0.007,True,False
+2401453,Baraúna,RN,calculado,13275798.05,13275035.35,0.006,True,False
+2401503,Barcelona,RN,calculado,2607862.27,2816362.95,-7.403,True,False
+2401602,Bento Fernandes,RN,calculado,2818063.43,2817827.34,0.008,True,False
+2401651,Bodó,RN,calculado,3948862.89,3948856.59,0.0,True,False
+2401701,Bom Jesus,RN,calculado,3747958.77,3757525.48,-0.255,True,False
+2401800,Brejinho,RN,calculado,3755755.62,3755369.12,0.01,True,False
+2401859,Caiçara do Norte,RN,calculado,3074371.16,3073411.34,0.031,True,False
+2401909,Caiçara do Rio do Vento,RN,calculado,3079814.01,3079601.61,0.007,True,False
+2402006,Caicó,RN,calculado,18200149.26,18193239.51,0.038,True,False
+2402105,Campo Redondo,RN,calculado,3627780.54,3627413.83,0.01,True,False
+2402204,Canguaretama,RN,calculado,8521127.61,8488029.62,0.39,True,False
+2402303,Caraúbas,RN,calculado,6987233.43,6986579.7,0.009,True,False
+2402402,Carnaúba dos Dantas,RN,calculado,3039341.78,3130372.3,-2.908,True,False
+2402501,Carnaubais,RN,calculado,4655323.61,4974744.61,-6.421,True,False
+2402600,Ceará-Mirim,RN,calculado,16483306.3,16481625.0,0.01,True,False
+2402709,Cerro Corá,RN,calculado,4150194.32,4149829.99,0.009,True,False
+2402808,Coronel Ezequiel,RN,calculado,2673785.94,2673550.52,0.009,True,False
+2402907,Coronel João Pessoa,RN,calculado,2691174.44,2690946.66,0.008,True,False
+2403004,Cruzeta,RN,calculado,3075551.7,3075283.94,0.009,True,False
+2403103,Currais Novos,RN,calculado,12622256.25,12621121.66,0.009,True,False
+2403202,Doutor Severiano,RN,calculado,2823632.94,2823376.97,0.009,True,False
+2403251,Parnamirim,RN,calculado,77083888.92,76703993.08,0.495,True,False
+2403301,Encanto,RN,calculado,2729334.73,2632339.68,3.685,True,False
+2403400,Equador,RN,calculado,3034948.54,3022756.96,0.403,True,False
+2403509,Espírito Santo,RN,calculado,3788945.95,3764556.09,0.648,True,False
+2403608,Extremoz,RN,calculado,12103714.69,12102949.76,0.006,True,False
+2403707,Felipe Guerra,RN,calculado,3517727.91,3517485.83,0.007,True,False
+2403756,Fernando Pedroza,RN,calculado,3841596.51,3841392.82,0.005,True,False
+2403806,Florânia,RN,calculado,3439693.04,3313913.47,3.795,True,False
+2403905,Francisco Dantas,RN,calculado,2548583.55,2250105.27,13.265,True,False
+2404002,Frutuoso Gomes,RN,marcado_nao_calculado,2640248.77,2706328.4,-2.442,False,False
+2404101,Galinhos,RN,calculado,4112745.94,4112544.58,0.005,True,False
+2404200,Goianinha,RN,calculado,8260440.8,8259022.55,0.017,True,False
+2404309,Governador Dix-Sept Rosado,RN,calculado,6286750.89,6287091.81,-0.005,True,False
+2404408,Grossos,RN,calculado,4804183.92,4803827.98,0.007,True,False
+2404507,Guamaré,RN,calculado,33844140.12,33843654.76,0.001,True,False
+2404606,Ielmo Marinho,RN,calculado,4789639.84,4789183.69,0.01,True,False
+2404705,Ipanguaçu,RN,calculado,5455333.41,5454854.64,0.009,True,False
+2404804,Ipueira,RN,calculado,2743149.08,2648600.74,3.57,True,False
+2404853,Itajá,RN,calculado,2979959.63,2984469.94,-0.151,True,False
+2404903,Itaú,RN,calculado,2788997.05,2789146.26,-0.005,True,False
+2405009,Jaçanã,RN,calculado,2754489.08,2757203.31,-0.098,True,False
+2405108,Jandaíra,RN,calculado,4816080.54,4815826.69,0.005,True,False
+2405207,Janduís,RN,calculado,2722128.12,2731118.56,-0.329,True,False
+2405306,Boa Saúde,RN,calculado,3630158.37,3629804.72,0.01,True,False
+2405405,Japi,RN,calculado,2672651.56,2672423.56,0.009,True,False
+2405504,Jardim de Angicos,RN,calculado,2917339.53,2917140.7,0.007,True,False
+2405603,Jardim de Piranhas,RN,calculado,4995764.5,4995749.09,0.0,True,False
+2405702,Jardim do Seridó,RN,calculado,4015315.68,4014935.42,0.009,True,False
+2405801,João Câmara,RN,calculado,13397952.46,13292952.45,0.79,True,False
+2405900,João Dias,RN,calculado,2703638.66,2703440.57,0.007,True,False
+2406007,José da Penha,RN,calculado,2851828.14,2757231.6,3.431,True,False
+2406106,Jucurutu,RN,calculado,6560478.38,6559911.4,0.009,True,False
+2406155,Jundiá,RN,calculado,2590662.76,2594023.95,-0.13,True,False
+2406205,Lagoa d'Anta,RN,calculado,2748568.84,2748315.72,0.009,True,False
+2406304,Lagoa de Pedras,RN,calculado,2781619.64,2781356.38,0.009,True,False
+2406403,Lagoa de Velhos,RN,calculado,2649731.61,2626664.51,0.878,True,False
+2406502,Lagoa Nova,RN,calculado,5964424.77,5963895.43,0.009,True,False
+2406601,Lagoa Salgada,RN,marcado_nao_calculado,2561575.38,2870552.71,-10.764,True,False
+2406700,Lajes,RN,calculado,7048493.63,7048126.31,0.005,True,False
+2406809,Lajes Pintadas,RN,calculado,2797053.42,2800932.87,-0.139,True,False
+2406908,Lucrécia,RN,calculado,2751286.84,2656715.04,3.56,True,False
+2407005,Luís Gomes,RN,calculado,3801666.25,3810204.51,-0.224,True,False
+2407104,Macaíba,RN,calculado,23343608.9,23341760.94,0.008,True,False
+2407203,Macau,RN,calculado,16029450.65,15991975.71,0.234,True,False
+2407252,Major Sales,RN,calculado,2844156.81,2798939.73,1.616,True,False
+2407302,Marcelino Vieira,RN,calculado,2861018.67,2860746.23,0.01,True,False
+2407401,Martins,RN,calculado,2950463.68,2914772.65,1.224,True,False
+2407500,Maxaranguape,RN,calculado,3853772.39,3853387.97,0.01,True,False
+2407609,Messias Targino,RN,marcado_nao_calculado,2390811.52,2738626.34,-12.7,True,False
+2407708,Montanhas,RN,calculado,3677997.07,3683260.07,-0.143,True,False
+2407807,Monte Alegre,RN,calculado,6230255.02,6229630.84,0.01,True,False
+2407906,Monte das Gameleiras,RN,calculado,2672934.46,2673194.11,-0.01,True,False
+2408003,Mossoró,RN,calculado,91332264.95,93535738.86,-2.356,True,False
+2408102,Natal,RN,calculado,306169348.7,306227108.74,-0.019,True,False
+2408201,Nísia Floresta,RN,calculado,8583384.4,8582632.8,0.009,True,False
+2408300,Nova Cruz,RN,calculado,9258747.77,9257765.53,0.011,True,False
+2408409,Olho-d'Água do Borges,RN,calculado,2674509.12,2674290.34,0.008,True,False
+2408508,Ouro Branco,RN,calculado,2850923.26,2850696.85,0.008,True,False
+2408607,Paraná,RN,calculado,2669874.39,2667848.13,0.076,True,False
+2408706,Paraú,RN,calculado,2720649.94,2720437.71,0.008,True,False
+2408805,Parazinho,RN,calculado,6816615.1,6817136.67,-0.008,True,False
+2408904,Parelhas,RN,calculado,7725135.32,7724525.39,0.008,True,False
+2408953,Rio do Fogo,RN,calculado,5252175.44,5251814.0,0.007,True,False
+2409100,Passa e Fica,RN,calculado,4502248.13,4501796.79,0.01,True,False
+2409209,Passagem,RN,calculado,2625144.08,2624939.95,0.008,True,False
+2409308,Patu,RN,marcado_nao_calculado,3819901.91,3917597.07,-2.494,True,False
+2409332,Santa Maria,RN,calculado,2765537.26,2765299.37,0.009,True,False
+2409407,Pau dos Ferros,RN,calculado,10621193.9,10611054.61,0.096,False,False
+2409506,Pedra Grande,RN,calculado,5675297.91,5671862.75,0.061,True,False
+2409605,Pedra Preta,RN,marcado_nao_calculado,2323759.47,2925020.69,-20.556,True,False
+2409704,Pedro Avelino,RN,calculado,3945566.42,3945316.71,0.006,True,False
+2409803,Pedro Velho,RN,calculado,4426014.29,4425393.44,0.014,True,False
+2409902,Pendências,RN,calculado,6354068.17,6353593.96,0.007,True,False
+2410009,Pilões,RN,calculado,2722401.6,2586566.03,5.252,True,False
+2410108,Poço Branco,RN,calculado,4380482.84,4380005.55,0.011,True,False
+2410207,Portalegre,RN,calculado,2879054.56,2877505.75,0.054,True,False
+2410256,Porto do Mangue,RN,marcado_nao_calculado,-3724197.72,3788541.46,-198.302,True,False
+2410306,Serra Caiada,RN,calculado,3862574.37,3862217.06,0.009,True,False
+2410405,Pureza,RN,calculado,3010103.33,3009421.15,0.023,True,False
+2410504,Rafael Fernandes,RN,calculado,2667270.87,2684225.62,-0.632,False,False
+2410603,Rafael Godeiro,RN,calculado,2846446.21,2844383.27,0.073,False,False
+2410702,Riacho da Cruz,RN,calculado,2657000.6,2663947.7,-0.261,True,False
+2410801,Riacho de Santana,RN,calculado,2603189.93,2606922.31,-0.143,True,False
+2410900,Riachuelo,RN,calculado,3225269.28,3226010.77,-0.023,True,False
+2411007,Rodolfo Fernandes,RN,calculado,2916788.6,2916300.49,0.017,True,False
+2411056,Tibau,RN,calculado,4036824.73,4036606.71,0.005,True,False
+2411106,Ruy Barbosa,RN,calculado,2737215.92,2737005.63,0.008,True,False
+2411205,Santa Cruz,RN,calculado,9866160.55,9865142.38,0.01,True,False
+2411403,Santana do Matos,RN,calculado,5566159.83,5531983.36,0.618,True,False
+2411429,Santana do Seridó,RN,calculado,2733625.45,2733300.37,0.012,True,False
+2411502,Santo Antônio,RN,calculado,6703671.77,6702970.56,0.01,True,False
+2411601,São Bento do Norte,RN,calculado,6601746.18,6603435.66,-0.026,True,False
+2411700,São Bento do Trairí,RN,calculado,2825252.78,2825029.95,0.008,True,False
+2411809,São Fernando,RN,calculado,2789127.72,2785483.38,0.131,True,False
+2411908,São Francisco do Oeste,RN,calculado,2817935.16,2817489.66,0.016,True,False
+2412005,São Gonçalo do Amarante,RN,calculado,27397295.18,24940968.08,9.849,True,False
+2412104,São João do Sabugi,RN,calculado,2862461.45,2861728.69,0.026,True,False
+2412203,São José de Mipibu,RN,calculado,12679185.47,12678056.86,0.009,True,False
+2412302,São José do Campestre,RN,calculado,4015707.3,4015320.43,0.01,True,False
+2412401,São José do Seridó,RN,calculado,2915232.32,2915007.45,0.008,True,False
+2412500,São Miguel,RN,calculado,7137350.98,7136658.07,0.01,True,False
+2412559,São Miguel do Gostoso,RN,calculado,7832662.94,7832651.29,0.0,True,False
+2412609,São Paulo do Potengi,RN,calculado,5770746.24,5770185.51,0.01,True,False
+2412708,São Pedro,RN,calculado,2688685.93,2689195.34,-0.019,True,False
+2412807,São Rafael,RN,calculado,2847668.02,2874299.11,-0.927,True,False
+2412906,São Tomé,RN,calculado,4288544.39,4288181.78,0.008,True,False
+2413003,São Vicente,RN,calculado,3097975.14,3097726.93,0.008,True,False
+2413102,Senador Elói de Souza,RN,calculado,2823321.15,2823077.0,0.009,True,False
+2413201,Senador Georgino Avelino,RN,calculado,2859363.63,2859140.98,0.008,True,False
+2413300,Serra de São Bento,RN,calculado,3056166.39,3057658.56,-0.049,True,False
+2413359,Serra do Mel,RN,calculado,12362756.19,12362378.18,0.003,True,False
+2413409,Serra Negra do Norte,RN,calculado,3112770.56,3112501.0,0.009,True,False
+2413508,Serrinha,RN,calculado,2799869.58,2799625.94,0.009,True,False
+2413557,Serrinha dos Pintos,RN,calculado,2648917.28,2642366.96,0.248,True,False
+2413607,Severiano Melo,RN,marcado_nao_calculado,2883106.14,3064289.73,-5.913,True,False
+2413706,Sítio Novo,RN,calculado,2711844.52,2716029.11,-0.154,True,False
+2413805,Taboleiro Grande,RN,calculado,2636848.97,2636520.45,0.012,True,False
+2413904,Taipu,RN,calculado,3914395.93,4376339.84,-10.555,False,False
+2414001,Tangará,RN,calculado,4933505.0,4933022.97,0.01,True,False
+2414100,Tenente Ananias,RN,calculado,3804279.14,3803569.5,0.019,True,False
+2414159,Tenente Laurentino Cruz,RN,calculado,2855884.13,2855641.05,0.009,True,False
+2414209,Tibau do Sul,RN,calculado,7887504.55,7887039.74,0.006,True,False
+2414308,Timbaúba dos Batistas,RN,calculado,2698269.77,2698074.65,0.007,True,False
+2414407,Touros,RN,calculado,10199667.86,10198790.37,0.009,True,False
+2414456,Triunfo Potiguar,RN,calculado,2630893.55,2630688.36,0.008,True,False
+2414506,Umarizal,RN,calculado,3965387.37,3965032.17,0.009,True,False
+2414605,Upanema,RN,calculado,5775137.64,5808131.2,-0.568,True,False
+2414704,Várzea,RN,calculado,2593703.46,2638073.23,-1.682,True,False
+2414753,Venha-Ver,RN,calculado,2654081.88,2628250.05,0.983,True,False
+2414803,Vera Cruz,RN,calculado,3965197.0,3964811.6,0.01,True,False
+2414902,Viçosa,RN,calculado,2632710.55,2632271.09,0.017,True,False
+2925600,Presidente Dutra,BA,marcado_nao_calculado,5128970.29,5213616.76,-1.624,False,False
+2925709,Presidente Jânio Quadros,BA,calculado,3487741.24,3869343.77,-9.862,True,False
+2925758,Presidente Tancredo Neves,BA,calculado,7890439.3,7881895.43,0.108,True,False
+2925808,Queimadas,BA,marcado_nao_calculado,6431313.1,7343544.75,-12.422,True,False
+2925907,Quijingue,BA,marcado_nao_calculado,7382339.97,7423183.82,-0.55,True,False
+2925931,Quixabeira,BA,marcado_nao_calculado,3003158.82,2999353.31,0.127,True,False
+2925956,Rafael Jambeiro,BA,calculado,6647859.93,6242733.21,6.49,True,False
+2926004,Remanso,BA,calculado,9720961.79,9696528.6,0.252,True,False
+2926103,Retirolândia,BA,calculado,5187996.99,5191194.73,-0.062,True,False
+2926202,Riachão das Neves,BA,calculado,16632872.43,16632313.22,0.003,True,False
+2926301,Riachão do Jacuípe,BA,marcado_nao_calculado,9778161.8,8790012.07,11.242,True,False
+2926400,Riacho de Santana,BA,calculado,8070292.35,8069481.58,0.01,True,False
+2926509,Ribeira do Amparo,BA,calculado,11272797.92,5098098.01,121.118,False,False
+2926608,Ribeira do Pombal,BA,marcado_nao_calculado,13012614.85,12752705.89,2.038,True,False
+2926657,Ribeirão do Largo,BA,calculado,3171146.93,3169339.59,0.057,True,False
+2926707,Rio de Contas,BA,marcado_nao_calculado,5218301.51,5354106.51,-2.536,True,False
+2926806,Rio do Antônio,BA,marcado_nao_calculado,5050171.29,5145280.76,-1.848,True,False
+2926905,Rio do Pires,BA,marcado_nao_calculado,3374882.8,3970823.7,-15.008,True,False
+2927002,Rio Real,BA,calculado,10494469.39,10493546.57,0.009,True,False
+2927101,Rodelas,BA,marcado_nao_calculado,3830891.3,4211404.48,-9.035,True,False
+2927200,Ruy Barbosa,BA,calculado,8567356.11,8566598.23,0.009,True,False
+2927309,Salinas da Margarida,BA,marcado_nao_calculado,4253977.48,5409157.8,-21.356,True,False
+2706703,Penedo,AL,calculado,17361136.74,17359784.77,0.008,True,False
+2706802,Piaçabuçu,AL,calculado,6708608.1,6657757.47,0.764,True,False
+2706901,Pilar,AL,marcado_nao_calculado,25718200.51,22223360.69,15.726,True,False
+2707008,Pindoba,AL,calculado,3172528.61,3172334.65,0.006,True,False
+2707107,Piranhas,AL,marcado_nao_calculado,11422177.56,11421521.01,0.006,True,False
+2707206,Poço das Trincheiras,AL,marcado_nao_calculado,5831914.06,5569561.85,4.71,True,False
+2707305,Porto Calvo,AL,marcado_nao_calculado,7264439.87,7560387.01,-3.914,True,False
+2707404,Porto de Pedras,AL,calculado,5728927.67,5764401.73,-0.615,True,False
+2707503,Porto Real do Colégio,AL,calculado,6372668.29,6372122.55,0.009,True,False
+2707602,Quebrangulo,AL,calculado,6139165.82,6138826.59,0.006,True,False
+2707701,Rio Largo,AL,marcado_nao_calculado,24760829.53,24173011.22,2.432,False,False
+2707800,Roteiro,AL,calculado,3501319.08,3501084.09,0.007,True,False
+2707909,Santa Luzia do Norte,AL,marcado_nao_calculado,3755188.44,3754945.64,0.006,True,False
+2708006,Santana do Ipanema,AL,calculado,12512176.3,11929252.52,4.887,True,False
+2708105,Santana do Mundaú,AL,marcado_nao_calculado,5189968.08,5181584.74,0.162,True,False
+2708204,São Brás,AL,marcado_nao_calculado,1909729.27,4529451.8,-57.838,False,False
+2708303,São José da Laje,AL,marcado_nao_calculado,8812697.26,8366615.76,5.332,True,False
+2708402,São José da Tapera,AL,marcado_nao_calculado,6942571.21,8610839.06,-19.374,True,False
+2708501,São Luís do Quitunde,AL,marcado_nao_calculado,7474495.16,9127494.78,-18.11,True,False
+2708600,São Miguel dos Campos,AL,marcado_nao_calculado,18122316.17,18397024.76,-1.493,True,False
+2708709,São Miguel dos Milagres,AL,calculado,4158014.15,4157523.17,0.012,True,False
+2708808,São Sebastião,AL,calculado,9275178.33,9274367.7,0.009,True,False
+2708907,Satuba,AL,marcado_nao_calculado,1909729.27,6525012.16,-70.732,False,False
+2708956,Senador Rui Palmeira,AL,marcado_nao_calculado,5000419.97,5057726.11,-1.133,True,False
+2709004,Tanque d'Arca,AL,marcado_nao_calculado,3636889.98,3636660.7,0.006,True,False
+2709103,Taquarana,AL,marcado_nao_calculado,6804426.51,6803880.73,0.008,True,False
+2709152,Teotônio Vilela,AL,calculado,13565502.71,13847275.59,-2.035,True,False
+2709202,Traipu,AL,marcado_nao_calculado,6036607.42,7956328.2,-24.128,True,False
+2709301,União dos Palmares,AL,calculado,16664696.7,16676794.59,-0.073,False,False
+2709400,Viçosa,AL,marcado_nao_calculado,8664626.79,8132558.38,6.542,False,False
+2900108,Abaíra,BA,marcado_nao_calculado,2813885.94,3223644.01,-12.711,False,False
+2900207,Abaré,BA,calculado,6455255.62,6454715.32,0.008,True,False
+2900306,Acajutiba,BA,calculado,4866887.0,4866457.96,0.009,True,False
+2900355,Adustina,BA,calculado,6340777.85,6454636.52,-1.764,True,False
+2700508,Barra de Santo Antônio,AL,marcado_nao_calculado,6002172.04,6001723.83,0.007,True,False
+2700607,Barra de São Miguel,AL,calculado,6201874.11,6200798.8,0.017,True,False
+2700706,Batalha,AL,marcado_nao_calculado,9250878.47,8699385.17,6.339,False,False
+2700805,Belém,AL,calculado,3326329.42,3326120.92,0.006,True,False
+2700904,Belo Monte,AL,calculado,3753494.89,3758074.1,-0.122,True,False
+2701001,Boca da Mata,AL,marcado_nao_calculado,8012559.78,8725611.9,-8.172,True,False
+2701100,Branquinha,AL,marcado_nao_calculado,5044099.97,4593441.56,9.811,True,False
+2701209,Cacimbinhas,AL,marcado_nao_calculado,1909729.27,5538354.73,-65.518,False,False
+2701308,Cajueiro,AL,calculado,6036159.67,6125041.13,-1.451,True,False
+2701357,Campestre,AL,marcado_nao_calculado,1909729.27,3159092.14,-39.548,False,False
+2701407,Campo Alegre,AL,calculado,13713999.94,13895342.85,-1.305,True,False
+2701506,Campo Grande,AL,marcado_nao_calculado,1909729.27,3044940.2,-37.282,False,False
+2701605,Canapi,AL,marcado_nao_calculado,7222568.08,6788687.87,6.391,True,False
+2701704,Capela,AL,marcado_nao_calculado,5464647.8,6506869.37,-16.017,True,False
+2701803,Carneiros,AL,marcado_nao_calculado,3517093.19,3368524.72,4.41,True,False
+2701902,Chã Preta,AL,marcado_nao_calculado,3658785.61,3484689.56,4.996,True,False
+2702009,Coité do Nóia,AL,calculado,4574637.97,4574305.43,0.007,True,False
+2702108,Colônia Leopoldina,AL,marcado_nao_calculado,5876399.96,6640124.19,-11.502,True,False
+2700102,Água Branca,AL,calculado,6479573.95,6479027.06,0.008,True,False
+2700201,Anadia,AL,calculado,6534696.08,6420589.47,1.777,True,False
+2700300,Arapiraca,AL,calculado,56492912.94,56487923.88,0.009,True,False
+2700409,Atalaia,AL,marcado_nao_calculado,13168874.31,13167811.42,0.008,True,False
+2702207,Coqueiro Seco,AL,calculado,3428797.3,3401600.19,0.8,True,False
+2702306,Coruripe,AL,calculado,20183081.63,20181893.08,0.006,True,False
+2702355,Craíbas,AL,marcado_nao_calculado,9672005.19,9670937.62,0.011,True,False
+2702405,Delmiro Gouveia,AL,calculado,20495643.51,20489473.45,0.03,True,False
+2702504,Dois Riachos,AL,marcado_nao_calculado,584757.08,4537984.63,-87.114,False,False
+2702553,Estrela de Alagoas,AL,calculado,5943879.85,5943354.5,0.009,True,False
+2702603,Feira Grande,AL,marcado_nao_calculado,6311688.56,6351244.19,-0.623,True,False
+2702702,Feliz Deserto,AL,calculado,3952749.82,3952534.96,0.005,True,False
+2702801,Flexeiras,AL,marcado_nao_calculado,5814078.69,5159534.41,12.686,False,False
+2702900,Girau do Ponciano,AL,marcado_nao_calculado,12047453.8,12023260.61,0.201,True,False
+2703007,Ibateguara,AL,calculado,5456663.18,5456221.16,0.008,True,False
+2703106,Igaci,AL,marcado_nao_calculado,7995685.63,7520917.78,6.313,True,False
+2703205,Igreja Nova,AL,marcado_nao_calculado,8204317.31,8240293.28,-0.437,True,False
+2703304,Inhapi,AL,calculado,6469630.09,6453093.83,0.256,True,False
+2703403,Jacaré dos Homens,AL,marcado_nao_calculado,3529299.22,3326452.14,6.098,False,False
+2703502,Jacuípe,AL,calculado,3763789.3,3763550.38,0.006,True,False
+2703601,Japaratinga,AL,calculado,4497844.26,4497589.36,0.006,True,False
+2703700,Jaramataia,AL,marcado_nao_calculado,3079490.96,3433126.01,-10.301,True,False
+2703759,Jequiá da Praia,AL,calculado,6614326.64,6617812.94,-0.053,True,False
+2703809,Joaquim Gomes,AL,calculado,7034823.3,7004541.12,0.432,True,False
+2703908,Jundiá,AL,marcado_nao_calculado,2940218.41,3641174.46,-19.251,True,False
+2704005,Junqueiro,AL,marcado_nao_calculado,8530007.81,8529357.94,0.008,True,False
+2704104,Lagoa da Canoa,AL,calculado,19658738.8,6213465.99,216.389,False,False
+2704203,Limoeiro de Anadia,AL,calculado,8550612.66,8549916.73,0.008,True,False
+2704302,Maceió,AL,calculado,322277911.92,322121148.12,0.049,True,False
+2704401,Major Isidoro,AL,marcado_nao_calculado,7583170.49,7232331.89,4.851,False,False
+2704500,Maragogi,AL,marcado_nao_calculado,12357649.5,14141825.17,-12.616,True,False
+2704609,Maravilha,AL,marcado_nao_calculado,3591356.55,3597768.38,-0.178,True,False
+2704708,Marechal Deodoro,AL,marcado_nao_calculado,34830358.24,33071957.86,5.317,True,False
+2704807,Maribondo,AL,marcado_nao_calculado,4848460.64,4848100.29,0.007,True,False
+2704906,Mar Vermelho,AL,marcado_nao_calculado,3520172.24,3522564.19,-0.068,True,False
+2705002,Mata Grande,AL,marcado_nao_calculado,8213886.87,7404742.9,10.927,True,False
+2705101,Matriz de Camaragibe,AL,marcado_nao_calculado,6838081.23,7542328.61,-9.337,True,False
+2705200,Messias,AL,marcado_nao_calculado,6809153.05,6808628.84,0.008,True,False
+2705309,Minador do Negrão,AL,marcado_nao_calculado,3483336.36,3457825.25,0.738,True,False
+2705408,Monteirópolis,AL,marcado_nao_calculado,3212067.58,3211826.69,0.008,True,False
+2705507,Murici,AL,marcado_nao_calculado,6832774.12,10381400.0,-34.183,True,False
+2705606,Novo Lino,AL,marcado_nao_calculado,4872637.85,4582772.56,6.325,True,False
+2705705,Olho d'Água das Flores,AL,marcado_nao_calculado,7187342.18,6684295.38,7.526,True,False
+2705804,Olho d'Água do Casado,AL,marcado_nao_calculado,3390743.5,3466014.93,-2.172,True,False
+2705903,Olho d'Água Grande,AL,marcado_nao_calculado,1909729.27,3199785.34,-40.317,False,False
+2706000,Olivença,AL,marcado_nao_calculado,4222325.03,4221980.53,0.008,True,False
+2706109,Ouro Branco,AL,marcado_nao_calculado,4681142.77,4419456.46,5.921,True,False
+2706208,Palestina,AL,marcado_nao_calculado,3056539.87,2897336.75,5.495,True,False
+2706307,Palmeira dos Índios,AL,marcado_nao_calculado,13838976.7,18264759.98,-24.231,True,False
+2706406,Pão de Açúcar,AL,calculado,7786214.16,7745031.97,0.532,True,False
+2706422,Pariconha,AL,calculado,4337104.26,4370129.57,-0.756,True,False
+2706448,Paripueira,AL,marcado_nao_calculado,5012413.32,5951894.07,-15.785,False,False
+2706505,Passo de Camaragibe,AL,marcado_nao_calculado,5428111.96,5646532.03,-3.868,True,False
+2706604,Paulo Jacinto,AL,marcado_nao_calculado,3305386.44,3305141.31,0.007,True,False
+2919108,Lamarão,BA,marcado_nao_calculado,2902332.39,2902086.4,0.008,True,False
+2919157,Lapão,BA,marcado_nao_calculado,7452096.06,7444247.75,0.105,True,False
+2919207,Lauro de Freitas,BA,calculado,89781623.19,90108369.7,-0.363,True,False
+2919306,Lençóis,BA,calculado,4600631.91,4595190.72,0.118,True,False
+2919405,Licínio de Almeida,BA,marcado_nao_calculado,1266759.85,4332679.63,-70.763,False,False
+2919504,Livramento de Nossa Senhora,BA,calculado,12047166.25,11714131.75,2.843,True,False
+2919553,Luís Eduardo Magalhães,BA,calculado,83396193.7,83394394.4,0.002,True,False
+2919603,Macajuba,BA,calculado,4413116.53,4402698.54,0.237,True,False
+2919702,Macarani,BA,calculado,5925040.89,5924517.34,0.009,True,False
+2919900,Macururé,BA,marcado_nao_calculado,3299904.1,3300677.47,-0.023,True,False
+2919926,Madre de Deus,BA,calculado,34591611.74,34705681.49,-0.329,True,False
+2919959,Maetinga,BA,marcado_nao_calculado,3115737.5,3113720.14,0.065,False,False
+2920007,Maiquinique,BA,calculado,4110293.88,3944299.13,4.208,True,False
+2920106,Mairi,BA,marcado_nao_calculado,5939929.58,5939557.31,0.006,True,False
+2920205,Malhada,BA,marcado_nao_calculado,5062016.77,6188408.18,-18.202,True,False
+2920304,Malhada de Pedras,BA,calculado,3175702.86,3398873.51,-6.566,True,False
+2920403,Manoel Vitorino,BA,marcado_nao_calculado,5738052.9,5693615.12,0.78,False,False
+2920452,Mansidão,BA,calculado,5034407.95,5033935.28,0.009,True,False
+2920601,Maragogipe,BA,calculado,9144506.56,10087120.6,-9.345,True,False
+2920700,Maraú,BA,calculado,9132630.13,9055885.08,0.847,True,False
+2920809,Marcionílio Souza,BA,marcado_nao_calculado,4489673.81,4489350.34,0.007,True,False
+2920908,Mascote,BA,calculado,4553730.72,5155922.05,-11.68,True,False
+2921005,Mata de São João,BA,calculado,39686482.08,39727628.94,-0.104,True,False
+2921054,Matina,BA,calculado,4377561.51,4184028.87,4.626,True,False
+2921104,Medeiros Neto,BA,calculado,8336252.68,8224499.48,1.359,True,False
+2921203,Miguel Calmon,BA,calculado,7507756.5,7274626.07,3.205,True,False
+2921302,Milagres,BA,marcado_nao_calculado,4061783.05,3938661.4,3.126,True,False
+2921401,Mirangaba,BA,marcado_nao_calculado,5985484.59,5978284.86,0.12,True,False
+2921450,Mirante,BA,marcado_nao_calculado,3295420.97,3195572.12,3.125,True,False
+2921500,Monte Santo,BA,calculado,12098140.51,12097025.92,0.009,True,False
+2921609,Morpará,BA,marcado_nao_calculado,3722472.87,3236191.15,15.026,True,False
+2921708,Morro do Chapéu,BA,marcado_nao_calculado,17827498.57,15605750.24,14.237,True,False
+2921807,Mortugaba,BA,marcado_nao_calculado,3982264.76,3846213.39,3.537,True,False
+2921906,Mucugê,BA,calculado,9112494.88,8413919.04,8.303,True,False
+2922003,Mucuri,BA,marcado_nao_calculado,26649383.35,25628654.59,3.983,True,False
+2922052,Mulungu do Morro,BA,marcado_nao_calculado,5346425.73,5404524.26,-1.075,False,False
+2922102,Mundo Novo,BA,calculado,7926044.13,7047807.64,12.461,True,False
+2922201,Muniz Ferreira,BA,marcado_nao_calculado,2354324.41,3120973.48,-24.564,True,False
+2922250,Muquém de São Francisco,BA,calculado,5426893.58,5087241.97,6.677,True,False
+2922300,Muritiba,BA,marcado_nao_calculado,3670042.1,8221646.53,-55.361,True,False
+2922409,Mutuípe,BA,calculado,7840533.61,6687738.53,17.237,True,False
+2922508,Nazaré,BA,marcado_nao_calculado,8693303.79,8063111.15,7.816,True,False
+2922607,Nilo Peçanha,BA,marcado_nao_calculado,5222753.6,5023708.12,3.962,True,False
+2922656,Nordestina,BA,marcado_nao_calculado,5828691.52,5828284.45,0.007,True,False
+2922706,Nova Canaã,BA,calculado,5610222.02,5598432.53,0.211,True,False
+2922730,Nova Fátima,BA,calculado,3180978.52,3178761.72,0.07,True,False
+2922755,Nova Ibiá,BA,calculado,3123694.21,3123465.21,0.007,True,False
+2922805,Nova Itarana,BA,calculado,3564891.38,3133134.93,13.78,True,False
+2922854,Nova Redenção,BA,marcado_nao_calculado,2898775.37,2914514.92,-0.54,True,False
+2922904,Nova Soure,BA,calculado,7090082.45,7101723.57,-0.164,True,False
+2923001,Nova Viçosa,BA,marcado_nao_calculado,12200116.39,12089212.13,0.917,True,False
+2923035,Novo Horizonte,BA,marcado_nao_calculado,3655019.95,5585568.82,-34.563,True,False
+2923050,Novo Triunfo,BA,calculado,4866397.73,4861938.98,0.092,True,False
+2923100,Olindina,BA,calculado,7374579.28,7393605.37,-0.257,True,False
+2923209,Oliveira dos Brejinhos,BA,marcado_nao_calculado,5997487.14,7221457.1,-16.949,True,False
+2923308,Ouriçangas,BA,calculado,3240334.76,3240083.36,0.008,True,False
+2923357,Ourolândia,BA,marcado_nao_calculado,7966222.81,8560147.54,-6.938,True,False
+2923407,Palmas de Monte Alto,BA,calculado,6637348.38,6643846.54,-0.098,True,False
+2923506,Palmeiras,BA,calculado,3718081.86,3712408.62,0.153,True,False
+2923605,Paramirim,BA,marcado_nao_calculado,5517079.2,6859986.62,-19.576,True,False
+2923704,Paratinga,BA,calculado,7715563.38,7723734.56,-0.106,True,False
+2923803,Paripiranga,BA,marcado_nao_calculado,12375363.76,8630843.38,43.385,True,False
+2923902,Pau Brasil,BA,calculado,3752116.82,3751123.8,0.026,True,False
+2924009,Paulo Afonso,BA,calculado,34794924.55,41509166.64,-16.175,True,False
+2924058,Pé de Serra,BA,marcado_nao_calculado,293166.23,5008751.99,-94.147,False,False
+2924108,Pedrão,BA,marcado_nao_calculado,2292210.02,2826418.66,-18.901,True,False
+2924207,Pedro Alexandre,BA,marcado_nao_calculado,5492065.22,5418386.46,1.36,True,False
+2924306,Piatã,BA,calculado,6872498.97,6871999.4,0.007,True,False
+2924405,Pilão Arcado,BA,calculado,9850313.31,9848256.69,0.021,True,False
+2924504,Pindaí,BA,calculado,6523289.5,6521936.82,0.021,True,False
+2924603,Pindobaçu,BA,calculado,6039569.67,6033280.56,0.104,True,False
+2924652,Pintadas,BA,calculado,3983656.06,4016203.47,-0.81,True,False
+2924678,Piraí do Norte,BA,marcado_nao_calculado,3771679.9,3769979.45,0.045,True,False
+2924702,Piripá,BA,calculado,3909338.4,3740936.04,4.502,True,False
+2924801,Piritiba,BA,calculado,6411241.82,6468035.52,-0.878,True,False
+2925006,Planalto,BA,calculado,7015829.88,6863852.28,2.214,True,False
+2925105,Poções,BA,calculado,11276612.68,11223381.23,0.474,True,False
+2925204,Pojuca,BA,calculado,22371696.93,22319895.63,0.232,True,False
+2925253,Ponto Novo,BA,calculado,5589620.76,5565091.52,0.441,True,False
+2925303,Porto Seguro,BA,calculado,66772113.14,66768961.53,0.005,True,False
+2925402,Potiraguá,BA,marcado_nao_calculado,3883402.89,3869028.68,0.372,False,False
+2925501,Prado,BA,calculado,11275598.49,11256173.92,0.173,True,False
+2300101,Abaiara,CE,calculado,5149659.81,5149268.31,0.008,True,False
+2300150,Acarape,CE,calculado,5345671.12,5345179.73,0.009,True,False
+2300200,Acaraú,CE,calculado,15751039.89,16631739.147,-5.295,True,True
+2300309,Acopiara,CE,calculado,11580742.95,11579427.75,0.011,True,False
+2300408,Aiuaba,CE,calculado,6104773.88,6104190.62,0.01,True,False
+2300606,Altaneira,CE,calculado,4074369.38,4074089.58,0.007,True,False
+2300705,Alto Santo,CE,calculado,5986837.15,6312704.59,-5.162,True,False
+2300754,Amontada,CE,calculado,11775315.41,11774180.23,0.01,True,False
+2300804,Antonina do Norte,CE,calculado,3849745.86,3849469.44,0.007,True,False
+2300903,Apuiarés,CE,calculado,5001905.37,5001418.34,0.01,True,False
+2301000,Aquiraz,CE,calculado,41745429.43,41925331.81,-0.429,True,False
+2902658,Banzaê,BA,calculado,5038502.95,5038095.29,0.008,True,False
+2415008,Vila Flor,RN,calculado,2704313.35,2704107.87,0.008,True,False
+5209408,Guarani de Goiás,GO,marcado_nao_calculado,3546154.27,3531024.62,0.428,True,False
+5209457,Guarinos,GO,marcado_nao_calculado,2680800.11,2822960.42,-5.036,True,False
+5209606,Heitoraí,GO,calculado,3192517.54,3024805.96,5.545,True,False
+5209804,Hidrolina,GO,calculado,3223215.42,3222869.08,0.011,False,False
+5209903,Iaciara,GO,marcado_nao_calculado,5739194.8,5738458.09,0.013,True,False
+5209937,Inaciolândia,GO,calculado,4483134.57,4482735.01,0.009,False,False
+5210000,Inhumas,GO,calculado,17671561.41,17669518.93,0.012,True,False
+5210109,Ipameri,GO,marcado_nao_calculado,15946275.1,18778184.82,-15.081,True,False
+5210158,Ipiranga de Goiás,GO,calculado,2894204.11,2763456.89,4.731,True,False
+2900405,Água Fria,BA,marcado_nao_calculado,5185171.1,5908036.29,-12.235,True,False
+2900504,Érico Cardoso,BA,calculado,2869645.08,4007348.12,-28.39,True,False
+2900603,Aiquara,BA,calculado,2902007.83,2901802.05,0.007,True,False
+2900702,Alagoinhas,BA,calculado,55513611.68,55897127.95,-0.686,True,False
+2900801,Alcobaça,BA,marcado_nao_calculado,8742788.36,8742227.2,0.006,True,False
+2900900,Almadina,BA,calculado,2918426.39,2914869.99,0.122,True,False
+2901007,Amargosa,BA,calculado,10810924.12,10815653.51,-0.044,True,False
+2901106,Amélia Rodrigues,BA,marcado_nao_calculado,7908439.67,8242792.53,-4.056,True,False
+2901155,América Dourada,BA,marcado_nao_calculado,8386901.34,5058643.97,65.793,True,False
+2901205,Anagé,BA,marcado_nao_calculado,7427597.37,6375318.58,16.506,False,False
+2901304,Andaraí,BA,marcado_nao_calculado,6136121.24,5086192.58,20.643,True,False
+2901353,Andorinha,BA,calculado,6569719.4,6569299.06,0.006,True,False
+2901403,Angical,BA,calculado,4979645.9,4979231.15,0.008,True,False
+2901502,Anguera,BA,marcado_nao_calculado,4059167.95,3855786.35,5.275,True,False
+2901601,Antas,BA,calculado,5834956.22,5834426.11,0.009,True,False
+2901700,Antônio Cardoso,BA,marcado_nao_calculado,4726348.83,4004076.67,18.038,True,False
+2901809,Antônio Gonçalves,BA,marcado_nao_calculado,4044732.08,4045329.97,-0.015,True,False
+2901908,Aporá,BA,calculado,5791244.52,5591532.54,3.572,True,False
+2901957,Apuarema,BA,calculado,3076415.61,3084407.54,-0.259,True,False
+2902005,Aracatu,BA,marcado_nao_calculado,3966857.51,4889998.75,-18.878,True,False
+2902054,Araças,BA,calculado,5516257.11,5513195.07,0.056,True,False
+2902104,Araci,BA,calculado,12235674.16,12234496.86,0.01,True,False
+2902203,Aramari,BA,calculado,4147306.67,4164440.3,-0.411,True,False
+2902252,Arataca,BA,calculado,4678692.06,4406273.04,6.183,False,False
+2902302,Aratuípe,BA,marcado_nao_calculado,2449228.31,2996165.62,-18.255,True,False
+2902401,Aurelino Leal,BA,calculado,4203852.6,4206420.05,-0.061,True,False
+2902500,Baianópolis,BA,marcado_nao_calculado,6903912.67,6903510.9,0.006,True,False
+2902609,Baixa Grande,BA,calculado,6041192.25,6058071.56,-0.279,True,False
+2902708,Barra,BA,marcado_nao_calculado,15652082.1,14227708.79,10.011,False,False
+2902807,Barra da Estiva,BA,calculado,7767409.4,7766873.41,0.007,True,False
+2902906,Barra do Choça,BA,calculado,11186597.52,10034840.61,11.478,False,False
+2903003,Barra do Mendes,BA,marcado_nao_calculado,4891560.57,4890934.14,0.013,True,False
+2903102,Barra do Rocha,BA,marcado_nao_calculado,3003296.3,3003078.23,0.007,True,False
+2903201,Barreiras,BA,marcado_nao_calculado,32223950.2,73456470.45,-56.132,True,False
+2903235,Barro Alto,BA,calculado,4785591.56,4782154.31,0.072,True,False
+2903276,Barrocas,BA,calculado,7223834.9,7223799.03,0.0,True,False
+2903300,Barro Preto,BA,calculado,3120957.6,3076675.3,1.439,True,False
+2903409,Belmonte,BA,calculado,8712312.35,8247563.11,5.635,False,False
+2903508,Belo Campo,BA,marcado_nao_calculado,6119426.69,6115647.31,0.062,False,False
+2903607,Biritinga,BA,marcado_nao_calculado,6979639.44,4961710.98,40.67,True,False
+2903706,Boa Nova,BA,marcado_nao_calculado,5180195.69,4846979.63,6.875,False,False
+2903805,Boa Vista do Tupim,BA,marcado_nao_calculado,6111055.89,6110538.5,0.008,True,False
+2903904,Bom Jesus da Lapa,BA,calculado,16862479.12,16861083.09,0.008,True,False
+2903953,Bom Jesus da Serra,BA,marcado_nao_calculado,4262583.68,4262266.62,0.007,False,False
+2904001,Boninal,BA,calculado,5150213.27,5149791.81,0.008,True,False
+2904050,Bonito,BA,marcado_nao_calculado,8268579.05,6442369.08,28.347,False,False
+2904100,Boquira,BA,calculado,6025480.58,6024930.5685,0.009,True,True
+2904209,Botuporã,BA,marcado_nao_calculado,4140439.22,4140119.09,0.008,False,False
+2904308,Brejões,BA,calculado,5175772.62,4867632.16,6.33,True,False
+2904407,Brejolândia,BA,marcado_nao_calculado,4248925.84,4248598.9,0.008,True,False
+2904506,Brotas de Macaúbas,BA,calculado,5015500.68,5014820.85,0.014,True,False
+2904605,Brumado,BA,calculado,23047670.13,23045698.77,0.009,True,False
+2904704,Buerarema,BA,calculado,5943910.48,5943194.52,0.012,True,False
+2904753,Buritirama,BA,marcado_nao_calculado,6251372.34,6250823.55,0.009,True,False
+2904803,Caatiba,BA,marcado_nao_calculado,3014791.43,3014565.55,0.007,True,False
+2904852,Cabaceiras do Paraguaçu,BA,marcado_nao_calculado,5470141.16,5904734.13,-7.36,True,False
+2904902,Cachoeira,BA,marcado_nao_calculado,7715275.42,8600528.02,-10.293,True,False
+2905008,Caculé,BA,calculado,8771577.19,7723329.62,13.572,True,False
+2905107,Caém,BA,calculado,3966139.43,3778849.41,4.956,True,False
+2905156,Caetanos,BA,calculado,4747293.43,4604115.97,3.11,True,False
+2905206,Caetité,BA,marcado_nao_calculado,24831223.8,18070554.06,37.413,False,False
+2905404,Cairu,BA,calculado,11515656.76,11614230.15,-0.849,True,False
+2905503,Caldeirão Grande,BA,marcado_nao_calculado,4665640.02,4661197.99,0.095,True,False
+2905602,Camacan,BA,calculado,8658217.94,8766837.83,-1.239,True,False
+2905701,Camaçari,BA,calculado,215038376.28,217121990.06,-0.96,True,False
+2905800,Camamu,BA,calculado,8580119.32,8328498.0,3.021,True,False
+2905909,Campo Alegre de Lourdes,BA,marcado_nao_calculado,9775561.2,8347197.13,17.112,True,False
+2906006,Campo Formoso,BA,marcado_nao_calculado,23822623.36,23811008.96,0.049,True,False
+2906105,Canápolis,BA,marcado_nao_calculado,3354956.49,3454525.92,-2.882,True,False
+2906204,Canarana,BA,calculado,7092861.26,7788188.75,-8.928,True,False
+2906303,Canavieiras,BA,calculado,8813263.55,8738403.54,0.857,True,False
+2906402,Candeal,BA,calculado,2917844.24,2848331.16,2.44,True,False
+2906501,Candeias,BA,marcado_nao_calculado,61014150.91,66432494.18,-8.156,True,False
+2906600,Candiba,BA,marcado_nao_calculado,4378499.01,5038048.16,-13.091,True,False
+2906709,Cândido Sales,BA,calculado,7287893.02,7054850.98,3.303,True,False
+2906808,Cansanção,BA,calculado,8773612.03,8772810.27,0.009,True,False
+2906824,Canudos,BA,calculado,6948144.65,6510535.51,6.722,True,False
+2906857,Capela do Alto Alegre,BA,calculado,3964321.57,3978984.97,-0.369,True,False
+2906873,Capim Grosso,BA,calculado,9325837.32,9380166.84,-0.579,True,False
+2906899,Caraíbas,BA,calculado,3204839.41,3104986.26,3.216,True,False
+2906907,Caravelas,BA,calculado,8993647.73,8974804.53,0.21,True,False
+2907004,Cardeal da Silva,BA,calculado,3957011.1,3587806.79,10.291,True,False
+2907103,Carinhanha,BA,marcado_nao_calculado,7735682.63,8256482.98,-6.308,True,False
+2907202,Casa Nova,BA,calculado,17470762.66,17433990.89,0.211,True,False
+2907301,Castro Alves,BA,calculado,7531411.76,7522888.62,0.113,True,False
+2907400,Catolândia,BA,calculado,2914077.86,2914071.29,0.0,True,False
+2907509,Catu,BA,calculado,17537272.23,17536091.46,0.007,True,False
+2907558,Caturama,BA,marcado_nao_calculado,2355448.06,3012151.66,-21.802,True,False
+2907707,Chorrochó,BA,calculado,4603074.79,4595544.66,0.164,True,False
+2907806,Cícero Dantas,BA,calculado,8700134.38,8699357.59,0.009,True,False
+2907905,Cipó,BA,calculado,6279573.42,6079866.21,3.285,True,False
+2908002,Coaraci,BA,calculado,5885605.93,5885114.27,0.008,True,False
+2908101,Cocos,BA,marcado_nao_calculado,8559525.75,10321270.59,-17.069,True,False
+2908200,Conceição da Feira,BA,calculado,6293329.5,6289946.23,0.054,True,False
+2908309,Conceição do Almeida,BA,marcado_nao_calculado,3909599.24,5852848.49,-33.202,True,False
+2908408,Conceição do Coité,BA,marcado_nao_calculado,14165323.58,14046054.07,0.849,True,False
+2908507,Conceição do Jacuípe,BA,calculado,13956571.17,14069768.07,-0.805,True,False
+2908606,Conde,BA,calculado,8071438.45,8090775.4,-0.239,True,False
+2908705,Condeúba,BA,marcado_nao_calculado,5969131.05,5769426.99,3.461,True,False
+2908804,Contendas do Sincorá,BA,marcado_nao_calculado,2811527.16,3176904.39,-11.501,True,False
+2908903,Coração de Maria,BA,marcado_nao_calculado,5937782.96,7108527.89,-16.47,True,False
+2909000,Cordeiros,BA,calculado,3147894.82,2990060.04,5.279,True,False
+2909109,Coribe,BA,marcado_nao_calculado,1328534.95,5742239.4,-76.864,True,False
+2909208,Coronel João Sá,BA,calculado,5845702.08,5842581.75,0.053,True,False
+2909307,Correntina,BA,marcado_nao_calculado,27216958.14,32387007.78,-15.963,True,False
+2909406,Cotegipe,BA,marcado_nao_calculado,4031238.8,5986796.79,-32.665,True,False
+2909505,Cravolândia,BA,calculado,3016320.33,2843886.42,6.063,True,False
+2909604,Crisópolis,BA,calculado,6267774.33,6260483.84,0.116,True,False
+2909703,Cristópolis,BA,calculado,4989472.75,4989057.14,0.008,True,False
+2909802,Cruz das Almas,BA,marcado_nao_calculado,15929907.33,15985640.1,-0.349,True,False
+2909901,Curaçá,BA,calculado,9934017.8,9915408.52,0.188,True,False
+2910008,Dário Meira,BA,calculado,4091819.23,4091495.86,0.008,True,False
+2910057,Dias d'Ávila,BA,calculado,28898572.87,29050007.94,-0.521,True,False
+2910107,Dom Basílio,BA,calculado,4301905.17,4599645.4,-6.473,True,False
+2910206,Dom Macedo Costa,BA,marcado_nao_calculado,2376084.26,2741737.9,-13.337,True,False
+2910305,Elísio Medrado,BA,marcado_nao_calculado,1943074.47,2936993.56,-33.841,True,False
+2910404,Encruzilhada,BA,marcado_nao_calculado,5667585.62,6238830.7,-9.156,True,False
+2910503,Entre Rios,BA,calculado,12272506.72,12325797.93,-0.432,True,False
+2910602,Esplanada,BA,marcado_nao_calculado,24409477.92,11795254.18,106.943,False,False
+2910701,Euclides da Cunha,BA,calculado,15497748.17,15496450.58,0.008,True,False
+2910727,Eunápolis,BA,calculado,37149101.47,37372177.52,-0.597,True,False
+2910750,Fátima,BA,calculado,6008600.76,5754192.25,4.421,True,False
+2910776,Feira da Mata,BA,calculado,3213392.25,3213172.64,0.007,True,False
+2910800,Feira de Santana,BA,calculado,153985982.06,152957008.09,0.673,True,False
+2910859,Filadélfia,BA,marcado_nao_calculado,6286317.84,6086603.28,3.281,True,False
+2910909,Firmino Alves,BA,calculado,3030386.39,3101690.59,-2.299,True,False
+2911006,Floresta Azul,BA,calculado,4021113.82,3896171.2,3.207,True,False
+2911105,Formosa do Rio Preto,BA,calculado,38554949.38,38554296.33,0.002,True,False
+2911204,Gandu,BA,calculado,8737575.53,8769176.18,-0.36,True,False
+2911253,Gavião,BA,marcado_nao_calculado,2600085.55,2831664.77,-8.178,True,False
+2911303,Gentio do Ouro,BA,calculado,8801696.66,8843744.4,-0.475,True,False
+2911402,Glória,BA,marcado_nao_calculado,6111060.07,5159442.52,18.444,True,False
+2911501,Gongogi,BA,calculado,2899447.2,2899225.95,0.008,True,False
+2911600,Governador Mangabeira,BA,marcado_nao_calculado,7608197.34,6075061.9,25.237,True,False
+2911659,Guajeru,BA,calculado,2945867.14,3169203.24,-7.047,True,False
+2911709,Guanambi,BA,calculado,25677780.97,24755042.73,3.727,True,False
+2911808,Guaratinga,BA,calculado,6666352.12,6664712.2,0.025,True,False
+2911857,Heliópolis,BA,calculado,4813070.63,4812238.85,0.017,True,False
+2911907,Iaçu,BA,marcado_nao_calculado,8267327.95,6960431.86,18.776,True,False
+2912004,Ibiassucê,BA,marcado_nao_calculado,3173325.11,3896347.99,-18.556,True,False
+2912103,Ibicaraí,BA,calculado,5909602.72,5707572.62,3.54,True,False
+2912202,Ibicoara,BA,marcado_nao_calculado,8379362.34,8152454.27,2.783,True,False
+2912301,Ibicuí,BA,marcado_nao_calculado,3966416.94,5270210.1,-24.739,True,False
+2912400,Ibipeba,BA,marcado_nao_calculado,6103160.21,6095168.84,0.131,True,False
+2912509,Ibipitanga,BA,marcado_nao_calculado,3848457.84,5375952.42,-28.413,True,False
+2912608,Ibiquera,BA,calculado,2950436.49,2950234.41,0.007,True,False
+2912707,Ibirapitanga,BA,calculado,7285538.83,7284759.9,0.011,True,False
+2912806,Ibirapuã,BA,calculado,5861877.01,5861623.81,0.004,True,False
+2912905,Ibirataia,BA,marcado_nao_calculado,5871054.53,5870580.87,0.008,True,False
+2913002,Ibitiara,BA,marcado_nao_calculado,6374111.32,6249221.95,1.998,True,False
+2913101,Ibititá,BA,calculado,5808637.89,5801698.06,0.12,True,False
+2913200,Ibotirama,BA,marcado_nao_calculado,5959453.02,8984789.63,-33.672,True,False
+2913309,Ichu,BA,calculado,2719556.9,2864037.71,-5.045,True,False
+2913408,Igaporã,BA,marcado_nao_calculado,5400176.82,5954356.29,-9.307,True,False
+2913457,Igrapiúna,BA,calculado,4935015.26,4934610.74,0.008,True,False
+2913507,Iguaí,BA,calculado,7150690.72,7020306.83,1.857,True,False
+2913606,Ilhéus,BA,marcado_nao_calculado,7509591.65,55557761.49,-86.483,False,False
+2913705,Inhambupe,BA,calculado,10523651.85,10522734.35,0.009,True,False
+2913804,Ipecaetá,BA,marcado_nao_calculado,5228661.79,4561238.06,14.633,True,False
+2913903,Ipiaú,BA,calculado,12426955.01,12425927.68,0.008,True,False
+2914000,Ipirá,BA,marcado_nao_calculado,20254163.08,13729386.94,47.524,True,False
+2914109,Ipupiara,BA,marcado_nao_calculado,3466525.04,3449340.87,0.498,False,False
+2914208,Irajuba,BA,marcado_nao_calculado,3086926.45,3086688.99,0.008,True,False
+2914406,Iraquara,BA,marcado_nao_calculado,7559334.62,8266093.66,-8.55,True,False
+2914505,Irará,BA,calculado,7665511.01,7656955.9,0.112,True,False
+2914604,Irecê,BA,marcado_nao_calculado,20157625.99,20578434.12,-2.045,True,False
+2914653,Itabela,BA,marcado_nao_calculado,10627034.39,10623981.06,0.029,False,False
+2914802,Itabuna,BA,marcado_nao_calculado,61941044.69,61937169.58,0.006,True,False
+2914901,Itacaré,BA,calculado,10464101.76,10463415.46,0.007,False,False
+2915007,Itaeté,BA,calculado,4983028.01,4982602.55,0.009,True,False
+2915106,Itagi,BA,calculado,4555174.22,4508781.8,1.029,True,False
+2915205,Itagibá,BA,marcado_nao_calculado,13718333.58,12154693.73,12.864,False,False
+2915304,Itagimirim,BA,calculado,3526315.64,3526083.75,0.007,True,False
+2915353,Itaguaçu da Bahia,BA,calculado,6304973.74,6304550.84,0.007,True,False
+2915403,Itaju do Colônia,BA,calculado,3129348.64,3129119.68,0.007,True,False
+2915502,Itajuípe,BA,calculado,6256535.25,6484625.36,-3.517,True,False
+2915601,Itamaraju,BA,calculado,15435455.64,15409603.6,0.168,True,False
+2915700,Itamari,BA,calculado,3047612.28,3044003.916,0.119,True,True
+2915809,Itambé,BA,marcado_nao_calculado,7379388.19,7323986.14,0.756,True,False
+2915908,Itanagra,BA,calculado,3258004.18,3357085.64,-2.951,True,False
+2916005,Itanhém,BA,calculado,6333815.82,6333307.84,0.008,True,False
+2916104,Itaparica,BA,calculado,6690291.61,6727706.34,-0.556,True,False
+2916203,Itapé,BA,calculado,3469049.69,3468801.29,0.007,True,False
+2916302,Itapebi,BA,marcado_nao_calculado,5611493.4,5002752.43,12.168,True,False
+2916401,Itapetinga,BA,marcado_nao_calculado,710557.17,17733431.49,-95.993,True,False
+2916500,Itapicuru,BA,marcado_nao_calculado,9406293.34,8885414.93,5.862,True,False
+2916609,Itapitanga,BA,calculado,3826134.81,3825812.13,0.008,True,False
+2916708,Itaquara,BA,calculado,2954942.36,2954687.84,0.009,True,False
+2916807,Itarantim,BA,calculado,6602743.95,6600575.6,0.033,True,False
+2916856,Itatim,BA,marcado_nao_calculado,6889869.89,5556633.93,23.994,True,False
+2916906,Itiruçu,BA,marcado_nao_calculado,164925.05,4008046.59,-95.885,False,False
+2917003,Itiúba,BA,calculado,9512027.15,9166989.55,3.764,True,False
+2917102,Itororó,BA,marcado_nao_calculado,6200917.8,6176303.33,0.399,True,False
+2917201,Ituaçu,BA,calculado,8040580.34,6256712.09,28.511,True,False
+2917300,Ituberá,BA,marcado_nao_calculado,7065377.62,7611027.3,-7.169,True,False
+2917334,Iuiú,BA,marcado_nao_calculado,3338430.39,4260539.48,-21.643,True,False
+2917359,Jaborandi,BA,marcado_nao_calculado,11362579.68,13392832.83,-15.159,True,False
+2917409,Jacaraci,BA,marcado_nao_calculado,4338183.23,4810346.4,-9.816,True,False
+2917508,Jacobina,BA,marcado_nao_calculado,29086893.83,29328571.83,-0.824,True,False
+2917607,Jaguaquara,BA,calculado,12580517.86,12576209.6,0.034,True,False
+2917706,Jaguarari,BA,marcado_nao_calculado,18242574.16,18248565.14,-0.033,True,False
+2917805,Jaguaripe,BA,marcado_nao_calculado,4825230.16,6798426.37,-29.024,True,False
+2917904,Jandaíra,BA,calculado,4239913.26,4239585.59,0.008,True,False
+2918001,Jequié,BA,calculado,53155944.4,53130221.37,0.048,True,False
+2918100,Jeremoabo,BA,calculado,11077827.44,11076890.72,0.008,True,False
+2918209,Jiquiriçá,BA,calculado,12663953.04,4758434.48,166.137,False,False
+2918308,Jitaúna,BA,calculado,4904644.01,4858307.28,0.954,True,False
+2918357,João Dourado,BA,marcado_nao_calculado,7643658.11,7690246.12,-0.606,True,False
+2918407,Juazeiro,BA,marcado_nao_calculado,60724772.08,59927736.24,1.33,True,False
+2918456,Jucuruçu,BA,calculado,3649154.95,3648900.49,0.007,False,False
+2918506,Jussara,BA,marcado_nao_calculado,5025109.48,5000968.05,0.483,True,False
+2918555,Jussari,BA,marcado_nao_calculado,3525627.94,3013148.18,17.008,True,False
+2918605,Jussiape,BA,calculado,3145393.48,3046567.73,3.244,True,False
+2918753,Lagoa Real,BA,marcado_nao_calculado,3917476.83,4691405.46,-16.497,True,False
+2918803,Laje,BA,calculado,10112764.84,7299007.69,38.55,False,False
+2918902,Lajedão,BA,marcado_nao_calculado,3245247.78,3245067.19,0.006,True,False
+2919009,Lajedinho,BA,calculado,2997014.81,2999252.46,-0.075,True,False
+2919058,Lajedo do Tabocal,BA,calculado,2979640.69,2979389.12,0.008,True,False
+5200050,Abadia de Goiás,GO,marcado_nao_calculado,5511303.08,6019884.05,-8.448,True,False
+5200100,Abadiânia,GO,calculado,7635263.8,7634307.86,0.013,True,False
+5200134,Acreúna,GO,calculado,11528517.9,11527211.72,0.011,True,False
+5200159,Adelândia,GO,marcado_nao_calculado,2382990.42,3052201.07,-21.926,True,False
+5200175,Água Fria de Goiás,GO,marcado_nao_calculado,4479678.99,5084270.58,-11.891,True,False
+5200209,Água Limpa,GO,calculado,2946919.97,2946604.56,0.011,True,False
+5200258,Águas Lindas de Goiás,GO,marcado_nao_calculado,36417814.54,35599566.17,2.298,True,False
+5200308,Alexânia,GO,marcado_nao_calculado,14585282.31,14584091.53,0.008,False,False
+5200506,Aloândia,GO,marcado_nao_calculado,2891970.96,2644616.4,9.353,True,False
+5200555,Alto Horizonte,GO,calculado,17374105.92,17372230.88,0.011,True,False
+5200605,Alto Paraíso de Goiás,GO,calculado,5243807.95,5243380.58,0.008,True,False
+5200803,Alvorada do Norte,GO,calculado,3706263.44,3444427.2,7.602,False,False
+5200829,Amaralina,GO,calculado,3459346.74,3458992.39,0.01,True,False
+5200852,Americano do Brasil,GO,marcado_nao_calculado,3699376.84,2791766.51,32.51,True,False
+5200902,Amorinópolis,GO,marcado_nao_calculado,3120983.33,3105092.52,0.512,True,False
+5201108,Anápolis,GO,marcado_nao_calculado,151466658.03,153963127.29,-1.621,False,False
+5201207,Anhanguera,GO,calculado,2422186.84,2421883.44,0.013,True,False
+5201306,Anicuns,GO,calculado,8005806.17,7437837.99,7.636,True,False
+5201405,Aparecida de Goiânia,GO,marcado_nao_calculado,141922403.46,144575144.36,-1.835,False,False
+5201454,Aparecida do Rio Doce,GO,calculado,3763712.06,3763384.11,0.009,True,False
+5201504,Aporé,GO,calculado,7217083.5,7194623.58,0.312,True,False
+5201603,Araçu,GO,calculado,3118521.33,3124841.14,-0.202,True,False
+5201702,Aragarças,GO,calculado,6234470.04,6173751.95,0.983,True,False
+5201801,Aragoiânia,GO,calculado,4924471.15,4804750.96,2.492,True,False
+5202155,Araguapaz,GO,calculado,3696849.07,4146633.65,-10.847,True,False
+5202353,Arenópolis,GO,marcado_nao_calculado,2440932.17,3605579.0,-32.301,True,False
+5202502,Aruanã,GO,calculado,7213174.33,7212604.4,0.008,True,False
+5202601,Aurilândia,GO,marcado_nao_calculado,3567961.93,3269026.83,9.144,False,False
+5202809,Avelinópolis,GO,calculado,2972497.52,2972170.95,0.011,False,False
+5203104,Baliza,GO,calculado,3270976.58,3270976.57,0.0,False,False
+5203203,Barro Alto,GO,calculado,18531743.83,18531149.34,0.003,True,False
+5203302,Bela Vista de Goiás,GO,calculado,15665698.92,15860128.9,-1.226,True,False
+5203401,Bom Jardim de Goiás,GO,calculado,4147127.64,4146377.76,0.018,True,False
+5203559,Bonfinópolis,GO,marcado_nao_calculado,3630455.3,3780183.42,-3.961,True,False
+5203575,Bonópolis,GO,calculado,3966186.25,3965818.64,0.009,True,False
+5203609,Brazabrantes,GO,calculado,3048577.43,3025758.73,0.754,True,False
+5203807,Britânia,GO,marcado_nao_calculado,4122203.94,4121813.04,0.009,True,False
+5203906,Buriti Alegre,GO,marcado_nao_calculado,5864844.31,5746117.96,2.066,True,False
+5203939,Buriti de Goiás,GO,marcado_nao_calculado,2621720.55,2917915.27,-10.151,True,False
+5203962,Buritinópolis,GO,calculado,3193258.39,3171390.4,0.69,True,False
+5204003,Cabeceiras,GO,calculado,4701952.04,4701518.13,0.009,True,False
+5204102,Cachoeira Alta,GO,calculado,7215993.33,7215376.24,0.009,False,False
+5204201,Cachoeira de Goiás,GO,marcado_nao_calculado,2896862.73,2908706.31,-0.407,True,False
+5204250,Cachoeira Dourada,GO,calculado,8238840.07,8237962.16,0.011,True,False
+5204300,Caçu,GO,calculado,10615196.66,10245669.67,3.607,False,False
+5204409,Caiapônia,GO,calculado,13179906.48,13178980.1,0.007,True,False
+5204508,Caldas Novas,GO,marcado_nao_calculado,35250404.17,34615433.76,1.834,True,False
+5204557,Caldazinha,GO,calculado,3121327.69,3120935.99,0.013,False,False
+5204607,Campestre de Goiás,GO,calculado,3074590.78,3074240.45,0.011,True,False
+5204656,Campinaçu,GO,calculado,3175453.84,2590741.2,22.569,True,False
+5204706,Campinorte,GO,marcado_nao_calculado,5156888.85,5213575.16,-1.087,True,False
+5204805,Campo Alegre de Goiás,GO,calculado,7010535.6,7010105.73,0.006,True,False
+5204854,Campo Limpo de Goiás,GO,marcado_nao_calculado,4004116.89,4007999.93,-0.097,False,False
+5204904,Campos Belos,GO,marcado_nao_calculado,6136309.63,5844254.65,4.997,True,False
+5204953,Campos Verdes,GO,marcado_nao_calculado,442753.55,2893187.23,-84.697,True,False
+5205000,Carmo do Rio Verde,GO,marcado_nao_calculado,5028365.35,4988600.96,0.797,False,False
+5205059,Castelândia,GO,marcado_nao_calculado,3434919.06,3313034.86,3.679,True,False
+5205109,Catalão,GO,marcado_nao_calculado,61012079.12,60560220.16,0.746,True,False
+5205208,Caturaí,GO,calculado,2683037.78,2972627.61,-9.742,True,False
+5205307,Cavalcante,GO,marcado_nao_calculado,5149989.97,5173971.92,-0.464,True,False
+5205406,Ceres,GO,marcado_nao_calculado,7869145.45,8972279.82,-12.295,True,False
+5205455,Cezarina,GO,calculado,5718843.07,5718396.04,0.008,True,False
+5205471,Chapadão do Céu,GO,calculado,18743334.42,18742755.88,0.003,False,False
+5205497,Cidade Ocidental,GO,marcado_nao_calculado,15953630.08,18311795.19,-12.878,False,False
+5205513,Cocalzinho de Goiás,GO,calculado,7695802.74,7695802.74,0.0,True,False
+5205521,Colinas do Sul,GO,calculado,3108341.21,3038131.57,2.311,False,False
+5205703,Córrego do Ouro,GO,calculado,2939180.94,2964089.37,-0.84,True,False
+5205802,Corumbá de Goiás,GO,calculado,4851412.2,4850825.63,0.012,False,False
+5205901,Corumbaíba,GO,calculado,6936713.01,6936243.03,0.007,True,False
+5206305,Cristianópolis,GO,marcado_nao_calculado,3247027.47,3248361.79,-0.041,True,False
+5206404,Crixás,GO,calculado,13160757.95,13159872.42,0.007,True,False
+5206503,Cromínia,GO,marcado_nao_calculado,3005400.7,3051815.68,-1.521,True,False
+5206701,Damianópolis,GO,marcado_nao_calculado,2921213.98,2989634.33,-2.289,True,False
+5206800,Damolândia,GO,calculado,2978635.07,2978340.92,0.01,True,False
+5206909,Davinópolis,GO,calculado,4439780.12,4630488.73,-4.119,True,False
+5207105,Diorama,GO,marcado_nao_calculado,3142085.11,3140264.63,0.058,True,False
+5207253,Doverlândia,GO,calculado,5228495.36,5166906.97,1.192,True,False
+5207352,Edealina,GO,calculado,4837710.34,4754029.67,1.76,True,False
+5207402,Edéia,GO,marcado_nao_calculado,10717058.61,10658696.75,0.548,True,False
+5207501,Estrela do Norte,GO,calculado,3247031.7,3246689.08,0.011,False,False
+5207600,Fazenda Nova,GO,calculado,3850677.84,3831838.34,0.492,False,False
+5207808,Firminópolis,GO,calculado,5418901.87,5418176.67,0.013,True,False
+5207907,Flores de Goiás,GO,calculado,6208266.18,6207375.4,0.014,True,False
+5208004,Formosa,GO,marcado_nao_calculado,8302715.6,35587273.44,-76.669,True,False
+5208103,Formoso,GO,marcado_nao_calculado,3224106.93,3223421.72,0.021,True,False
+5208152,Gameleira de Goiás,GO,marcado_nao_calculado,3678274.12,3754647.69,-2.034,True,False
+5208301,Divinópolis de Goiás,GO,calculado,3089303.35,2735987.0,12.914,True,False
+5208400,Goianápolis,GO,calculado,6471317.19,6470291.81,0.016,False,False
+5208608,Goianésia,GO,marcado_nao_calculado,23687490.09,27125142.73,-12.673,True,False
+5208707,Goiânia,GO,calculado,757248703.14,761879014.71,-0.608,True,False
+5208905,Goiás,GO,calculado,9171457.54,9170384.29,0.012,True,False
+5209101,Goiatuba,GO,marcado_nao_calculado,22957832.55,14348368.31,60.003,True,False
+5209150,Gouvelândia,GO,calculado,4722635.83,3788589.32,24.654,True,False
+5209200,Guapó,GO,calculado,6870444.15,6854293.4,0.236,True,False
+5209291,Guaraíta,GO,marcado_nao_calculado,2822212.95,2821895.72,0.011,False,False
+1600055,Serra do Navio,AP,calculado,2455943.2,2419875.83,1.49,True,False
+1600105,Amapá,AP,marcado_nao_calculado,1734534.4,1951960.01,-11.139,True,False
+1600154,Pedra Branca do Amapari,AP,calculado,9521313.44,9519994.48,0.014,True,False
+1600212,Cutias,AP,marcado_nao_calculado,1606190.74,1317639.26,21.899,False,False
+1600238,Ferreira Gomes,AP,calculado,5582409.73,5578824.23,0.064,False,False
+1600253,Itaubal,AP,marcado_nao_calculado,2635216.8,2487639.31,5.932,False,False
+1600279,Laranjal do Jari,AP,marcado_nao_calculado,8857165.57,8653353.16,2.355,True,False
+1600303,Macapá,AP,calculado,139683185.36,139672121.0,0.008,False,False
+1600402,Mazagão,AP,calculado,4134953.08,4007075.19,3.191,True,False
+1600501,Oiapoque,AP,marcado_nao_calculado,4553368.46,4071613.37,11.832,True,False
+1600535,Porto Grande,AP,marcado_nao_calculado,3898007.39,3896592.27,0.036,True,False
+1600550,Pracuúba,AP,calculado,1802758.05,1802161.0,0.033,True,False
+1600600,Santana,AP,calculado,21322898.0,21569401.89,-1.143,True,False
+1600709,Tartarugalzinho,AP,marcado_nao_calculado,3909823.6,3908493.9,0.034,False,False
+1600808,Vitória do Jari,AP,marcado_nao_calculado,3290597.34,3288778.61,0.055,False,False
+5210208,Iporá,GO,calculado,12262378.9,12272828.78,-0.085,True,False
+5210307,Israelândia,GO,calculado,2971879.11,2971545.55,0.011,True,False
+5210406,Itaberaí,GO,calculado,19227289.86,19214745.78,0.065,True,False
+5210562,Itaguari,GO,calculado,3141029.59,3140660.01,0.012,False,False
+5210604,Itaguaru,GO,calculado,3175755.5,3175376.49,0.012,True,False
+5210802,Itajá,GO,calculado,4545181.26,4552842.48,-0.168,False,False
+5210901,Itapaci,GO,marcado_nao_calculado,8001281.4,8823426.88,-9.318,True,False
+5211008,Itapirapuã,GO,calculado,4810731.47,3968568.42,21.221,False,False
+5211206,Itapuranga,GO,marcado_nao_calculado,9224565.01,9223426.28,0.012,True,False
+5211305,Itarumã,GO,marcado_nao_calculado,5580515.18,5573406.84,0.128,True,False
+5211404,Itauçu,GO,marcado_nao_calculado,3774257.2,3773336.5,0.024,True,False
+5211503,Itumbiara,GO,calculado,50270418.3,50266904.77,0.007,True,False
+5211602,Ivolândia,GO,marcado_nao_calculado,3678046.48,3682294.95,-0.115,True,False
+5211701,Jandaia,GO,calculado,5373814.77,5373420.37,0.007,True,False
+5211800,Jaraguá,GO,calculado,13973919.01,13971904.7,0.014,True,False
+5212006,Jaupaci,GO,calculado,2744318.71,2525103.46,8.681,True,False
+5212055,Jesúpolis,GO,calculado,2764887.83,2759847.79,0.183,True,False
+5212105,Joviânia,GO,marcado_nao_calculado,3404129.75,4912821.05,-30.709,True,False
+5212204,Jussara,GO,calculado,13043435.41,13042509.41,0.007,False,False
+5212253,Lagoa Santa,GO,marcado_nao_calculado,3111463.31,3194561.15,-2.601,False,False
+5212303,Leopoldo de Bulhões,GO,calculado,4685547.98,4683701.4,0.039,False,False
+5212501,Luziânia,GO,marcado_nao_calculado,50091630.53,50084896.12,0.013,True,False
+5212600,Mairipotaba,GO,marcado_nao_calculado,3174051.91,3172667.3,0.044,True,False
+5212709,Mambaí,GO,calculado,3402486.92,3402472.12,0.0,True,False
+5212808,Mara Rosa,GO,marcado_nao_calculado,7662850.59,9344452.66,-17.996,True,False
+5212907,Marzagão,GO,calculado,2983739.86,2983396.27,0.012,True,False
+5212956,Matrinchã,GO,calculado,3667816.42,3667453.67,0.01,True,False
+5213004,Maurilândia,GO,marcado_nao_calculado,5375378.14,5466727.64,-1.671,True,False
+5213053,Mimoso de Goiás,GO,marcado_nao_calculado,3269129.18,3324439.99,-1.664,True,False
+5213087,Minaçu,GO,marcado_nao_calculado,20289681.6,20288394.03,0.006,False,False
+5213103,Mineiros,GO,marcado_nao_calculado,37779388.52,36527771.41,3.426,False,False
+5213400,Moiporá,GO,calculado,2706458.08,2706034.02,0.016,True,False
+5213509,Monte Alegre de Goiás,GO,calculado,3336148.03,3335683.8,0.014,False,False
+5213707,Montes Claros de Goiás,GO,calculado,7586032.98,7585659.45,0.005,True,False
+5213756,Montividiu,GO,calculado,13278396.3,13569741.72,-2.147,True,False
+5213772,Montividiu do Norte,GO,calculado,3288459.79,3137242.48,4.82,False,False
+5213806,Morrinhos,GO,marcado_nao_calculado,19587460.5,18509063.19,5.826,True,False
+5213855,Morro Agudo de Goiás,GO,calculado,2986963.49,2986640.38,0.011,True,False
+5213905,Mossâmedes,GO,calculado,4600024.14,4599108.84,0.02,True,False
+5214051,Mundo Novo,GO,calculado,4428892.12,4426233.36,0.06,True,False
+5214101,Mutunópolis,GO,calculado,3126653.5,3126301.53,0.011,True,False
+5214408,Nazário,GO,calculado,4812023.93,4726615.5,1.807,False,False
+5214507,Nerópolis,GO,calculado,16344634.01,16342175.17,0.015,True,False
+5214606,Niquelândia,GO,marcado_nao_calculado,14136487.66,16552422.45,-14.596,False,False
+5214705,Nova América,GO,calculado,2771009.19,2770683.35,0.012,True,False
+5214804,Nova Aurora,GO,calculado,2964790.55,2964467.08,0.011,True,False
+5214838,Nova Crixás,GO,marcado_nao_calculado,10020242.07,10112633.27,-0.914,True,False
+5214861,Nova Glória,GO,calculado,3315667.06,3316762.02,-0.033,True,False
+5214879,Nova Iguaçu de Goiás,GO,calculado,2895501.99,2895165.28,0.012,True,False
+5214903,Nova Roma,GO,marcado_nao_calculado,3193646.9,3198768.12,-0.16,True,False
+5215009,Nova Veneza,GO,calculado,4629932.22,4629365.06,0.012,True,False
+5215207,Novo Brasil,GO,calculado,3377903.0,3377569.38,0.01,True,False
+5215231,Novo Gama,GO,calculado,16965954.08,16974897.64,-0.053,False,False
+5215256,Novo Planalto,GO,calculado,3839583.16,3839215.3,0.01,True,False
+5219605,Santa Tereza de Goiás,GO,marcado_nao_calculado,3048740.21,3274623.14,-6.898,True,False
+1300201,Atalaia do Norte,AM,calculado,6721377.69,6726159.4,-0.071,True,False
+1300300,Autazes,AM,calculado,8763620.15,8768294.99,-0.053,True,False
+1300409,Barcelos,AM,marcado_nao_calculado,8661640.99,8633375.91,0.327,True,False
+1300508,Barreirinha,AM,calculado,7313863.7,7337970.95,-0.329,True,False
+1300607,Benjamin Constant,AM,calculado,9504736.19,9530849.26,-0.274,True,False
+1300631,Beruri,AM,calculado,5801928.18,5820016.27,-0.311,True,False
+1300680,Boa Vista do Ramos,AM,calculado,5619213.34,5621150.4,-0.034,True,False
+1300706,Boca do Acre,AM,calculado,8579205.42,8573098.39,0.071,True,False
+1300805,Borba,AM,calculado,8626614.43,8657516.44,-0.357,True,False
+1300839,Caapiranga,AM,calculado,5432870.23,5336104.21,1.813,True,False
+1300904,Canutama,AM,calculado,5465089.72,5464555.1,0.01,True,False
+1301001,Carauari,AM,calculado,8005261.6,8029663.81,-0.304,True,False
+1301100,Careiro,AM,calculado,8896222.99,8895166.55,0.012,True,False
+1301159,Careiro da Várzea,AM,calculado,6860607.84,6879543.59,-0.275,True,False
+1301209,Coari,AM,calculado,28755282.27,28568512.53,0.654,True,False
+1301308,Codajás,AM,calculado,7088220.27,7242374.38,-2.129,True,False
+1301407,Eirunepé,AM,calculado,9100496.57,9099542.4,0.01,True,False
+1301506,Envira,AM,calculado,6032418.53,6052269.04,-0.328,True,False
+1301605,Fonte Boa,AM,calculado,6233847.8,6233232.16,0.01,True,False
+1301654,Guajará,AM,calculado,5312997.88,5312376.89,0.012,True,False
+1301704,Humaitá,AM,calculado,15417268.42,14280876.57,7.957,True,False
+1301803,Ipixuna,AM,calculado,6555340.95,6573345.43,-0.274,True,False
+1301852,Iranduba,AM,marcado_nao_calculado,11084443.62,11085756.73,-0.012,True,False
+1301902,Itacoatiara,AM,calculado,27188509.53,26937918.69,0.93,True,False
+1301951,Itamarati,AM,calculado,4197983.27,4176204.3,0.522,True,False
+1302009,Itapiranga,AM,calculado,4269755.79,4755619.83,-10.217,True,False
+1302108,Japurá,AM,calculado,4371199.46,4370952.01,0.006,True,False
+1302207,Juruá,AM,marcado_nao_calculado,5382533.13,5382003.05,0.01,True,False
+1302306,Jutaí,AM,calculado,6725396.56,6699505.57,0.386,True,False
+1302405,Lábrea,AM,calculado,12264790.2,12024134.22,2.001,True,False
+1302504,Manacapuru,AM,calculado,28026603.51,28108729.95,-0.292,False,False
+1302553,Manaquiri,AM,calculado,6522982.19,6540084.2,-0.261,True,False
+1302603,Manaus,AM,calculado,838885578.44,841937678.37,-0.363,True,False
+1302702,Manicoré,AM,calculado,12250067.84,12290454.96,-0.329,True,False
+1302801,Maraã,AM,calculado,5756561.07,6029860.66,-4.532,True,False
+1302900,Maués,AM,calculado,14471980.97,14350079.0,0.849,True,False
+1303007,Nhamundá,AM,calculado,5994634.08,5889146.34,1.791,True,False
+1303106,Nova Olinda do Norte,AM,calculado,7638036.45,7644727.68,-0.088,True,False
+1303205,Novo Airão,AM,marcado_nao_calculado,7010191.08,6881718.84,1.867,True,False
+1303304,Novo Aripuanã,AM,calculado,6703667.88,6728978.68,-0.376,True,False
+1303403,Parintins,AM,marcado_nao_calculado,23721292.67,23788413.1,-0.282,True,False
+1303502,Pauini,AM,calculado,7157730.18,6496360.74,10.181,True,False
+1303536,Presidente Figueiredo,AM,calculado,32165682.43,32384460.85,-0.676,True,False
+1303569,Rio Preto da Eva,AM,calculado,8386654.6,8385712.27,0.011,True,False
+1303601,Santa Isabel do Rio Negro,AM,calculado,7306893.51,7306131.93,0.01,True,False
+1303700,Santo Antônio do Içá,AM,calculado,6757831.13,6757096.55,0.011,True,False
+1303809,São Gabriel da Cachoeira,AM,marcado_nao_calculado,9984086.09,10078087.13,-0.933,True,False
+1303908,São Paulo de Olivença,AM,calculado,7740282.74,7514909.62,2.999,True,False
+1303957,São Sebastião do Uatumã,AM,calculado,5223533.49,5223011.06,0.01,True,False
+1304005,Silves,AM,marcado_nao_calculado,4660224.91,4676602.25,-0.35,True,False
+1304062,Tabatinga,AM,calculado,16585102.67,16608631.7,-0.142,True,False
+1304104,Tapauá,AM,calculado,8142630.25,8142010.24,0.008,True,False
+1304203,Tefé,AM,calculado,15234623.63,15233144.94,0.01,True,False
+1304237,Tonantins,AM,calculado,5369790.56,5369150.31,0.012,True,False
+1304260,Uarini,AM,calculado,5193734.19,5216317.33,-0.433,True,False
+1304302,Urucará,AM,calculado,6324375.7,6323754.71,0.01,True,False
+1304401,Urucurituba,AM,marcado_nao_calculado,6444247.51,6420925.63,0.363,True,False
+1200401,Rio Branco,AC,calculado,169289944.9,169247005.44,0.025,True,False
+1300029,Alvarães,AM,calculado,5387222.27,5523923.93,-2.475,True,False
+1300060,Amaturá,AM,calculado,4067166.72,4020230.6,1.167,True,False
+1300086,Anamã,AM,calculado,4584420.08,4583901.27,0.011,True,False
+1300102,Anori,AM,calculado,5561801.98,5579489.64,-0.317,True,False
+1300144,Apuí,AM,calculado,6329758.81,6350643.33,-0.329,True,False

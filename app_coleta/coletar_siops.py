@@ -46,8 +46,13 @@ def apos(tk, rotulo, n=3, ini=0):
 def extrai(h):
     tk = tokens(h); r = {}
     r['homologado'] = next((re.search(r'Homologados em (\S+)', x).group(1) for x in tk if 'Homologados em' in x), '')
-    v, i = apos(tk, 'TOTAL DAS RECEITAS RESULTANTES DE IMPOSTOS', 1); r['base_calculo_III'] = v[0] if v else None
-    v, _ = apos(tk, 'Despesa Mínima a ser Aplicada em ASPS (XVII) = (III) x 15%', 1); r['minimo_asps_XVII'] = v[0] if v else None
+    v, i = apos(tk, 'TOTAL DAS RECEITAS RESULTANTES DE IMPOSTOS', 3); r['base_calculo_III'] = v[0] if v else None
+    r['base_realizada_III'] = v[2] if len(v) >= 3 else None  # receitas realizadas até o bimestre (coluna b); o XVII de 15% é calculado sobre ela
+    # XVII de 15% só vale se o número vem logo após o rótulo; se vier N/A, o município usa % da Lei Orgânica (D41)
+    r['minimo_asps_XVII'] = None; r['minimo_lom'] = None
+    for j, x in enumerate(tk):
+        if 'Despesa Mínima a ser Aplicada em ASPS (XVII) = (III) x 15%' in x and j + 1 < len(tk): r['minimo_asps_XVII'] = num(tk[j + 1])
+        if 'Despesa Mínima a ser Aplicada em ASPS (XVII) = (III) x % (Lei Org' in x and j + 1 < len(tk): r['minimo_lom'] = num(tk[j + 1])
     v, _ = apos(tk, 'VALOR APLICADO EM ASPS (XVI)', 3); r['aplicado_empenhado'], r['aplicado_liquidado'] = (v[0], v[1]) if len(v) >= 2 else (None, None)
     v, _ = apos(tk, 'APLICADO EM ASPS (XVI / III)', 3); r['pct_empenhado'], r['pct_liquidado'] = (v[0], v[1]) if len(v) >= 2 else (None, None)
     return r
@@ -81,7 +86,7 @@ def resumo(entes):
         if not os.path.exists(arq): continue
         r = extrai(gzip.open(arq, 'rt', encoding='utf-8').read()); r.update(cod_ibge=c, ente=m['ente'], uf=m['uf']); linhas.append(r)
     if linhas:
-        cols = ['cod_ibge', 'ente', 'uf', 'homologado', 'base_calculo_III', 'minimo_asps_XVII', 'aplicado_empenhado', 'aplicado_liquidado', 'pct_empenhado', 'pct_liquidado']
+        cols = ['cod_ibge', 'ente', 'uf', 'homologado', 'base_calculo_III', 'base_realizada_III', 'minimo_asps_XVII', 'minimo_lom', 'aplicado_empenhado', 'aplicado_liquidado', 'pct_empenhado', 'pct_liquidado']
         with open(saida, 'w', newline='', encoding='utf-8') as f:
             w = csv.DictWriter(f, cols); w.writeheader(); w.writerows(linhas)
     print(len(linhas), 'municípios em', saida)
