@@ -66,7 +66,7 @@ def relatorio():
     if cons:
         w('\n## Bloco P (pactuação), medido à parte da margem\n'); w('| Item | Calculados com dado | Mediana (% da receita livre) | p90 |'); w('|---|---|---|---|')
         q = lambda v: sorted(v)[int(0.9 * (len(v) - 1))]
-        w(f'| Consórcios (elemento 71) | {sum(1 for x in cons if x > 0)} | {100*st.median(cons):.2f}% | {100*q(cons):.2f}% |')
+        w(f'| Consórcios (modalidade 71) | {sum(1 for x in cons if x > 0)} | {100*st.median(cons):.2f}% | {100*q(cons):.2f}% |')
         if os.path.exists(p(f'convenios_{A.ano}.csv')):
             cv = {l['cod_ibge']: l for l in csv.DictReader(open(p(f'convenios_{A.ano}.csv'), encoding='utf-8'))}
             v = [float(cv[r['cod_ibge']]['contrapartida_ano']) / f(r['rec_livre']) if r['cod_ibge'] in cv else 0.0 for r in rl]

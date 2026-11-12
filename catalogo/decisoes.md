@@ -168,3 +168,11 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 - A dedução do Fundeb não aparece como natureza de receita na MSC desses municípios (nenhuma natureza iniciada em 9 na conta 621200000); por isso não deu para conferir pelo valor da dedução da MSC. A comparação com a dedução total da DCA não é estável (29% a 86%), porque ela inclui ICMS, IPVA e ITR.
 - Leitura: é compatível com municípios que informaram o FPM líquido do Fundeb no SIOPS. A base legal da saúde não deduz o Fundeb, então o sistema (FPM bruto da MSC) segue como está. É indício, não prova: faltaria o demonstrativo do município. Os outros 20 dos 31 têm causas diversas (D41); 232 dos 926 comparáveis têm diferença no FPM sem padrão identificado.
 - Consequência para o selo: nenhuma mudança. Os 11 continuam sem alta confiança por T9; se a hipótese for aceita, poderiam ser reclassificados em "diferença explicada pelo SIOPS", sem mudar o cálculo.
+
+## D43. Correção do cálculo de consórcios: modalidade 71, não elemento 71 (12/11/2026)
+
+- Erro: a D37 somava como consórcio o elemento de despesa 71 (`nd[4:6] == '71'`). Esse elemento é o principal da dívida contratual resgatado (ex.: natureza 46907101 em Pureza/RN). Os consórcios ficam na modalidade de aplicação 71 (`nd[2:4] == '71'`, contrato de rateio). A coluna `consorcios` do piloto media, na prática, a amortização da dívida: em 468 dos 850 calculados ela era igual à dívida da margem.
+- Achado ao conferir a amostra do nível 3 (SIAI); a conferência da D37 de 12/11 (2,1% e 2,3%) só tinha reconferido a contagem, não o conceito.
+- Correção em `analisar.py` e no rótulo do relatório. Margem ampla, estrita, status e selos não mudam (conferido nos 1.250 do piloto); só mudam `consorcios` e `margem_ampla_p`.
+- Piloto 2023 (850 calculados) depois da correção: 619 têm gasto com consórcio em fonte livre; mediana de 0,31% da receita livre sobre os 850 (0,52% entre os 619); p90 1,6%; máximo 5,0%. A margem ampla mediana vai de 52,3% para 51,8% (sensibilidade do bloco P); antes aparecia 49,8%. Ninguém fica negativo.
+- Substitui os números de consórcios das D37 (2,1% e 785), da D37 corrigida, da Matriz (linha 25), do protótipo e da seção metodológica da tese. Quem rodou o `analisar.py` antes desta correção precisa rodar de novo (só a etapa analisar).

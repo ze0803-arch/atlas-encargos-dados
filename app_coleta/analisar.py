@@ -41,7 +41,7 @@ def calcula(itens, modo):
             m['liq'] += v
             if fr in LIVRE:
                 nd = i['natureza_despesa'] or ''; g = nd[1:2]; e = nd[4:6]; po = (i['poder_orgao'] or '')[:1]
-                if e == '71' and po != '2': m['cons'] += v   # D37: consórcios (contrato de rateio) = bloco P (pactuação); coluna à parte
+                if nd[2:4] == '71' and po != '2': m['cons'] += v   # D37 (corrigida em D43): consórcios = modalidade de aplicação 71 (contrato de rateio), bloco P; coluna à parte. O elemento 71 é principal da dívida, não consórcio
                 if po == '2': m['leg'] += v
                 elif g in ('2', '6'): m['div'] += v
                 elif e == '91': m['prec'] += v
