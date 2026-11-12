@@ -120,6 +120,7 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 - Decisão do autor: a adesão a consórcio público (contrato de rateio, elemento de despesa 71, em fonte livre, fora do Legislativo) é pactuação (bloco P), não autovinculação.
 - `analisar.py` ganhou a coluna `consorcios` e a coluna `margem_ampla_p` (margem ampla menos consórcios). A margem ampla e a estrita não mudam, para manter a série comparável; o bloco P entra à parte.
 - Piloto 2023 (850 calculados): 785 têm gasto com consórcio; mediana de 2,1% da receita livre. A mediana da margem ampla sobre a receita livre cai de 52,3% para 49,8% após o bloco P. Nenhum município fica negativo por causa dele.
+- Conferência de 12/11/2026 (resultado_2023.csv do piloto): sobre os 850 calculados, a mediana é 2,09% (p90 5,9%; máx. 12,6%); entre os 785 que têm gasto, 2,35% (p90 6,0%). Os dois números estão certos e medem coisas diferentes (com e sem os zeros). Padrão de citação: "2,1% sobre os 850 calculados; 2,3% entre os 785 com gasto". O protótipo havia usado 787 e 2,34% por contagem anterior.
 - Pendente: decidir quais outros itens da matriz entram no bloco P (contrapartidas de convênios, programas com adesão) e se a margem principal passa a descontá-lo.
 
 ### Correção da D37 (11/11/2026)
