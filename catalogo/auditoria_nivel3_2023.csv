@@ -1,0 +1,16 @@
+municipio,uf,porte,item,siai_todas_fontes,atlas_fonte_livre,atlas_sobre_siai,leitura
+Paraú,RN,pequeno,legislativo,1379747.50,1379748,1.000,confere
+Paraú,RN,pequeno,divida (juros+amortizacao),257195.19,257195,1.000,confere
+Paraú,RN,pequeno,sentencas judiciais (elemento 91),185733.07,182163,0.981,atlas menor (fonte livre)
+Pureza,RN,pequeno,legislativo,1436880.55,1436881,1.000,confere
+Pureza,RN,pequeno,divida (juros+amortizacao),1879011.76,1879012,1.000,confere
+Pureza,RN,pequeno,sentencas judiciais (elemento 91),0,0,,confere
+Lagoa Nova,RN,pequeno,legislativo,2325132.87,2064338,0.888,atlas menor; fonte nao verificavel no anexo
+Lagoa Nova,RN,pequeno,divida (juros+amortizacao),1915005.54,1915006,1.000,confere
+Lagoa Nova,RN,pequeno,sentencas judiciais (elemento 91),942547.13,942547,1.000,confere
+Parelhas,RN,medio,legislativo,3232986.65,2070705,0.640,atlas menor; fonte nao verificavel no anexo
+Parelhas,RN,medio,divida (juros+amortizacao),537157.98,537158,1.000,confere
+Parelhas,RN,medio,sentencas judiciais (elemento 91),1449911.31,1440476,0.993,atlas menor (fonte livre)
+Ceará-Mirim,RN,grande,legislativo,7011876.75,7011877,1.000,confere
+Ceará-Mirim,RN,grande,divida (juros+amortizacao),8680003.30,7436355,0.857,atlas menor; fonte nao verificavel no anexo
+Ceará-Mirim,RN,grande,sentencas judiciais (elemento 91),1173730.52,1169448,0.996,atlas menor (fonte livre)
