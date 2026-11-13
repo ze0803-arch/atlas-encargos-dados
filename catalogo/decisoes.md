@@ -270,3 +270,10 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Cuidados: (a) medida principal de base fiscal independente (PIB por habitante), porque a base própria é parte da receita livre; (b) H5 usa essa medida para não ser circular; (c) margem sobre a receita total e vinculação são quase uma identidade (correlação 0,96) e não contam como duas provas; (d) 2023 é exploratório, 2024-2027 confirmatório.
 - Análise comparativa: entre UFs, dentro da UF (quintis por UF, pares de porte e UF) e modelo em dois níveis, com cobertura por UF ao lado de cada resultado.
 - Texto: explicações de dados e metodologia em linguagem simples, para o usuário e o orientador.
+
+## D62 (13/11/2026) — Base independente (PIB por habitante IBGE) e análise comparativa UF/município
+- PIB municipal 2023 (SIDRA 5938, var. 37) ÷ população do Censo 2022 = medida de capacidade independente da receita própria (resolve a circularidade de H1/H5). Arquivos: catalogo/pib_2023.csv, base_independente_2023.md, comparativo_2023.md; scripts em analises/.
+- Resultado: Q1→Q5 de PIB por habitante: margem sobre receita total 24,4→38,3 (+13,9 pontos); sobre receita livre 52,1→56,7 (+4,6); vinculada 52,8→32,2. Com efeitos fixos de UF e erro agrupado: +4,2 pontos de margem (receita total) por unidade do log do PIB per capita (IC95% 3,6–4,8). Dentro da UF a relação é positiva em 20 de 20 UFs (Spearman mediano 0,21).
+- Art. 11 LRF (critério relativo): municípios abaixo do critério em IPTU/ISS/ITBI: 25,3% no Q1 de PIB contra 3,6% no Q5.
+- Modelo em dois níveis: 33% da variação da margem está entre UFs; efeito médio 4,2 (inclinação varia entre UFs, desvio 1,3; positiva em 19 de 20). Pares de mesma UF e porte: terço de maior PIB tem +3,4 pontos, positivo em 87% dos 87 grupos.
+- Cuidados: UFs com <40 calculados ou cobertura <40% (RR, AP, AL, PB, RO, AC) fora das leituras por UF; sensibilidade com peso pela cobertura não muda o efeito (4,16). 2023 permanece exploratório. PIB pode refletir arrecadação via ISS de empresas — não é medida perfeita de capacidade.
