@@ -107,8 +107,10 @@ for c in cods:
     rl_ = r['rec_liquida_fundeb']
     r['rcl_suspeita'] = bool(not r['rcl_rreo'] or (rl_ and not 0.6 <= r['rcl_rreo'] / rl_ <= 1.10))
     if r['rcl_suspeita']: fl.append('RCL_SUSPEITA')
+    # D50: receita da MSC incompatível com a população (> R$ 40.000 por habitante) -> erro de lançamento; marcar e não calcular
+    if r['pop'] and r['rec_msc'] and r['rec_msc'] / r['pop'] > 40000: fl.append('RECEITA_INCOMPATIVEL')
     r['flags'] = '|'.join(fl) or 'OK'
-    if any(f in fl for f in ('SEM_MSCE', 'MSCE_INCOMPLETA', 'REC_DIVERGE', 'LIQ_DIVERGE', 'SEM_NATUREZA_RECEITA', 'FONTE_LIVRE_ATIPICA', 'LEGISLATIVO_ATIPICO')):
+    if any(f in fl for f in ('SEM_MSCE', 'MSCE_INCOMPLETA', 'REC_DIVERGE', 'LIQ_DIVERGE', 'SEM_NATUREZA_RECEITA', 'FONTE_LIVRE_ATIPICA', 'LEGISLATIVO_ATIPICO', 'RECEITA_INCOMPATIVEL')):
         r['margem_ampla'] = r['margem_estrita'] = r['margem_ampla_p'] = None; r['status'] = 'marcado_nao_calculado'
     else:
         a = m['rl'] - r['minimos_exigidos'] - m['leg'] - m['div'] - m['prec']
