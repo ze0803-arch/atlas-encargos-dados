@@ -838,6 +838,11 @@ function renderMetodologia(){
   <div class="vh"><h2>Metodologia e registros</h2></div>
   <p class="lead">Como cada número é calculado, de onde veio, onde está guardado e como reencontrá-lo. No sistema real, esta página é montada a partir dos registros verdadeiros (diário de coleta, catálogo e dicionário), e não escrita à mão.</p>
   <div class="mcols">
+   <div class="card" style="grid-column:1/-1"><h3>Em palavras simples</h3>
+    <p><b>Pergunta:</b> a lei federal cria as mesmas despesas obrigatórias para todos os municípios, mas cada um arrecada um valor diferente. Quanto sobra para o prefeito decidir?</p>
+    <p><b>Margem de decisão:</b> é o que sobra do orçamento depois das obrigações (mínimos de saúde e educação, Legislativo, dívida, precatórios). Os números do Comparativo usam esta medida, a ampla; a folha paga com recurso livre entra numa segunda medida, a estrita.</p>
+    <p><b>Como lemos:</b> dividimos os municípios em cinco faixas de riqueza (PIB por habitante, do IBGE), comparamos faixas dentro do mesmo estado e sempre mostramos quantos municípios entraram no cálculo (cobertura).</p>
+    <p><b>Limite:</b> os dados de 2023 mostram associação, não causa. Quintil = uma das cinco faixas iguais; receita vinculada = dinheiro com destino fixado em lei; cobertura = percentual de municípios calculados.</p></div>
    <div class="card"><h3>1 · Cálculos</h3>
     <p>O orçamento executado é dividido em quatro blocos. Dicionário em uso: <b class="mono">${dicLabel()}</b>.</p>
     <ul><li><b>I</b> Obrigação de origem nacional: fontes vinculadas por norma nacional, mínimos de educação e saúde, contribuição patronal.</li><li><b>II</b> Estrutura e compromissos passados: Câmara, juros e amortização, precatórios.</li><li><b>III</b> Espaço de decisão: o que sobra do recurso livre.</li><li><b>IV</b> Recursos de outros entes: convênios, emendas e transferências especiais.</li></ul>
@@ -1092,6 +1097,10 @@ document.addEventListener('change',e=>{const t=e.target;if(t.dataset.r==='uf'){S
 document.addEventListener('input',e=>{const t=e.target;if(t.dataset.rr==='tol'){S.rTol=+t.value;renderConferirR()}else if(t.dataset.rr==='sd'){S.rSd=+t.value;renderConferirR()}});
 document.addEventListener('click',e=>{const a=e.target.closest('[data-rgo]');if(a){const c=a.dataset.rgo,m=PILOTO.find(r=>r.c===c);if(m){S.rUF=m.uf;S.rMun=c;location.hash='#municipio'}}});
 /*REAL-END*/
+
+
+
+
 
 
 /*COMP-START*/

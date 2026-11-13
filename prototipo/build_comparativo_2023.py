@@ -43,7 +43,7 @@ function renderComp(){
 '''.replace('__J__', json.dumps(DATA, ensure_ascii=False, separators=(',', ':')))
 SIMPLES = '''<div class="card" style="grid-column:1/-1"><h3>Em palavras simples</h3>
     <p><b>Pergunta:</b> a lei federal cria as mesmas despesas obrigatórias para todos os municípios, mas cada um arrecada um valor diferente. Quanto sobra para o prefeito decidir?</p>
-    <p><b>Margem de decisão:</b> é o que sobra do orçamento depois das obrigações (saúde, educação, salários, dívida, precatórios).</p>
+    <p><b>Margem de decisão:</b> é o que sobra do orçamento depois das obrigações (mínimos de saúde e educação, Legislativo, dívida, precatórios). Os números do Comparativo usam esta medida, a ampla; a folha paga com recurso livre entra numa segunda medida, a estrita.</p>
     <p><b>Como lemos:</b> dividimos os municípios em cinco faixas de riqueza (PIB por habitante, do IBGE), comparamos faixas dentro do mesmo estado e sempre mostramos quantos municípios entraram no cálculo (cobertura).</p>
     <p><b>Limite:</b> os dados de 2023 mostram associação, não causa. Quintil = uma das cinco faixas iguais; receita vinculada = dinheiro com destino fixado em lei; cobertura = percentual de municípios calculados.</p></div>
    '''
@@ -54,5 +54,7 @@ h = h.replace(m, JS+'\n'+m, 1)
 if 'id="v-comp"' not in h: h = h.replace('<section class="view" id="v-tese" hidden></section>', '<section class="view" id="v-tese" hidden></section>\n  <section class="view" id="v-comp" hidden></section>', 1)
 if "'tese','comp'" not in h: h = h.replace("resultados:['piloto','tese',", "resultados:['piloto','tese','comp',", 1)
 if 'comp:renderComp' not in h: h = h.replace('tese:renderTese,', 'tese:renderTese,comp:renderComp,', 1)
-if 'Em palavras simples' not in h: h = h.replace('<div class="mcols">\n   <div class="card"><h3>1 · Cálculos</h3>', '<div class="mcols">\n   '+SIMPLES+'<div class="card"><h3>1 · Cálculos</h3>', 1)
+if '<h3>Em palavras simples</h3>' not in h:
+    A = '<div class="mcols">\n   <div class="card"><h3>1 · Cálculos</h3>'; assert A in h
+    h = h.replace(A, '<div class="mcols">\n   '+SIMPLES+'<div class="card"><h3>1 · Cálculos</h3>', 1)
 open(H, 'w', encoding='utf8').write(h); print('ok', len(h), 'palavras simples' , 'Em palavras simples' in h, "'tese','comp'" in h, 'comp:renderComp' in h)

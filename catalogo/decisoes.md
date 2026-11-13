@@ -280,3 +280,9 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 
 ## D63 (13/11/2026) — App: tela Comparativo e textos simples
 - Nova tela Comparativo (aba Resultados): quintis de PIB por habitante, art. 11 e tabela por UF com cobertura; UFs com <40 calculados ou cobertura <40% marcadas "cobertura insuficiente". Quadro "Em palavras simples" na Metodologia. Script: prototipo/build_comparativo_2023.py (rodar após build_real_2023.py). Pendentes: Início/Ficha com quintil de PIB do estado, tela de hipóteses H1–H5, seletor de ano, textos simples do Protocolo/Roteiro.
+
+## D64 (13/11/2026) — Conferência da proposta do chat Tese
+- Os números de 2023 (p_m, p_mt) são da margem AMPLA (sem descontar a folha livre); o prompt enviado ao chat Tese dizia o contrário e foi corrigido. Estrita: mediana 37,7% da receita livre e 22,2% da receita total.
+- UFs com cobertura <60%: AC, AL, AP, BA, GO, MT, PB (7, sem DF); <50%: AC, AL, AP, MT, PB. O app usa n<40 ou cobertura <40% (exclui também RO e RR por n<40). Corte único a decidir.
+- Os 3.891 são municípios calculados com receita tributária e PIB (mesmo conjunto).
+- Pendentes da proposta: PIB defasado (usar média 2021–2023 fixa), margem em R$ por habitante por quintil de PIB, robustez com renda do Censo e sem economias concentradas, margem com e sem Fundeb, versão estrita por PIB.
