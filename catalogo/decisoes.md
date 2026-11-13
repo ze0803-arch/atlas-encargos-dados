@@ -210,3 +210,9 @@ Receita federal vinculada (SUS, FNAS, FNDE, convênios) sobre a receita total, e
 - Fernando de Noronha (2605459): excluído do universo municipal, como o DF; a exclusão é registrada.
 - Sensibilidade de 3% entre MSC e DCA: só em apêndice metodológico, com ressalva; o resultado oficial é o de 1%.
 - Classificação das ações da União (catalogo/classificacao_acoes_2023.csv): as 40 maiores ações (99,3% do valor) foram classificadas pelo formulário, aceitando todas as propostas; as demais pela proposta, ou adesão a revisar (0,4% do valor). Participação no total transferido (R$ 391,9 bi): automática constitucional 69,1%; obrigação legal 21,4%; adesão 6,3%; outra 3,2%.
+
+## D50 — Receita incompatível com a população (13/11/2026)
+Município cuja receita na MSC passa de R$ 40.000 por habitante fica "marcado, não calculado" (flag RECEITA_INCOMPATIVEL). Mediana nacional: R$ 6.370 por habitante; p99: R$ 19.557. Efeito em 2023: só Varginha (MG, R$ 88.495 por habitante, receita de R$ 12,7 bi); nenhum falso positivo entre os calculados. Medianas e cobertura não mudam; o total nacional de receita cai R$ 12,7 bi. Rejeitada a regra "receita maior que 10 vezes a RCL" (excluiria Paiçandu/PR, cuja RCL é que está errada, e não se aplica aos 143 calculados sem RCL).
+
+## D51 — Teste do FPM nacional (13/11/2026)
+Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_nacional.py), 3.685 calculados com os dois valores: igual até 1% em 3.180; cerca de 20% abaixo (padrão da dedução do Fundeb) em 51; entre as 88 exceções de saúde acima de 10%, 36 têm esse padrão. Indício, não prova; o cálculo não muda.
