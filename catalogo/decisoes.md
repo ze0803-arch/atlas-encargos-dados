@@ -257,3 +257,9 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Scripts: prototipo/build_prototipo_nacional.py (resultado e validação), build_tese_2023.py (testes da tese e gráficos, a partir dos .md de catalogo/) e build_real_2023.py (início, coleta, conferência e ficha). Rodar nessa ordem, da raiz do repositório.
 - Conferir tem tolerância ajustável sobre os 5.568 municípios. A ficha mostra o cálculo agregado por município (receita livre, mínimos, Legislativo, dívida, precatórios, folha), não as linhas brutas da MSC, que ficam no Zenodo.
 - Coletar mostra o diário do piloto guardado no repositório (1.272 entes); o diário da coleta nacional está no computador do pesquisador.
+
+## D60 — Diagnóstico da baixa cobertura da Paraíba e do Acre (2023)
+- Acre: 21 de 22 municípios com MSC sem natureza da receita; as contas fecham com a DCA (D20, D45).
+- Paraíba (41 de 223 calculados): a MSC de dezembro vem curta (mediana de 68 linhas, contra cerca de 2.000 nos demais estados) e 124 municípios caem na soma das 12 matrizes mensais. Desses, 35 têm meses vazios (nenhum calculado), 32 fecham e 57 têm os 12 meses mas não fecham com a DCA.
+- Entre os 57: a soma mensal fecha em 2; descartar linhas duplicadas (mesma entrada da MSC) fecha em 6 (+4); só dezembro ou o último mês não fecham nenhum. Em casos como Tavares, a conta de receita (621200000) não existe nas matrizes; em Camalaú, a receita e a despesa vêm em dobro. Conclusão: a maior parte não é recuperável pelo Siconfi.
+- Não aplicado: a regra de duplicatas acrescentaria cerca de 4 municípios da PB; reavaliar numa próxima rodada nacional. Script: analises/diag_pb_2023.py. Hipótese não verificada: a falha vem do sistema contábil que os municípios usam para enviar a MSC; o SAGRES (TCE-PB) seria uma fonte alternativa, ainda não testada.
