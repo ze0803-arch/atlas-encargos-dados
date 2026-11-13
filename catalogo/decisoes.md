@@ -286,3 +286,10 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - UFs com cobertura <60%: AC, AL, AP, BA, GO, MT, PB (7, sem DF); <50%: AC, AL, AP, MT, PB. O app usa n<40 ou cobertura <40% (exclui também RO e RR por n<40). Corte único a decidir.
 - Os 3.891 são municípios calculados com receita tributária e PIB (mesmo conjunto).
 - Pendentes da proposta: PIB defasado (usar média 2021–2023 fixa), margem em R$ por habitante por quintil de PIB, robustez com renda do Censo e sem economias concentradas, margem com e sem Fundeb, versão estrita por PIB.
+
+## D65 · Readequação do aplicativo ao projeto de 66 páginas (2026-11-13)
+- Nova tela **Hipóteses** (H1–H5): enunciado, tipo, o que 2023 sugere (valores recalculados), confirma/derruba (Quadro 7), o que falta; 2023 exploratório, 2024–2026 confirmatórios, regra 2 de 3 anos com cobertura ≥65%; limiares são propostas a fixar com o orientador.
+- Tela **Comparativo** reescrita como Apêndice D (Tabelas 3–7 por quintil de PIB por habitante, tabela por UF com cobertura). Fonte: analises/tabelas_projeto_2023.py → catalogo/tabelas_projeto_2023.json.
+- Tela antiga de base própria renomeada "Base própria: o efeito automático"; Ficha do município mostra PIB por habitante e faixa Q1–Q5; Início com a nova pergunta; Metodologia com card de regras e normas pendentes.
+- Diferenças ≤0,4 ponto frente às Tabelas 5 e 7 do projeto decorrem do recálculo no repositório.
+- Script: prototipo/build_readequacao_2023.py (rodar após build_comparativo_2023.py).
