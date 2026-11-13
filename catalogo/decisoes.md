@@ -277,3 +277,6 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Art. 11 LRF (critério relativo): municípios abaixo do critério em IPTU/ISS/ITBI: 25,3% no Q1 de PIB contra 3,6% no Q5.
 - Modelo em dois níveis: 33% da variação da margem está entre UFs; efeito médio 4,2 (inclinação varia entre UFs, desvio 1,3; positiva em 19 de 20). Pares de mesma UF e porte: terço de maior PIB tem +3,4 pontos, positivo em 87% dos 87 grupos.
 - Cuidados: UFs com <40 calculados ou cobertura <40% (RR, AP, AL, PB, RO, AC) fora das leituras por UF; sensibilidade com peso pela cobertura não muda o efeito (4,16). 2023 permanece exploratório. PIB pode refletir arrecadação via ISS de empresas — não é medida perfeita de capacidade.
+
+## D63 (13/11/2026) — App: tela Comparativo e textos simples
+- Nova tela Comparativo (aba Resultados): quintis de PIB por habitante, art. 11 e tabela por UF com cobertura; UFs com <40 calculados ou cobertura <40% marcadas "cobertura insuficiente". Quadro "Em palavras simples" na Metodologia. Script: prototipo/build_comparativo_2023.py (rodar após build_real_2023.py). Pendentes: Início/Ficha com quintil de PIB do estado, tela de hipóteses H1–H5, seletor de ano, textos simples do Protocolo/Roteiro.

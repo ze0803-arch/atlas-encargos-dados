@@ -164,6 +164,7 @@ pre.tree{font:12px/1.5 var(--mono);background:var(--surface);border:1px solid va
   <section class="view" id="v-piloto" hidden></section>
   <section class="view" id="v-analitica" hidden></section>
   <section class="view" id="v-tese" hidden></section>
+  <section class="view" id="v-comp" hidden></section>
   <section class="view" id="v-fichaR" hidden></section>
   <section class="view" id="v-conferirR" hidden></section>
   <section class="view" id="v-coletaR" hidden></section>
@@ -423,7 +424,7 @@ const dicLabel=()=>'dic'+p3(curN)+(dirty()?'*':'');
 const opt=(v,t,sel)=>`<option value="${esc(v)}"${String(sel)===String(v)?' selected':''}>${esc(t)}</option>`;
 
 const TABS=[['inicio','Início'],['coletar','1 · Coletar'],['conferir','2 · Conferir'],['classificar','3 · Classificar'],['resultados','4 · Resultados'],['municipio','5 · Município'],['graficos','Gráficos'],['metodologia','Metodologia']];
-const VIEWS={inicio:['inicioR'],coletar:['coletaR'],conferir:['conferirR'],classificar:['dicionario'],resultados:['piloto','tese','validacao'],municipio:['fichaR'],graficos:['graficos'],metodologia:['metodologia']};
+const VIEWS={inicio:['inicioR'],coletar:['coletaR'],conferir:['conferirR'],classificar:['dicionario'],resultados:['piloto','tese','comp','validacao'],municipio:['fichaR'],graficos:['graficos'],metodologia:['metodologia']};
 $('#tabs').innerHTML=TABS.map(t=>`<a href="#${t[0]}" data-tab="${t[0]}">${t[1]}</a>`).join('');
 
 function chip(c,k){return `<span class="chip ${k}">${esc(c)}</span>`}
@@ -1092,8 +1093,30 @@ document.addEventListener('input',e=>{const t=e.target;if(t.dataset.rr==='tol'){
 document.addEventListener('click',e=>{const a=e.target.closest('[data-rgo]');if(a){const c=a.dataset.rgo,m=PILOTO.find(r=>r.c===c);if(m){S.rUF=m.uf;S.rMun=c;location.hash='#municipio'}}});
 /*REAL-END*/
 
+
+/*COMP-START*/
+const COMP={"q":[{"q":"Q1 (menor)","n":779.0,"pib":12689.3,"m_rt":24.4,"m_rl":52.1,"vinc":52.8,"a11":25.3},{"q":"Q2","n":778.0,"pib":18647.8,"m_rt":29.3,"m_rl":53.8,"vinc":44.9,"a11":13.9},{"q":"Q3","n":778.0,"pib":29620.8,"m_rt":33.6,"m_rl":55.4,"vinc":39.6,"a11":3.8},{"q":"Q4","n":778.0,"pib":43889.2,"m_rt":36.3,"m_rl":56.5,"vinc":35.4,"a11":2.8},{"q":"Q5 (maior)","n":778.0,"pib":71998.0,"m_rt":38.3,"m_rl":56.7,"vinc":32.2,"a11":3.6}],"uf":[{"uf":"RR","ok":false,"n":13,"pib":27593.9,"m_rt":16.4,"vinc":66.9,"tot":15.0,"cob":87.0},{"uf":"PA","ok":true,"n":121,"pib":20090.9,"m_rt":17.1,"vinc":63.3,"tot":144.0,"cob":84.0},{"uf":"AP","ok":false,"n":7,"pib":27061.3,"m_rt":17.9,"vinc":65.6,"tot":16.0,"cob":44.0},{"uf":"CE","ok":true,"n":164,"pib":14133.5,"m_rt":18.9,"vinc":57.7,"tot":184.0,"cob":89.0},{"uf":"MA","ok":true,"n":163,"pib":12098.8,"m_rt":21.6,"vinc":60.9,"tot":217.0,"cob":75.0},{"uf":"AM","ok":true,"n":51,"pib":13919.8,"m_rt":22.0,"vinc":60.0,"tot":62.0,"cob":82.0},{"uf":"AL","ok":false,"n":34,"pib":25387.0,"m_rt":22.4,"vinc":56.0,"tot":102.0,"cob":33.0},{"uf":"RJ","ok":true,"n":55,"pib":36548.5,"m_rt":25.0,"vinc":52.9,"tot":92.0,"cob":60.0},{"uf":"PI","ok":true,"n":200,"pib":13403.2,"m_rt":25.2,"vinc":51.4,"tot":224.0,"cob":89.0},{"uf":"BA","ok":true,"n":219,"pib":15142.3,"m_rt":26.3,"vinc":48.2,"tot":417.0,"cob":53.0},{"uf":"SE","ok":true,"n":45,"pib":20115.5,"m_rt":27.3,"vinc":47.0,"tot":75.0,"cob":60.0},{"uf":"PE","ok":true,"n":136,"pib":14627.2,"m_rt":28.4,"vinc":48.0,"tot":184.0,"cob":74.0},{"uf":"PB","ok":false,"n":39,"pib":14849.0,"m_rt":28.4,"vinc":45.0,"tot":223.0,"cob":17.0},{"uf":"ES","ok":true,"n":69,"pib":29212.3,"m_rt":30.3,"vinc":45.3,"tot":78.0,"cob":88.0},{"uf":"RN","ok":true,"n":148,"pib":16961.2,"m_rt":30.5,"vinc":41.7,"tot":167.0,"cob":89.0},{"uf":"RO","ok":false,"n":33,"pib":39368.2,"m_rt":30.8,"vinc":44.2,"tot":52.0,"cob":63.0},{"uf":"TO","ok":true,"n":85,"pib":31042.6,"m_rt":30.9,"vinc":42.3,"tot":139.0,"cob":61.0},{"uf":"MS","ok":true,"n":50,"pib":67900.2,"m_rt":33.6,"vinc":37.8,"tot":79.0,"cob":63.0},{"uf":"MG","ok":true,"n":651,"pib":23057.1,"m_rt":34.1,"vinc":38.5,"tot":853.0,"cob":76.0},{"uf":"MT","ok":true,"n":69,"pib":56441.9,"m_rt":35.0,"vinc":37.5,"tot":142.0,"cob":49.0},{"uf":"RS","ok":true,"n":389,"pib":45654.3,"m_rt":35.8,"vinc":36.8,"tot":497.0,"cob":78.0},{"uf":"PR","ok":true,"n":259,"pib":46167.3,"m_rt":35.9,"vinc":36.2,"tot":399.0,"cob":65.0},{"uf":"GO","ok":true,"n":133,"pib":38017.4,"m_rt":37.5,"vinc":32.1,"tot":246.0,"cob":54.0},{"uf":"SC","ok":true,"n":256,"pib":51053.0,"m_rt":37.7,"vinc":34.2,"tot":295.0,"cob":87.0},{"uf":"AC","ok":false,"n":1,"pib":33318.6,"m_rt":38.9,"vinc":29.8,"tot":22.0,"cob":5.0},{"uf":"SP","ok":true,"n":501,"pib":44933.9,"m_rt":42.7,"vinc":27.0,"tot":645.0,"cob":78.0}]};
+function renderComp(){
+  const el=$('#v-comp'),Q=COMP.q,q1=Q[0],q5=Q[4],ok=COMP.uf.filter(x=>x.ok),fora=COMP.uf.filter(x=>!x.ok).map(x=>x.uf).join(', ');
+  el.innerHTML=`
+  ${hd(4,'Comparativo: municípios ricos e pobres, estados e cobertura','Aqui os municípios são divididos pelo PIB por habitante (IBGE, 2023), que não depende do que o município arrecada. Q1 é o grupo de menor PIB por habitante e Q5 o de maior. São números exploratórios de 2023: mostram associação, não causa.')}
+  <div class="cards">
+   <div class="card stat"><div class="n">${nf1.format(q1.m_rt)}% → ${nf1.format(q5.m_rt)}%</div><div class="l">margem de decisão sobre a receita total, Q1 → Q5</div></div>
+   <div class="card stat"><div class="n">${nf1.format(q1.vinc)}% → ${nf1.format(q5.vinc)}%</div><div class="l">parte da receita com destino obrigatório, Q1 → Q5</div></div>
+   <div class="card stat"><div class="n">${nf1.format(q1.a11)}% → ${nf1.format(q5.a11)}%</div><div class="l">com arrecadação própria muito baixa (art. 11 da LRF), Q1 → Q5</div></div>
+  </div>
+  <p class="lead">Em palavras simples: nos municípios de menor riqueza por habitante, mais dinheiro já chega com destino definido por lei, e sobra menos para o prefeito decidir. A diferença aparece também entre municípios do mesmo estado, em todos os 20 estados com dados suficientes.</p>
+  <h3>Por faixa de PIB por habitante (medianas)</h3>
+  ${tb(Q.map(x=>({q:x.q,n:x.n,pib:x.pib,m_rt:x.m_rt,m_rl:x.m_rl,vinc:x.vinc,a11:x.a11})),[['q','Faixa'],['n','Municípios',1],['pib','PIB por hab. (R$)',1],['m_rt','Margem, % da receita total',1],['m_rl','Margem, % da receita livre',1],['vinc','Receita vinculada, %',1],['a11','Abaixo do critério do art. 11, %',1]])}
+  <h3>Por estado</h3>
+  <p class="muted">A cobertura é o percentual de municípios do estado para os quais a margem pôde ser calculada. Estados com menos de 40 municípios calculados ou cobertura abaixo de 40% (${fora}) ficam marcados e não devem ser comparados.</p>
+  ${tb(COMP.uf.map(x=>({uf:x.uf,n:x.n,cob:x.cob,pib:x.pib,m_rt:x.m_rt,vinc:x.vinc,leitura:x.ok?'ok':'cobertura insuficiente'})),[['uf','UF'],['n','Calculados',1],['cob','Cobertura, %',1],['pib','PIB por hab. (R$)',1],['m_rt','Margem, % da receita total',1],['vinc','Vinculada, %',1],['leitura','Leitura']])}
+  <p class="muted">Cuidados: o PIB pode refletir uma única empresa grande; a cobertura é de cerca de 70% dos municípios; os números de 2023 não confirmam nem refutam hipótese alguma (a confirmação virá com 2024 a 2027). Detalhes em catalogo/base_independente_2023.md e comparativo_2023.md.</p>`;
+}
+/*COMP-END*/
+
 /* ---------- Roteamento e eventos ---------- */
-const R={inicioR:renderInicioR,coletaR:renderColetaR,conferirR:renderConferirR,fichaR:renderFichaR,piloto:renderPiloto,tese:renderTese,validacao:renderValidacao,inicio:renderInicio,cobertura:renderCobertura,dicionario:renderDicionario,analitica:renderAnalitica,conferencias:renderConferencias,ficha:renderFicha,amostra:renderAmostra,graficos:renderGraficos,metodologia:renderMetodologia};
+const R={inicioR:renderInicioR,coletaR:renderColetaR,conferirR:renderConferirR,fichaR:renderFichaR,piloto:renderPiloto,tese:renderTese,comp:renderComp,validacao:renderValidacao,inicio:renderInicio,cobertura:renderCobertura,dicionario:renderDicionario,analitica:renderAnalitica,conferencias:renderConferencias,ficha:renderFicha,amostra:renderAmostra,graficos:renderGraficos,metodologia:renderMetodologia};
 let cur='inicio';
 function route(){
   const h=(location.hash||'#inicio').slice(1);cur=VIEWS[h]?h:'inicio';
