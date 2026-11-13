@@ -245,3 +245,9 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - 4.037 de 5.570 municípios calculados (72,5%). Principais motivos entre os não calculados: divergência MSC×DCA na liquidação (1.044) e na receita (908), fonte livre atípica (240), RCL suspeita (178), sem natureza da receita (154).
 - A cobertura não varia com o porte (71% a 74%) nem com a população ou a receita por habitante (p > 0,2). Varia pouco com a base própria: 69,6% no quintil menor e 75,4% nos dois maiores; no logit com efeito fixo de UF a base não prediz cobertura (p = 0,54).
 - Coeficiente ponderado pelo inverso da probabilidade de cobertura é igual ao sem peso (1,17 sobre a receita livre; 3,19 contra 3,21 sobre a receita total). Sem evidência de viés em variáveis observadas; viés em não observadas não é descartável. Arquivo: catalogo/vies_cobertura_2023.md
+
+## D58 — Correções no protótipo e sincronização do catálogo
+- Os alertas de cada município no protótipo saíam como "Flags(allows_duplicate_labels=True)" (x.flags é atributo do pandas; corrigido para x['flags'] em build_prototipo_nacional.py). A lista de alertas por município agora mostra os códigos reais (REC_DIVERGE, LIQ_DIVERGE etc.).
+- catalogo/ tinha siops_2023.csv, comparacao_siops_2023.csv, confianca_2023.json e convenios_2023.csv de 9 UFs; substituídos pelas versões nacionais. Reconstruir o protótipo com os arquivos antigos reduziria a validação nacional (5.456 comparações) a 1.174.
+- O script de reconstrução passa a ser idempotente nos textos.
+- Novo cartão 6 na página Metodologia do protótipo, com os resultados de D53 a D57.

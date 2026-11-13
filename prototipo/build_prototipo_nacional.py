@@ -11,7 +11,7 @@ rows = []
 for _, x in r.iterrows():
     c = x.cod_ibge; calc = x.status == 'calculado'
     rows.append(dict(c=c, ente=x.ente.replace('Prefeitura Municipal de ', ''), uf=x.uf, pop=int(x['pop']), st='calc' if calc else 'marc',
-        fl=[f for f in str(x.flags).split('|') if f not in ('OK', 'nan')], m=n(x.margem_ampla) if calc else None, me=n(x.margem_estrita) if calc else None,
+        fl=[f for f in str(x['flags']).split('|') if f not in ('OK', 'nan')], m=n(x.margem_ampla) if calc else None, me=n(x.margem_estrita) if calc else None,
         mp=n(x.margem_ampla_pct_rcl) if calc else None, rl=n(x.rec_livre) if calc else None,
         cf=(None if not calc else ('A' if not C.get(c) else 'R')), ft=C.get(c, []) if calc else []))
 # VALID: SIOPS
@@ -37,7 +37,7 @@ h = h.replace("das UFs já coletadas.", "das 27 UFs (o DF e Fernando de Noronha 
 for a, b in [('municípios em que o FPM do SIOPS é igual ao da MSC', 'municípios em que o FPM do SIOPS é igual ao da MSC (piloto de 9 UFs)'),
              ('das exceções acima de 10% têm esse padrão', 'das exceções acima de 10% têm esse padrão (piloto de 9 UFs)'),
              ('receita federal vinculada (SUS, FNDE, convênios, FNAS), % da receita total: teto do bloco P', 'receita federal vinculada (SUS, FNDE, convênios, FNAS), % da receita total, mediana de 3.522 municípios: teto do bloco P')]:
-    h = h.replace(a, b)
+    h = h if b in h else h.replace(a, b)
 h = h.replace('Validação do piloto 2023 e bloco P', 'Validação 2023 e bloco P')
 open(H, 'w', encoding='utf8').write(h)
 print(len(rows), sum(x['st'] == 'calc' for x in rows), V['todos'], V['calc'], len(V['exc']), V['p'])
