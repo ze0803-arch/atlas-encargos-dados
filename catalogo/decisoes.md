@@ -195,5 +195,5 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 - Nas tabelas do bloco P, as linhas de SUS mostram o recebido em % da receita livre, não encargo; são apresentadas à parte.
 
 ## D46 — Correspondência de nomes do Portal da Transparência com o IBGE (13/11/2026)
-- O arquivo de transferências ligava município por UF e nome normalizado; 20 municípios ficaram sem ligação por grafia diferente (nome antigo, ortografia antiga ou sufixo), por exemplo Parati (RJ, IBGE: Paraty), Iguaraci (PE, IBGE: Iguaracy), Seridó (PB, IBGE: São Vicente do Seridó), Janúario Cicco (RN, IBGE: Boa Saúde).
+- O arquivo de transferências ligava município por UF e nome normalizado; 20 municípios ficaram sem ligação por grafia diferente (nome antigo, ortografia antiga ou sufixo), por exemplo Parati (RJ, IBGE: Paraty), Iguaraci (PE, IBGE: Iguaracy), Seridó (PB, IBGE: São Vicente do Seridó), Januário Cicco (RN, IBGE: Boa Saúde).
 - Corrigido em `transferencias.py` com tabela `ALIAS` (20 pares, conferida contra o arquivo de janeiro de 2023). Boa Esperança do Norte (MT) não aparece no Portal em janeiro; fica sem transferências. Rodar de novo a etapa `transferencias`.
