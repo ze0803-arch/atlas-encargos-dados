@@ -251,3 +251,9 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - catalogo/ tinha siops_2023.csv, comparacao_siops_2023.csv, confianca_2023.json e convenios_2023.csv de 9 UFs; substituídos pelas versões nacionais. Reconstruir o protótipo com os arquivos antigos reduziria a validação nacional (5.456 comparações) a 1.174.
 - O script de reconstrução passa a ser idempotente nos textos.
 - Novo cartão 6 na página Metodologia do protótipo, com os resultados de D53 a D57.
+
+## D59 — Telas do protótipo com dados reais de 2023
+- Início, Coletar, Conferir, Município (ficha), Gráficos e uma nova tela Testes da tese passam a usar dados reais de 2023. Só a tela Classificar (dicionário) segue como demonstração.
+- Scripts: prototipo/build_prototipo_nacional.py (resultado e validação), build_tese_2023.py (testes da tese e gráficos, a partir dos .md de catalogo/) e build_real_2023.py (início, coleta, conferência e ficha). Rodar nessa ordem, da raiz do repositório.
+- Conferir tem tolerância ajustável sobre os 5.568 municípios. A ficha mostra o cálculo agregado por município (receita livre, mínimos, Legislativo, dívida, precatórios, folha), não as linhas brutas da MSC, que ficam no Zenodo.
+- Coletar mostra o diário do piloto guardado no repositório (1.272 entes); o diário da coleta nacional está no computador do pesquisador.
