@@ -230,3 +230,9 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 ## D54 — Pisos: choque uniforme sobre a folha da função (13/11/2026)
 - Sem a folha por cargo, os pisos passam a ser medidos pela exposição de cada município a um mesmo reajuste nacional: índice x despesa de pessoal da função (MSC). Magistério: 14,95% (piso de jan/2023). É teto do custo, não o custo.
 - Resultado e script: catalogo/choque_pisos_2023.md, analises/choque_pisos_2023.py. O custo efetivo (folha abaixo do piso por cargo) fica como limitação declarada.
+
+## D55 — Robustez dos testes de 2023 e critério relativo do art. 11 (2023)
+- Teste de robustez em analises/robustez_2023.py (saída: catalogo/robustez_2023.md).
+- A relação entre base tributária própria por habitante e margem decisória se mantém com tolerância MSC×DCA de 3% (n = 4.103), com base alternativa (IPTU+ISS+ITBI por habitante; participação do tributo próprio na receita) e excluindo as 8 UFs com cobertura abaixo de 60% (AC, AL, AP, BA, DF, GO, MT, PB). Sinal e significância não mudam (coeficiente sobre a receita total entre 2,2 e 3,3 pontos por log de base; p < 1e-5 em todas).
+- Dentro da mesma UF a diferença cai: margem sobre a receita livre quase não varia entre quintis (54,4 a 55,3%); sobre a receita total vai de 31,4 a 34,4% (rho = 0,069). Parte relevante da assimetria de 2023 é entre UFs e faixas de porte, não só entre municípios vizinhos. Registrar como limite da conclusão.
+- Art. 11 da LRF: critério relativo substitui o limite de R$ 10 por habitante. Considera-se baixa arrecadação a receita de IPTU, ISS ou ITBI abaixo de 10% da mediana da mesma UF e faixa de porte. Resultado: 25,2% dos municípios do quintil de menor base têm algum imposto abaixo do critério, contra 2,3% no quintil de maior base (9,8% do total).
