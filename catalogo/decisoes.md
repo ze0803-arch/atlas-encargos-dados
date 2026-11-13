@@ -240,3 +240,8 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 ## D56 — Conclusões de 2023 e conferência de normas
 - Consolidação em catalogo/conclusoes_2023.md. A conclusão central é afirmada com o limite de que a assimetria dentro da mesma UF é pequena.
 - Normas com texto oficial integral ainda por conferir antes de citação na tese: art. 11 da LRF, Lei 11.738, Lei 14.113, número da lei do crédito do piso da enfermagem, Portaria GM/MS 1.135/2023 (provável confusão com a 597/2023), Tema 1181 e resoluções ANEEL.
+
+## D57 — Viés de cobertura de 2023
+- 4.037 de 5.570 municípios calculados (72,5%). Principais motivos entre os não calculados: divergência MSC×DCA na liquidação (1.044) e na receita (908), fonte livre atípica (240), RCL suspeita (178), sem natureza da receita (154).
+- A cobertura não varia com o porte (71% a 74%) nem com a população ou a receita por habitante (p > 0,2). Varia pouco com a base própria: 69,6% no quintil menor e 75,4% nos dois maiores; no logit com efeito fixo de UF a base não prediz cobertura (p = 0,54).
+- Coeficiente ponderado pelo inverso da probabilidade de cobertura é igual ao sem peso (1,17 sobre a receita livre; 3,19 contra 3,21 sobre a receita total). Sem evidência de viés em variáveis observadas; viés em não observadas não é descartável. Arquivo: catalogo/vies_cobertura_2023.md
