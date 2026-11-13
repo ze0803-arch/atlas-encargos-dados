@@ -184,3 +184,16 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 - Leitura: o Atlas usa só despesa liquidada em fonte livre (1500/1501), e os anexos somam todas as fontes. Atlas ≤ SIAI é o esperado, e a igualdade em oito casos mostra que nesses a despesa é toda de fonte livre. Os três desvios maiores são compatíveis com parte do gasto em outras fontes, mas os anexos não trazem fonte de recurso e a hipótese não está provada.
 - Limites: amostra de 5 (não permite taxa de acerto nacional); só RN; só 2023; Anexo 09 pode refletir empenhado e não liquidado (não verificado). Para fechar os três desvios é preciso o XML das contas de governo ou a MSC por órgão e fonte (pedido ao TCE-RN, opcional).
 - Efeito: o selo de nível 3 pode ser declarado "auditado por amostra, com ressalva" para esses cinco; os resultados dos demais municípios não mudam.
+
+## D45 — Execução nacional de 2023: cobertura, tolerância e universo (13/11/2026)
+- Resultado: 5.569 entes, 4.038 calculados (73%; 4.038 de 5.568 se o DF sair do universo, 72,5%) e 3.451 com alta confiança (85% dos calculados). Relatório em `relatorio_2023.md`.
+- Cobertura desigual por UF: AC 5%, PB 18%, AL 34%, AP 44%, MT 49%, BA 54%, GO 57%; PI 95%, RN 92%, CE e PA 90%.
+- Acre: 21 dos 22 municípios sem natureza da receita na MSC (`SEM_NATUREZA_RECEITA`); limitação do dado de origem, sem imputação. Demais UF de baixa cobertura: divergência MSC × DCA (`REC_DIVERGE`, `LIQ_DIVERGE`).
+- Tolerância MSC × DCA mantida em 1% como regra principal. Entre os 1.350 com divergência, 1.011 têm só esse motivo; com tolerância de 2%, 3% e 5% voltariam 228, 325 e 484. A divergência mediana desses 1.011 é de 2,6% (receita) e 3,5% (despesa liquidada), o que indica diferença sistemática de classificação, não ruído. A sensibilidade a 3% é análise separada: `python analisar.py --pasta dados --tol 0.03` grava `resultado_2023_tol3.csv` (a regra principal não muda).
+- Universo: o DF não é município e sai do denominador municipal. Fernando de Noronha (2605459) não aparece na lista de entes; é distrito estadual de Pernambuco; decisão pendente (incluir ou declarar a exclusão).
+- Margem ampla mediana nacional: 40,3% da RCL (não comparável com os 51,8% da receita livre do piloto do RN; bases diferentes).
+- Nas tabelas do bloco P, as linhas de SUS mostram o recebido em % da receita livre, não encargo; são apresentadas à parte.
+
+## D46 — Correspondência de nomes do Portal da Transparência com o IBGE (13/11/2026)
+- O arquivo de transferências ligava município por UF e nome normalizado; 20 municípios ficaram sem ligação por grafia diferente (nome antigo, ortografia antiga ou sufixo), por exemplo Parati (RJ, IBGE: Paraty), Iguaraci (PE, IBGE: Iguaracy), Seridó (PB, IBGE: São Vicente do Seridó), Janúario Cicco (RN, IBGE: Boa Saúde).
+- Corrigido em `transferencias.py` com tabela `ALIAS` (20 pares, conferida contra o arquivo de janeiro de 2023). Boa Esperança do Norte (MT) não aparece no Portal em janeiro; fica sem transferências. Rodar de novo a etapa `transferencias`.

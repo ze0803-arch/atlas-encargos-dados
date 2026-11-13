@@ -9,11 +9,11 @@ Fonte da MSC por município (decisão D19): usa a MSCE de dezembro; se ela não 
 dos 12 meses. Também testa as duas convenções de sinal (D-C e C-D) e "só débitos" na receita.
 """
 import argparse, collections, csv, glob, gzip, json, os
-ap = argparse.ArgumentParser(); ap.add_argument('--pasta', default='dados'); ap.add_argument('--ano', default='2023')
+ap = argparse.ArgumentParser(); ap.add_argument('--pasta', default='dados'); ap.add_argument('--ano', default='2023'); ap.add_argument('--tol', type=float, default=0.01, help='tolerância MSC x DCA (padrão 1%%; D45); com outro valor grava resultado_<ano>_tol<N>.csv, só para sensibilidade')
 A = ap.parse_args()
 B = os.path.join(A.pasta, 'raw', 'siconfi', A.ano) + os.sep
 LIVRE = {'500', '501'}   # fonte[1:]: recursos não vinculados (1500 e 1501)
-TOL = 0.01
+TOL = A.tol
 
 def carrega(rel, cod):
     out = []
@@ -116,7 +116,7 @@ for c in cods:
         r['margem_ampla_p'] = a - m['cons']   # D37: margem ampla depois do bloco P (consórcios)
     r['margem_ampla_pct_rcl'] = (r['margem_ampla'] / r['rcl_rreo']) if r['margem_ampla'] is not None and r['rcl_rreo'] and not r['rcl_suspeita'] else None
     rows.append(r)
-saida = os.path.join(A.pasta, 'resultado_' + A.ano + '.csv')
+saida = os.path.join(A.pasta, 'resultado_' + A.ano + ('' if A.tol == 0.01 else '_tol%g' % (A.tol * 100)) + '.csv')
 with open(saida, 'w', newline='', encoding='utf-8') as f:
     w = csv.DictWriter(f, list(rows[0])); w.writeheader(); w.writerows(rows)
 print(collections.Counter(r['status'] for r in rows))

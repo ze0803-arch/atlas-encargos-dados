@@ -38,6 +38,13 @@ for mes in A.meses:
     t['v'] = t['VALOR TRANSFERIDO'].str.replace('.', '', regex=False).str.replace(',', '.', regex=False).astype(float)
     t['grupo'] = t.apply(grupo, axis=1); t['mes'] = mes; frames.append(t)
 t = pd.concat(frames); t['cod_ibge'] = (t['UF'] + '|' + t['NOME MUNICÍPIO'].map(norm)).map(ent)
+# D46: grafias do Portal que diferem do IBGE (nome antigo, ortografia antiga ou sufixo); chave UF|nome normalizado do Portal -> código IBGE
+ALIAS = {'PA|ELDORADODOSCARAJAS': '1502954', 'PA|SANTAISABELDOPARA': '1506500', 'TO|COUTODEMAGALHAES': '1706001', 'TO|FORTALEZADOTABOCAO': '1708254',
+         'TO|SAOVALERIODANATIVIDADE': '1720499', 'CE|ITAPAGE': '2306306', 'RN|CAMPOGRANDEEXAUGUSTOSEVERO': '2401305', 'RN|JANUARIOCICCO': '2405306',
+         'RN|SERRACAIADAEXPRESIDENTEJUSCELINO': '2410306', 'PB|SAODOMINGOSDEPOMBAL': '2513968', 'PB|SERIDO': '2515401', 'PE|BELEMDESAOFRANCISCO': '2601607',
+         'PE|IGUARACI': '2606903', 'PE|LAGOADOITAENGA': '2608503', 'MG|BRASOPOLIS': '3108909', 'MG|DONAEUSEBIA': '3122900', 'MG|SAOTHOMEDASLETRAS': '3165206',
+         'RJ|PARATI': '3303807', 'RJ|TRAJANODEMORAIS': '3305901', 'MT|POXOREO': '5107008'}
+t['cod_ibge'] = t['cod_ibge'].fillna((t['UF'] + '|' + t['NOME MUNICÍPIO'].map(norm)).map(ALIAS))
 nm = t[t['cod_ibge'].isna()]['NOME MUNICÍPIO'].nunique()
 if nm: print(f'{nm} municípios sem código IBGE por nome (conferir): ', sorted(t[t['cod_ibge'].isna()]['UF'] + '|' + t[t['cod_ibge'].isna()]['NOME MUNICÍPIO'])[:10])
 t = t[t['cod_ibge'].notna()]
