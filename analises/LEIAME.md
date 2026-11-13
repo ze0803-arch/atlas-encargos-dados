@@ -14,3 +14,6 @@ Scripts usados nas conferências e medições do piloto. **Não fazem parte do a
 | `siai_nivel3_parse.sh` | Lê os Anexos 02 e 09 das contas de governo (SIAI) em PDF com `pdftotext` |
 
 Os PDFs do SIAI têm camada de texto: `curl` direto em `siaiconsultas.tce.rn.gov.br/downloadanexoportalgestor/ContasDeGoverno/<PM...>/<ano>/<anexo>/<id>/<arquivo>.pdf` (Anexo 02 = categoria econômica consolidada; Anexo 09 = despesa por órgão e funções).
+
+| `extrai_tributaria.py`, `testes_tese_2023.py` | Receita tributária própria (RREO Anexo 01) e testes da pergunta central da tese em 2023 (saída: `catalogo/testes_tese_2023.md`) |
+| `fpm_nacional.py` | Teste do FPM do SIOPS contra a MSC, em nível nacional (D51) |
