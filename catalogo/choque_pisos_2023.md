@@ -1,4 +1,4 @@
-# Choque uniforme dos pisos, 2023 (sem RAIS)
+# Choque uniforme dos pisos, 2023
 
 Municípios: 3453. Custo máximo do reajuste do piso do magistério = 14.95% x despesa de pessoal da função 12 (todas as fontes). É teto: só parte da folha está abaixo do piso. Mede a exposição de cada município ao mesmo choque nacional.
 

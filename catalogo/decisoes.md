@@ -217,16 +217,16 @@ Município cuja receita na MSC passa de R$ 40.000 por habitante fica "marcado, n
 ## D51 — Teste do FPM nacional (13/11/2026)
 Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_nacional.py), 3.685 calculados com os dois valores: igual até 1% em 3.180; cerca de 20% abaixo (padrão da dedução do Fundeb) em 51; entre as 88 exceções de saúde acima de 10%, 36 têm esse padrão. Indício, não prova; o cálculo não muda.
 
-## D52 — RAIS mantida no método, por causa dos pisos (13/11/2026; reverte a saída decidida no mesmo dia)
-- Primeira versão: RAIS fora do método, por não entrar na margem nem nos testes de assimetria. Revertida: o pesquisador decidiu que o custo dos pisos salariais (magistério, enfermagem, agentes comunitários) importa para a tese mesmo em 2023.
-- A folha por cargo só existe na RAIS (a MSC não separa cargo). A RAIS serve à medida do custo dos pisos e ao teste do art. 167, § 7º (encargo sem a transferência correspondente). A margem e os testes de assimetria não dependem dela.
-- Pendente: baixar a RAIS 2022 e 2023 (vínculos da administração municipal) no computador do pesquisador; o servidor do PDET não responde do ambiente de trabalho. Até lá, o lado federal dos pisos (transferências) está medido; o custo, não.
+## D52 — RAIS retirada do método, dos cálculos e do sistema (13/11/2026)
+- Decisão final do pesquisador, depois de uma ida e volta no mesmo dia: os arquivos da RAIS são grandes demais e a pergunta da tese pode ser respondida sem eles. A RAIS não entra na margem, nos testes de assimetria, nos testes jurídicos nem na coleta.
+- O custo dos pisos salariais, que a RAIS permitiria medir por cargo, é substituído pela exposição a um choque uniforme (D54).
+- Efeito: RAIS removida do Protocolo, do Roteiro de coleta, do protótipo e dos scripts; o quesito 8 do Protocolo (obtenção da RAIS) ficou como retirado.
 
 ## D53 — Testes jurídicos de 2023 (13/11/2026)
-- Art. 167, § 7º da CF: correspondência encargo-fonte medida pela fonte que paga a despesa nas funções 10, 08 e 12 (transferência federal vinculada × fonte livre), pelo excedente da fonte livre sobre o mínimo constitucional e, nos pisos, só pelo lado federal (assistência da enfermagem, fonte 1604). O custo dos pisos depende da RAIS (D52 revista).
+- Art. 167, § 7º da CF: correspondência encargo-fonte medida pela fonte que paga a despesa nas funções 10, 08 e 12 (transferência federal vinculada × fonte livre), pelo excedente da fonte livre sobre o mínimo constitucional e, nos pisos, só pelo lado federal (assistência da enfermagem, fonte 1604). Pisos: ver D54.
 - Art. 11 da LRF: "efetiva arrecadação" operacionalizada como receita realizada de IPTU, ITBI e ISS na MSC; critério principal = zero; sensibilidade = menos de R$ 10 por habitante (limiar arbitrário, só sensibilidade). Exposição à sanção = convênios e ações voluntárias da União de 2023.
 - 3.453 municípios calculados com MSCE. Resultados em catalogo/testes_juridicos_2023.md; extração em analises/extrai_juridico.py (base catalogo/juridico_base_2023.csv); testes em analises/testes_juridicos_2023.py.
 
-## D54 — Pisos sem a RAIS: choque uniforme sobre a folha da função (13/11/2026)
-- Os arquivos da RAIS são grandes demais; os pisos passam a ser medidos pela exposição de cada município a um mesmo reajuste nacional: índice x despesa de pessoal da função (MSC). Magistério: 14,95% (piso de jan/2023). É teto do custo, não o custo.
-- Resultado e script: catalogo/choque_pisos_2023.md, analises/choque_pisos_2023.py. O custo efetivo (folha abaixo do piso por cargo) fica como limitação declarada; a RAIS volta só se a tese exigir o valor.
+## D54 — Pisos: choque uniforme sobre a folha da função (13/11/2026)
+- Sem a folha por cargo, os pisos passam a ser medidos pela exposição de cada município a um mesmo reajuste nacional: índice x despesa de pessoal da função (MSC). Magistério: 14,95% (piso de jan/2023). É teto do custo, não o custo.
+- Resultado e script: catalogo/choque_pisos_2023.md, analises/choque_pisos_2023.py. O custo efetivo (folha abaixo do piso por cargo) fica como limitação declarada.

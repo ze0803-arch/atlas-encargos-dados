@@ -54,7 +54,7 @@ O mínimo vem da CF (arts. 198 e 212), não de lei; o § 7º trata de encargo im
 
 Excedente sobre o mínimo: rho com a base própria = 0.294, p = 1.2e-68; KW p = 5.3e-64
 
-### A3. Pisos: o lado federal (o custo exige a RAIS e fica pendente)
+### A3. Pisos: o lado federal (o custo é tratado no teto de exposição, D54)
 
 Assistência federal ao piso da enfermagem (Lei 14.581/2023, Portaria GM/MS 1.135/2023) e vencimentos de ACS/ACE (fonte 1604), por habitante e como % da despesa de pessoal da função 10 (MSC):
 

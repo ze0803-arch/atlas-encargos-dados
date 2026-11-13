@@ -55,7 +55,7 @@ t6 = d.groupby('q', observed=True).agg(minimo_pct_despesa=('min_pct','median'), 
 P(t6.round(1).to_markdown()); P()
 rho, p = sp(d.trib_pc, d.exc_pct); P(f'Excedente sobre o mínimo: rho com a base própria = {rho}, p = {p:.2g}; KW p = {kw("exc_pct"):.2g}'); P()
 # pisos
-P('### A3. Pisos: o lado federal (o custo exige a RAIS e fica pendente)'); P()
+P('### A3. Pisos: o lado federal (o custo é tratado no teto de exposição, D54)'); P()
 P('Assistência federal ao piso da enfermagem (Lei 14.581/2023, Portaria GM/MS 1.135/2023) e vencimentos de ACS/ACE (fonte 1604), por habitante e como % da despesa de pessoal da função 10 (MSC):'); P()
 pa = pd.read_csv(f'{cat}/transferencias_2023_por_acao.csv.gz')
 enf = pa[pa['NOME AÇÃO'].str.contains('PISO SALARIAL DOS PROFISSIONAIS DA ENFERMAGEM', na=False)].groupby('cod_ibge').v.sum().rename('enf_fed')
