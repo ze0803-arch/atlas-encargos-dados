@@ -36,7 +36,7 @@ h = h.replace('calculados com SIOPS (9 UFs)', 'calculados com SIOPS (${Object.ke
 h = h.replace("das UFs já coletadas.", "das 27 UFs (o DF fica fora do denominador municipal).")
 for a, b in [('municípios em que o FPM do SIOPS é igual ao da MSC', 'municípios em que o FPM do SIOPS é igual ao da MSC (piloto de 9 UFs)'),
              ('das exceções acima de 10% têm esse padrão', 'das exceções acima de 10% têm esse padrão (piloto de 9 UFs)'),
-             ('receita federal vinculada (SUS, FNDE, convênios, FNAS), % da receita total: teto do bloco P', 'receita federal vinculada (SUS, FNDE, convênios, FNAS), % da receita total: teto do bloco P (piloto de 9 UFs)')]:
+             ('receita federal vinculada (SUS, FNDE, convênios, FNAS), % da receita total: teto do bloco P', 'receita federal vinculada (SUS, FNDE, convênios, FNAS), % da receita total, mediana de 3.522 municípios: teto do bloco P')]:
     h = h.replace(a, b)
 h = h.replace('Validação do piloto 2023 e bloco P', 'Validação 2023 e bloco P')
 open(H, 'w', encoding='utf8').write(h)

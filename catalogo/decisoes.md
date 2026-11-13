@@ -201,3 +201,6 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 ## D47 — Casos extremos de receita e de mínimo de saúde (nov/2026)
 Varginha (MG): MSC e DCA trazem receita de R$ 12,7 bi para 144 mil habitantes (RCL do RREO R$ 107 mi); o erro está na fonte, não no método. O município continua "calculado" mas sem selo de alta confiança (T3, T8, T9). Proposta: regra de exclusão quando a receita da MSC for maior que 10 vezes a RCL; pendente de decisão.
 Lagoa da Canoa (AL), Jiquiriçá e Ribeira do Amparo (BA): toda a receita, inclusive transferências, lançada sob natureza de imposto (receita livre = base = receita total); o mínimo de saúde do sistema fica 2 a 3 vezes o do SIOPS. T9 já tira o selo.
+
+## D48 — Bloco P nacional (nov/2026)
+Receita federal vinculada (SUS, FNAS, FNDE, convênios) sobre a receita total, em 3.522 municípios calculados com MSCE e convenção liq+: mediana 9,5%, p90 16,6% (piloto de 9 UFs: 11,8%). Script: analises/med_p.py. Pendente em nível nacional: teste do FPM contra o SIOPS (precisa de raw/siops).
