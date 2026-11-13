@@ -217,7 +217,7 @@ Município cuja receita na MSC passa de R$ 40.000 por habitante fica "marcado, n
 ## D51 — Teste do FPM nacional (13/11/2026)
 Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_nacional.py), 3.685 calculados com os dois valores: igual até 1% em 3.180; cerca de 20% abaixo (padrão da dedução do Fundeb) em 51; entre as 88 exceções de saúde acima de 10%, 36 têm esse padrão. Indício, não prova; o cálculo não muda.
 
-## D52 — RAIS fora do método da verificação de 2023 (13/11/2026)
-- A folha de pagamento vem da MSC (despesa de pessoal); a RAIS não entra no cálculo da margem nem nos testes de assimetria da tese (analises/testes_tese_2023.py).
-- Só serviria a dois usos opcionais: custo dos reajustes dos pisos salariais (enfermagem, magistério) e cruzamento com o RGF. Nenhum faz parte da verificação de 2023.
-- Efeito: RAIS sai da coleta e dos documentos (Dados_Necessarios_Pesquisa, Protocolo, Roteiro, Seção metodológica, Matriz). Reentra somente se a tese passar a medir o custo dos pisos.
+## D52 — RAIS mantida no método, por causa dos pisos (13/11/2026; reverte a saída decidida no mesmo dia)
+- Primeira versão: RAIS fora do método, por não entrar na margem nem nos testes de assimetria. Revertida: o pesquisador decidiu que o custo dos pisos salariais (magistério, enfermagem, agentes comunitários) importa para a tese mesmo em 2023.
+- A folha por cargo só existe na RAIS (a MSC não separa cargo). A RAIS serve à medida do custo dos pisos e ao teste do art. 167, § 7º (encargo sem a transferência correspondente). A margem e os testes de assimetria não dependem dela.
+- Pendente: baixar a RAIS 2022 e 2023 (vínculos da administração municipal) no computador do pesquisador; o servidor do PDET não responde do ambiente de trabalho. Até lá, o lado federal dos pisos (transferências) está medido; o custo, não.
