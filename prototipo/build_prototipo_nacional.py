@@ -4,7 +4,7 @@ Uso: python prototipo/build_prototipo_nacional.py <pasta com resultado_2023.csv,
 DF (53...) fica fora do denominador municipal."""
 import sys, json, re, pandas as pd, numpy as np
 D = sys.argv[1].rstrip('/') + '/'; H = 'prototipo/atlas_prototipo.html'
-r = pd.read_csv(D+'resultado_2023.csv', dtype={'cod_ibge': str}); r = r[~r.cod_ibge.str.startswith('53')]
+r = pd.read_csv(D+'resultado_2023.csv', dtype={'cod_ibge': str}); r = r[~r.cod_ibge.str.startswith('53') & (r.cod_ibge != '2605459')]  # DF e Fernando de Noronha fora do universo municipal (D49)
 C = json.load(open(D+'confianca_2023.json'))
 n = lambda x: None if pd.isna(x) else float(x)
 rows = []
@@ -15,7 +15,7 @@ for _, x in r.iterrows():
         mp=n(x.margem_ampla_pct_rcl) if calc else None, rl=n(x.rec_livre) if calc else None,
         cf=(None if not calc else ('A' if not C.get(c) else 'R')), ft=C.get(c, []) if calc else []))
 # VALID: SIOPS
-s = pd.read_csv(D+'comparacao_siops_2023.csv', dtype={'cod_ibge': str}); s = s[~s.cod_ibge.str.startswith('53')].dropna(subset=['diferenca_pct'])
+s = pd.read_csv(D+'comparacao_siops_2023.csv', dtype={'cod_ibge': str}); s = s[~s.cod_ibge.str.startswith('53') & (s.cod_ibge != '2605459')].dropna(subset=['diferenca_pct'])
 def est(g): a = g.diferenca_pct.abs(); return dict(n=int(len(g)), med=round(float(a.median()), 2), p1=int(round(100*(a <= 1).mean())), p10=int(round(100*(a <= 10).mean())), ex=int((a > 10).sum()))
 sc = s[s.status == 'calculado']
 V = dict(todos=est(s), calc=est(sc), uf={u: est(g) for u, g in sc.groupby('uf')})
@@ -33,7 +33,7 @@ h = open(H, encoding='utf8').read()
 h = re.sub(r'const PILOTO=\[.*?\];\n', lambda m: 'const PILOTO='+json.dumps(rows, ensure_ascii=False, separators=(',', ':'))+';\n', h, 1, re.S)
 h = re.sub(r'const VALID=\{.*?\};\n', lambda m: 'const VALID='+json.dumps(V, ensure_ascii=False, separators=(',', ':'))+';\n', h, 1, re.S)
 h = h.replace('calculados com SIOPS (9 UFs)', 'calculados com SIOPS (${Object.keys(V.uf).length} UFs)')
-h = h.replace("das UFs já coletadas.", "das 27 UFs (o DF fica fora do denominador municipal).")
+h = h.replace("das UFs já coletadas.", "das 27 UFs (o DF e Fernando de Noronha ficam fora do universo municipal).")
 for a, b in [('municípios em que o FPM do SIOPS é igual ao da MSC', 'municípios em que o FPM do SIOPS é igual ao da MSC (piloto de 9 UFs)'),
              ('das exceções acima de 10% têm esse padrão', 'das exceções acima de 10% têm esse padrão (piloto de 9 UFs)'),
              ('receita federal vinculada (SUS, FNDE, convênios, FNAS), % da receita total: teto do bloco P', 'receita federal vinculada (SUS, FNDE, convênios, FNAS), % da receita total, mediana de 3.522 municípios: teto do bloco P')]:

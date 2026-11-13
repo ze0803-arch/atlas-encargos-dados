@@ -204,3 +204,9 @@ Lagoa da Canoa (AL), Jiquiriçá e Ribeira do Amparo (BA): toda a receita, inclu
 
 ## D48 — Bloco P nacional (nov/2026)
 Receita federal vinculada (SUS, FNAS, FNDE, convênios) sobre a receita total, em 3.522 municípios calculados com MSCE e convenção liq+: mediana 9,5%, p90 16,6% (piloto de 9 UFs: 11,8%). Script: analises/med_p.py. Pendente em nível nacional: teste do FPM contra o SIOPS (precisa de raw/siops).
+
+## D49 — Decisões do formulário de 2023 (13/11/2026)
+- PNAE: fora do bloco P (obrigação legal).
+- Fernando de Noronha (2605459): excluído do universo municipal, como o DF; a exclusão é registrada.
+- Sensibilidade de 3% entre MSC e DCA: só em apêndice metodológico, com ressalva; o resultado oficial é o de 1%.
+- Classificação das ações da União (catalogo/classificacao_acoes_2023.csv): as 40 maiores ações (99,3% do valor) foram classificadas pelo formulário, aceitando todas as propostas; as demais pela proposta, ou adesão a revisar (0,4% do valor). Participação no total transferido (R$ 391,9 bi): automática constitucional 69,1%; obrigação legal 21,4%; adesão 6,3%; outra 3,2%.
