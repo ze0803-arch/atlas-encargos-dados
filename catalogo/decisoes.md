@@ -293,3 +293,7 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Tela antiga de base própria renomeada "Base própria: o efeito automático"; Ficha do município mostra PIB por habitante e faixa Q1–Q5; Início com a nova pergunta; Metodologia com card de regras e normas pendentes.
 - Diferenças ≤0,4 ponto frente às Tabelas 5 e 7 do projeto decorrem do recálculo no repositório.
 - Script: prototipo/build_readequacao_2023.py (rodar após build_comparativo_2023.py).
+
+## D66 · Gráficos: comparar estados e municípios (2026-11-13)
+- Aba Gráficos ganhou "Comparar estados" (ranking por indicador: margem ampla mediana, margem % receita total, vinculada, PIB por habitante, cobertura; UFs com cobertura insuficiente em cinza com asterisco) e "Comparar municípios" (régua com todos os municípios calculados da UF, mediana, e dois municípios A e B com posição na UF e PIB por habitante).
+- Script: prototipo/build_graficos_comparar.py (rodar após build_readequacao_2023.py).
