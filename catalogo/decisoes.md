@@ -226,3 +226,7 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Art. 167, § 7º da CF: correspondência encargo-fonte medida pela fonte que paga a despesa nas funções 10, 08 e 12 (transferência federal vinculada × fonte livre), pelo excedente da fonte livre sobre o mínimo constitucional e, nos pisos, só pelo lado federal (assistência da enfermagem, fonte 1604). O custo dos pisos depende da RAIS (D52 revista).
 - Art. 11 da LRF: "efetiva arrecadação" operacionalizada como receita realizada de IPTU, ITBI e ISS na MSC; critério principal = zero; sensibilidade = menos de R$ 10 por habitante (limiar arbitrário, só sensibilidade). Exposição à sanção = convênios e ações voluntárias da União de 2023.
 - 3.453 municípios calculados com MSCE. Resultados em catalogo/testes_juridicos_2023.md; extração em analises/extrai_juridico.py (base catalogo/juridico_base_2023.csv); testes em analises/testes_juridicos_2023.py.
+
+## D54 — Pisos sem a RAIS: choque uniforme sobre a folha da função (13/11/2026)
+- Os arquivos da RAIS são grandes demais; os pisos passam a ser medidos pela exposição de cada município a um mesmo reajuste nacional: índice x despesa de pessoal da função (MSC). Magistério: 14,95% (piso de jan/2023). É teto do custo, não o custo.
+- Resultado e script: catalogo/choque_pisos_2023.md, analises/choque_pisos_2023.py. O custo efetivo (folha abaixo do piso por cargo) fica como limitação declarada; a RAIS volta só se a tese exigir o valor.
