@@ -197,3 +197,7 @@ Mesma base da D35 (696 municípios calculados, MSCE, liq+). Medianas sobre a des
 ## D46 — Correspondência de nomes do Portal da Transparência com o IBGE (13/11/2026)
 - O arquivo de transferências ligava município por UF e nome normalizado; 20 municípios ficaram sem ligação por grafia diferente (nome antigo, ortografia antiga ou sufixo), por exemplo Parati (RJ, IBGE: Paraty), Iguaraci (PE, IBGE: Iguaracy), Seridó (PB, IBGE: São Vicente do Seridó), Januário Cicco (RN, IBGE: Boa Saúde).
 - Corrigido em `transferencias.py` com tabela `ALIAS` (20 pares, conferida contra o arquivo de janeiro de 2023). Boa Esperança do Norte (MT) não aparece no Portal em janeiro; fica sem transferências. Rodar de novo a etapa `transferencias`.
+
+## D47 — Casos extremos de receita e de mínimo de saúde (nov/2026)
+Varginha (MG): MSC e DCA trazem receita de R$ 12,7 bi para 144 mil habitantes (RCL do RREO R$ 107 mi); o erro está na fonte, não no método. O município continua "calculado" mas sem selo de alta confiança (T3, T8, T9). Proposta: regra de exclusão quando a receita da MSC for maior que 10 vezes a RCL; pendente de decisão.
+Lagoa da Canoa (AL), Jiquiriçá e Ribeira do Amparo (BA): toda a receita, inclusive transferências, lançada sob natureza de imposto (receita livre = base = receita total); o mínimo de saúde do sistema fica 2 a 3 vezes o do SIOPS. T9 já tira o selo.
