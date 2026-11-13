@@ -221,3 +221,8 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Primeira versão: RAIS fora do método, por não entrar na margem nem nos testes de assimetria. Revertida: o pesquisador decidiu que o custo dos pisos salariais (magistério, enfermagem, agentes comunitários) importa para a tese mesmo em 2023.
 - A folha por cargo só existe na RAIS (a MSC não separa cargo). A RAIS serve à medida do custo dos pisos e ao teste do art. 167, § 7º (encargo sem a transferência correspondente). A margem e os testes de assimetria não dependem dela.
 - Pendente: baixar a RAIS 2022 e 2023 (vínculos da administração municipal) no computador do pesquisador; o servidor do PDET não responde do ambiente de trabalho. Até lá, o lado federal dos pisos (transferências) está medido; o custo, não.
+
+## D53 — Testes jurídicos de 2023 (13/11/2026)
+- Art. 167, § 7º da CF: correspondência encargo-fonte medida pela fonte que paga a despesa nas funções 10, 08 e 12 (transferência federal vinculada × fonte livre), pelo excedente da fonte livre sobre o mínimo constitucional e, nos pisos, só pelo lado federal (assistência da enfermagem, fonte 1604). O custo dos pisos depende da RAIS (D52 revista).
+- Art. 11 da LRF: "efetiva arrecadação" operacionalizada como receita realizada de IPTU, ITBI e ISS na MSC; critério principal = zero; sensibilidade = menos de R$ 10 por habitante (limiar arbitrário, só sensibilidade). Exposição à sanção = convênios e ações voluntárias da União de 2023.
+- 3.453 municípios calculados com MSCE. Resultados em catalogo/testes_juridicos_2023.md; extração em analises/extrai_juridico.py (base catalogo/juridico_base_2023.csv); testes em analises/testes_juridicos_2023.py.

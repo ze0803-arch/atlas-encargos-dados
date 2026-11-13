@@ -42,6 +42,18 @@ for nome, tot in res:
     for lab, col in (('federal vinculada', f'cob_{tot}'), ('fonte livre', f'des_{tot}'), ('despesa por habitante', f'pc_{tot}')):
         rho, p = sp(d.trib_pc, d[col]); r2.append(dict(area=nome, medida=lab, rho=rho, p_spearman=f'{p:.2g}', p_kw=f'{kw(col):.2g}'))
 P(pd.DataFrame(r2).to_markdown(index=False)); P()
+# excesso sobre o mínimo constitucional
+r0 = pd.read_csv(f'{cat}/resultado_2023.csv')[['cod_ibge','minimos_exigidos']]
+d = d.merge(r0, on='cod_ibge', how='left', suffixes=('_b',''))
+tt = d.d_f10 + d.d_f12; lv = d.d_f10_livre + d.d_f12_livre
+d['min_pct'] = np.where(tt > 0, d.minimos_exigidos / tt * 100, np.nan)
+d['exc_pct'] = np.where(tt > 0, (lv - d.minimos_exigidos).clip(lower=0) / tt * 100, np.nan)
+d['exc_any'] = np.where(tt > 0, (lv > d.minimos_exigidos * 1.05) * 100, np.nan)
+P('### A1b. Quanto da parte paga com fonte livre (saúde e educação juntas) é o mínimo constitucional (25% e 15%) e quanto é excedente'); P()
+P('O mínimo vem da CF (arts. 198 e 212), não de lei; o § 7º trata de encargo imposto por lei. Excedente = fonte livre gasta nas funções 10 e 12 acima do mínimo exigido calculado pelo sistema.'); P()
+t6 = d.groupby('q', observed=True).agg(minimo_pct_despesa=('min_pct','median'), excedente_pct_despesa=('exc_pct','median'), municipios_com_excedente_acima_5pct=('exc_any','mean'))
+P(t6.round(1).to_markdown()); P()
+rho, p = sp(d.trib_pc, d.exc_pct); P(f'Excedente sobre o mínimo: rho com a base própria = {rho}, p = {p:.2g}; KW p = {kw("exc_pct"):.2g}'); P()
 # pisos
 P('### A3. Pisos: o lado federal (o custo exige a RAIS e fica pendente)'); P()
 P('Assistência federal ao piso da enfermagem (Lei 14.581/2023, Portaria GM/MS 1.135/2023) e vencimentos de ACS/ACE (fonte 1604), por habitante e como % da despesa de pessoal da função 10 (MSC):'); P()
@@ -97,6 +109,6 @@ P('### B3. Exposição à sanção do parágrafo único: transferências volunt�
 d['vol'] = d.convenios_liberado + d.outras_voluntarias_especificas.fillna(0)
 for lab, col in (('algum imposto com arrecadação zero','qualquer_zero'),('algum imposto abaixo de R$ 10/hab','qualquer_baixa')):
     s = d[d[col]]
-    P(f'- {lab}: {len(s)} municípios ({len(s)/len(d)*100:.1f}%); receberam R$ {s.vol.sum()/1e6:,.0f} milhões em convênios e ações voluntárias específicas ({s.vol.sum()/d.vol.sum()*100:.1f}% do total do grupo analisado); mediana por habitante R$ {(s.vol/s["pop"]).median():.0f} contra R$ {(d[~d[col]].vol/d[~d[col]]["pop"]).median():.0f} nos demais.')
+    P(f'- {lab}: {len(s)} municípios ({len(s)/len(d)*100:.1f}%); receberam R$ {s.vol.sum()/1e9:,.2f} bilhões em convênios e ações voluntárias específicas ({s.vol.sum()/d.vol.sum()*100:.1f}% do total do grupo analisado); mediana por habitante R$ {(s.vol/s["pop"]).median():.0f} contra R$ {(d[~d[col]].vol/d[~d[col]]["pop"]).median():.0f} nos demais.')
 P(); P('Observação: "outras voluntárias específicas" inclui a assistência ao piso da enfermagem, que é obrigação legal; a soma é limite superior da exposição.')
 open(out, 'w').write('\n'.join(L)); print('ok', len(d))
