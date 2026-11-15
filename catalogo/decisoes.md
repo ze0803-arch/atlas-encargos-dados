@@ -297,3 +297,8 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 ## D66 · Gráficos: comparar estados e municípios (2026-11-13)
 - Aba Gráficos ganhou "Comparar estados" (ranking por indicador: margem ampla mediana, margem % receita total, vinculada, PIB por habitante, cobertura; UFs com cobertura insuficiente em cinza com asterisco) e "Comparar municípios" (régua com todos os municípios calculados da UF, mediana, e dois municípios A e B com posição na UF e PIB por habitante).
 - Script: prototipo/build_graficos_comparar.py (rodar após build_readequacao_2023.py).
+
+## D67 · Margem estrita publicada ao lado da ampla (2026-11-15)
+- Pedido do usuário: o Atlas mostrava só a margem ampla nas telas de resultado. Passa a mostrar as duas (ampla e estrita, % da RCL): Início, Resultados 2023 (cartão, tabelas por UF e por porte, tabela de municípios), Ficha do município, Gráficos (indicador por UF e seletor "Medida nos municípios") e tabela por estado do Comparativo.
+- Estrita em % da RCL = margem ampla % × (estrita R$ ÷ ampla R$), no mesmo denominador da ampla. Script: prototipo/build_estrita.py (rodar por último).
+- Tabelas 3 a 7 do Comparativo seguem o Apêndice D do projeto (margem ampla como principal; estrita na Tabela 3).
