@@ -8,23 +8,34 @@ Fonte da MSC por município (decisão D19): usa a MSCE de dezembro; se ela não 
 (receita e despesa liquidada, tolerância de 1%) e houver as 12 matrizes mensais (MSCC), testa a soma
 dos 12 meses. Também testa as duas convenções de sinal (D-C e C-D) e "só débitos" na receita.
 """
-import argparse, collections, csv, glob, gzip, json, os
+import argparse, collections, csv, glob, gzip, json, os, re
 ap = argparse.ArgumentParser(); ap.add_argument('--pasta', default='dados'); ap.add_argument('--ano', default='2023'); ap.add_argument('--tol', type=float, default=0.01, help='tolerância MSC x DCA (padrão 1%%; D45); com outro valor grava resultado_<ano>_tol<N>.csv, só para sensibilidade')
 A = ap.parse_args()
 B = os.path.join(A.pasta, 'raw', 'siconfi', A.ano) + os.sep
 LIVRE = {'500', '501'}   # fonte[1:]: recursos não vinculados (1500 e 1501)
 TOL = A.tol
 
+PAG_INCOMPLETA = set()   # (relatório, município) cuja paginação ficou truncada: página faltando ou última página com hasMore (D68)
+
 def carrega(rel, cod):
-    out = []
+    """Lê as respostas de um município e relatório. D68: (1) se a mesma página foi baixada mais de uma vez, usa só a mais recente
+    (antes, as repetições eram somadas duas vezes); (2) se faltar página ou a última ainda tiver hasMore, registra em PAG_INCOMPLETA."""
+    pags = {}
     for f in sorted(glob.glob(f'{B}{rel}/*_{cod}_{rel}_p*.json.gz')):
-        out += json.load(gzip.open(f)).get('items', [])
+        mt = re.search(r'_p(\d+)(?:_(\d{8}T\d{6}))?\.json\.gz$', os.path.basename(f))
+        n = int(mt.group(1)) if mt else 1; ts = (mt.group(2) or '') if mt else ''
+        if n not in pags or ts >= pags[n][0]: pags[n] = (ts, f)
+    out = []; ultimo = None
+    for n in sorted(pags):
+        js = json.load(gzip.open(pags[n][1])); out += js.get('items', []); ultimo = js
+    if pags:
+        if sorted(pags) != list(range(1, len(pags) + 1)) or (ultimo or {}).get('hasMore'): PAG_INCOMPLETA.add((rel, cod))
     return out
 
 def calcula(itens, modo):
     """modo: ('liq', +1) débito positivo; ('liq', -1) crédito positivo; ('deb', +1) só débitos na receita."""
     tipo, s0 = modo
-    m = dict(rec=0.0, liq=0.0, base=0.0, semnat=0.0, rl=0.0, leg=0.0, div=0.0, prec=0.0, min_=0.0, folha=0.0, fpm_de=0.0, cons=0.0)
+    m = dict(rec=0.0, liq=0.0, base=0.0, semnat=0.0, rl=0.0, leg=0.0, div=0.0, prec=0.0, min_=0.0, folha=0.0, patr=0.0, fpm_de=0.0, cons=0.0)
     for i in itens:
         cc = i['conta_contabil']; sg = (1 if i['natureza_conta'] == 'D' else -1) * s0; v = i['valor'] * sg
         fr = (i['fonte_recursos'] or '')[1:]
@@ -46,7 +57,9 @@ def calcula(itens, modo):
                 elif g in ('2', '6'): m['div'] += v
                 elif e == '91': m['prec'] += v
                 elif i['funcao'] in ('10', '12'): m['min_'] += v
-                elif g == '1': m['folha'] += v
+                elif g == '1':
+                    m['folha'] += v
+                    if e == '13': m['patr'] += v   # D68: contribuição patronal (elemento 13) paga com recurso livre fora de saúde, educação e Legislativo
     return m
 
 ent = {str(e['cod_ibge']): e for e in json.load(open(os.path.join(A.pasta, 'entes.json'), encoding='utf-8'))}
@@ -86,7 +99,7 @@ for c in cods:
         nome, modo, m = 'nenhuma', ('liq', 1), calcula([], ('liq', 1))
     r['fonte_msc'] = nome; r['convencao'] = modo[0] + ('+' if modo[1] > 0 else '-')
     r['rec_msc'] = m['rec']; r['liq_msc'] = m['liq']; r['base_impostos'] = m['base']; r['fpm_parcela_de'] = m['fpm_de']; r['minimos_exigidos'] = 0.25 * m['base'] + 0.15 * (m['base'] - m['fpm_de'])  # D29: 25% ensino + 15% saúde
-    r.update(rec_livre=m['rl'], leg=m['leg'], divida=m['div'], prec=m['prec'], minimos_funcao=m['min_'], folha_livre=m['folha'], consorcios=m['cons'])
+    r.update(rec_livre=m['rl'], leg=m['leg'], divida=m['div'], prec=m['prec'], minimos_funcao=m['min_'], folha_livre=m['folha'], patronal_livre=m['patr'], consorcios=m['cons'])
     r['rec_dif'] = (m['rec'] / r['dca_rec'] - 1) if r['dca_rec'] and m['rec'] else None
     r['liq_dif'] = (m['liq'] / r['dca_liq'] - 1) if r['dca_liq'] and m['liq'] else None
     fl = []
@@ -96,6 +109,7 @@ for c in cods:
         if r['rec_dif'] is None or abs(r['rec_dif']) > TOL: fl.append('REC_DIVERGE')
         if r['liq_dif'] is None or abs(r['liq_dif']) > TOL: fl.append('LIQ_DIVERGE')
         if m['rec'] and abs(m['semnat']) / abs(m['rec']) > 0.2: fl.append('SEM_NATUREZA_RECEITA')
+    if any((rel, c) in PAG_INCOMPLETA for rel in (['msce'] if nome == 'MSCE' else ['mscc_m%02d' % k for k in range(1, 13)])) and nome != 'nenhuma': fl.append('PAGINACAO_INCOMPLETA')   # D68
     if not r['n_rreo3']: fl.append('RREO3_VAZIO')
     # D26: codificação atípica da fonte livre (reclassificações entre fontes) -> marcar e não calcular
     if m['base'] and not ('SEM_MSCE' in fl or 'MSCE_INCOMPLETA' in fl):
@@ -110,11 +124,12 @@ for c in cods:
     # D50: receita da MSC incompatível com a população (> R$ 40.000 por habitante) -> erro de lançamento; marcar e não calcular
     if r['pop'] and r['rec_msc'] and r['rec_msc'] / r['pop'] > 40000: fl.append('RECEITA_INCOMPATIVEL')
     r['flags'] = '|'.join(fl) or 'OK'
-    if any(f in fl for f in ('SEM_MSCE', 'MSCE_INCOMPLETA', 'REC_DIVERGE', 'LIQ_DIVERGE', 'SEM_NATUREZA_RECEITA', 'FONTE_LIVRE_ATIPICA', 'LEGISLATIVO_ATIPICO', 'RECEITA_INCOMPATIVEL')):
+    if any(f in fl for f in ('SEM_MSCE', 'MSCE_INCOMPLETA', 'PAGINACAO_INCOMPLETA', 'REC_DIVERGE', 'LIQ_DIVERGE', 'SEM_NATUREZA_RECEITA', 'FONTE_LIVRE_ATIPICA', 'LEGISLATIVO_ATIPICO', 'RECEITA_INCOMPATIVEL')):
         r['margem_ampla'] = r['margem_estrita'] = r['margem_ampla_p'] = None; r['status'] = 'marcado_nao_calculado'
     else:
-        a = m['rl'] - r['minimos_exigidos'] - m['leg'] - m['div'] - m['prec']
-        r['margem_ampla'] = a; r['margem_estrita'] = a - m['folha']; r['status'] = 'calculado'
+        # D68: a margem ampla desconta também a contribuição patronal (bloco I); a estrita desconta o restante da folha (sem a patronal, para não contar duas vezes)
+        a = m['rl'] - r['minimos_exigidos'] - m['patr'] - m['leg'] - m['div'] - m['prec']
+        r['margem_ampla'] = a; r['margem_estrita'] = a - (m['folha'] - m['patr']); r['status'] = 'calculado'
         r['margem_ampla_p'] = a - m['cons']   # D37: margem ampla depois do bloco P (consórcios)
     r['margem_ampla_pct_rcl'] = (r['margem_ampla'] / r['rcl_rreo']) if r['margem_ampla'] is not None and r['rcl_rreo'] and not r['rcl_suspeita'] else None
     rows.append(r)

@@ -19,7 +19,7 @@ Estado atual: o ano de **2023 está completo** (coleta nacional, cálculo, teste
 | RREO / RGF | Relatórios fiscais bimestrais e quadrimestrais (LRF). Dão a RCL e a despesa com pessoal. |
 | RCL | Receita corrente líquida. Denominador dos percentuais. |
 | Receita livre | Receita em fonte de recursos 1500 e 1501 (sem destino fixado). |
-| Margem ampla | Receita livre − mínimos de educação e saúde − Legislativo − dívida − precatórios (− contribuição patronal, conforme o dicionário). |
+| Margem ampla | Receita livre − mínimos de educação e saúde − Legislativo − dívida − precatórios − contribuição patronal (decisão D68, 18/11/2026: o código agora desconta). |
 | Margem estrita | Margem ampla − folha de pagamento paga com recurso livre. |
 | Bloco I a IV | I = obrigação de origem nacional; II = estrutura e compromissos passados; III = margem; IV = pactuado (convênios, consórcios). |
 | Quintil Q1 a Q5 | Cinco grupos de municípios pelo PIB por habitante (IBGE). Q1 = menor, Q5 = maior. |
@@ -121,6 +121,7 @@ python prototipo/build_comparativo_2023.py                # COMP e tela Comparat
 python prototipo/build_readequacao_2023.py                # Hipóteses H1-H5, Comparativo = Apêndice D
 python prototipo/build_graficos_comparar.py               # Gráficos: comparar estados e municípios
 python prototipo/build_estrita.py                         # margem estrita ao lado da ampla
+python prototipo/build_site_novo.py /caminho/br.json      # mapa, correspondência, busca (malha IBGE; ver cabeçalho do script)
 ```
 
 Os scripts são idempotentes (rodar de novo não duplica). Depois de cada build o arquivo foi testado com Playwright (abrir cada tela e checar erros de console).
@@ -257,3 +258,10 @@ Conteúdo: `app_coleta/` (coletor e calculador), `analises/`, `scripts/` (coleta
 ---
 
 *Qualquer decisão de método nova deve entrar em `catalogo/decisoes.md` com número, data e motivo. É o registro que a tese cita.*
+
+
+## Atualização de 18/11/2026 (D68)
+- A patronal passa a ser descontada na margem ampla (analisar.py). Os números do app ainda são anteriores; reprocesse com `python analisar.py --pasta dados` e rode a cadeia.
+- Correções vindas da auditoria: paginação truncada (flag PAGINACAO_INCOMPLETA), arquivos duplicados (versão mais recente), coletar.py não grava município com página falha.
+- Telas novas: Mapa, Correspondência, busca por nome (build_site_novo.py). Veja catalogo/decisoes.md, D68.
+- Atenção: o repositório no GitHub está público. Considere torná-lo privado (Settings → Change visibility) e remover o e-mail pessoal de catalogo/decisoes.md (D16).

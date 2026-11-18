@@ -68,12 +68,17 @@ def req(rel, ente, ep, params, pagina=1):
     time.sleep(0.25)
     return js, n
 
+FALHOU = set()   # municípios com alguma página que falhou nesta rodada (D68)
+
 def paginado(rel, ente, ep, params):
     out = []; off = 0; pg = 1
     while True:
         p = dict(params); p['offset'] = off
         js, n = req(rel, ente, ep, p, pg)
-        if js is None: return out
+        if js is None:
+            # D68: antes, a falha de uma página encerrava a coleta em silêncio e o município ficava como concluído com a matriz truncada.
+            FALHOU.add(ente); print(f'AVISO: página {pg} de {rel} ({ente}) falhou; município fica pendente e será refeito na próxima rodada.', file=sys.stderr, flush=True)
+            return out
         out += js['items']
         if not js.get('hasMore'): return out
         off += js.get('limit', 5000); pg += 1
@@ -135,7 +140,10 @@ def municipio(m):
     for an in ('I-C','I-D'):
         paginado('dca_'+an.replace('-',''), e, 'dca', dict(an_exercicio=ANO, no_anexo='DCA-Anexo '+an, id_ente=e))
     if precisa_mscc(e): busca_mscc(e)
+    if e in FALHOU:
+        dizer('INCOMPLETO ' + m['ente'] + ' ' + m['uf'] + ' (página falhou; não marcado como concluído)'); return
     paginado('dca_IE', e, 'dca', dict(an_exercicio=ANO, no_anexo='DCA-Anexo I-E', id_ente=e))  # por último: marca município concluído
+    if e in FALHOU: dizer('INCOMPLETO ' + m['ente'] + ' ' + m['uf']); return
     dizer('fim ' + m['ente'] + ' ' + m['uf'])
 
 def concluidos():
