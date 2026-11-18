@@ -14,18 +14,14 @@ set MALHA=%TEMP%\br.json
 if not exist "%DADOS%\entes.json" (echo ERRO: nao achei %DADOS%\entes.json & pause & exit /b 1)
 
 echo.
-echo === ETAPA 0 (opcional): atualizar a coleta do Siconfi e do SIOPS ===
+echo === ETAPA 0 (opcional): atualizar a coleta (Siconfi, SIOPS, SIOPE, Portal da Transparencia) ===
 echo O Siconfi e o SIOPS sao baixados da internet. Demora de 4 a 6 horas e retoma de onde parou.
 set /p COLETA=Atualizar a coleta agora? (s/n): 
 if /i "%COLETA%"=="s" (
   cd app_coleta
-  python atlas.py --pasta dados --etapas siconfi mscc verificar siops || (cd .. & goto :erro)
+  python atlas.py --pasta dados --etapas siconfi mscc verificar siops siope transferencias convenios || (cd .. & goto :erro)
   cd ..
 )
-rem Portal da Transparencia (transferencias e convenios): os arquivos .zip/.csv sao baixados a mao no portal;
-rem se estiverem em app_coleta\zips e app_coleta\csvs, rodamos abaixo.
-if exist app_coleta\zips (cd app_coleta & python transferencias.py --pasta dados --zips zips & cd ..)
-if exist app_coleta\csvs (cd app_coleta & python convenios.py --pasta dados --csvs csvs & cd ..)
 
 echo.
 echo === ETAPA 1 de 4: recalcular os resultados (demora; mostra o progresso) ===

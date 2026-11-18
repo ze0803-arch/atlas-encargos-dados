@@ -7,12 +7,12 @@ Uso:
   python atlas.py --pasta dados --etapas analisar confianca comparar relatorio     # só estas etapas
   python atlas.py --pasta dados --ano 2024
 
-Etapas, na ordem: siconfi, mscc, verificar, siops, transferencias, convenios, analisar, comparar, confianca, relatorio, empacotar.
+Etapas, na ordem: siconfi, mscc, verificar, siops, siope, transferencias, convenios, analisar, comparar, confianca, relatorio, empacotar.
 Cada etapa é retomável. Se uma falhar, o programa para e diz qual; basta rodar de novo.
 """
 import argparse, collections, csv, glob, json, os, statistics as st, subprocess, sys, time
 AQUI = os.path.dirname(os.path.abspath(__file__))
-ETAPAS = ['siconfi', 'mscc', 'verificar', 'siops', 'transferencias', 'convenios', 'analisar', 'comparar', 'confianca', 'relatorio', 'empacotar']
+ETAPAS = ['siconfi', 'mscc', 'verificar', 'siops', 'siope', 'transferencias', 'convenios', 'analisar', 'comparar', 'confianca', 'relatorio', 'empacotar']
 ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 ap.add_argument('--pasta', default='dados'); ap.add_argument('--ano', default='2023'); ap.add_argument('--uf', nargs='*', default=[])
 ap.add_argument('--etapas', nargs='*', default=ETAPAS, choices=ETAPAS); ap.add_argument('--trabalhadores', default='4')
@@ -85,9 +85,11 @@ for e in ETAPAS:
     elif e == 'mscc': roda(e, [script('coletar.py'), '--pasta', A.pasta, '--ano', A.ano, '--completar-mscc'] + uf)
     elif e == 'verificar': roda(e, [script('coletar.py'), '--pasta', A.pasta, '--ano', A.ano, '--verificar'] + uf)
     elif e == 'siops': roda(e, [script('coletar_siops.py'), '--pasta', A.pasta, '--ano', A.ano] + uf)
+    elif e == 'siope': roda(e, [script('coletar_siope.py'), '--pasta', A.pasta, '--ano', A.ano] + uf)
     elif e == 'transferencias': roda(e, [script('transferencias.py')] + base)
     elif e == 'convenios':
         pc = os.path.join(A.pasta, 'convenios')
+        if not glob.glob(os.path.join(pc, '*_Convenios.csv')): roda('convenios', [script('baixar_convenios.py'), '--pasta', A.pasta])
         if glob.glob(os.path.join(pc, '*_Convenios.csv')) and glob.glob(os.path.join(pc, '*_Convenios_OrdensBancarias.csv')): roda(e, [script('convenios.py'), '--pasta', A.pasta, '--csvs', pc, '--ano', A.ano])
         else: print(f'\n=== Etapa {ETAPAS.index(e) + 1}/{len(ETAPAS)}: convenios ===\nPulada: baixe o arquivo de convênios em portaldatransparencia.gov.br/download-de-dados/convenios (o mais recente), descompacte os dois CSV em {pc} e rode de novo.')
     elif e == 'analisar': roda(e, [script('analisar.py')] + base)
