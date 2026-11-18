@@ -65,7 +65,8 @@ def calcula(itens, modo):
 ent = {str(e['cod_ibge']): e for e in json.load(open(os.path.join(A.pasta, 'entes.json'), encoding='utf-8'))}
 cods = sorted(set(os.path.basename(f).split('_')[2] for f in glob.glob(B + 'dca_IE/*.json.gz')))
 rows = []
-for c in cods:
+for _i, c in enumerate(cods):
+    if _i % 200 == 0: print('analisando %d de %d ...' % (_i, len(cods)), flush=True)
     if c not in ent: continue
     e = ent[c]; r = dict(cod_ibge=c, ente=e['ente'], uf=e['uf'], pop=int(e['populacao']))
     msce = carrega('msce', c); r['n_msce'] = len(msce)
