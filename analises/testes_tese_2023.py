@@ -18,7 +18,7 @@ c['enc'] = c.minimos_exigidos + c.leg + c.divida + c.prec
 for k, v in dict(m='margem_ampla', min_='minimos_exigidos', leg='leg', div='divida', prec='prec', fol='folha_livre', me='margem_estrita').items(): c['p_' + k] = c[v] / c.rec_livre * 100
 c['p_enc'] = c.enc / c.rec_livre * 100; c['p_mt'] = c.margem_ampla / c.rec_msc * 100; c['p_met'] = c.margem_estrita / c.rec_msc * 100; c['vinc'] = (1 - c.rec_livre / c.rec_msc) * 100; c['marg_pc'] = c.margem_ampla / c['pop']
 c['q'] = pd.qcut(c.trib_pc, 5, labels=['Q1 (menor)', 'Q2', 'Q3', 'Q4', 'Q5 (maior)'])
-c['fx'] = pd.cut(c['pop'], [0, 5000, 10000, 20000, 50000, 1e9], labels=['até 5 mil', '5 a 10 mil', '10 a 20 mil', '20 a 50 mil', '50 mil ou mais'], right=False)
+c['fx'] = pd.cut(c['pop'], [0, 5000, 10000, 20000, 50000, 100000, 500000, 1e9], labels=['até 5 mil', '5 a 10 mil', '10 a 20 mil', '20 a 50 mil', '50 a 100 mil', '100 a 500 mil', 'mais de 500 mil'], right=False)
 L = []; P = lambda s='': L.append(s)
 def tab(g):
     x = c.groupby(g, observed=True).agg(n=('cod_ibge', 'size'), trib_pc=('trib_pc', 'median'), rec_pc=('rec_pc', 'median'), margem_pct=('p_m', 'median'), margem_rec_total=('p_mt', 'median'), minimos=('p_min_', 'median'), legislativo=('p_leg', 'median'),
@@ -47,7 +47,7 @@ dq = qt.loc['Q5 (maior)'] - qt.loc['Q1 (menor)']
 P('## 4. De onde vem a diferença entre o quintil de maior e o de menor base (p.p. da receita livre)'); P()
 P(pd.DataFrame({'Q1': qt.loc['Q1 (menor)', ['minimos', 'legislativo', 'divida', 'precatorios', 'encargos', 'margem_pct', 'margem_rec_total', 'vinculada']], 'Q5': qt.loc['Q5 (maior)', ['minimos', 'legislativo', 'divida', 'precatorios', 'encargos', 'margem_pct', 'margem_rec_total', 'vinculada']], 'Q5 - Q1': dq[['minimos', 'legislativo', 'divida', 'precatorios', 'encargos', 'margem_pct', 'margem_rec_total', 'vinculada']]}).round(1).to_markdown()); P()
 # seleção: calculados x não
-a = r.copy(); a['faixa'] = pd.cut(a['pop'], [0, 5000, 10000, 20000, 50000, 1e9], right=False, labels=['até 5 mil', '5 a 10 mil', '10 a 20 mil', '20 a 50 mil', '50 mil ou mais'])
+a = r.copy(); a['faixa'] = pd.cut(a['pop'], [0, 5000, 10000, 20000, 50000, 100000, 500000, 1e9], right=False, labels=['até 5 mil', '5 a 10 mil', '10 a 20 mil', '20 a 50 mil', '50 a 100 mil', '100 a 500 mil', 'mais de 500 mil'])
 s = a.groupby('faixa', observed=True).agg(municipios=('cod_ibge', 'size'), calculados=('calc', 'sum')); s['%'] = (s.calculados / s.municipios * 100).round(0)
 s2 = a.groupby('calc').agg(trib_pc_mediana=('trib_pc', 'median'), rec_pc_mediana=('rec_pc', 'median'), pop_mediana=('pop', 'median')).round(0)
 P('## 5. Seleção: quem ficou fora do cálculo'); P(); P(s.to_markdown()); P(); P(s2.to_markdown()); P()

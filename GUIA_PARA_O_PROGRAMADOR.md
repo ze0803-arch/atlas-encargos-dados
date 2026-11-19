@@ -265,3 +265,8 @@ Conteúdo: `app_coleta/` (coletor e calculador), `analises/`, `scripts/` (coleta
 - Correções vindas da auditoria: paginação truncada (flag PAGINACAO_INCOMPLETA), arquivos duplicados (versão mais recente), coletar.py não grava município com página falha.
 - Telas novas: Mapa, Correspondência, busca por nome (build_site_novo.py). Veja catalogo/decisoes.md, D68.
 - Atenção: o repositório no GitHub está público. Considere torná-lo privado (Settings → Change visibility) e remover o e-mail pessoal de catalogo/decisoes.md (D16).
+
+## Atualização de 19/11/2026 (D69)
+- Sete faixas de população, medida principal em % da receita total, PIB médio 2021–2023 disponível (`PIB_ARQ=pib_media_2021_2023.csv`).
+- Os scripts de `analises/` têm argumentos obrigatórios; veja a ETAPA 2 do `rodar_tudo.bat` para a ordem e os comandos exatos.
+- Pendente: coleta para H4b e H4c (classes 1 e 4 da MSC, valor adicionado dos serviços, REGIC, renda domiciliar).

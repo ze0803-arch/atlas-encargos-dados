@@ -48,7 +48,7 @@ rho, p = stats.spearmanr(d.dropna(subset=['qu']).qu, d.dropna(subset=['qu']).mar
 L.append(f'Spearman entre o quintil dentro da UF e a margem sobre a receita total: rho = {rho:.3f}, p = {p:.2g}.')
 # art. 11, critério relativo
 j2 = d.merge(j[['cod_ibge', 'n_iptu', 'n_iss', 'n_itbi']], on='cod_ibge').fillna(0)
-j2['fx'] = pd.cut(j2['pop'], [0, 5000, 10000, 20000, 50000, 1e9], labels=False)
+j2['fx'] = pd.cut(j2['pop'], [0, 5000, 10000, 20000, 50000, 100000, 500000, 1e9], labels=False)
 res = []
 for k in ('iptu', 'iss', 'itbi'):
     j2[f'{k}_pc'] = j2[f'n_{k}'] / j2['pop']

@@ -89,7 +89,7 @@ P('Requisito: instituição, previsão e efetiva arrecadação de todos os tribu
 for k, lab in (('iptu','IPTU'),('itbi','ITBI'),('iss','ISS')):
     d[f'{k}_pc'] = d[f'n_{k}'] / d['pop']; d[f'{k}_zero'] = d[f'n_{k}'] <= 0; d[f'{k}_baixa'] = d[f'{k}_pc'] < 10
 d['qualquer_zero'] = d.iptu_zero | d.itbi_zero | d.iss_zero; d['qualquer_baixa'] = d.iptu_baixa | d.itbi_baixa | d.iss_baixa
-d['fx'] = pd.cut(d['pop'], [0, 5000, 10000, 20000, 50000, 1e9], labels=['até 5 mil','5 a 10 mil','10 a 20 mil','20 a 50 mil','50 mil ou mais'])
+d['fx'] = pd.cut(d['pop'], [0, 5000, 10000, 20000, 50000, 100000, 500000, 1e9], labels=['até 5 mil','5 a 10 mil','10 a 20 mil','20 a 50 mil','50 a 100 mil','100 a 500 mil','mais de 500 mil'])
 P('### B1. Municípios sem arrecadação (% do grupo)'); P()
 for by, nm in (('q','quintil de base própria'), ('fx','porte')):
     t = d.groupby(by, observed=True).agg(n=('cod_ibge','size'), IPTU_zero=('iptu_zero','mean'), ITBI_zero=('itbi_zero','mean'), ISS_zero=('iss_zero','mean'), algum_zero=('qualquer_zero','mean'), algum_baixa=('qualquer_baixa','mean'))

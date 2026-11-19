@@ -4,7 +4,7 @@ import sys, json, pandas as pd, numpy as np
 from scipy import stats
 cat, out = sys.argv[1], sys.argv[2]
 b = pd.read_csv(f'{cat}/testes_tese_2023_base.csv', dtype={'cod_ibge': str}); b = b[b.calc == True].copy()
-p = pd.read_csv(f'{cat}/pib_2023.csv', dtype={'cod_ibge': str}); j = pd.read_csv(f'{cat}/juridico_base_2023.csv', dtype={'cod_ibge': str}).fillna(0)
+p = pd.read_csv(f'{cat}/'+__import__('os').environ.get('PIB_ARQ','pib_2023.csv'), dtype={'cod_ibge': str}); j = pd.read_csv(f'{cat}/juridico_base_2023.csv', dtype={'cod_ibge': str}).fillna(0)
 b = b.merge(p, on='cod_ibge'); b['pib_pc'] = b.pib_mil*1000/b['pop']; b = b[b.pib_pc > 0].copy()
 Q = ['Q1', 'Q2', 'Q3', 'Q4', 'Q5']; b['q'] = pd.qcut(b.pib_pc, 5, labels=Q)
 rl = b.rec_livre.where(b.rec_livre > 0)
@@ -34,7 +34,7 @@ for nome, (tot, fed) in areas.items():
     t5[nome] = d3.groupby('q', observed=True).c.median().round(1).tolist()
 R['t5'] = t5
 # art. 11
-e = d.copy(); e['fx'] = pd.cut(e['pop'], [0, 5000, 10000, 20000, 50000, 1e9], labels=False)
+e = d.copy(); e['fx'] = pd.cut(e['pop'], [0, 5000, 10000, 20000, 50000, 100000, 500000, 1e9], labels=False)
 for k in ('iptu', 'iss', 'itbi'):
     e[k] = e[f'n_{k}']/e['pop']; med = e.groupby(['uf', 'fx'])[k].transform('median'); e[k+'_r'] = (e[k] < .1*med) & (med > 0)
 e['alg'] = e.iptu_r | e.iss_r | e.itbi_r

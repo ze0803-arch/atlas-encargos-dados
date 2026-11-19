@@ -5,7 +5,7 @@ from scipy import stats
 cat, out = sys.argv[1], sys.argv[2]
 r = pd.read_csv(f'{cat}/resultado_2023.csv', dtype={'cod_ibge': str})
 b = pd.read_csv(f'{cat}/testes_tese_2023_base.csv', dtype={'cod_ibge': str}); b = b[b.calc == True].copy()
-p = pd.read_csv(f'{cat}/pib_2023.csv', dtype={'cod_ibge': str}); b = b.merge(p, on='cod_ibge', how='left'); b['pib_pc'] = b.pib_mil * 1000 / b['pop']
+p = pd.read_csv(f'{cat}/'+__import__('os').environ.get('PIB_ARQ','pib_2023.csv'), dtype={'cod_ibge': str}); b = b.merge(p, on='cod_ibge', how='left'); b['pib_pc'] = b.pib_mil * 1000 / b['pop']
 tot = r.groupby('uf').size().rename('total'); cal = b.groupby('uf').size().rename('calculados')
 cob = pd.concat([tot, cal], axis=1).fillna(0); cob['cobertura_%'] = (cob.calculados / cob.total * 100).round(0)
 L = ['# Análise comparativa entre UFs e municípios, 2023', '', 'Cuidado de cobertura: cada resultado traz o número de municípios calculados; UFs com menos de 40 municípios calculados ou cobertura abaixo de 40% ficam fora dos resultados por UF e marcadas.', '']
@@ -23,7 +23,7 @@ for v, nome in (('trib_pc', 'base própria por habitante'), ('pib_pc', 'PIB por 
     kw = stats.kruskal(*[a.p_mt for _, a in d.groupby('qu')])
     L += [f'## Quintis de {nome} dentro de cada UF, depois juntados', '', t.to_markdown(), '', f'Teste de Kruskal-Wallis na margem sobre a receita total: p = {kw.pvalue:.2g}.', '']
 # pares: mesmo porte e mesma UF, base alta x baixa
-d['fx'] = pd.cut(d['pop'], [0, 5000, 10000, 20000, 50000, 1e9], labels=False)
+d['fx'] = pd.cut(d['pop'], [0, 5000, 10000, 20000, 50000, 100000, 500000, 1e9], labels=False)
 dif = []
 for (u, f), a in d.groupby(['uf', 'fx']):
     if len(a) >= 6:

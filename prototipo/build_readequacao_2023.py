@@ -6,7 +6,7 @@ import re, json, pandas as pd, numpy as np
 C = 'catalogo/'; H = 'prototipo/atlas_prototipo.html'
 T = json.load(open(C+'tabelas_projeto_2023.json'))
 b = pd.read_csv(C+'testes_tese_2023_base.csv', dtype={'cod_ibge': str}); b = b[b.calc == True]
-p = pd.read_csv(C+'pib_2023.csv', dtype={'cod_ibge': str}); r = pd.read_csv(C+'resultado_2023.csv', dtype={'cod_ibge': str})
+p = pd.read_csv(C+__import__('os').environ.get('PIB_ARQ','pib_2023.csv'), dtype={'cod_ibge': str}); r = pd.read_csv(C+'resultado_2023.csv', dtype={'cod_ibge': str})
 b = b.merge(p, on='cod_ibge'); b['pib_pc'] = b.pib_mil*1000/b['pop']; b = b[b.pib_pc > 0]
 cuts = list(b.pib_pc.quantile([.2, .4, .6, .8]))
 r = r.merge(p, on='cod_ibge', how='left'); r['pib_pc'] = r.pib_mil*1000/r['pop']

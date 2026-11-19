@@ -7,7 +7,7 @@ d = r.merge(t[['cod_ibge','trib','rtot']], on='cod_ibge', how='left')
 d = d[d['pop'] > 0].copy()
 d['calc'] = (d.status == 'calculado').astype(int)
 d['rec_pc'] = d.dca_rec / d['pop']; d['trib_pc'] = d.trib / d['pop']; d['lp'] = np.log(d['pop'])
-d['faixa'] = pd.cut(d['pop'], [0,5000,10000,20000,50000,1e9], labels=['até 5 mil','5–10 mil','10–20 mil','20–50 mil','mais de 50 mil'])
+d['faixa'] = pd.cut(d['pop'], [0,5000,10000,20000,50000,100000,500000,1e9], labels=['até 5 mil','5–10 mil','10–20 mil','20–50 mil','50–100 mil','100–500 mil','mais de 500 mil'])
 L = ['# Viés de cobertura, 2023', '', f'Municípios com população: {len(d)}; calculados: {d.calc.sum()} ({d.calc.mean()*100:.1f}%).', '']
 # motivos
 fl = d[d.calc==0]['flags'].fillna('').str.split('|').explode().value_counts().head(8)

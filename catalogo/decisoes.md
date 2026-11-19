@@ -311,3 +311,10 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Os números do protótipo publicado ainda são anteriores a D68; o aplicativo exibe aviso fixo sobre isso.
 - Telas novas (prototipo/build_site_novo.py, rodar por último): Mapa (malha municipal do IBGE, sete faixas, hachura para sem valor, zoom por UF, histograma, leitura por UF em dois níveis: fora da leitura e cobertura <60%), Correspondência (190 ações por classe e origem), busca de município por nome, linha da patronal na ficha. Mantidos: comparar dois municípios, ranking de estados, Tabelas 3 a 7.
 - Universo: 5.570 entes do IBGE = 5.568 municípios + DF + Fernando de Noronha; o projeto exclui DF e FN do cálculo (a malha traz Noronha dentro de PE; o mapa a desenha sem valor).
+
+## D69 · Alinhamento ao projeto recomposto (2026-11-19)
+- Faixas de população passam a sete (até 5 mil; 5–10; 10–20; 20–50; 50–100; 100–500; mais de 500 mil), como na seção 3.2 da tese. Aplicadas ao aplicativo, aos relatórios e às análises que comparam "mesma UF e mesma faixa". Efeito medido nas Tabelas 3 a 7 (2023): só a Tabela 6 (art. 11 da LRF) muda, ≤0,3 ponto por quintil.
+- Medida principal passa a ser a margem em % da receita total (rec_msc da MSC): mapa, histograma e ficha. Margem em % da RCL segue ao lado.
+- PIB por habitante, média 2021–2023 (SIDRA 5938, variável 37, preços correntes, ÷ população do Censo 2022): arquivo catalogo/pib_media_2021_2023.csv. O valor de 2023 do SIDRA confere com pib_2023.csv nos 5.570 entes. 90,2% dos municípios ficam no mesmo quintil; 9,8% mudam um quintil; 0,05% mudam dois. Padrão continua pib_2023.csv (Apêndice D é 2023); para a série confirmatória use a variável de ambiente PIB_ARQ=pib_media_2021_2023.csv.
+- Corrigido o rodar_tudo.bat: os scripts de analises/ precisam de argumentos (pasta do catálogo e arquivo de saída) e de transferencias_2023_por_acao.csv descompactado; a versão anterior os chamava sem argumentos e todos falhavam.
+- Pendente (H4b e H4c): coletar classes 1 e 4 da MSC (IPTU lançado, dívida ativa, ISS, ITBI), valor adicionado dos serviços (SIDRA 5938), REGIC 2018 e renda domiciliar (Censo 2022).

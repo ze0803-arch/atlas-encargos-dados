@@ -4,7 +4,7 @@ import sys, pandas as pd, numpy as np, statsmodels.formula.api as smf
 from scipy import stats
 cat, out = sys.argv[1], sys.argv[2]
 b = pd.read_csv(f'{cat}/testes_tese_2023_base.csv', dtype={'cod_ibge': str}); b = b[b.calc == True].copy()
-p = pd.read_csv(f'{cat}/pib_2023.csv', dtype={'cod_ibge': str}); j = pd.read_csv(f'{cat}/juridico_base_2023.csv', dtype={'cod_ibge': str}).fillna(0)
+p = pd.read_csv(f'{cat}/'+__import__('os').environ.get('PIB_ARQ','pib_2023.csv'), dtype={'cod_ibge': str}); j = pd.read_csv(f'{cat}/juridico_base_2023.csv', dtype={'cod_ibge': str}).fillna(0)
 b = b.merge(p, on='cod_ibge', how='left'); b['pib_pc'] = b.pib_mil * 1000 / b['pop']; b = b[b.pib_pc > 0].copy()
 b['lpib'] = np.log(b.pib_pc); b['lt'] = np.log(b.trib_pc.clip(lower=1)); b['lp'] = np.log(b['pop']); b['livre_rt'] = 100 - b.vinc
 b['q'] = pd.qcut(b.pib_pc, 5, labels=['Q1 (menor)', 'Q2', 'Q3', 'Q4', 'Q5 (maior)'])
@@ -30,7 +30,7 @@ rhos = [stats.spearmanr(a.pib_pc, a.p_mt)[0] for _, a in b.groupby('uf') if len(
 L += [f'Correlação (Spearman) entre PIB por habitante e margem sobre a receita total dentro da UF: mediana {np.median(rhos):.2f}; positiva em {sum(r > 0 for r in rhos)} de {len(rhos)} UFs.', '']
 # art 11 com capacidade independente
 e = b.merge(j[['cod_ibge', 'n_iptu', 'n_iss', 'n_itbi']], on='cod_ibge')
-e['fx'] = pd.cut(e['pop'], [0, 5000, 10000, 20000, 50000, 1e9], labels=False)
+e['fx'] = pd.cut(e['pop'], [0, 5000, 10000, 20000, 50000, 100000, 500000, 1e9], labels=False)
 for k in ('iptu', 'iss', 'itbi'):
     e[f'{k}_pc'] = e[f'n_{k}'] / e['pop']; med = e.groupby(['uf', 'fx'])[f'{k}_pc'].transform('median'); e[f'{k}_rel'] = (e[f'{k}_pc'] < 0.1 * med) & (med > 0)
 e['algum'] = e.iptu_rel | e.iss_rel | e.itbi_rel

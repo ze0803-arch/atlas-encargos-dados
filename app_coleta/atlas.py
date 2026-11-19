@@ -43,7 +43,7 @@ def relatorio():
         a = [r for r in rs if r['uf'] == u]; c = [r for r in a if r['status'] == 'calculado']; m = [f(r['margem_ampla_pct_rcl']) for r in c if f(r['margem_ampla_pct_rcl']) is not None]
         w(f"| {u} | {len(a)} | {len(c)} | {100*len(c)/len(a):.0f}% | {sum(1 for r in c if not conf.get(r['cod_ibge']))} | {('%.1f%%' % (100*st.median(m))) if m else '—'} |")
     w('\n## Por porte\n'); w('| Faixa | Municípios | Calculados | % | Margem mediana (% RCL) |'); w('|---|---|---|---|---|')
-    fx = [('até 5 mil', 0, 5000), ('5 a 10 mil', 5000, 10000), ('10 a 20 mil', 10000, 20000), ('20 a 50 mil', 20000, 50000), ('50 mil ou mais', 50000, 1e12)]
+    fx = [('até 5 mil', 0, 5000), ('5 a 10 mil', 5000, 10000), ('10 a 20 mil', 10000, 20000), ('20 a 50 mil', 20000, 50000), ('50 a 100 mil', 50000, 100000), ('100 a 500 mil', 100000, 500000), ('mais de 500 mil', 500000, 1e12)]
     for nome, lo, hi in fx:
         a = [r for r in rs if lo <= int(r['pop']) < hi]; c = [r for r in a if r['status'] == 'calculado']; m = [f(r['margem_ampla_pct_rcl']) for r in c if f(r['margem_ampla_pct_rcl']) is not None]
         if a: w(f"| {nome} | {len(a)} | {len(c)} | {100*len(c)/len(a):.0f}% | {('%.1f%%' % (100*st.median(m))) if m else '—'} |")

@@ -108,13 +108,15 @@ const CORR=@@CORR@@;
 const UFCOD={'11':'RO','12':'AC','13':'AM','14':'RR','15':'PA','16':'AP','17':'TO','21':'MA','22':'PI','23':'CE','24':'RN','25':'PB','26':'PE','27':'AL','28':'SE','29':'BA','31':'MG','32':'ES','33':'RJ','35':'SP','41':'PR','42':'SC','43':'RS','50':'MS','51':'MT','52':'GO','53':'DF'};
 const CLASSE={automatica_constitucional:'Automática (constitucional)',obrigacao_legal:'Obrigação legal',adesao:'Adesão (voluntária)',outra:'Outra'};
 const ORIGEM={formulario:'Formulário do projeto',proposta:'Proposta do pesquisador',padrao_a_revisar:'Padrão provisório, a revisar'};
-const MIND={mp:['Margem ampla, % da RCL',r=>r.st==='calc'&&r.mp!=null?r.mp*100:null],me:['Margem estrita, % da RCL',r=>r.st==='calc'&&MEp(r)!=null?MEp(r)*100:null],
+const MRTf=r=>{if(r.st!=='calc'||r.m==null)return null;const b=FI(r.c,'rec_msc');return b>0?r.m/b*100:null};
+const MREf=r=>{if(r.st!=='calc'||r.me==null)return null;const b=FI(r.c,'rec_msc');return b>0?r.me/b*100:null};
+const MIND={mrt:['Margem ampla, % da receita total (medida principal)',MRTf],mre:['Margem estrita, % da receita total',MREf],mp:['Margem ampla, % da RCL',r=>r.st==='calc'&&r.mp!=null?r.mp*100:null],me:['Margem estrita, % da RCL',r=>r.st==='calc'&&MEp(r)!=null?MEp(r)*100:null],
  vinc:['Receita vinculada, % da receita',r=>{if(r.st!=='calc')return null;const a=FI(r.c,'rec_livre'),b=FI(r.c,'rec_msc');return a!=null&&b>0?(1-a/b)*100:null}],
  pib:['PIB por habitante, R$ (IBGE)',r=>(RD.PIBQ[r.c]||[null])[0]]};
 function quant(a,k){a=a.filter(x=>x!=null).sort((x,y)=>x-y);const o=[];for(let i=1;i<k;i++)o.push(a[Math.min(a.length-1,Math.floor(i*a.length/k))]);return o}
 let _mapCache=null;
 function renderMapa(){
-  const el=$('#v-mapa'),ind=S.mapInd||'mp',uf=S.mapUF||'BR',f=MIND[ind][1];
+  const el=$('#v-mapa'),ind=S.mapInd||'mrt',uf=S.mapUF||'BR',f=MIND[ind][1];
   const ufs=Object.values(UFCOD).sort();
   const vals={};PILOTO.forEach(r=>{vals[r.c]=f(r)});
   const cut=quant(Object.values(vals),7);
@@ -130,7 +132,7 @@ function renderMapa(){
   const totN=PILOTO.filter(r=>uf==='BR'||r.uf===uf).length;
   const vv=Object.values(vals).filter(x=>x!=null);
   // histograma
-  const hind=(ind==='mp'||ind==='me')?ind:'mp',hf=MIND[hind][1];
+  const hind=(ind==='mrt'||ind==='mre'||ind==='mp'||ind==='me')?ind:'mrt',hf=MIND[hind][1];
   const hv=PILOTO.filter(r=>uf==='BR'||r.uf===uf).map(hf).filter(x=>x!=null);
   const LO=-20,HI=80,W=5,nb=(HI-LO)/W,cnt=new Array(nb).fill(0);
   hv.forEach(v=>{let i=Math.floor((Math.min(Math.max(v,LO),HI-1e-9)-LO)/W);cnt[i]++});
@@ -184,11 +186,11 @@ document.addEventListener('change',e=>{const t=e.target;
 document.addEventListener('click',e=>{const t=e.target;if(t.dataset&&t.dataset.co==='all'){S.corAll=!S.corAll;renderCorresp()}});
 document.addEventListener('mouseover',e=>{const p=e.target.closest&&e.target.closest('.mapsvg path');if(!p)return;const m=PILOTO.find(r=>r.c===p.dataset.rgo),inf=$('#mapInfo');if(!inf)return;
  if(!m){inf.textContent='Fora do universo do estudo (DF e Fernando de Noronha).';return}
- const v=p.dataset.v===''?null:+p.dataset.v,ind=S.mapInd||'mp';
- inf.innerHTML=`<b>${esc(m.ente)}</b> · ${m.uf} · ${nf0.format(m.pop)} hab.<br>${MIND[ind][0]}: ${v==null?'sem valor calculado'+(m.fl&&m.fl.length?' ('+m.fl.map(x=>FLAGTXT[x]||x).join('; ')+')':''):(ind==='pib'?'R$ '+nf0.format(v):nf1.format(v)+'%%')} · ampla ${m.mp==null?'—':nf1.format(100*m.mp)+'%%'} · estrita ${MEp(m)==null?'—':nf1.format(100*MEp(m))+'%%'} <span class="muted">(clique para abrir a ficha)</span>`});
+ const v=p.dataset.v===''?null:+p.dataset.v,ind=S.mapInd||'mrt';
+ inf.innerHTML=`<b>${esc(m.ente)}</b> · ${m.uf} · ${nf0.format(m.pop)} hab.<br>${MIND[ind][0]}: ${v==null?'sem valor calculado'+(m.fl&&m.fl.length?' ('+m.fl.map(x=>FLAGTXT[x]||x).join('; ')+')':''):(ind==='pib'?'R$ '+nf0.format(v):nf1.format(v)+'%%')} · ampla ${MRTf(m)==null?'—':nf1.format(MRTf(m))+'%%'} · estrita ${MREf(m)==null?'—':nf1.format(MREf(m))+'%%'} da receita total <span class="muted">(clique para abrir a ficha)</span>`});
 // busca na ficha + datalist
 $('#dlMun').innerHTML=PILOTO.map(r=>`<option value="${esc(r.ente+' — '+r.uf)}"></option>`).join('');
-const _rf=renderFichaR;renderFichaR=function(){_rf();const e=$('#v-fichaR'),hr=e.querySelector('.row');if(hr)hr.insertAdjacentHTML('beforeend','<label>Buscar pelo nome<input list="dlMun" data-busca placeholder="digite o nome do município" autocomplete="off"></label>')};
+const _rf=renderFichaR;renderFichaR=function(){_rf();const e=$('#v-fichaR'),hr=e.querySelector('.row');const sm=e.querySelector('[data-r=mun]'),mm=sm&&PILOTO.find(r=>r.c===sm.value),cd=e.querySelector('.cards');if(cd&&mm)cd.insertAdjacentHTML('afterbegin',`<div class="card stat"><div class="n">${MRTf(mm)==null?'—':nf1.format(MRTf(mm))+'%%'}</div><div class="l">margem ampla, % da receita total (medida principal da tese) · estrita ${MREf(mm)==null?'—':nf1.format(MREf(mm))+'%%'}</div></div>`);if(hr)hr.insertAdjacentHTML('beforeend','<label>Buscar pelo nome<input list="dlMun" data-busca placeholder="digite o nome do município" autocomplete="off"></label>')};
 R.fichaR=renderFichaR;
 R.mapa=renderMapa;R.corresp=renderCorresp;
 TABS.splice(TABS.findIndex(t=>t[0]==='graficos')+1,0,['mapa','Mapa'],['corresp','Correspondência']);

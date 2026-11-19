@@ -36,10 +36,25 @@ if exist "%DADOS%\comparacao_siops_2023.csv" copy /Y "%DADOS%\comparacao_siops_2
 
 echo.
 echo === ETAPA 2 de 4: analises da tese (se uma falhar, segue para a proxima) ===
-for %%S in (comparativo_2023 tabelas_projeto_2023 testes_tese_2023 testes_juridicos_2023 robustez_2023 vies_cobertura_2023) do (
-  echo - %%S
-  python analises\%%S.py || echo   AVISO: %%S falhou; confira o caminho dos arquivos dentro do script.
-)
+rem testes_tese precisa de transferencias_2023_por_acao.csv sem compactar dentro de catalogo
+if exist "%DADOS%\transferencias_2023_por_acao.csv" (copy /Y "%DADOS%\transferencias_2023_por_acao.csv" catalogo\ >nul) else if not exist catalogo\transferencias_2023_por_acao.csv python -c "import gzip,shutil;shutil.copyfileobj(gzip.open('catalogo/transferencias_2023_por_acao.csv.gz'),open('catalogo/transferencias_2023_por_acao.csv','wb'))"
+set C=catalogo
+echo - testes_tese_2023
+python analises\testes_tese_2023.py %C% >nul || echo   AVISO: testes_tese_2023 falhou
+echo - tabelas_projeto_2023
+python analises\tabelas_projeto_2023.py %C% %C%\tabelas_projeto_2023.json || echo   AVISO: tabelas_projeto_2023 falhou
+echo - comparativo_2023
+python analises\comparativo_2023.py %C% %C%\comparativo_2023.md >nul || echo   AVISO: comparativo_2023 falhou
+echo - testes_juridicos_2023
+python analises\testes_juridicos_2023.py %C% %C%\juridico_base_2023.csv %C%\testes_juridicos_2023.md >nul || echo   AVISO: testes_juridicos_2023 falhou
+echo - robustez_2023
+python analises\robustez_2023.py %C% %C%\robustez_2023.md >nul || echo   AVISO: robustez_2023 falhou
+echo - vies_cobertura_2023
+python analises\vies_cobertura_2023.py %C% %C%\vies_cobertura_2023.md >nul || echo   AVISO: vies_cobertura_2023 falhou
+echo - base_independente_2023
+python analises\base_independente_2023.py %C% %C%\base_independente_2023.md >nul || echo   AVISO: base_independente_2023 falhou
+echo - choque_pisos_2023
+python analises\choque_pisos_2023.py %C% >nul || echo   AVISO: choque_pisos_2023 falhou
 
 echo.
 echo === ETAPA 3 de 4: malha municipal do IBGE (para o mapa) ===

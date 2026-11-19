@@ -6,11 +6,11 @@ from scipy import stats
 C = 'catalogo/'; H = 'prototipo/atlas_prototipo.html'
 r = pd.read_csv(C+'resultado_2023.csv', dtype={'cod_ibge': str})
 b = pd.read_csv(C+'testes_tese_2023_base.csv', dtype={'cod_ibge': str}); b = b[b.calc == True].copy()
-p = pd.read_csv(C+'pib_2023.csv', dtype={'cod_ibge': str}); b = b.merge(p, on='cod_ibge', how='left'); b['pib_pc'] = b.pib_mil*1000/b['pop']; b = b[b.pib_pc > 0]
+p = pd.read_csv(C+__import__('os').environ.get('PIB_ARQ','pib_2023.csv'), dtype={'cod_ibge': str}); b = b.merge(p, on='cod_ibge', how='left'); b['pib_pc'] = b.pib_mil*1000/b['pop']; b = b[b.pib_pc > 0]
 j = pd.read_csv(C+'juridico_base_2023.csv', dtype={'cod_ibge': str}).fillna(0)
 b['q'] = pd.qcut(b.pib_pc, 5, labels=['Q1 (menor)', 'Q2', 'Q3', 'Q4', 'Q5 (maior)'])
 g = b.groupby('q', observed=True).agg(n=('uf', 'size'), pib=('pib_pc', 'median'), m_rt=('p_mt', 'median'), m_rl=('p_m', 'median'), vinc=('vinc', 'median')).round(1)
-e = b.merge(j[['cod_ibge', 'n_iptu', 'n_iss', 'n_itbi']], on='cod_ibge'); e['fx'] = pd.cut(e['pop'], [0, 5000, 10000, 20000, 50000, 1e9], labels=False)
+e = b.merge(j[['cod_ibge', 'n_iptu', 'n_iss', 'n_itbi']], on='cod_ibge'); e['fx'] = pd.cut(e['pop'], [0, 5000, 10000, 20000, 50000, 100000, 500000, 1e9], labels=False)
 for k in ('iptu', 'iss', 'itbi'):
     e[k] = e[f'n_{k}']/e['pop']; med = e.groupby(['uf', 'fx'])[k].transform('median'); e[k+'_r'] = (e[k] < .1*med) & (med > 0)
 e['alg'] = e.iptu_r | e.iss_r | e.itbi_r; a11 = e.groupby('q', observed=True).alg.mean().mul(100).round(1)
