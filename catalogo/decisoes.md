@@ -318,3 +318,11 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - PIB por habitante, média 2021–2023 (SIDRA 5938, variável 37, preços correntes, ÷ população do Censo 2022): arquivo catalogo/pib_media_2021_2023.csv. O valor de 2023 do SIDRA confere com pib_2023.csv nos 5.570 entes. 90,2% dos municípios ficam no mesmo quintil; 9,8% mudam um quintil; 0,05% mudam dois. Padrão continua pib_2023.csv (Apêndice D é 2023); para a série confirmatória use a variável de ambiente PIB_ARQ=pib_media_2021_2023.csv.
 - Corrigido o rodar_tudo.bat: os scripts de analises/ precisam de argumentos (pasta do catálogo e arquivo de saída) e de transferencias_2023_por_acao.csv descompactado; a versão anterior os chamava sem argumentos e todos falhavam.
 - Pendente (H4b e H4c): coletar classes 1 e 4 da MSC (IPTU lançado, dívida ativa, ISS, ITBI), valor adicionado dos serviços (SIDRA 5938), REGIC 2018 e renda domiciliar (Censo 2022).
+
+
+## D70 · Coleta da H4b e da H4c (2026-11-19)
+- `coletar.py --h4` (etapa `h4` do atlas.py) baixa da MSC patrimonial (MSCE, dezembro) a classe 4 do ano e as classes 1 do ano e do anterior.
+- `analises/extrai_h4.py` gera `h4_2023.csv`: IPTU lançado (VPA 411210200), IPTU arrecadado (natureza 11125001), taxa de realização, dívida ativa tributária bruta (contas 121110*, PROVISÓRIO: confirmar no PCASP Estendido), dívida ativa recebida (11125003 + 11145113) e recuperação sobre o estoque do ano anterior.
+- `analises/baixar_ibge_h4.py`: valor adicionado dos serviços (SIDRA 5938, var. 6575). Só 2021 está publicado; 2022 e 2023 ainda não. A lacuna de ano deve constar na tese.
+- Pendentes manuais: REGIC 2018 (xlsx do IBGE) e renda domiciliar do Censo 2022. Sem eles, a H4c não roda.
+- Teste em 3 municípios do RN: classes 1 e 4 coletadas; arrecadação e dívida ativa recebida dependem da MSCE já coletada (raw/.../msce) e ficaram zeradas só porque o teste não tinha essa pasta.

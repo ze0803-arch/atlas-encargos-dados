@@ -30,6 +30,7 @@ ap.add_argument('--empacotar', action='store_true', help='reempacota as UFs conc
 ap.add_argument('--enviar', action='store_true', help='git add/commit/push do catálogo ao concluir cada UF (os pacotes de brutos não vão ao GitHub)')
 ap.add_argument('--verificar', action='store_true', help='confere cada município concluído contra o extrato de entregas e refaz o que o município entregou mas veio vazio (matrizes mensais e MSCE); grava verificacao_coleta.csv')
 ap.add_argument('--completar-mscc', action='store_true', help='nos municípios já concluídos, busca as 12 matrizes mensais onde a MSCE não fecha com a DCA')
+ap.add_argument('--h4', action='store_true', help='H4b/H4c: busca da MSC de encerramento as classes 1 (saldo final, ano e ano anterior) e 4 (variação do ano), para IPTU lançado e dívida ativa')
 A = ap.parse_args()
 ANO = A.ano
 RAW = os.path.join(A.pasta, 'raw', 'siconfi', str(ANO))
@@ -188,6 +189,20 @@ def completar_mscc(ufs, entes):
     dizer(f'MSCC mensal: {len(alvo)} municípios a completar')
     with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(busca_mscc, alvo))
 
+def busca_h4(e):
+    """H4b/H4c (projeto recomposto, seção 3.8): IPTU lançado (VPA, classe 4) e dívida ativa (classe 1), MSC de encerramento (msc_patrimonial)."""
+    base = dict(id_ente=e, me_referencia=12, co_tipo_matriz='MSCE')
+    for rel, ano, cl, tv in (('h4_c4', ANO, 4, 'period_change'), ('h4_c1', ANO, 1, 'ending_balance'), ('h4_c1_ant', ANO - 1, 1, 'ending_balance')):
+        d = os.path.join(RAW, rel)
+        if os.path.isdir(d) and any(f.split('_')[2] == str(e) for f in os.listdir(d)): continue
+        paginado(rel, e, 'msc_patrimonial', dict(base, an_referencia=ano, classe_conta=cl, id_tv=tv))
+
+def coletar_h4(ufs, entes):
+    alvo = sorted(str(e['cod_ibge']) for e in entes if e['uf'] in ufs)
+    if A.limite: alvo = alvo[:A.limite]
+    dizer(f'H4: {len(alvo)} municípios (classes 1 e 4 da MSC)')
+    with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(busca_h4, alvo))
+
 def verificar(ufs, entes):
     """Confere cada município concluído: mês entregue (extrato) sem dados no bruto -> busca de novo; MSCE entregue e vazia -> tenta de novo.
     Registra o resultado em verificacao_coleta.csv (município, lacunas antes/depois, MSCE na API)."""
@@ -233,6 +248,8 @@ def main():
         verificar(ufs, entes); dizer('CONCLUÍDO'); return
     if A.completar_mscc:
         completar_mscc(ufs, entes); dizer('CONCLUÍDO'); return
+    if A.h4:
+        coletar_h4(ufs, entes); dizer('CONCLUÍDO'); return
     for uf in ufs:
         lista = sorted([e for e in entes if e['uf'] == uf], key=lambda e: e['cod_ibge'])
         feitos = concluidos()

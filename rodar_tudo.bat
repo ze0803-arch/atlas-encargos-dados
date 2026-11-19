@@ -19,7 +19,7 @@ echo O Siconfi e o SIOPS sao baixados da internet. Demora de 4 a 6 horas e retom
 set /p COLETA=Atualizar a coleta agora? (s/n): 
 if /i "%COLETA%"=="s" (
   cd app_coleta
-  python atlas.py --pasta dados --etapas siconfi mscc verificar siops siope transferencias convenios || (cd .. & goto :erro)
+  python atlas.py --pasta dados --etapas siconfi mscc verificar siops siope h4 transferencias convenios || (cd .. & goto :erro)
   cd ..
 )
 
@@ -55,6 +55,9 @@ echo - base_independente_2023
 python analises\base_independente_2023.py %C% %C%\base_independente_2023.md >nul || echo   AVISO: base_independente_2023 falhou
 echo - choque_pisos_2023
 python analises\choque_pisos_2023.py %C% >nul || echo   AVISO: choque_pisos_2023 falhou
+echo - h4 (IPTU lancado, taxa de realizacao, divida ativa; valor adicionado dos servicos)
+python analises\extrai_h4.py "%DADOS%" %C%\h4_2023.csv || echo   AVISO: extrai_h4 falhou
+python analises\baixar_ibge_h4.py %C%\va_servicos.csv || echo   AVISO: baixar_ibge_h4 falhou
 
 echo.
 echo === ETAPA 3 de 4: malha municipal do IBGE (para o mapa) ===
