@@ -30,6 +30,7 @@ ap.add_argument('--empacotar', action='store_true', help='reempacota as UFs conc
 ap.add_argument('--enviar', action='store_true', help='git add/commit/push do catálogo ao concluir cada UF (os pacotes de brutos não vão ao GitHub)')
 ap.add_argument('--verificar', action='store_true', help='confere cada município concluído contra o extrato de entregas e refaz o que o município entregou mas veio vazio (matrizes mensais e MSCE); grava verificacao_coleta.csv')
 ap.add_argument('--completar-mscc', action='store_true', help='nos municípios já concluídos, busca as 12 matrizes mensais onde a MSCE não fecha com a DCA')
+ap.add_argument('--lista', default='', help='CSV com coluna cod_ibge: refaz só esses municípios (recoleta completa de cada um) e depois confere com --verificar')
 ap.add_argument('--h4', action='store_true', help='H4b/H4c: busca da MSC de encerramento as classes 1 (saldo final, ano e ano anterior) e 4 (variação do ano), para IPTU lançado e dívida ativa')
 A = ap.parse_args()
 ANO = A.ano
@@ -203,11 +204,15 @@ def coletar_h4(ufs, entes):
     dizer(f'H4: {len(alvo)} municípios (classes 1 e 4 da MSC)')
     with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(busca_h4, alvo))
 
+def lista_cods():
+    return set(str(x['cod_ibge']).strip() for x in csv.DictReader(open(A.lista, encoding='utf-8')))
+
 def verificar(ufs, entes):
     """Confere cada município concluído: mês entregue (extrato) sem dados no bruto -> busca de novo; MSCE entregue e vazia -> tenta de novo.
     Registra o resultado em verificacao_coleta.csv (município, lacunas antes/depois, MSCE na API)."""
     por = {str(e['cod_ibge']): e for e in entes if e['uf'] in ufs}
     alvo = sorted(concluidos() & set(por))
+    if A.lista: alvo = [c for c in alvo if c in lista_cods()]
     if A.limite: alvo = alvo[:A.limite]
     saida = os.path.join(A.pasta, 'verificacao_coleta.csv'); linhas = []
     def um(c):
@@ -243,6 +248,11 @@ def main():
             cods = [str(e['cod_ibge']) for e in entes if e['uf'] == uf]
             if cods and all(c in feitos for c in cods): empacotar(uf, cods)
         if A.enviar: enviar_git(f'Siconfi {ANO}: pacotes e catálogo')
+        dizer('CONCLUÍDO'); return
+    if A.lista and not A.verificar:
+        alvo = [e for e in entes if str(e['cod_ibge']) in lista_cods()]
+        dizer(f'recoleta dirigida: {len(alvo)} municípios da lista {A.lista}')
+        with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(municipio, alvo))
         dizer('CONCLUÍDO'); return
     if A.verificar:
         verificar(ufs, entes); dizer('CONCLUÍDO'); return
