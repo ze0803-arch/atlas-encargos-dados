@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
-echo Recoleta dirigida: so os municipios que a coleta pode melhorar (cerca de 700). Retoma se interromper.
+echo Recoleta dirigida: so os municipios que a coleta pode melhorar (cerca de 700). Pode parar e rodar de novo: ele pula os ja refeitos.
 python analises\lista_recoleta.py app_coleta\dados app_coleta\dados\lista_recoleta.csv || goto :erro
 cd app_coleta
 python coletar.py --pasta dados --lista dados\lista_recoleta.csv || goto :erro

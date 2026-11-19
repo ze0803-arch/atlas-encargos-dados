@@ -251,8 +251,15 @@ def main():
         dizer('CONCLUÍDO'); return
     if A.lista and not A.verificar:
         alvo = [e for e in entes if str(e['cod_ibge']) in lista_cods()]
-        dizer(f'recoleta dirigida: {len(alvo)} municípios da lista {A.lista}')
-        with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(municipio, alvo))
+        marca = os.path.join(A.pasta, 'recoleta_feitos.txt')
+        feitos_r = set(open(marca).read().split()) if os.path.exists(marca) else set()
+        alvo = [e for e in alvo if str(e['cod_ibge']) not in feitos_r]
+        dizer(f'recoleta dirigida: {len(alvo)} municípios a refazer da lista {A.lista} ({len(feitos_r)} já refeitos antes)')
+        def refaz(m):
+            municipio(m)
+            if str(m['cod_ibge']) not in FALHOU:
+                with lock, open(marca, 'a') as f: f.write(str(m['cod_ibge']) + '\n')
+        with ThreadPoolExecutor(A.trabalhadores) as ex: list(ex.map(refaz, alvo))
         dizer('CONCLUÍDO'); return
     if A.verificar:
         verificar(ufs, entes); dizer('CONCLUÍDO'); return
