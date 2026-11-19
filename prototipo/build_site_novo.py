@@ -72,8 +72,8 @@ print('ações:', len(CORR), 'sem valor na base:', sem, 'total R$ bi:', round(su
 CSS = """
 /*SITE-CSS*/
 :root{--s1:#E4F1F4;--s2:#BEDDE5;--s3:#93C6D3;--s4:#62A8BD;--s5:#3A859F;--s6:#1F647D;--s7:#0B3F52;--nc:#C9CFD6}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--s1:#17333C;--s2:#1E4A58;--s3:#2A6578;--s4:#3D869B;--s5:#62A9BD;--s6:#92CBDA;--s7:#C8EBF4;--nc:#3A4755}}
-:root[data-theme="dark"]{--s1:#17333C;--s2:#1E4A58;--s3:#2A6578;--s4:#3D869B;--s5:#62A9BD;--s6:#92CBDA;--s7:#C8EBF4;--nc:#3A4755}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--s1:#2B5A6B;--s2:#357089;--s3:#418AA3;--s4:#5CA4BA;--s5:#82BED0;--s6:#B1DBE7;--s7:#E3F5FA;--nc:#3A4755}}
+:root[data-theme="dark"]{--s1:#2B5A6B;--s2:#357089;--s3:#418AA3;--s4:#5CA4BA;--s5:#82BED0;--s6:#B1DBE7;--s7:#E3F5FA;--nc:#3A4755}
 .mapwrap{border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:8px;max-width:100%}
 .mapsvg{display:block;width:100%;height:auto;max-height:78vh}
 .mapsvg path{stroke:var(--surface);stroke-width:.6;cursor:pointer}
