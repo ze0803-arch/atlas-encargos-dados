@@ -285,10 +285,10 @@ V.coleta=()=>{
   ['IBGE: população (Censo 2022) e PIB dos Municípios','2021 a 2023','ok','coletado','PIB médio 2021 a 2023 disponível'],
   ['IBGE: valor adicionado dos serviços (Sidra 5938, variável 6575)','2021','wait','só até 2021','2022 e 2023 não publicados por atividade'],
   ['IBGE: REGIC 2018','2018','bad','falta baixar','H4c; baixar a planilha no site do IBGE'],
-  ['IBGE: renda domiciliar do Censo 2022','2022','bad','tabela a localizar','robustez da H1 e da H4b'],
+  ['IBGE: renda do responsável, Censo 2022 (5.570 municípios)','2022','ok','coletado','robustez da H1 e da H4b; ainda sem uso nas telas'],
   ['Portal da Transparência: transferências por ação e convênios','2023','ok','coletado','116 ações provisórias a classificar'],
-  ['Tesouro Transparente: FPM e transferências constitucionais','2023','new','acessível, falta coletar','conferência externa e decomposição da H1'],
-  ['FNDE: complementação da União ao Fundeb','2023','bad','falta coletar','controle da H2'],
+  ['Tesouro Transparente: FPM e transferências constitucionais','2023','ok','coletado (5.569 municípios, 12 meses)','conferência externa e decomposição da H1'],
+  ['Complementação da União ao Fundeb (VAAF e VAAT, via Tesouro)','2023','ok','coletado','controle da H2; VAAR não separado'],
   ['SIOPS','2023','ok','coletado','conferência do mínimo da saúde'],
   ['SIOPE (FNDE)','2023','wait','API instável','testar a partir do computador do pesquisador'],
   ['MSC de 2022','2022','new','disponível','base da exposição da H2 e robustez'],
@@ -313,12 +313,11 @@ V.coleta=()=>{
   <div class="scroll"><table><thead><tr><th>Arquivo</th><th>Onde</th><th>Como</th><th>Salvar em</th></tr></thead><tbody>
    <tr><td>REGIC 2018: <b>Municípios, hierarquia e região de influência</b> (xlsx)<br><span class="muted">para a H4c</span></td><td><a href="https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15798-regioes-de-influencia-das-cidades.html" target="_blank" rel="noopener">IBGE, Regiões de Influência das Cidades</a></td><td>Role até <i>Bases de dados</i>. Na linha “REGIC 2018 - Municípios - Hierarquia e região de influência - Base tabular”, clique em <b>xlsx</b>. Não renomeie.</td><td><code>brutos\\ibge\\regic2018\\</code></td></tr>
    <tr><td>REGIC 2018: <b>Municípios integrantes de Arranjos Populacionais</b> (xlsx)<br><span class="muted">opcional, para tratar arranjos como um centro só</span></td><td>mesma página</td><td>Mesma tela, linha “Municípios integrantes de Arranjos Populacionais”, <b>xlsx</b>.</td><td><code>brutos\\ibge\\regic2018\\</code></td></tr>
-   <tr><td>Renda domiciliar do Censo 2022, por município<br><span class="muted">robustez da H1 e da H4b</span></td><td>IBGE, Censo 2022, tabelas no Sidra (nível Município)</td><td>Ainda não localizei o endereço exato. Procure no Sidra “Censo Demográfico 2022” e a tabela de rendimento domiciliar per capita ou do responsável, com unidade territorial <i>Município</i>, e baixe em <b>CSV</b>. Me avise o nome da tabela para eu conferir.</td><td><code>brutos\\ibge\\censo2022_renda\\</code></td></tr>
    <tr><td>Portaria do MEC com o reajuste do piso de 2024, 2025 e 2026<br><span class="muted">confere os percentuais da H2</span></td><td>gov.br/mec, página de legislação</td><td>Baixe os três PDFs das portarias. Não salve só o número: o texto é a fonte que será citada.</td><td><code>brutos\\mec\\piso\\</code></td></tr></tbody></table></div>
   <p class="muted">Depois de salvar, é só me avisar. Eu leio os arquivos da pasta, monto a leitura (carregador da REGIC, por exemplo) e confiro as linhas contra o site.</p>
   <h4>3. O Claude coleta (você não precisa fazer nada)</h4>
-  <ul class="chg"><li>FPM e transferências constitucionais: Tesouro Transparente, acessível a partir do ambiente do Claude.</li>
-  <li>Complementação da União ao Fundeb (VAAF, VAAT, VAAR): <a href="https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/financiamento/fundeb" target="_blank" rel="noopener">página do Fundeb no FNDE</a>, tabela “Receita total do Fundeb por ente federado”. Se o site recusar o acesso, peço que você baixe o arquivo de 2023.</li>
+  <ul class="chg"><li>Já coletados por mim: FPM e Fundeb (Tesouro Transparente, 12 meses de 2023, com a complementação da União) e a renda do Censo 2022.</li>
+  <li>Ainda sem fonte aberta acessível: REGIC 2018 (o site do IBGE recusa o acesso do meu ambiente) e as portarias do piso (MEC).</li>
   <li>Ranking de qualidade da informação contábil (Siconfi): conferência.</li></ul>
   <h3>Próximos passos, em ordem</h3>
   <ol class="steps"><li>Rodar a recoleta dirigida dos 710 municípios com lacuna e reprocessar os resultados.</li><li>Baixar a REGIC 2018 e montar a H4c.</li><li>Fechar a H4b com o IPTU lançado, a taxa de realização e a dívida ativa já coletados.</li><li>Coletar FPM e complementação do Fundeb.</li><li>Registrar as regras no repositório com data e só então coletar e abrir 2024 e 2025.</li></ol>`};

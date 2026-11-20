@@ -1,0 +1,1 @@
+a5e511c0696d157ffd8d999555bbbebe2f20ab450ab4b6ce91c48c2920d6af00  brutos/ibge/censo2022_renda/Agregados_por_municipios_renda_responsavel_BR.csv
