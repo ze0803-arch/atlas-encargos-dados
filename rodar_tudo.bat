@@ -30,11 +30,13 @@ echo.
 echo === ETAPA 1 de 4: recalcular os resultados (demora; mostra o progresso) ===
 cd app_coleta
 python analisar.py --pasta dados || goto :erro
+python analisar.py --pasta dados --tol 0.03 || goto :erro
 python confianca.py --pasta dados || goto :erro
 python comparar_siops.py --pasta dados
 cd ..
 copy /Y "%DADOS%\resultado_2023.csv" catalogo\ >nul
 copy /Y "%DADOS%\confianca_2023.json" catalogo\ >nul
+if exist "%DADOS%\resultado_2023_tol3.csv" copy /Y "%DADOS%\resultado_2023_tol3.csv" catalogo\ >nul
 if exist "%DADOS%\comparacao_siops_2023.csv" copy /Y "%DADOS%\comparacao_siops_2023.csv" catalogo\ >nul
 
 echo.
@@ -42,6 +44,11 @@ echo === ETAPA 2 de 4: analises da tese (se uma falhar, segue para a proxima) ==
 rem testes_tese precisa de transferencias_2023_por_acao.csv sem compactar dentro de catalogo
 if exist "%DADOS%\transferencias_2023_por_acao.csv" (copy /Y "%DADOS%\transferencias_2023_por_acao.csv" catalogo\ >nul) else if not exist catalogo\transferencias_2023_por_acao.csv python -c "import gzip,shutil;shutil.copyfileobj(gzip.open('catalogo/transferencias_2023_por_acao.csv.gz'),open('catalogo/transferencias_2023_por_acao.csv','wb'))"
 set C=catalogo
+echo - extrai_tributaria (RREO anexo 01)
+python analises\extrai_tributaria.py "%DADOS%" || echo   AVISO: extrai_tributaria falhou
+if exist "%DADOS%\tributaria_2023.csv" copy /Y "%DADOS%\tributaria_2023.csv" %C%\ >nul
+echo - extrai_juridico (MSCE por natureza, fonte e funcao; demora)
+python analises\extrai_juridico.py "%DADOS%" %C%\juridico_base_2023.csv || echo   AVISO: extrai_juridico falhou
 echo - testes_tese_2023
 python analises\testes_tese_2023.py %C% >nul || echo   AVISO: testes_tese_2023 falhou
 echo - tabelas_projeto_2023
