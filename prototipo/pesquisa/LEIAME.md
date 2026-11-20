@@ -7,9 +7,8 @@ Anexo de dados e de conferência da tese. Público: orientador e banca. Não é 
 - `municipios.json`: uma linha por município calculado (colunas em `IX` dentro de `app.html`).
 - `mapa.json`: malha simplificada para o mapa.
 - `build_pesquisa.py`: gera `atlas_pesquisa.html` a partir de `app.html` e `dados.json`.
-- `calc_dados.py`: calcula `dados.json` e `municipios.json` a partir de `resultado_2023.csv` e do catálogo (caminhos de entrada ajustáveis no topo).
-- `calc_h4itbi.py`: ITBI e IPTU por habitante por quintil (D72).
+- `calc_pesquisa.py`: gera `dados.json` e `municipios.json` a partir de `resultado_2023.csv` e do catálogo. Uso: `python calc_pesquisa.py ..\..\app_coleta\dados\resultado_2023.csv ..\..\catalogo`, depois `python build_pesquisa.py`.
 
 Para abrir: dê dois cliques em `abrir_pesquisa.bat` (monta a página e abre no navegador).
 
-Estado: 2023 exploratório, base anterior à recoleta dos 710 municípios. Refazer `calc_dados.py` e `calc_h4itbi.py` depois de `rodar_tudo.bat`.
+Estado: 2023 exploratório, resultado após a recoleta dos 710 municípios (4.121 calculados); a tabela de projeto, a base jurídica e o teste de viés de cobertura dependem de `rodar_tudo.bat` completo. Depois de `rodar_tudo.bat`, rodar `calc_pesquisa.py` e `build_pesquisa.py`.
