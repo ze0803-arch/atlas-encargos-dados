@@ -1,0 +1,5 @@
+teste,variavel,celulas,n_dep,n_cen,razao,celulas_abaixo_85,celulas_abaixo_100
+Principal: dependentes (4 e 5) x centros (1 a 3),VA dos serviços por habitante (2021),22,3022,541,0.825,12,18
+Principal: dependentes (4 e 5) x centros (1 a 3),ISS realizado por habitante (2023),21,2341,457,0.735,14,19
+Sensibilidade: só Centro Local (5) x centros (1 a 4),VA dos serviços por habitante (2021),22,2883,803,0.817,14,21
+Sensibilidade: só Centro Local (5) x centros (1 a 4),ISS realizado por habitante (2023),21,2473,640,0.834,11,17

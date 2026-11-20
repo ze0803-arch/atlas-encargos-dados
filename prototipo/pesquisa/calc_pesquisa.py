@@ -80,5 +80,8 @@ c['fol'] = P(c.folha_livre - c.patronal_livre.fillna(0))
 r1 = lambda s: round(float(s), 1)
 arr = [[int(a.cod_ibge), a.ente, a.uf, int(a['pop']), int(a.pibpc), int(a.fx), int(a.q), int(round(a.rec_pc)), r1(a.vinc), r1(a['min']), r1(a.patr), r1(a.leg), r1(a['div']), r1(a.prc), r1(a.m_rt), r1(a.fol), r1(a.e_rt), r1(a.edu), r1(a.sau)] for _, a in c.iterrows()]
 json.dump(arr, open('municipios.json', 'w'), ensure_ascii=False, separators=(',', ':'))
+import os
+if os.path.exists(f'{CAT}/h4c_regic_2023.csv'):
+    out['h4c'] = [[x.teste, x.variavel, int(x.celulas), int(x.n_dep), int(x.n_cen), float(x.razao), int(x.celulas_abaixo_100)] for x in pd.read_csv(f'{CAT}/h4c_regic_2023.csv').itertuples()]
 json.dump(out, open('dados.json', 'w'), ensure_ascii=False, separators=(',', ':'), default=lambda x: x.item() if hasattr(x, 'item') else str(x))
 print('municípios:', tot, 'calculados na leitura:', len(cal), '| margem ampla por quintil:', out['h1']['m_rt'], '| pares:', out['pares'], '| h4a:', out['h4a']['Algum'])

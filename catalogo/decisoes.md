@@ -344,3 +344,8 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Metade das reprovações por receita está a menos de 3% da DCA; com 3%, 4.336 calculados (77,8%). Cerca de 140 divergem 100% ou mais e parecem erro de envio ao Siconfi.
 - A recoleta dirigida já foi feita (4.037 para 4.121); o que resta não se corrige por coleta.
 - Regra: tolerância de 3% (arquivo `resultado_2023_tol3.csv`), 1% como sensibilidade. Limites de Manski da margem ampla por quintil (pior caso): diferença Q5−Q1 observada 12,6 p.p. (base de 4.336), limites −1,5 a +20,4; o pior caso não exclui o zero e a tese declara a limitação.
+
+## D74 · H4c com a REGIC 2018 (2026-11-20)
+- Fonte: IBGE, REGIC 2018, "Municípios, hierarquia e região de influência" e "Arranjos Populacionais" (baixadas pelo usuário; hash em `brutos/ibge/regic2018/HASH.txt`). Catálogo: `regic_2018.csv`.
+- Teste (`analises/h4c_regic.py`): dependentes (Centro de Zona e Centro Local, grupos 4 e 5) contra centros (grupos 1 a 3), dentro de células faixa × quintil de PIB pc (5 ou mais em cada grupo). Razão das medianas: VA dos serviços por habitante 0,82; ISS realizado por habitante 0,73. Sensibilidade (só Centro Local contra grupos 1 a 4): 0,82 e 0,83. Limiar provisório de 15%: passa nos quatro; 18 de 22 e 19 de 21 células abaixo de 1 no teste principal.
+- Limites: classificação de 2018 contra receita de 2023; VA de 2021; o quintil de PIB usa o valor adicionado (circularidade parcial). Exploratório até o registro de regras.

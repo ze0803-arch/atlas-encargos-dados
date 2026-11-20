@@ -75,7 +75,7 @@ let MUN=null;
 const Q=['Q1 menor','Q2','Q3','Q4','Q5 maior'];
 const nf1=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:1,minimumFractionDigits:1});
 const nf0=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0});
-const f1=x=>nf1.format(x),f0=x=>nf0.format(x);
+const f1=x=>nf1.format(x),f0=x=>nf0.format(x),f2=x=>x.toFixed(2).replace('.',',');
 const $=(s,r=document)=>r.querySelector(s);
 const TABS=[['inicio','Início'],['regras','Regras registradas'],['margens','Como ler as margens'],['mapa','Mapa'],['h1','H1 · Margem e capacidade'],['h2','H2 · Piso do magistério'],['h3','H3 · Dentro do Estado'],['h4','H4 · Arrecadação e base'],['cobertura','Cobertura e quem falta'],['municipio','Município'],['coleta','Coleta'],['dados','Dados e fontes']];
 const col=i=>`var(--s${[2,3,4,5,6,7][i]})`;
@@ -118,7 +118,7 @@ V.inicio=()=>{
    <tr><td><a href="#h3">H3</a> Dentro do mesmo Estado</td><td>Terço mais rico com margem maior em ${D.pares[1]} de ${D.pares[0]} grupos</td><td>${chip('exploratório','ok')}</td></tr>
    <tr><td><a href="#h4">H4a</a> Art. 11 da LRF</td><td>${f1(D.t6.Algum[0])}% no quintil de menor PIB contra ${f1(D.t6.Algum[4])}% no de maior</td><td>${chip('exploratório','ok')}</td></tr>
    <tr><td><a href="#h4">H4b</a> Base e não cobrança</td><td>ISS: a base explica a diferença. IPTU: falta coletar</td><td>${chip('parcial','wait')}</td></tr>
-   <tr><td><a href="#h4">H4c</a> Base fora do território</td><td>Sem teste</td><td>${chip('falta a planilha REGIC','wait')}</td></tr>
+   <tr><td><a href="#h4">H4c</a> Base fora do território</td><td>Dependentes de um centro ficam ${f0((1-D.h4c[0][5])*100)}% (VA) e ${f0((1-D.h4c[1][5])*100)}% (ISS) abaixo dos centros</td><td>${chip('exploratório','ok')}</td></tr>
    <tr><td>H5 Consequência jurídica</td><td>Análise jurídica apoiada em H1 a H4</td><td>${chip('fora deste aplicativo','wait')}</td></tr></tbody></table></div>
   <h3>Como ler este aplicativo</h3>
   <ul class="chg">
@@ -142,7 +142,7 @@ V.regras=()=>`<h2>Regras registradas antes de abrir 2024</h2>
    <tr><td>H2</td><td>Exposição ao piso (folha da educação ÷ receita livre) prevê a queda da margem após o reajuste; placebo na saúde sem efeito</td><td class="muted">a definir com o orientador</td></tr>
    <tr><td>H3</td><td>Relação positiva em pelo menos 3/4 das UFs com cobertura suficiente e terço mais rico com margem maior em pelo menos 2/3 dos grupos de mesma UF e faixa</td><td>3/4 e 2/3</td></tr>
    <tr><td>H4a</td><td>Pelo menos 10% dos municípios abaixo de 10% da mediana de UF e faixa, e razão entre os extremos de quintil de pelo menos 3</td><td>10% e 3</td></tr>
-   <tr><td>H4b, H4c</td><td>Exploratórias até a coleta de IPTU, dívida ativa e REGIC. ISS: base (valor adicionado) e alíquota efetiva. IPTU: lançado, taxa de realização, dívida ativa. ITBI: sem base direta; ITBI por habitante contra IPTU por habitante como base indireta</td><td class="muted">a definir</td></tr>
+   <tr><td>H4b, H4c</td><td>Exploratórias até a coleta completa de IPTU e dívida ativa (H4b). ISS: base (valor adicionado) e alíquota efetiva. IPTU: lançado, taxa de realização, dívida ativa. ITBI: sem base direta; ITBI por habitante contra IPTU por habitante como base indireta</td><td class="muted">a definir</td></tr>
    <tr><td>H5</td><td>Análise jurídica</td><td class="muted">fora deste aplicativo</td></tr></tbody></table></div>
   <h3>Regras de dados</h3>
   <ul class="chg"><li>Medida principal: margem em % da receita total, com a regra D68.</li>
@@ -245,7 +245,9 @@ V.h4=()=>{const t=D.t6,b=D.h4b;const r=t.Algum[0]/t.Algum[4],media=t.Algum.reduc
    <li>Quase todos os municípios têm algum ITBI registrado (94% no menor quintil, 98% a 99% nos demais). O problema não é ausência de cobrança, é o tamanho do mercado imobiliário.</li></ul></div></div>
   <div class="crit"><b>Limites.</b> IPTU e ITBI realizados dependem da mesma cobrança, então a correlação não separa base de esforço. Só a IPTU lançado (coleta pendente) permitirá isso. Municípios sem os dois valores positivos ficam fora da correlação. A base cobre ${f0(D.h4itbi.q.reduce((a,x)=>a+x[3],0))} dos municípios calculados.</div>
   <h3>H4c · Base fora do território</h3>
-  <div class="wait"><p style="margin:0">${chip('aguarda a planilha REGIC 2018','wait')} Compara o valor adicionado dos serviços e o ISS por habitante dos municípios que dependem de um centro urbano próximo com o dos demais, na mesma faixa de população e no mesmo quintil. Confirma se a diferença é de pelo menos 15% (limiar provisório).</p></div>`};
+  <div class="card"><p style="margin:0 0 8px">Compara os municípios que dependem de um centro urbano (Centro de Zona e Centro Local na REGIC 2018) com os centros maiores (Metrópole, Capital Regional e Centro Sub-Regional), dentro da mesma faixa de população e do mesmo quintil de PIB por habitante. O critério provisório é uma diferença de pelo menos 15%, com os dependentes abaixo.</p>
+  <div class="scroll"><table><thead><tr><th>Comparação</th><th>Variável</th><th>Dependentes ÷ centros</th><th>Células abaixo de 1</th><th>Municípios</th></tr></thead><tbody>${D.h4c.map(x=>`<tr><td>${x[0].replace(/^(Principal|Sensibilidade): /,'')}<br><span class="muted">${x[0].startsWith('Principal')?'principal':'sensibilidade'}</span></td><td>${x[1]}</td><td>${f2(x[5])} ${sty(x[5]<=0.85)}</td><td>${x[6]} de ${x[2]}</td><td>${f0(x[3])} e ${f0(x[4])}</td></tr>`).join('')}</tbody></table></div></div>
+  <div class="crit"><b>Limites.</b> A classificação é de 2018 e a receita de 2023; o valor adicionado dos serviços é de 2021. O quintil de PIB por habitante usa o valor adicionado, então a comparação é em parte circular. Células com menos de 5 municípios em algum grupo ficam fora. Exploratório: o limiar de 15% ainda não está selado.</div>`};
 
 V.cobertura=()=>{const c=D.cob;const rows=c.por_uf.map(x=>({u:x[0],t:x[1],k:x[2],p:100*x[2]/x[1],ok:x[2]>=40&&100*x[2]/x[1]>=40})).sort((a,b)=>b.p-a.p);
   const W=640,rh=20,H=rows.length*rh+34,L=40,R=64;const X=p=>L+(W-L-R)*p/100;
@@ -284,7 +286,7 @@ V.coleta=()=>{
   ['Siconfi: MSC classes 1 e 4 (IPTU lançado, dívida ativa, ITBI)','2023','ok','coletado','H4b; contas de dívida ativa a confirmar no PCASP Estendido'],
   ['IBGE: população (Censo 2022) e PIB dos Municípios','2021 a 2023','ok','coletado','PIB médio 2021 a 2023 disponível'],
   ['IBGE: valor adicionado dos serviços (Sidra 5938, variável 6575)','2021','wait','só até 2021','2022 e 2023 não publicados por atividade'],
-  ['IBGE: REGIC 2018','2018','bad','falta baixar','H4c; baixar a planilha no site do IBGE'],
+  ['IBGE: REGIC 2018 (hierarquia e arranjos populacionais)','2018','ok','coletado (5.570 municípios)','H4c'],
   ['IBGE: renda do responsável, Censo 2022 (5.570 municípios)','2022','ok','coletado','robustez da H1 e da H4b; ainda sem uso nas telas'],
   ['Portal da Transparência: transferências por ação e convênios','2023','ok','coletado','116 ações provisórias a classificar'],
   ['Tesouro Transparente: FPM e transferências constitucionais','2023','ok','coletado (5.569 municípios, 12 meses)','conferência externa e decomposição da H1'],
@@ -311,16 +313,14 @@ V.coleta=()=>{
    <tr><td>Recalcular tudo e remontar o aplicativo</td><td><code>rodar_tudo.bat</code>, resposta <code>n</code></td><td>depois de qualquer coleta</td></tr></tbody></table></div>
   <h4>2. Arquivos para baixar no site</h4>
   <div class="scroll"><table><thead><tr><th>Arquivo</th><th>Onde</th><th>Como</th><th>Salvar em</th></tr></thead><tbody>
-   <tr><td>REGIC 2018: <b>Municípios, hierarquia e região de influência</b> (xlsx)<br><span class="muted">para a H4c</span></td><td><a href="https://www.ibge.gov.br/geociencias/organizacao-do-territorio/redes-e-fluxos-geograficos/15798-regioes-de-influencia-das-cidades.html" target="_blank" rel="noopener">IBGE, Regiões de Influência das Cidades</a></td><td>Role até <i>Bases de dados</i>. Na linha “REGIC 2018 - Municípios - Hierarquia e região de influência - Base tabular”, clique em <b>xlsx</b>. Não renomeie.</td><td><code>brutos\\ibge\\regic2018\\</code></td></tr>
-   <tr><td>REGIC 2018: <b>Municípios integrantes de Arranjos Populacionais</b> (xlsx)<br><span class="muted">opcional, para tratar arranjos como um centro só</span></td><td>mesma página</td><td>Mesma tela, linha “Municípios integrantes de Arranjos Populacionais”, <b>xlsx</b>.</td><td><code>brutos\\ibge\\regic2018\\</code></td></tr>
    <tr><td>Portaria do MEC com o reajuste do piso de 2024, 2025 e 2026<br><span class="muted">confere os percentuais da H2</span></td><td>gov.br/mec, página de legislação</td><td>Baixe os três PDFs das portarias. Não salve só o número: o texto é a fonte que será citada.</td><td><code>brutos\\mec\\piso\\</code></td></tr></tbody></table></div>
   <p class="muted">Depois de salvar, é só me avisar. Eu leio os arquivos da pasta, monto a leitura (carregador da REGIC, por exemplo) e confiro as linhas contra o site.</p>
   <h4>3. O Claude coleta (você não precisa fazer nada)</h4>
   <ul class="chg"><li>Já coletados por mim: FPM e Fundeb (Tesouro Transparente, 12 meses de 2023, com a complementação da União) e a renda do Censo 2022.</li>
-  <li>Ainda sem fonte aberta acessível: REGIC 2018 (o site do IBGE recusa o acesso do meu ambiente) e as portarias do piso (MEC).</li>
+  <li>Ainda sem fonte acessível: as portarias do piso (MEC) e o SIOPE (a API do FNDE está fora do ar).</li>
   <li>Ranking de qualidade da informação contábil (Siconfi): conferência.</li></ul>
   <h3>Próximos passos, em ordem</h3>
-  <ol class="steps"><li>Rodar a recoleta dirigida dos 710 municípios com lacuna e reprocessar os resultados.</li><li>Baixar a REGIC 2018 e montar a H4c.</li><li>Fechar a H4b com o IPTU lançado, a taxa de realização e a dívida ativa já coletados.</li><li>Coletar FPM e complementação do Fundeb.</li><li>Registrar as regras no repositório com data e só então coletar e abrir 2024 e 2025.</li></ol>`};
+  <ol class="steps"><li>Rodar a recoleta dirigida dos 710 municípios com lacuna e reprocessar os resultados.</li><li>Fechar a H4b com o IPTU lançado, a taxa de realização e a dívida ativa já coletados.</li><li>Coletar FPM e complementação do Fundeb.</li><li>Registrar as regras no repositório com data e só então coletar e abrir 2024 e 2025.</li></ol>`};
 
 /* ===== dados dos municípios (carregados de municipios.json) ===== */
 const FX=['Até 5 mil','5–10 mil','10–20 mil','20–50 mil','50–100 mil','100–500 mil','Mais de 500 mil'];
