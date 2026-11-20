@@ -34,6 +34,9 @@ for _, x in cal.iterrows():
     k = x.cod_ibge
     fs = glob.glob(f'{B}*_{k}_msce_p*.json.gz') if x.fonte_msc != 'MSCC_12m' else sum((glob.glob(f'{B[:-5]}mscc_m{m:02d}/*_{k}_mscc_m{m:02d}_p*.json.gz') for m in range(1, 13)), [])
     if not fs: continue
+    ult = {}
+    for f in sorted(fs): ult[(f.split('/')[-2], f.split('_p')[-1][:3])] = f   # última versão de cada página (a recoleta grava nova versão)
+    fs = list(ult.values())
     D, C = collections.Counter(), collections.Counter()
     for f in fs:
         for i in json.load(gzip.open(f)).get('items', []):
