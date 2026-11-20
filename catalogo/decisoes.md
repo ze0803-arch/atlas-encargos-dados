@@ -326,3 +326,10 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - `analises/baixar_ibge_h4.py`: valor adicionado dos serviços (SIDRA 5938, var. 6575). Só 2021 está publicado; 2022 e 2023 ainda não. A lacuna de ano deve constar na tese.
 - Pendentes manuais: REGIC 2018 (xlsx do IBGE) e renda domiciliar do Censo 2022. Sem eles, a H4c não roda.
 - Teste em 3 municípios do RN: classes 1 e 4 coletadas; arrecadação e dívida ativa recebida dependem da MSCE já coletada (raw/.../msce) e ficaram zeradas só porque o teste não tinha essa pasta.
+
+## D71 · Plano de trabalho revisado (2026-11-19)
+- Frase central única; H2 (piso do magistério, diferenças em diferenças 2024–2026 com placebo saúde) como eixo causal.
+- Regras travadas e seladas (modelo em `registro_regras_2024.md`) antes de abrir 2024; coleta bruta pode ser selada por hash sem análise.
+- Viés de cobertura tratado como achado, com sensibilidade; validação com cinco municípios clientes e comparação SIOPE; contato com a CNM sem perder independência.
+- H4b e H4c passam a exploratórias. Detalhe em `plano_tese.md`.
+
