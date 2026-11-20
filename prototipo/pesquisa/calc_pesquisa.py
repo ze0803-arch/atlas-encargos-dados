@@ -81,6 +81,9 @@ r1 = lambda s: round(float(s), 1)
 arr = [[int(a.cod_ibge), a.ente, a.uf, int(a['pop']), int(a.pibpc), int(a.fx), int(a.q), int(round(a.rec_pc)), r1(a.vinc), r1(a['min']), r1(a.patr), r1(a.leg), r1(a['div']), r1(a.prc), r1(a.m_rt), r1(a.fol), r1(a.e_rt), r1(a.edu), r1(a.sau)] for _, a in c.iterrows()]
 json.dump(arr, open('municipios.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 import os
+if os.path.exists(f'{CAT}/h4b_iptu_2023.csv'):
+    k = pd.read_csv(f'{CAT}/h4b_iptu_2023.csv')
+    out['h4iptu'] = [[int(x.n), float(x.lancado_pc), float(x.arrecadado_pc), round(float(x.pct_lancado_igual_arrecadado), 1), float(x.taxa_so_competencia), int(x.n_competencia), float(x.da_pc), float(x.recuperacao_da)] for x in k.itertuples()]
 if os.path.exists(f'{CAT}/h4c_regic_2023.csv'):
     out['h4c'] = [[x.teste, x.variavel, int(x.celulas), int(x.n_dep), int(x.n_cen), float(x.razao), int(x.celulas_abaixo_100)] for x in pd.read_csv(f'{CAT}/h4c_regic_2023.csv').itertuples()]
 json.dump(out, open('dados.json', 'w'), ensure_ascii=False, separators=(',', ':'), default=lambda x: x.item() if hasattr(x, 'item') else str(x))

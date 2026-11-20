@@ -349,3 +349,10 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Fonte: IBGE, REGIC 2018, "Municípios, hierarquia e região de influência" e "Arranjos Populacionais" (baixadas pelo usuário; hash em `brutos/ibge/regic2018/HASH.txt`). Catálogo: `regic_2018.csv`.
 - Teste (`analises/h4c_regic.py`): dependentes (Centro de Zona e Centro Local, grupos 4 e 5) contra centros (grupos 1 a 3), dentro de células faixa × quintil de PIB pc (5 ou mais em cada grupo). Razão das medianas: VA dos serviços por habitante 0,82; ISS realizado por habitante 0,73. Sensibilidade (só Centro Local contra grupos 1 a 4): 0,82 e 0,83. Limiar provisório de 15%: passa nos quatro; 18 de 22 e 19 de 21 células abaixo de 1 no teste principal.
 - Limites: classificação de 2018 contra receita de 2023; VA de 2021; o quintil de PIB usa o valor adicionado (circularidade parcial). Exploratório até o registro de regras.
+
+## D75 · H4b, IPTU com a coleta completa do H4 (2026-11-20)
+- H4 coletado e extraído para 5.552 de 5.570 entes (faltam AL 10, AP 1, CE 4, DF, MT 1, RN 1). Extrator corrigido (D73b): dívida ativa tributária 1.1.2.5 + 1.2.1.1.1.04; sinal da receita fixado por município (103 invertidos); sinais em `flag_h4`.
+- Das 4.336 calculados, 3.554 entram na leitura do IPTU (sem sinal de problema, taxa de 0 a 1,5). `analises/h4b_iptu.py`.
+- Achado de contabilidade: em 67% (Q1) a 21% (Q5) dos municípios o IPTU lançado é igual ao arrecadado (lançamento por caixa); a taxa de realização só é lida onde há competência (0,31 em Q1 a 0,67 em Q5, 224 a 560 municípios).
+- Lançado por habitante R$ 3,1 (Q1) a R$ 165,0 (Q5), 53,7x; arrecadado 49,0x. Base explica a maior parte, mas a cobrança também difere. Recuperação da dívida ativa de 2% a 6%.
+- Pendente: confirmar as contas de dívida ativa no PCASP Estendido de 2023.

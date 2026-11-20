@@ -117,7 +117,7 @@ V.inicio=()=>{
    <tr><td><a href="#h2">H2</a> Reajuste do piso</td><td>Exposição maior no quintil de menor PIB</td><td>${chip('falta o painel 2022 a 2026','wait')}</td></tr>
    <tr><td><a href="#h3">H3</a> Dentro do mesmo Estado</td><td>Terço mais rico com margem maior em ${D.pares[1]} de ${D.pares[0]} grupos</td><td>${chip('exploratório','ok')}</td></tr>
    <tr><td><a href="#h4">H4a</a> Art. 11 da LRF</td><td>${f1(D.t6.Algum[0])}% no quintil de menor PIB contra ${f1(D.t6.Algum[4])}% no de maior</td><td>${chip('exploratório','ok')}</td></tr>
-   <tr><td><a href="#h4">H4b</a> Base e não cobrança</td><td>ISS: a base explica a diferença. IPTU: falta coletar</td><td>${chip('parcial','wait')}</td></tr>
+   <tr><td><a href="#h4">H4b</a> Base e não cobrança</td><td>ISS: a base explica a diferença. IPTU: a base lançada explica a maior parte, com limite de contabilidade</td><td>${chip('exploratório','ok')}</td></tr>
    <tr><td><a href="#h4">H4c</a> Base fora do território</td><td>Dependentes de um centro ficam ${f0((1-D.h4c[0][5])*100)}% (VA) e ${f0((1-D.h4c[1][5])*100)}% (ISS) abaixo dos centros</td><td>${chip('exploratório','ok')}</td></tr>
    <tr><td>H5 Consequência jurídica</td><td>Análise jurídica apoiada em H1 a H4</td><td>${chip('fora deste aplicativo','wait')}</td></tr></tbody></table></div>
   <h3>Como ler este aplicativo</h3>
@@ -142,7 +142,7 @@ V.regras=()=>`<h2>Regras registradas antes de abrir 2024</h2>
    <tr><td>H2</td><td>Exposição ao piso (folha da educação ÷ receita livre) prevê a queda da margem após o reajuste; placebo na saúde sem efeito</td><td class="muted">a definir com o orientador</td></tr>
    <tr><td>H3</td><td>Relação positiva em pelo menos 3/4 das UFs com cobertura suficiente e terço mais rico com margem maior em pelo menos 2/3 dos grupos de mesma UF e faixa</td><td>3/4 e 2/3</td></tr>
    <tr><td>H4a</td><td>Pelo menos 10% dos municípios abaixo de 10% da mediana de UF e faixa, e razão entre os extremos de quintil de pelo menos 3</td><td>10% e 3</td></tr>
-   <tr><td>H4b, H4c</td><td>Exploratórias até a coleta completa de IPTU e dívida ativa (H4b). ISS: base (valor adicionado) e alíquota efetiva. IPTU: lançado, taxa de realização, dívida ativa. ITBI: sem base direta; ITBI por habitante contra IPTU por habitante como base indireta</td><td class="muted">a definir</td></tr>
+   <tr><td>H4b, H4c</td><td>Exploratórias até o registro de regras. ISS: base (valor adicionado) e alíquota efetiva. IPTU: lançado, taxa de realização, dívida ativa. ITBI: sem base direta; ITBI por habitante contra IPTU por habitante como base indireta</td><td class="muted">a definir</td></tr>
    <tr><td>H5</td><td>Análise jurídica</td><td class="muted">fora deste aplicativo</td></tr></tbody></table></div>
   <h3>Regras de dados</h3>
   <ul class="chg"><li>Medida principal: margem em % da receita total, com a regra D68.</li>
@@ -234,8 +234,12 @@ V.h4=()=>{const t=D.t6,b=D.h4b;const r=t.Algum[0]/t.Algum[4],media=t.Algum.reduc
   ${bars(Q,[{n:'ISS ÷ valor adicionado',v:b.aliq,c:'var(--s5)'}],{label:'Alíquota efetiva',fmt:x=>String(x.toFixed(2)).replace('.',',')})}
   <p class="muted" style="margin-top:8px">${f0(b.n)} municípios com ISS e valor adicionado. A base explica ${b.parte_base.toFixed(0)}% da diferença de ISS entre os extremos; a alíquota efetiva dos pequenos é até maior, o que faz a parte explicada pela base passar de 100%.</p></div></div>
   <div class="crit"><b>Critério ISS.</b> Confirma se mais da metade da diferença é explicada pela base ${sty(b.parte_base>50)}. <b>Limites.</b> O valor adicionado é de 2021 (o IBGE ainda não publicou 2022 e 2023 por atividade); inclui o comércio; e o PIB que define o quintil contém o próprio valor adicionado dos serviços, o que aproxima as duas medidas por construção. Por isso a renda domiciliar do Censo entra como quintil alternativo.</div>
-  <p><b>IPTU.</b> Taxa de realização (arrecadado ÷ lançado) e recuperação da dívida ativa.</p>
-  <div class="wait"><p style="margin:0">${chip('aguardam a coleta das classes 1 e 4 da MSC','wait')} O aplicativo já tem a coleta e o cálculo prontos. Falta rodar a etapa e confirmar as contas de dívida ativa no PCASP Estendido. A tela mostrará, por quintil, a base lançada por habitante, a taxa de realização e a recuperação da dívida ativa, e a proporção de municípios marcados por não reconhecerem o crédito por competência.</p></div>
+  <p><b>IPTU.</b> Base (valor lançado) contra esforço (taxa de realização, arrecadado ÷ lançado) e dívida ativa. Entram ${f0(D.h4iptu.reduce((a,x)=>a+x[0],0))} municípios calculados, sem sinal de problema nos dados do IPTU. Valores por habitante, mediana do quintil de PIB por habitante.</p>
+  <div class="card scroll"><table><thead><tr><th>Quintil</th><th>Municípios</th><th>IPTU lançado (R$ por hab.)</th><th>IPTU arrecadado (R$ por hab.)</th><th>Lançado igual ao arrecadado</th><th>Taxa de realização (só onde há competência)</th><th>Dívida ativa (R$ por hab.)</th><th>Recuperação da dívida ativa</th></tr></thead><tbody>${D.h4iptu.map((x,i)=>`<tr><td>${i+1}</td><td>${f0(x[0])}</td><td>${f1(x[1])}</td><td>${f1(x[2])}</td><td>${f0(x[3])}%</td><td>${f2(x[4])} <span class="muted">(${f0(x[5])})</span></td><td>${f0(x[6])}</td><td>${f0(x[7]*100)}%</td></tr>`).join('')}</tbody></table></div>
+  <ul class="chg"><li>Do quintil de menor PIB para o de maior, o IPTU lançado por habitante vai de R$ ${f1(D.h4iptu[0][1])} a R$ ${f1(D.h4iptu[4][1])}, e o arrecadado de R$ ${f1(D.h4iptu[0][2])} a R$ ${f1(D.h4iptu[4][2])}. A maior parte da diferença está na base lançada, mas a próxima linha mostra que a cobrança também difere.</li>
+  <li>A taxa de realização entre os municípios que lançam por competência sobe de ${f2(D.h4iptu[0][4])} no quintil de menor PIB para ${f2(D.h4iptu[4][4])} no de maior: parte do esforço de cobrança também difere.</li>
+  <li>A recuperação da dívida ativa (recebida ÷ saldo do ano anterior) vai de ${f0(D.h4iptu[0][7]*100)}% a ${f0(D.h4iptu[4][7]*100)}%.</li></ul>
+  <div class="crit"><b>Limite que muda a leitura.</b> Em ${f0(D.h4iptu[0][3])}% dos municípios do quintil de menor PIB o IPTU lançado é igual ao arrecadado: eles contabilizam o IPTU quando recebem, então não há taxa de realização de verdade. No quintil de maior PIB são ${f0(D.h4iptu[4][3])}%. A diferença de contabilidade entre os quintis pesa na comparação, e por isso a taxa só é lida onde há lançamento por competência. As contas de dívida ativa seguem a leitura do plano de contas da Federação e faltam conferir no PCASP Estendido de 2023.</div>
   <p><b>ITBI.</b> O ITBI incide sobre o valor das vendas de imóveis, que o município não publica. Não há uma base direta como o valor adicionado (ISS) ou o valor lançado (IPTU). Como medida indireta, o ITBI por habitante é comparado ao IPTU por habitante, que acompanha o estoque de imóveis. Exploratório.</p>
   <div class="two"><div class="card"><h3>ITBI e IPTU realizados por habitante (R$, mediana)</h3>
   ${bars(Q,[{n:'IPTU por habitante',v:D.h4itbi.q.map(x=>x[1]),c:'var(--s6)'},{n:'ITBI por habitante',v:D.h4itbi.q.map(x=>x[0]),c:'var(--s3)'}],{label:'ITBI e IPTU por habitante por quintil de PIB por habitante',fmt:x=>f0(x)})}</div>
@@ -283,7 +287,7 @@ V.cobertura=()=>{const c=D.cob;const rows=c.por_uf.map(x=>({u:x[0],t:x[1],k:x[2]
 
 V.coleta=()=>{
   const R=[['Siconfi: MSC de encerramento e mensais, DCA, RREO, RGF','2023','ok','coletado','5.570 entes; 710 com lacuna que a coleta pode melhorar'],
-  ['Siconfi: MSC classes 1 e 4 (IPTU lançado, dívida ativa, ITBI)','2023','ok','coletado','H4b; contas de dívida ativa a confirmar no PCASP Estendido'],
+  ['Siconfi: MSC classes 1 e 4 (IPTU lançado, dívida ativa, ITBI)','2023','ok','coletado (5.552 de 5.570 municípios)','H4b; contas de dívida ativa a confirmar no PCASP Estendido'],
   ['IBGE: população (Censo 2022) e PIB dos Municípios','2021 a 2023','ok','coletado','PIB médio 2021 a 2023 disponível'],
   ['IBGE: valor adicionado dos serviços (Sidra 5938, variável 6575)','2021','wait','só até 2021','2022 e 2023 não publicados por atividade'],
   ['IBGE: REGIC 2018 (hierarquia e arranjos populacionais)','2018','ok','coletado (5.570 municípios)','H4c'],
@@ -320,7 +324,7 @@ V.coleta=()=>{
   <li>Ainda sem fonte acessível: as portarias do piso (MEC) e o SIOPE (a API do FNDE está fora do ar).</li>
   <li>Ranking de qualidade da informação contábil (Siconfi): conferência.</li></ul>
   <h3>Próximos passos, em ordem</h3>
-  <ol class="steps"><li>Rodar a recoleta dirigida dos 710 municípios com lacuna e reprocessar os resultados.</li><li>Fechar a H4b com o IPTU lançado, a taxa de realização e a dívida ativa já coletados.</li><li>Coletar FPM e complementação do Fundeb.</li><li>Registrar as regras no repositório com data e só então coletar e abrir 2024 e 2025.</li></ol>`};
+  <ol class="steps"><li>Rodar a recoleta dirigida dos 710 municípios com lacuna e reprocessar os resultados.</li><li>Coletar FPM e complementação do Fundeb.</li><li>Registrar as regras no repositório com data e só então coletar e abrir 2024 e 2025.</li></ol>`};
 
 /* ===== dados dos municípios (carregados de municipios.json) ===== */
 const FX=['Até 5 mil','5–10 mil','10–20 mil','20–50 mil','50–100 mil','100–500 mil','Mais de 500 mil'];
