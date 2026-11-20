@@ -196,7 +196,12 @@ def busca_h4(e):
     for rel, ano, cl, tv in (('h4_c4', ANO, 4, 'period_change'), ('h4_c1', ANO, 1, 'ending_balance'), ('h4_c1_ant', ANO - 1, 1, 'ending_balance')):
         d = os.path.join(RAW, rel)
         if os.path.isdir(d) and any(f.split('_')[2] == str(e) for f in os.listdir(d)): continue
+        FALHOU.discard(e)
         paginado(rel, e, 'msc_patrimonial', dict(base, an_referencia=ano, classe_conta=cl, id_tv=tv))
+        if e in FALHOU and os.path.isdir(d):
+            # falha em página posterior à primeira: apaga as páginas já gravadas, para não ser dado como concluído com a matriz truncada
+            for f in os.listdir(d):
+                if f.split('_')[2] == str(e): os.remove(os.path.join(d, f))
 
 def coletar_h4(ufs, entes):
     alvo = sorted(str(e['cod_ibge']) for e in entes if e['uf'] in ufs)
