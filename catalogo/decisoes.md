@@ -360,3 +360,9 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 ## D76 · Definição do FPM no Tesouro e correção dos controles (2026-11-20)
 - A diferença de 5% a 11% entre o FPM da MSC e o do Tesouro era de definição: o Tesouro informa a cota líquida da dedução do Fundeb (FPM/FPM). FPM bruto = cota + DEDU/FUNDEB (R$ 186,4 bi em 2023). Contra a MSCE (naturezas 17115*, 179 municípios): mediana 1,002, 77% dentro de 2%, 87% dentro de 5%; o resíduo (cerca de 13% acima de 5%) não foi investigado.
 - Os controles da H1 usavam cota + FPM/FUNDEB (subestimava o bruto em cerca de 17%); refeitos com `fpm_bruto_est`.
+
+## D77 — Composição da receita e da despesa (2023, exploratório)
+- Receita: sete grupos pela natureza da receita da MSCE (própria tributária, outras próprias, transferências constitucionais, Fundeb, fundo a fundo, voluntárias, outros); fecha com a receita da MSC dentro de 4% em todos os municípios (analises/composicao_receita.py).
+- Despesa: despesa liquidada da MSCE (contas 622130300/400/700, as de liq_msc) aberta por grupo de natureza (6 grupos) e por função (8 grupos); cada abertura fecha com liq_msc dentro de 3% em 100% dos 4.238 municípios com matrizes brutas. 182 municípios (AM, RS, PR, SC, MG…) não informam natureza da despesa: entram só na abertura por função (analises/composicao_despesa.py e composicao_despesa_resumo.py).
+- Ficha do município mostra a composição ao lado da média/mediana dos pares; 98 dos 4.336 calculados não têm matriz bruta nesta máquina e aparecem sem composição.
+- Pendente: conferir a classificação das naturezas de receita (especialmente "voluntárias") com a tabela do MCASP.

@@ -1,0 +1,566 @@
+<meta charset="utf-8">
+<title>Atlas de Encargos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma página, abas por hipótese da tese (H1 a H4), cobertura e coleta; cada tela abre com a pergunta, a conclusão exploratória de 2023 e o critério do Quadro 7. */
+:root{--bg:#F2F5F7;--surface:#FFFFFF;--ink:#10242C;--muted:#5A6E78;--line:#D5DDE2;--accent:#1F647D;--accent-ink:#FFFFFF;--c1:#1F647D;--c2:#7DB9CB;--c3:#B5651D;--c4:#D9954F;--c5:#EBC48F;--c6:#7A5C9E;--c7:#9AA7AE;--c8:#4F8F5E;--s1:#E4F1F4;--s2:#BEDDE5;--s3:#93C6D3;--s4:#62A8BD;--s5:#3A859F;--s6:#1F647D;--s7:#0B3F52;--warm:#B26A00;--warm-bg:#FBEBD0;--ok:#1E7A4C;--ok-bg:#DDF0E5;--bad:#A8322D;--bad-bg:#F6DEDC;--wait:#5A6E78;--wait-bg:#E6EBEE;--edu:#2F6DB5;--sau:#2A9470;--o3:#5B707C;--o2:#93A5AF;--o1:#B6C3CA;--o0:#D3DCE0;--on:#FFFFFF;--serif:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F181D;--surface:#16232A;--ink:#E6EEF1;--muted:#97AAB3;--line:#2B3C45;--accent:#6FB4CA;--accent-ink:#0F181D;--c1:#6FB4CA;--c2:#3C7A91;--c3:#E0A060;--c4:#B97B3D;--c5:#8C6334;--c6:#A98BCB;--c7:#6F7F88;--c8:#8FCB9B;--s1:#2B5A6B;--s2:#357089;--s3:#418AA3;--s4:#5CA4BA;--s5:#82BED0;--s6:#B1DBE7;--s7:#E3F5FA;--warm:#F0B25A;--warm-bg:#3A2D12;--ok:#7FD0A3;--ok-bg:#16301F;--bad:#F09A94;--bad-bg:#3A1A18;--wait:#97AAB3;--wait-bg:#22323A;--edu:#7FAEEA;--sau:#6FCBA3;--o3:#8EA2AD;--o2:#62747E;--o1:#4B5B64;--o0:#38464E;--on:#0F181D;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F181D;--surface:#16232A;--ink:#E6EEF1;--muted:#97AAB3;--line:#2B3C45;--accent:#6FB4CA;--accent-ink:#0F181D;--c1:#6FB4CA;--c2:#3C7A91;--c3:#E0A060;--c4:#B97B3D;--c5:#8C6334;--c6:#A98BCB;--c7:#6F7F88;--c8:#8FCB9B;--s1:#2B5A6B;--s2:#357089;--s3:#418AA3;--s4:#5CA4BA;--s5:#82BED0;--s6:#B1DBE7;--s7:#E3F5FA;--warm:#F0B25A;--warm-bg:#3A2D12;--ok:#7FD0A3;--ok-bg:#16301F;--bad:#F09A94;--bad-bg:#3A1A18;--wait:#97AAB3;--wait-bg:#22323A;--edu:#7FAEEA;--sau:#6FCBA3;--o3:#8EA2AD;--o2:#62747E;--o1:#4B5B64;--o0:#38464E;--on:#0F181D;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:15px;line-height:1.55;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1040px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+h1{font-size:22px;margin:0;font-weight:600;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:13px}
+.tag{font:500 11px var(--mono);padding:3px 8px;border-radius:99px;background:var(--warm-bg);color:var(--warm);white-space:normal}
+nav{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:22px;scrollbar-width:thin}
+nav a{padding:9px 13px;color:var(--muted);text-decoration:none;font-size:14px;white-space:nowrap;border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink)}
+nav a[aria-current=page]{color:var(--ink);border-color:var(--accent);font-weight:500}
+nav a:focus-visible,select:focus-visible,input:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h2{font-size:19px;margin:0 0 6px;font-weight:600;text-wrap:balance}
+h3{font-size:15px;margin:26px 0 8px;font-weight:600}
+p{margin:0 0 10px;max-width:68ch}
+.lead{font-size:16px;color:var(--ink);max-width:68ch}
+.muted{color:var(--muted)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;min-width:0}
+.card h3{margin-top:0}
+.kpi{font:500 28px var(--mono);letter-spacing:-.02em}
+.kpi small{font:400 13px var(--serif);color:var(--muted);display:block;letter-spacing:0;margin-top:2px}
+.chip{display:inline-block;font:500 11px var(--mono);padding:2px 8px;border-radius:99px;white-space:nowrap}
+.c-ok{background:var(--ok-bg);color:var(--ok)}.c-bad{background:var(--bad-bg);color:var(--bad)}.c-wait{background:var(--wait-bg);color:var(--wait)}.c-new{background:var(--warm-bg);color:var(--warm)}
+.crit{border-left:3px solid var(--accent);padding:6px 0 6px 12px;margin:12px 0;font-size:13.5px;color:var(--muted);max-width:72ch}
+.crit b{color:var(--ink)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+svg text{font-family:var(--serif);fill:var(--muted);font-size:11.5px}
+svg .v{fill:var(--ink);font-family:var(--mono);font-size:11px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12.5px;color:var(--muted);margin:6px 0 2px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-2px}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px 16px;margin:8px 0 14px;align-items:flex-end}
+.ctrl label{display:flex;flex-direction:column;font-size:12px;color:var(--muted);gap:3px;min-width:0;max-width:100%}
+.ctrl select{max-width:100%}
+select,input[type=text],input[type=search]{font:inherit;font-size:14px;padding:6px 8px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:4px;min-width:0}
+.wait{border:1px dashed var(--line);border-radius:6px;padding:14px 16px;background:repeating-linear-gradient(135deg,transparent 0 8px,var(--wait-bg) 8px 9px)}
+.steps{margin:0;padding-left:20px}.steps li{margin:4px 0}
+.mapsvg{display:block;width:100%;height:auto;max-height:78vh}
+.mapsvg path{stroke:var(--surface);stroke-width:.5;cursor:pointer}.mapsvg path:hover{stroke:var(--ink);stroke-width:1.6}
+.mapsvg .s1{fill:var(--s1)}.mapsvg .s2{fill:var(--s2)}.mapsvg .s3{fill:var(--s3)}.mapsvg .s4{fill:var(--s4)}.mapsvg .s5{fill:var(--s5)}.mapsvg .s6{fill:var(--s6)}.mapsvg .s7{fill:var(--s7)}.mapsvg .nc{fill:url(#hach)}
+.rkrow{display:grid;grid-template-columns:28px 1fr 64px 56px;gap:8px;align-items:center;padding:3px 0;cursor:pointer;font-size:13px}
+.rkrow:hover{background:var(--wait-bg)}.rkrow .u{font:500 12px var(--mono)}.rkrow .bar{background:var(--s1);height:10px;border-radius:2px;display:block}.rkrow .bar i{display:block;height:10px;background:var(--s5);border-radius:2px}.rkrow .n{font:12px var(--mono);text-align:right}.rkrow .c{font-size:11px;text-align:right}
+.btn{font:inherit;font-size:13.5px;padding:7px 12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:4px;cursor:pointer}.btn:hover{border-color:var(--accent)}
+canvas{width:100%;height:auto;display:block;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.two{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.chg li{margin:6px 0}
+footer{margin-top:36px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;max-width:78ch}
+@media (prefers-reduced-motion:no-preference){.view{animation:in .18s ease-out}@keyframes in{from{opacity:.4}to{opacity:1}}}
+.selo{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--muted);margin:0 0 10px}.eixo{border-left:3px solid var(--accent)}
+button{font:500 13px var(--mono);padding:8px 14px;border-radius:6px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);cursor:pointer}code{font:12.5px var(--mono);background:var(--s1);padding:1px 5px;border-radius:4px;word-break:break-word}h4{margin:18px 0 6px;font-size:14px}</style>
+<div class="wrap">
+<header>
+  <div><h1>Atlas de Encargos</h1><div class="sub">Encargos nacionais uniformes, bases fiscais desiguais · 5.570 entes, exercício 2023</div></div>
+  <span class="tag">Protótipo da versão após o projeto recomposto · dados reais de 2023 recalculados com a regra D68</span>
+</header>
+<nav id="nav" aria-label="Seções"></nav>
+<main id="main"></main>
+<footer>2023 é ano exploratório: serve para testar o método e formular as hipóteses, e não conta como prova. A decisão de cada hipótese usa os anos de 2024 a 2026, com regras registradas antes de abri-los (seção 3.8 do projeto). Margens em percentual da receita total da MSC, salvo onde indicado. Fontes: Siconfi (MSC, DCA, RREO, RGF), IBGE (população, PIB dos Municípios), Portal da Transparência.</footer>
+</div>
+<script>
+const D={"cob":{"total":5570,"calc":4336,"por_uf":[["AC",22,1],["AL",102,50],["AM",62,53],["AP",16,8],["BA",417,248],["CE",184,171],["DF",1,0],["ES",78,75],["GO",246,168],["MA",217,190],["MG",853,723],["MS",79,52],["MT",142,94],["PA",144,133],["PB",223,51],["PE",184,143],["PI",224,216],["PR",399,296],["RJ",92,62],["RN",167,158],["RO",52,38],["RR",15,13],["RS",497,425],["SC",295,274],["SE",75,56],["SP",645,546],["TO",139,92]]},"h1":{"m_rt":[23.6,27.8,31.8,34.1,36.3],"e_rt":[17.1,19.2,22.6,25.0,27.2],"m_rl":[50.2,51.3,52.5,53.7,53.9],"vinc":[53.0,45.3,39.7,35.5,32.6],"m_pc":[1223.1,1542.3,1961.1,2399.9,2958.5],"pib":[12670.9,18648.3,29591.1,43844.2,72194.0],"rec_pc":[5235.9,5608.8,6348.7,7107.4,8222.3],"n":[868,867,867,867,867]},"faixas":[["Até 5 mil",1006,35.9,26.2,32.2,1285],["5–10 mil",922,31.3,22.6,39.5,1183],["10–20 mil",1033,28.5,20.4,44.3,1350],["20–50 mil",848,27.0,18.6,47.3,1070],["50–100 mil",267,26.9,19.4,47.5,344],["100–500 mil",221,29.3,20.3,43.3,290],["Mais de 500 mil",39,28.7,19.5,41.1,48]],"h3":[["AC",1,22,null],["AL",50,102,0.26],["AM",53,62,0.28],["AP",8,16,null],["BA",248,417,0.17],["CE",171,184,0.0],["ES",75,78,0.21],["GO",168,246,0.26],["MA",190,217,0.25],["MG",723,853,0.37],["MS",52,79,0.61],["MT",94,142,0.51],["PA",133,144,0.33],["PB",51,223,0.12],["PE",143,184,0.12],["PI",216,224,0.25],["PR",296,399,0.13],["RJ",62,92,0.18],["RN",158,167,0.08],["RO",38,52,null],["RR",13,15,null],["RS",425,497,0.15],["SC",274,295,0.1],["SE",56,75,0.09],["SP",546,645,0.27],["TO",92,139,0.27]],"pares":[95,82],"h3b":[["AL",102,24,17.5,19.6,11.7,10.9],["AM",62,24,19.3,22.1,12.7,17.9],["BA",417,156,24.5,27.1,17.7,18.4],["CE",184,106,17.6,19.8,11.9,12.2],["ES",78,36,27.9,30.2,17.9,20.3],["GO",246,104,34.7,36.2,23.7,25.1],["MA",217,116,21.9,23.6,15.8,17.4],["MG",853,474,29.5,35.2,19.9,25.4],["MS",79,22,26.8,35.7,18.0,25.8],["MT",142,56,31.2,36.7,23.3,28.7],["PA",144,84,14.1,18.5,5.2,10.0],["PB",223,26,26.7,30.0,20.6,18.6],["PE",184,90,26.6,27.6,18.5,20.0],["PI",224,138,23.9,26.6,19.3,21.6],["PR",399,190,31.6,34.7,22.9,25.9],["RJ",92,30,21.8,24.6,8.7,13.8],["RN",167,94,27.6,29.6,21.8,22.6],["RO",52,18,28.0,30.6,20.1,22.7],["RS",497,278,32.0,35.7,23.2,27.2],["SC",295,176,34.6,37.4,24.0,27.4],["SE",75,32,25.9,26.9,15.6,16.3],["SP",645,356,38.7,42.7,29.2,33.1],["TO",139,56,27.1,31.3,19.7,22.4]],"h3ex":{"uf":"RN","fx":2,"n":44,"t":14,"pib_low":13515,"pib_high":33159,"m_low":24.2,"m_high":29.5},"h4a":{"IPTU":[23.3,17.0,10.8,12.5,13.7],"ISS":[11.4,11.2,9.2,11.9,12.7],"ITBI":[23.3,15.9,10.3,12.2,13.7],"Algum":[30.4,20.5,11.8,13.5,15.2]},"h4a_tot":18.3,"h4b":{"iss_pc":[55.0,89.0,149.0,200.0,322.0],"va_pc":[2443.0,4418.0,7406.0,11001.0,18004.0],"aliq":[2.2,2.02,1.95,1.77,1.85],"n":3712,"parte_base":113.0},"h4itbi":{"q":[[2.5,3.4,99.7,674],[15.3,16.9,99.9,714],[49.6,70.5,99.7,750],[73.9,117.2,99.6,746],[99.5,153.3,99.7,714]],"rho":0.7,"n":3578,"rho_uf":0.47,"n_uf":19},"h2":{"pess_educ":[51.4,33.6,25.3,22.8,21.7],"custo":[7.7,5.0,3.8,3.4,3.2],"pess_saude":[21.2,19.7,16.7,14.8,13.7],"rho":-0.53},"t5":{"Saúde":[45.7,33.7,22.5,18.9,15.8],"Assistência social":[31.5,19.4,10.8,7.2,5.7],"Educação":[83.4,66.1,54.5,50.7,48.5]},"t6":{"IPTU":[15.7,8.4,2.6,1.5,1.8],"ISS":[0.7,0.3,0.3,0.8,0.6],"ITBI":[16.5,7.3,1.5,1.6,1.5],"Algum":[25.7,13.4,3.6,3.1,3.5]},"rec":{"n":4238,"total_bi":[227.8,104.1,335.5,133.2,77.9,39.7,41.9],"geral":[23.7,10.8,34.9,13.9,8.1,4.1,4.4],"q":[[4.9,4.3,38.6,31.5,10.5,6.4,3.6],[8.8,6.4,40.4,23.4,10.9,6.2,3.9],[17.4,10.1,36.9,15.0,10.4,4.9,5.2],[22.6,11.6,35.7,11.8,9.3,4.4,4.7],[32.8,12.8,32.1,9.4,5.8,2.9,4.1]],"faixa":[[5.1,5.6,61.2,9.6,5.7,8.1,4.7],[7.3,5.6,52.8,14.9,7.2,7.6,4.5],[8.7,6.0,48.0,18.4,7.8,7.0,3.9],[11.6,7.7,42.3,19.8,8.3,6.4,4.1],[15.8,9.9,39.8,17.4,8.6,4.5,4.1],[23.4,13.1,34.1,13.9,8.2,3.5,3.9],[40.5,13.6,21.6,9.2,8.3,1.7,5.0]],"nfaixa":[985,900,1019,823,261,212,38],"nq":[855,848,853,847,835],"mediana_propria_q":[6.2,8.5,13.5,17.2,20.2],"mediana_trib_q":[3.3,4.7,6.9,9.1,11.5],"mediana_voluntarias_q":[5.1,5.8,6.6,6.3,5.0],"uf":[["SP",530,38.4,11.8,29.7,8.9,4.4,3.7,3.2],["RJ",61,31.1,13.4,31.2,10.4,7.7,1.9,4.2],["RS",413,20.7,15.8,35.9,10.5,8.3,4.0,5.0],["PR",288,22.2,14.1,37.1,10.1,7.1,4.7,4.7],["SC",267,22.5,12.9,36.7,12.1,6.0,4.9,5.0],["MT",93,21.0,10.0,37.6,11.8,9.1,6.0,4.5],["MS",52,21.4,8.9,35.2,14.6,10.7,3.6,5.6],["ES",73,18.1,11.1,38.6,15.1,5.9,6.0,5.2],["AL",49,14.1,14.8,33.3,18.5,13.1,2.5,3.7],["GO",159,15.6,12.9,40.4,13.1,8.9,3.4,5.7],["MG",712,17.6,9.6,40.0,10.2,13.2,5.4,4.1],["RO",37,13.7,13.5,39.5,13.9,7.8,8.2,3.4],["PB",51,15.6,11.2,36.4,16.9,12.3,3.6,4.0],["PE",141,17.1,9.3,37.7,17.6,9.0,3.4,5.8],["BA",247,18.7,6.1,37.3,20.9,9.3,3.1,4.5],["TO",92,13.0,10.9,41.2,17.0,7.8,6.4,3.7],["SE",55,16.9,5.4,42.7,17.8,9.4,2.7,5.0],["RN",151,14.8,7.1,43.0,16.4,11.3,3.3,4.1],["CE",171,13.3,8.2,32.5,22.8,11.8,5.0,6.5],["AM",53,13.1,7.7,36.1,21.8,8.0,6.6,6.7],["PA",129,12.9,6.2,36.3,26.3,9.1,4.5,4.8],["PI",210,9.1,7.0,38.9,25.1,12.1,4.0,4.0],["MA",182,5.1,3.6,33.9,39.9,10.8,3.4,3.2]]},"desp":{"n":4236,"n_nat":4054,"total_bi_n":[408.7,363.5,6.8,75.1,14.9,0.0],"total_bi_f":[241.6,215.0,104.5,87.4,118.0,25.7,19.3,88.5],"geral_n":[47.0,41.8,0.8,8.6,1.7,0.0],"geral_f":[26.8,23.9,11.6,9.7,13.1,2.9,2.1,9.8],"q_n":[[51.7,38.8,0.1,7.9,1.4,0.0],[51.2,38.3,0.3,8.7,1.6,0.0],[48.6,40.2,0.8,8.7,1.6,0.0],[48.1,41.1,1.1,7.8,1.9,0.0],[44.4,43.9,0.9,9.1,1.7,0.0]],"q_f":[[42.5,22.1,5.6,10.9,8.7,1.3,2.7,6.2],[35.1,24.2,6.8,11.0,11.1,1.6,2.6,7.5],[27.0,26.1,8.5,11.3,12.6,1.9,2.4,10.2],[25.0,25.9,10.7,10.5,12.8,2.3,2.1,10.8],[23.3,22.5,15.1,8.3,14.6,4.0,1.9,10.3]],"faixa_n":[[45.1,43.2,0.3,10.5,0.9,0.0],[47.1,41.6,0.3,9.9,1.2,0.0],[48.6,41.1,0.3,8.6,1.4,0.0],[50.2,39.6,0.3,8.3,1.5,0.0],[48.4,40.7,0.5,8.8,1.6,0.0],[48.4,41.0,0.9,7.7,1.9,0.0],[44.3,43.6,1.2,9.0,1.9,0.0]],"faixa_f":[[23.2,23.1,6.8,14.8,10.4,5.2,3.2,13.3],[29.0,24.0,6.4,13.7,10.4,4.1,2.9,9.5],[32.4,24.0,6.7,12.2,11.1,2.4,2.7,8.5],[33.5,23.7,6.9,11.5,11.1,1.6,2.4,9.1],[31.7,24.2,7.5,10.5,12.6,1.4,2.2,9.8],[27.5,24.4,9.8,11.0,14.1,1.4,2.0,9.9],[21.0,23.6,18.2,6.3,14.5,4.5,1.8,10.2]],"nfaixa":[985,900,1019,822,261,211,38],"nq":[855,848,852,846,835],"mediana_pessoal_q":[50.3,48.8,47.8,46.9,46.5],"mediana_educ_q":[38.8,31.0,26.7,25.5,25.5],"mediana_saude_q":[23.0,24.5,24.7,24.1,23.5],"uf_f":[["MA",182,48.9,20.6,4.1,12.1,6.7,1.5,2.1,4.1],["PI",210,34.1,26.4,8.4,12.9,9.3,0.8,2.8,5.3],["CE",171,33.9,26.5,8.6,9.2,10.1,1.3,2.4,7.9],["BA",247,34.1,22.7,5.1,9.2,15.8,1.1,3.2,8.8],["PB",51,27.5,28.6,11.0,11.2,9.5,0.5,3.0,8.7],["RN",151,26.9,28.9,7.2,11.4,12.2,0.4,3.4,9.7],["MS",52,26.1,28.9,10.8,11.5,10.6,2.4,2.7,7.0],["PA",129,35.4,19.6,4.5,10.4,13.6,2.0,2.2,12.3],["GO",159,27.8,26.2,10.1,11.7,13.4,1.8,2.1,6.9],["MG",712,23.3,30.4,9.0,9.1,13.1,3.2,2.2,9.8],["AL",49,26.2,26.5,8.4,16.9,12.8,1.1,2.3,5.7],["MT",93,25.2,27.5,8.3,13.3,11.1,4.6,2.4,7.6],["RO",37,27.2,25.5,7.4,18.6,9.1,2.3,3.0,6.9],["PE",141,29.9,22.1,12.3,11.0,12.1,0.4,3.0,9.0],["AM",53,31.2,20.1,5.7,6.7,16.7,2.8,2.2,14.6],["SC",267,27.8,22.8,8.7,10.3,14.2,3.1,2.0,11.1],["SE",55,29.1,21.5,8.4,14.7,13.4,1.6,3.1,8.0],["TO",92,29.7,20.7,6.4,12.2,14.4,3.2,2.2,11.3],["ES",71,30.2,20.1,10.3,10.8,17.0,0.7,2.2,8.7],["PR",288,23.7,24.7,14.0,10.4,11.3,2.8,1.9,11.1],["SP",530,24.2,22.2,16.7,7.3,14.8,4.3,1.6,9.0],["RJ",61,22.7,23.1,14.6,9.7,13.1,3.9,2.2,10.7],["RS",413,21.3,22.8,13.1,11.4,9.8,2.6,1.9,17.0]],"uf_n":[["PB",51,58.5,31.9,0.5,7.9,1.2,0.0],["SE",55,55.1,36.2,0.4,6.5,1.7,0.0],["PE",137,54.2,35.8,1.1,7.3,1.7,0.0],["MA",182,54.1,37.4,0.0,7.5,1.0,0.0],["MS",51,53.5,36.9,0.7,7.4,1.5,0.0],["RO",37,52.4,36.7,0.9,8.7,1.3,0.0],["PA",125,50.9,36.0,0.6,11.3,1.3,0.0],["PR",256,50.9,38.5,1.0,7.6,1.9,0.0],["RJ",58,50.3,36.6,1.4,8.8,2.8,0.0],["RS",347,50.2,40.2,1.1,6.2,2.2,0.0],["PI",210,50.0,40.2,0.6,7.7,1.5,0.0],["CE",171,49.7,39.1,0.8,8.8,1.6,0.0],["GO",154,48.9,39.8,0.4,8.9,2.0,0.0],["RN",151,48.9,43.9,0.5,4.9,1.7,0.0],["SC",243,48.9,38.4,1.3,9.8,1.7,0.0],["TO",92,47.5,36.6,1.0,12.9,1.8,0.2],["ES",71,46.7,38.8,0.8,12.5,1.2,0.0],["MG",693,46.0,42.3,0.9,9.4,1.4,0.0],["BA",245,45.2,42.3,0.6,9.9,2.0,0.0],["AL",49,44.7,43.3,0.3,10.5,1.2,0.0],["MT",90,43.8,43.2,0.6,11.3,1.2,0.0],["AM",35,43.2,39.6,2.6,11.3,3.3,0.0],["SP",529,41.4,48.7,0.5,8.0,1.4,0.0]]},"h4iptu":[[684,3.074,1.896,67.3,0.31,224,0.679,0.018],[716,17.085,10.27,50.3,0.486,356,97.408,0.027],[748,73.044,46.625,34.1,0.631,493,217.984,0.055],[697,132.393,78.365,22.1,0.66,543,341.586,0.058],[709,165.034,92.905,21.0,0.672,560,464.435,0.056]],"h4c":[["Principal: dependentes (4 e 5) x centros (1 a 3)","VA dos serviços por habitante (2021)",22,3022,541,0.825,18],["Principal: dependentes (4 e 5) x centros (1 a 3)","ISS realizado por habitante (2023)",21,2341,457,0.735,19],["Sensibilidade: só Centro Local (5) x centros (1 a 4)","VA dos serviços por habitante (2021)",22,2883,803,0.817,21],["Sensibilidade: só Centro Local (5) x centros (1 a 4)","ISS realizado por habitante (2023)",21,2473,640,0.834,17]]};
+let MUN=null;
+const Q=['Q1 menor','Q2','Q3','Q4','Q5 maior'];
+const nf1=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:1,minimumFractionDigits:1});
+const nf0=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0});
+const f1=x=>nf1.format(x),f0=x=>nf0.format(x),f2=x=>x.toFixed(2).replace('.',',');
+const $=(s,r=document)=>r.querySelector(s);
+const TABS=[['inicio','Início'],['regras','Regras registradas'],['margens','Como ler as margens'],['mapa','Mapa'],['h1','H1 · Margem e capacidade'],['h2','H2 · Piso do magistério'],['h3','H3 · Dentro do Estado'],['h4','H4 · Arrecadação e base'],['receita','Composição da receita'],['despesa','Composição da despesa'],['cobertura','Cobertura e quem falta'],['municipio','Município'],['coleta','Coleta'],['dados','Dados e fontes']];
+const col=i=>`var(--s${[2,3,4,5,6,7][i]})`;
+
+function bars(cats,series,o={}){
+  const W=o.w||640,H=o.h||250,L=44,R=12,T=14,B=44;const mx=o.max||Math.max(...series.flatMap(s=>s.v))*1.12;
+  const gw=(W-L-R)/cats.length,bw=Math.min(34,(gw-10)/series.length);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${o.label||''}" style="max-width:100%;height:auto">`;
+  for(let k=0;k<=4;k++){const y=T+(H-T-B)*(1-k/4),val=mx*k/4;s+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="${L-6}" y="${y+4}" text-anchor="end">${o.fmt?o.fmt(val):f0(val)}</text>`}
+  cats.forEach((c,i)=>{const x0=L+gw*i+(gw-bw*series.length)/2;
+    series.forEach((se,j)=>{const v=se.v[i];if(v==null)return;const h=(H-T-B)*v/mx,x=x0+bw*j,y=H-B-h;
+      s+=`<rect x="${x}" y="${y}" width="${bw-2}" height="${h}" fill="${se.c}" rx="1"/>`;
+      if(o.vals!==false)s+=`<text class="v" ${series.length>2?'style="font-size:8.5px"':''} x="${x+(bw-2)/2}" y="${y-4}" text-anchor="middle">${o.fmt?o.fmt(v):f1(v)}</text>`});
+    s+=`<text x="${L+gw*i+gw/2}" y="${H-B+16}" text-anchor="middle">${c}</text>`});
+  s+=`<line x1="${L}" x2="${W-R}" y1="${H-B}" y2="${H-B}" stroke="var(--muted)"/></svg>`;
+  if(series.length>1||o.legend)s+=`<div class="legend">${series.map(x=>`<span><i style="background:${x.c}"></i>${x.n}</span>`).join('')}</div>`;
+  return s}
+const chip=(t,c)=>`<span class="chip c-${c}">${t}</span>`;
+const sty=(ok)=>ok?chip('passa no critério','ok'):chip('não passa','bad');
+
+const V={};
+V.inicio=()=>{
+  const h=D.h1,dif=h.m_rt[4]-h.m_rt[0];
+  return `<h2>Encargos iguais para todos, folgas muito diferentes</h2>
+  <p class="lead">Encargos fixados nacionalmente consomem fatias muito diferentes da receita dos municípios, e a diferença acompanha a base fiscal de cada um. Em 2023, o quintil de menor PIB por habitante tem margem de decisão de ${f1(h.m_rt[0])}% da receita total. O de maior PIB tem ${f1(h.m_rt[4])}%: ${f1(dif)} pontos percentuais de distância, com a mesma regra para todos.</p>
+  <div class="card"><h3>Resultado principal: margem de decisão por quintil de PIB por habitante (% da receita total)</h3>
+  ${bars(Q,[{n:'Margem ampla',v:h.m_rt,c:'var(--s6)'},{n:'Margem estrita',v:h.e_rt,c:'var(--s3)'}],{label:'Margem ampla e estrita por quintil de PIB por habitante',fmt:x=>f1(x).replace(',0','')})}
+  <p class="muted">Mediana dos municípios calculados de cada quintil. A margem ampla tira da receita o que já tem destino. A estrita tira também a folha paga com recurso livre. <a href="#margens">Como ler as margens</a>.</p></div>
+  <div class="grid" style="margin:18px 0 8px">
+   <div class="card"><div class="kpi">${f0(D.cob.calc)}<small>de ${f0(D.cob.total)} entes calculados (${f1(100*D.cob.calc/D.cob.total)}%)</small></div></div>
+   <div class="card"><div class="kpi">${D.pares[1]} de ${D.pares[0]}<small>grupos de mesma UF e faixa em que o terço mais rico tem margem maior</small></div></div>
+   <div class="card"><div class="kpi">${(D.h2.pess_educ[0]/D.h2.pess_educ[4]).toFixed(1).replace('.',',')} vezes<small>exposição ao piso do magistério, quintil de menor contra o de maior PIB</small></div></div>
+  </div>
+  <div class="card eixo"><h3>Eixo da tese: o piso do magistério (H2)</h3>
+  <p>O reajuste do piso é o mesmo para todos, mas pesa diferente conforme a folha da educação na receita livre de cada município. Com 2024 a 2026, a comparação antes e depois entre municípios mais e menos expostos, tendo a saúde como controle, é o teste mais forte da tese. Em 2023 só é possível medir a exposição. <a href="#h2">Ver H2</a>.</p></div>
+  <h3>Hipóteses e situação</h3>
+  <div class="scroll"><table><thead><tr><th>Hipótese</th><th>O que 2023 sugere</th><th>Situação</th></tr></thead><tbody>
+   <tr><td><a href="#h1">H1</a> Capacidade e margem</td><td>Diferença de ${f1(dif)} pontos, concentrada na parcela vinculada da receita</td><td>${chip('exploratório','ok')}</td></tr>
+   <tr><td><a href="#h2">H2</a> Reajuste do piso</td><td>Exposição maior no quintil de menor PIB</td><td>${chip('falta o painel 2022 a 2026','wait')}</td></tr>
+   <tr><td><a href="#h3">H3</a> Dentro do mesmo Estado</td><td>Terço mais rico com margem maior em ${D.pares[1]} de ${D.pares[0]} grupos</td><td>${chip('exploratório','ok')}</td></tr>
+   <tr><td><a href="#h4">H4a</a> Art. 11 da LRF</td><td>${f1(D.t6.Algum[0])}% no quintil de menor PIB contra ${f1(D.t6.Algum[4])}% no de maior</td><td>${chip('exploratório','ok')}</td></tr>
+   <tr><td><a href="#h4">H4b</a> Base e não cobrança</td><td>ISS: a base explica a diferença. IPTU: a base lançada explica a maior parte, com limite de contabilidade</td><td>${chip('exploratório','ok')}</td></tr>
+   <tr><td><a href="#h4">H4c</a> Base fora do território</td><td>Dependentes de um centro ficam ${f0((1-D.h4c[0][5])*100)}% (VA) e ${f0((1-D.h4c[1][5])*100)}% (ISS) abaixo dos centros</td><td>${chip('exploratório','ok')}</td></tr>
+   <tr><td>H5 Consequência jurídica</td><td>Análise jurídica apoiada em H1 a H4</td><td>${chip('fora deste aplicativo','wait')}</td></tr></tbody></table></div>
+  <h3>Como ler este aplicativo</h3>
+  <ul class="chg">
+   <li>${chip('exploratório','ok')} 2023 serve para testar o método e formular hipóteses. Não conta como prova e não permite dizer que um fator causa o outro.</li>
+   <li>${chip('confirmatório','new')} Só 2024 a 2026, com regras <a href="#regras">registradas e seladas antes</a> de abrir os dados.</li>
+   <li>Cada número da <a href="#municipio">ficha do município</a> pode ser conferido na <a href="#dados">fonte</a>, e os dados podem ser baixados para recalcular.</li>
+   <li>Municípios sem dados que fechem ficam fora e são descritos em <a href="#cobertura">Cobertura e quem falta</a>.</li>
+  </ul>`};
+
+V.regras=()=>`<h2>Regras registradas antes de abrir 2024</h2>
+  <p class="lead">O que dá valor aos anos de 2024 a 2026 é que as regras de decisão fiquem fixadas antes de olhar os dados. Esta página mostra o estado desse registro.</p>
+  <div class="card"><h3>Situação do registro</h3>
+  <div class="scroll"><table><tbody>
+   <tr><td>Registro selado</td><td>${chip('não selado','bad')}</td></tr>
+   <tr><td>Data e hash do registro</td><td class="muted">a preencher quando selado</td></tr>
+   <tr><td>Depósito (Zenodo ou OSF)</td><td class="muted">a preencher</td></tr>
+   <tr><td>Orientador ciente</td><td class="muted">orientador ainda a definir</td></tr></tbody></table></div></div>
+  <h3>Critérios por hipótese</h3>
+  <div class="scroll"><table><thead><tr><th>Hipótese</th><th>Critério de confirmação (Quadro 7)</th><th>Limiar</th></tr></thead><tbody>
+   <tr><td>H1</td><td>Diferença de margem entre quintis extremos e maior no extremo de maior PIB; efeito concentrado na parcela vinculada</td><td class="muted">a definir com o orientador</td></tr>
+   <tr><td>H2</td><td>Exposição ao piso (folha da educação ÷ receita livre) prevê a queda da margem após o reajuste; placebo na saúde sem efeito</td><td class="muted">a definir com o orientador</td></tr>
+   <tr><td>H3</td><td>Relação positiva em pelo menos 3/4 das UFs com cobertura suficiente e terço mais rico com margem maior em pelo menos 2/3 dos grupos de mesma UF e faixa</td><td>3/4 e 2/3</td></tr>
+   <tr><td>H4a</td><td>Pelo menos 10% dos municípios abaixo de 10% da mediana de UF e faixa, e razão entre os extremos de quintil de pelo menos 3</td><td>10% e 3</td></tr>
+   <tr><td>H4b, H4c</td><td>Exploratórias até o registro de regras. ISS: base (valor adicionado) e alíquota efetiva. IPTU: lançado, taxa de realização, dívida ativa. ITBI: sem base direta; ITBI por habitante contra IPTU por habitante como base indireta</td><td class="muted">a definir</td></tr>
+   <tr><td>H5</td><td>Análise jurídica</td><td class="muted">fora deste aplicativo</td></tr></tbody></table></div>
+  <h3>Regras de dados</h3>
+  <ul class="chg"><li>Medida principal: margem em % da receita total, com a regra D68.</li>
+  <li>Cobertura mínima de 65% dos municípios por ano. UF com menos de 40 calculados ou 40% de cobertura fica fora da leitura por Estado.</li>
+  <li>Tolerância MSC contra DCA de 3% (D73), com 1% como sensibilidade.</li>
+  <li>Anos: 2023 exploratório; 2024, 2025 e 2026 confirmatórios. Nenhuma regra muda depois do registro; mudanças viram anexo datado.</li></ul>`;
+
+V.dados=()=>`<h2>Dados e fontes</h2>
+  <p class="lead">Todos os números vêm de bases públicas. Dá para baixar o resultado por município e recalcular.</p>
+  <div class="card"><h3>Baixar</h3>
+  <p>Uma linha por município calculado: população, PIB por habitante, faixa, quintil e cada componente da receita em % da receita total.</p>
+  <p><button id="bCsv" type="button">Baixar municipios_2023.csv</button> <span class="muted" id="csvMsg"></span></p></div>
+  <h3>Fontes</h3>
+  <div class="scroll"><table><thead><tr><th>Dado</th><th>Fonte</th></tr></thead><tbody>
+   <tr><td>Receita, fontes de recurso, despesa por função e natureza</td><td>Siconfi, MSC encerramento (MSCE) e DCA, Tesouro Nacional</td></tr>
+   <tr><td>RCL, pessoal e dívida</td><td>Siconfi, RREO e RGF</td></tr>
+   <tr><td>População, PIB dos municípios, valor adicionado</td><td>IBGE (SIDRA)</td></tr>
+   <tr><td>Conferência de saúde</td><td>SIOPS</td></tr>
+   <tr><td>FPM e transferências</td><td>Tesouro Transparente</td></tr></tbody></table></div>
+  <p class="muted">Cada resposta das fontes é guardada sem alteração, com data, endereço e SHA-256, no repositório do projeto (diário de extração). Os brutos completos irão para o Zenodo.</p>`;
+function hook_dados(){const b=$('#bCsv');if(!b)return;
+  b.onclick=async()=>{try{const dl=await claude.use('downloads');if(!dl){$('#csvMsg').textContent='Download indisponível neste ambiente.';return}
+    const M=await loadMun();const h=['cod_ibge','municipio','uf','populacao','pib_por_habitante','faixa_pop','quintil_pib','receita_por_habitante','vinculada_pct','minimos_pct','patronal_pct','legislativo_pct','divida_pct','precatorios_pct','margem_ampla_pct','folha_livre_pct','margem_estrita_pct','educacao_pct','saude_pct'];
+    const q=v=>typeof v==='string'?'"'+v.replace(/"/g,'""')+'"':v;
+    const csv=h.join(',')+'\n'+M.map(r=>r.map(q).join(',')).join('\n');
+    await dl.save({filename:'municipios_2023.csv',data:csv});$('#csvMsg').textContent='';}catch(e){$('#csvMsg').textContent=e&&e.code==='declined'?'':'Não foi possível salvar.'}}}
+
+V.h1=()=>{const h=D.h1,dif=h.m_rt[4]-h.m_rt[0],difl=h.m_rl[4]-h.m_rl[0],ok1=dif>=5,ok2=difl<dif/2;
+  const F=D.faixas;
+  return `<h2>H1 · Os municípios de maior capacidade têm margem de decisão maior?</h2>
+  <p class="lead">Têm. A diferença entre os extremos é de ${f1(dif)} pontos da receita total, e quase toda vem da receita que já chega com destino fixado: ela vai de ${f1(h.vinc[0])}% da receita no quintil de menor capacidade a ${f1(h.vinc[4])}% no de maior.</p>
+  <div class="two"><div class="card"><h3>Margem de decisão por quintil de PIB por habitante</h3>
+  ${bars(Q,[{n:'Margem ampla, % da receita total',v:h.m_rt,c:'var(--s5)'},{n:'Margem estrita, % da receita total',v:h.e_rt,c:'var(--s2)'}],{label:'Margem ampla e estrita por quintil de PIB'})}</div>
+  <div class="card"><h3>De onde vem a diferença</h3>
+  ${bars(Q,[{n:'Parcela vinculada da receita, %',v:h.vinc,c:'var(--s7)'},{n:'Margem sobre a receita livre, %',v:h.m_rl,c:'var(--s3)'}],{label:'Parcela vinculada e margem sobre receita livre'})}</div></div>
+  <div class="crit"><b>Critério (Quadro 7).</b> Confirma se a margem sobe com o PIB por habitante com controle pelo Estado, a diferença entre extremos é de pelo menos 5 pontos da receita total, e a diferença sobre a receita livre é menor que a metade da diferença sobre a receita total.<br>
+  Aqui: diferença de ${f1(dif)} pontos ${sty(ok1)}; sobre a receita livre ${f1(difl)} pontos, contra metade de ${f1(dif/2)} ${sty(ok2)}. O controle pelo Estado e o intervalo de confiança saem na regressão dos anos confirmatórios.</div>
+  <h3>Mesma medida por faixa de população (sete faixas)</h3>
+  <div class="scroll"><table><thead><tr><th>Faixa</th><th class="n">Calculados / total</th><th class="n">Margem ampla %</th><th class="n">Margem estrita %</th><th class="n">Parcela vinculada %</th></tr></thead><tbody>
+  ${F.map(x=>`<tr><td>${x[0]}</td><td class="n">${f0(x[1])} / ${f0(x[5])}</td><td class="n">${f1(x[2])}</td><td class="n">${f1(x[3])}</td><td class="n">${f1(x[4])}</td></tr>`).join('')}</tbody></table></div>
+  <p class="muted" style="margin-top:10px">Medianas. Os municípios de até 5 mil habitantes têm a maior margem e a menor parcela de receita vinculada. A comparação entre municípios de mesmo porte e Estado fica na tela H3.</p>`};
+
+V.h2=()=>{const h=D.h2,r=h.pess_educ[0]/h.pess_educ[4];
+  return `<h2>H2 · O mesmo reajuste do piso pesa mais em quem tem menos?</h2>
+  <p class="lead">O reajuste é igual para todos. O peso não: a folha do magistério é ${h.pess_educ[0].toFixed(0)}% da receita livre no quintil de menor capacidade e ${h.pess_educ[4].toFixed(0)}% no de maior. Com o reajuste de 14,95% de 2023, o custo máximo chega a ${f1(h.custo[0])}% da receita livre no primeiro quintil e ${f1(h.custo[4])}% no último.</p>
+  <div class="two"><div class="card"><h3>Peso da despesa de pessoal da educação na receita livre (%)</h3>
+  ${bars(Q,[{n:'Educação (exposição ao piso)',v:h.pess_educ,c:'var(--s6)'},{n:'Saúde (placebo)',v:h.pess_saude,c:'var(--s2)'}],{label:'Exposição ao piso por quintil'})}</div>
+  <div class="card"><h3>Custo máximo do reajuste de 14,95% (% da receita livre)</h3>
+  ${bars(Q,[{n:'Custo máximo',v:h.custo,c:'var(--s5)'}],{label:'Custo máximo do reajuste'})}</div></div>
+  <div class="crit"><b>Critério (Quadro 7).</b> Confirma se a margem cai mais nos mais expostos nos anos de reajuste maior (efeito negativo, intervalo abaixo de zero), a exposição do quintil de menor capacidade é de pelo menos 1,5 vez a do maior, e o placebo da saúde não reage.<br>
+  Aqui: razão entre extremos ${r.toFixed(1).replace('.',',')} ${sty(r>=1.5)}. O efeito no tempo e o placebo ${chip('aguardam a série 2022 a 2026','wait')}.</div>
+  <h3>Como esta tela ficará com a série completa</h3>
+  <div class="wait"><p style="margin:0">Linha por ano de 2023 a 2026 com a variação da margem dos mais e menos expostos, ao lado do percentual de reajuste de cada ano (portaria do MEC). Entram também a complementação da União ao Fundeb e a folha da saúde como controles. Pré-requisitos: MSC de 2022 (base da exposição de 2023) e de 2024 a 2026, e os percentuais do piso de 2024 em diante confirmados na fonte.</p></div>`};
+
+V.h3=()=>{const okUF=new Set(D.h3.filter(x=>x[3]!=null).map(x=>x[0]));const rows=D.h3b.filter(r=>okUF.has(r[0])).sort((a,b)=>(b[4]-b[3])-(a[4]-a[3]));const ex=D.h3ex;const nUp=rows.filter(r=>r[4]>r[3]).length;
+  const W=640,rh=22,H=rows.length*rh+56,L=40,R=44,mn=10,mx=45;const X=v=>L+(W-L-R)*(v-mn)/(mx-mn);const c1=v=>String(v.toFixed(1)).replace('.',',');
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Margem ampla do terço de menor PIB por habitante e do terço de maior, por Estado" style="max-width:100%;height:auto">`;
+  for(const t of [10,20,30,40]){s+=`<line x1="${X(t)}" x2="${X(t)}" y1="30" y2="${H-22}" stroke="var(--line)"/><text x="${X(t)}" y="${H-7}" text-anchor="middle">${t}%</text>`}
+  s+=`<circle cx="${L+8}" cy="12" r="5" fill="var(--o3)"/><text x="${L+18}" y="16">terço com menor PIB por habitante</text><circle cx="${L+250}" cy="12" r="5" fill="var(--s3)"/><text x="${L+260}" y="16">terço com maior PIB por habitante</text>`;
+  rows.forEach((r,i)=>{const y=40+i*rh,a=X(r[3]),b=X(r[4]);s+=`<text x="${L-8}" y="${y+4}" text-anchor="end">${r[0]}</text><line x1="${a}" x2="${b}" y1="${y}" y2="${y}" stroke="var(--muted)" stroke-width="2" opacity=".5"/><circle cx="${a}" cy="${y}" r="5" fill="var(--o3)"/><circle cx="${b}" cy="${y}" r="5" fill="var(--s3)"/><text class="v" x="${Math.max(a,b)+10}" y="${y+4}">${r[4]>=r[3]?'+':'−'}${c1(Math.abs(r[4]-r[3]))} p.p.</text>`});
+  s+='</svg>';
+  const out=D.h3.filter(x=>x[3]==null).map(x=>x[0]).join(', ');
+  const pr=D.pares[1]/D.pares[0];
+  return `<h2>H3 · Dentro do mesmo Estado, o município mais rico tem mais folga?</h2>
+  <p class="lead">Sim. Comparando municípios do mesmo Estado e do mesmo tamanho, o terço com maior PIB por habitante tem margem maior em ${nUp} dos ${rows.length} Estados analisados, e em ${D.pares[1]} de ${D.pares[0]} grupos (${f0(100*pr)}%).</p>
+  <div class="card"><h3>Como foi feita a comparação</h3>
+  <ol class="steps"><li><b>Mesmo Estado e mesmo tamanho.</b> Só se comparam municípios do mesmo Estado e da mesma faixa de população, para que Estado e porte não expliquem a diferença.</li>
+  <li><b>Três partes por riqueza.</b> Em cada grupo, ordenam-se os municípios pelo PIB por habitante e dividem-se em três partes iguais. Ficam o terço mais pobre e o terço mais rico.</li>
+  <li><b>Compara-se a margem.</b> Mede-se a margem ampla mediana (% da receita) de cada terço. Se o mais rico tem margem maior, o grupo conta como positivo.</li></ol>
+  <p class="ex"><b>Exemplo: ${ex.uf}, municípios de 10 a 20 mil habitantes.</b> São ${ex.n} municípios, ${ex.t} em cada terço. No terço mais pobre o PIB mediano é R$ ${f0(ex.pib_low)} por habitante e a margem ampla é ${c1(ex.m_low)}%. No mais rico, R$ ${f0(ex.pib_high)} e ${c1(ex.m_high)}%. Diferença: ${c1(ex.m_high-ex.m_low)} pontos percentuais.</p></div>
+  <div class="card"><h3>Margem ampla por Estado: terço mais pobre × terço mais rico</h3><p class="muted">Cada linha é um Estado. A distância entre os pontos é a diferença. Ordenado da maior para a menor.</p><div class="scroll">${s}</div></div>
+  <div class="crit"><b>Critério (Quadro 7).</b> Confirma com relação positiva em pelo menos 3/4 das UFs com cobertura suficiente, e terço mais rico com margem maior em pelo menos 2/3 dos grupos.<br>
+  Aqui: ${nUp} de ${rows.length} UFs ${sty(nUp/rows.length>=.75)}; grupos ${f0(100*pr)}% ${sty(pr>=2/3)}. A correlação de Spearman entre PIB por habitante e margem também é positiva em todas as UFs com cobertura suficiente. O modelo de dois níveis fica para os anos confirmatórios.</div>
+  <p class="muted">Fora desta leitura por não terem 40 municípios calculados e 40% de cobertura: ${out}. Estados com poucos municípios por faixa (menos de 9) não formam grupos.</p>`};
+
+V.h4=()=>{const t=D.t6,b=D.h4b;const r=t.Algum[0]/t.Algum[4],media=t.Algum.reduce((a,c)=>a+c,0)/5;
+  return `<h2>H4 · A arrecadação baixa vem da base do município ou da cobrança?</h2>
+  <p class="lead">O art. 11 da LRF olha só a cobrança. A tese separa as duas coisas em três partes.</p>
+  <h3>H4a · Onde estão os municípios com arrecadação muito baixa</h3>
+  <p>Proporção de municípios abaixo de 10% da mediana do mesmo Estado e da mesma faixa de população, por quintil de PIB por habitante.</p>
+  <div class="card">${bars(Q,[{n:'IPTU',v:t.IPTU,c:'var(--s3)'},{n:'ITBI',v:t.ITBI,c:'var(--s4)'},{n:'ISS',v:t.ISS,c:'var(--s2)'},{n:'Algum dos três',v:t.Algum,c:'var(--s7)'}],{label:'Municípios abaixo do critério relativo',fmt:x=>f1(x).replace(',0','')})}</div>
+  <div class="crit"><b>Critério.</b> Confirma com pelo menos 10% dos municípios abaixo do critério e razão entre os extremos de pelo menos 3. Aqui: razão ${r.toFixed(1).replace('.',',')} ${sty(r>=3)}; média simples dos quintis ${f1(media)}%, no limite de 10%. Ficar abaixo não é descumprir o art. 11: mostra onde está a dificuldade.</div>
+  <h3>H4b · Base, e não cobrança</h3>
+  <p><b>ISS.</b> A arrecadação por habitante se divide em base (valor adicionado dos serviços por habitante) e alíquota efetiva (ISS ÷ valor adicionado).</p>
+  <div class="two"><div class="card"><h3>ISS e base de serviços por habitante (R$, mediana)</h3>
+  ${bars(Q,[{n:'ISS por habitante',v:b.iss_pc,c:'var(--s6)'}],{label:'ISS por habitante',fmt:x=>f0(x)})}
+  ${bars(Q,[{n:'Valor adicionado dos serviços por habitante, 2021',v:b.va_pc,c:'var(--s3)'}],{label:'Valor adicionado por habitante',fmt:x=>f0(x)})}</div>
+  <div class="card"><h3>Alíquota efetiva do ISS (%)</h3>
+  ${bars(Q,[{n:'ISS ÷ valor adicionado',v:b.aliq,c:'var(--s5)'}],{label:'Alíquota efetiva',fmt:x=>String(x.toFixed(2)).replace('.',',')})}
+  <p class="muted" style="margin-top:8px">${f0(b.n)} municípios com ISS e valor adicionado. A base explica ${b.parte_base.toFixed(0)}% da diferença de ISS entre os extremos; a alíquota efetiva dos pequenos é até maior, o que faz a parte explicada pela base passar de 100%.</p></div></div>
+  <div class="crit"><b>Critério ISS.</b> Confirma se mais da metade da diferença é explicada pela base ${sty(b.parte_base>50)}. <b>Limites.</b> O valor adicionado é de 2021 (o IBGE ainda não publicou 2022 e 2023 por atividade); inclui o comércio; e o PIB que define o quintil contém o próprio valor adicionado dos serviços, o que aproxima as duas medidas por construção. Por isso a renda domiciliar do Censo entra como quintil alternativo.</div>
+  <p><b>IPTU.</b> Base (valor lançado) contra esforço (taxa de realização, arrecadado ÷ lançado) e dívida ativa. Entram ${f0(D.h4iptu.reduce((a,x)=>a+x[0],0))} municípios calculados, sem sinal de problema nos dados do IPTU. Valores por habitante, mediana do quintil de PIB por habitante.</p>
+  <div class="card scroll"><table><thead><tr><th>Quintil</th><th>Municípios</th><th>IPTU lançado (R$ por hab.)</th><th>IPTU arrecadado (R$ por hab.)</th><th>Lançado igual ao arrecadado</th><th>Taxa de realização (só onde há competência)</th><th>Dívida ativa (R$ por hab.)</th><th>Recuperação da dívida ativa</th></tr></thead><tbody>${D.h4iptu.map((x,i)=>`<tr><td>${i+1}</td><td>${f0(x[0])}</td><td>${f1(x[1])}</td><td>${f1(x[2])}</td><td>${f0(x[3])}%</td><td>${f2(x[4])} <span class="muted">(${f0(x[5])})</span></td><td>${f0(x[6])}</td><td>${f0(x[7]*100)}%</td></tr>`).join('')}</tbody></table></div>
+  <ul class="chg"><li>Do quintil de menor PIB para o de maior, o IPTU lançado por habitante vai de R$ ${f1(D.h4iptu[0][1])} a R$ ${f1(D.h4iptu[4][1])}, e o arrecadado de R$ ${f1(D.h4iptu[0][2])} a R$ ${f1(D.h4iptu[4][2])}. A maior parte da diferença está na base lançada, mas a próxima linha mostra que a cobrança também difere.</li>
+  <li>A taxa de realização entre os municípios que lançam por competência sobe de ${f2(D.h4iptu[0][4])} no quintil de menor PIB para ${f2(D.h4iptu[4][4])} no de maior: parte do esforço de cobrança também difere.</li>
+  <li>A recuperação da dívida ativa (recebida ÷ saldo do ano anterior) vai de ${f0(D.h4iptu[0][7]*100)}% a ${f0(D.h4iptu[4][7]*100)}%.</li></ul>
+  <div class="crit"><b>Limite que muda a leitura.</b> Em ${f0(D.h4iptu[0][3])}% dos municípios do quintil de menor PIB o IPTU lançado é igual ao arrecadado: eles contabilizam o IPTU quando recebem, então não há taxa de realização de verdade. No quintil de maior PIB são ${f0(D.h4iptu[4][3])}%. A diferença de contabilidade entre os quintis pesa na comparação, e por isso a taxa só é lida onde há lançamento por competência. As contas de dívida ativa seguem a leitura do plano de contas da Federação e faltam conferir no PCASP Estendido de 2023.</div>
+  <p><b>ITBI.</b> O ITBI incide sobre o valor das vendas de imóveis, que o município não publica. Não há uma base direta como o valor adicionado (ISS) ou o valor lançado (IPTU). Como medida indireta, o ITBI por habitante é comparado ao IPTU por habitante, que acompanha o estoque de imóveis. Exploratório.</p>
+  <div class="two"><div class="card"><h3>ITBI e IPTU realizados por habitante (R$, mediana)</h3>
+  ${bars(Q,[{n:'IPTU por habitante',v:D.h4itbi.q.map(x=>x[1]),c:'var(--s6)'},{n:'ITBI por habitante',v:D.h4itbi.q.map(x=>x[0]),c:'var(--s3)'}],{label:'ITBI e IPTU por habitante por quintil de PIB por habitante',fmt:x=>f0(x)})}</div>
+  <div class="card"><h3>O que mostra</h3><ul class="chg">
+   <li>Do quintil de menor PIB para o de maior, o ITBI por habitante vai de R$ ${f1(D.h4itbi.q[0][0])} a R$ ${f1(D.h4itbi.q[4][0])}, cerca de ${f0(D.h4itbi.q[4][0]/D.h4itbi.q[0][0])} vezes. O IPTU vai de R$ ${f1(D.h4itbi.q[0][1])} a R$ ${f1(D.h4itbi.q[4][1])}, cerca de ${f0(D.h4itbi.q[4][1]/D.h4itbi.q[0][1])} vezes.</li>
+   <li>Os dois andam juntos: correlação de Spearman de ${String(D.h4itbi.rho).replace('.',',')} em ${f0(D.h4itbi.n)} municípios, e mediana de ${String(D.h4itbi.rho_uf).replace('.',',')} dentro de ${D.h4itbi.n_uf} UFs com pelo menos 40 municípios.</li>
+   <li>Quase todos os municípios têm algum ITBI registrado (94% no menor quintil, 98% a 99% nos demais). O problema não é ausência de cobrança, é o tamanho do mercado imobiliário.</li></ul></div></div>
+  <div class="crit"><b>Limites.</b> IPTU e ITBI realizados dependem da mesma cobrança, então a correlação não separa base de esforço. Só a IPTU lançado (coleta pendente) permitirá isso. Municípios sem os dois valores positivos ficam fora da correlação. A base cobre ${f0(D.h4itbi.q.reduce((a,x)=>a+x[3],0))} dos municípios calculados.</div>
+  <h3>H4c · Base fora do território</h3>
+  <div class="card"><p style="margin:0 0 8px">Compara os municípios que dependem de um centro urbano (Centro de Zona e Centro Local na REGIC 2018) com os centros maiores (Metrópole, Capital Regional e Centro Sub-Regional), dentro da mesma faixa de população e do mesmo quintil de PIB por habitante. O critério provisório é uma diferença de pelo menos 15%, com os dependentes abaixo.</p>
+  <div class="scroll"><table><thead><tr><th>Comparação</th><th>Variável</th><th>Dependentes ÷ centros</th><th>Células abaixo de 1</th><th>Municípios</th></tr></thead><tbody>${D.h4c.map(x=>`<tr><td>${x[0].replace(/^(Principal|Sensibilidade): /,'')}<br><span class="muted">${x[0].startsWith('Principal')?'principal':'sensibilidade'}</span></td><td>${x[1]}</td><td>${f2(x[5])} ${sty(x[5]<=0.85)}</td><td>${x[6]} de ${x[2]}</td><td>${f0(x[3])} e ${f0(x[4])}</td></tr>`).join('')}</tbody></table></div></div>
+  <div class="crit"><b>Limites.</b> A classificação é de 2018 e a receita de 2023; o valor adicionado dos serviços é de 2021. O quintil de PIB por habitante usa o valor adicionado, então a comparação é em parte circular. Células com menos de 5 municípios em algum grupo ficam fora. Exploratório: o limiar de 15% ainda não está selado.</div>`};
+
+const RN=['Pessoal e encargos','Outras despesas correntes','Juros da dívida','Investimentos e inversões','Amortização da dívida','Outros'];
+const RF=['Educação','Saúde','Assistência e previdência','Administração','Urbanismo, saneamento e ambiente','Transporte','Legislativa','Demais funções'];
+const WN={white:[0,2,5]},WF={white:[0,2,5,7]};
+const RG=['Tributária própria','Outras próprias','Transferências constitucionais','Fundeb','Fundo a fundo (SUS, FNDE, FNAS)','Voluntárias (convênios)','Outros'];
+function stack(cats,rows,o={}){const NM=o.names||RG,WH=o.white||[0,2,5];const W=640,L=96,R=10,rh=26,H=rows.length*(rh+8)+10;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${o.label||''}" style="max-width:100%;height:auto">`;
+  rows.forEach((v,i)=>{const y=6+i*(rh+8);let x=L;s+=`<text x="${L-8}" y="${y+rh/2+4}" text-anchor="end">${cats[i]}</text>`;
+    v.forEach((p,j)=>{const w=(W-L-R)*p/100;s+=`<rect x="${x}" y="${y}" width="${w}" height="${rh}" fill="var(--c${j+1})"/>`;if(p>=5)s+=`<text x="${x+w/2}" y="${y+rh/2+4}" text-anchor="middle" style="font-size:10.5px;fill:${WH.includes(j)?'#fff':'var(--ink)'}">${f0(p)}</text>`;x+=w})});
+  s+=`</svg><div class="legend">${NM.map((n,j)=>`<span><i style="background:var(--c${j+1})"></i>${n}</span>`).join('')}</div>`;return s}
+V.despesa=()=>{const R=D.desp,gn=R.geral_n,gf=R.geral_f;
+  return `<h2>Em que os municípios gastam?</h2>
+  <p class="lead">Em 2023, os municípios calculados pagaram R$ ${f0(R.total_bi_f.reduce((a,x)=>a+x,0))} bi de despesa liquidada. ${f0(gn[0])}% foi com pessoal e encargos. Por função, educação (${f0(gf[0])}%) e saúde (${f0(gf[1])}%) somam ${f0(gf[0]+gf[1])}%.</p>
+  <div class="card"><h3>Por natureza da despesa, total de ${f0(R.n_nat)} municípios (% do valor)</h3>${stack(['Brasil'],[gn],{label:'Despesa por natureza',names:RN,...WN})}
+   <p class="muted" style="margin:8px 0 0">${f0(R.n-R.n_nat)} municípios não informam a natureza da despesa na MSCE e ficam só na abertura por função.</p></div>
+  <div class="card"><h3>Por função, total de ${f0(R.n)} municípios (% do valor)</h3>${stack(['Brasil'],[gf],{label:'Despesa por função',names:RF,...WF})}</div>
+  <h3>Por quintil de PIB por habitante</h3>
+  <div class="card">${stack(Q,R.q_n,{label:'Natureza por quintil',names:RN,...WN})}</div>
+  <div class="card">${stack(Q,R.q_f,{label:'Função por quintil',names:RF,...WF})}</div>
+  <ul class="chg"><li>Pessoal e encargos pesam ${f0(R.q_n[0][0])}% da despesa no quintil de menor PIB e ${f0(R.q_n[4][0])}% no de maior.</li>
+  <li>Educação: ${f0(R.q_f[0][0])}% no menor quintil e ${f0(R.q_f[4][0])}% no maior. Saúde: ${f0(R.q_f[0][1])}% e ${f0(R.q_f[4][1])}%.</li>
+  <li>Mediana dos municípios: pessoal de ${f0(R.mediana_pessoal_q[0])}% a ${f0(R.mediana_pessoal_q[4])}%, do menor ao maior quintil (a mediana não soma 100% entre grupos).</li></ul>
+  <h3>Por faixa de população</h3>
+  <div class="card">${stack(FX,R.faixa_n,{label:'Natureza por faixa',names:RN,...WN})}</div>
+  <div class="card">${stack(FX,R.faixa_f,{label:'Função por faixa',names:RF,...WF})}</div>
+  <h3>Por Estado, função (UFs com 20 ou mais municípios)</h3>
+  <div class="card scroll"><table><thead><tr><th>UF</th><th>Municípios</th>${RF.map(n=>`<th>${n}</th>`).join('')}</tr></thead><tbody>${R.uf_f.map(x=>`<tr><td>${x[0]}</td><td>${f0(x[1])}</td>${x.slice(2).map(v=>`<td>${f1(v)}%</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+  <p class="muted">Despesa liquidada pela MSCE (contas de despesa liquidada, as mesmas usadas na margem), com as intraorçamentárias dentro do total. Cada abertura fecha com o total do município dentro de 3%. Exploratório, 2023.</p>`};
+
+V.receita=()=>{const R=D.rec,g=R.geral,pr=g[0]+g[1],tr=g[2]+g[3]+g[4]+g[5];
+  return `<h2>De onde vem a receita dos municípios?</h2>
+  <p class="lead">Em 2023, ${f0(pr)}% da receita dos municípios calculados é arrecadação própria; só ${f0(g[0])}% vem de impostos e taxas. O resto chega por transferências: constitucionais (${f0(g[2])}%), Fundeb (${f0(g[3])}%), fundo a fundo (${f0(g[4])}%) e voluntárias (${f0(g[5])}%).</p>
+  <div class="card"><h3>Composição da receita, total dos ${f0(R.n)} municípios (% do valor)</h3>${stack(['Brasil'],[g],{label:'Composição da receita'})}
+   <p class="muted" style="margin:8px 0 0">Receita total de R$ ${f0(R.total_bi.reduce((a,x)=>a+x,0))} bi, sem as intraorçamentárias.</p></div>
+  <h3>Por quintil de PIB por habitante</h3>
+  <div class="card">${stack(Q,R.q,{label:'Composição por quintil'})}</div>
+  <ul class="chg"><li>No quintil de menor PIB, a arrecadação própria é ${f0(R.q[0][0]+R.q[0][1])}% da receita e a tributária, ${f0(R.q[0][0])}%. No de maior, ${f0(R.q[4][0]+R.q[4][1])}% e ${f0(R.q[4][0])}%.</li>
+  <li>O Fundeb pesa ${f0(R.q[0][3])}% no quintil de menor PIB e ${f0(R.q[4][3])}% no de maior.</li>
+  <li>Mediana dos municípios: arrecadação própria de ${f0(R.mediana_propria_q[0])}% no menor quintil a ${f0(R.mediana_propria_q[4])}% no maior (a mediana não soma 100% entre grupos).</li></ul>
+  <h3>Por faixa de população</h3>
+  <div class="card">${stack(FX,R.faixa,{label:'Composição por faixa'})}</div>
+  <h3>Por Estado (UFs com 20 ou mais municípios na base)</h3>
+  <div class="card scroll"><table><thead><tr><th>UF</th><th>Municípios</th><th>Tributária própria</th><th>Outras próprias</th><th>Constitucionais</th><th>Fundeb</th><th>Fundo a fundo</th><th>Voluntárias</th><th>Outros</th></tr></thead><tbody>${R.uf.map(x=>`<tr><td>${x[0]}</td><td>${f0(x[1])}</td>${x.slice(2).map(v=>`<td>${f1(v)}%</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+  <div class="crit"><b>Como foi feito e limites.</b> Receita realizada pela natureza de receita da MSC de encerramento (ou soma das 12 matrizes mensais onde a de dezembro não fecha), agrupada por mim pelos códigos do MCASP. A soma dos grupos fecha com a receita total da MSC em até 4% em todos os municípios. Entram os ${f0(R.n)} municípios calculados, não os 5.570. As voluntárias são os convênios da União e dos Estados e as transferências de capital; o Portal da Transparência (regime de caixa) serve de conferência, mas não deve bater igual. A classificação em grupos ainda precisa ser conferida com a tabela oficial de naturezas.</div>`};
+V.cobertura=()=>{const c=D.cob;const rows=c.por_uf.map(x=>({u:x[0],t:x[1],k:x[2],p:100*x[2]/x[1],ok:x[2]>=40&&100*x[2]/x[1]>=40})).sort((a,b)=>b.p-a.p);
+  const W=640,rh=20,H=rows.length*rh+34,L=40,R=64;const X=p=>L+(W-L-R)*p/100;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Cobertura por UF" style="max-width:100%;height:auto"><line x1="${X(40)}" x2="${X(40)}" y1="6" y2="${H-22}" stroke="var(--bad)" stroke-dasharray="3 3"/><text x="${X(40)}" y="${H-8}" text-anchor="middle">40%</text>`;
+  rows.forEach((r,i)=>{const y=10+i*rh;s+=`<text x="${L-6}" y="${y+10}" text-anchor="end">${r.u}</text><rect x="${L}" y="${y}" width="${X(100)-L}" height="12" fill="var(--s1)" rx="2"/><rect x="${L}" y="${y}" width="${X(r.p)-L}" height="12" fill="${r.ok?'var(--s5)':'var(--bad)'}" rx="2"/><text class="v" x="${X(100)+6}" y="${y+10}">${r.k}/${r.t}</text>`});
+  s+='</svg>';const fora=rows.filter(r=>!r.ok).map(r=>r.u);
+  const faixa=D.faixas;
+  return `<h2>Quantos municípios entram em cada leitura?</h2>
+  <p class="lead">${f0(c.calc)} de ${f0(c.total)} entes foram calculados (${f1(100*c.calc/c.total)}%). Os demais ficam marcados e não entram nos cálculos, porque a MSC está ausente, incompleta ou não fecha com a DCA.</p>
+  <div class="two"><div class="card"><h3>Cobertura por UF</h3><div class="scroll">${s}</div>
+  <p class="muted">Vermelho: abaixo de 40 municípios calculados ou de 40% de cobertura. Ficam fora das leituras por Estado: ${fora.join(', ')}.</p></div>
+  <div class="card"><h3>Cobertura por faixa de população</h3><div class="scroll"><table><thead><tr><th>Faixa</th><th class="n">Calculados</th><th class="n">Total</th><th class="n">%</th></tr></thead><tbody>
+  ${faixa.map(x=>`<tr><td>${x[0]}</td><td class="n">${f0(x[1])}</td><td class="n">${f0(x[5])}</td><td class="n">${f1(100*x[1]/x[5])}</td></tr>`).join('')}</tbody></table></div>
+  <p class="muted" style="margin-top:8px">Regra do projeto: uma hipótese só é confirmada em um ano com cobertura de pelo menos 65% dos municípios. A cobertura de 2023 é de ${f1(100*c.calc/c.total)}%, e o teste de viés de cobertura (seção 3.7) compara calculados e excluídos todo ano.</p></div></div>
+  <h3>Quem falta é diferente de quem está?</h3>
+  <p>Teste feito sobre os 5.570 entes, antes da recoleta dirigida de 710 municípios. Será repetido depois dela.</p>
+  <div class="two"><div class="card"><h3>Cobertura por quintil de receita tributária própria por habitante</h3>
+  ${bars(Q,[{n:'% calculados',v:[69.6,72.6,71.6,75.4,75.4],c:'var(--s5)'}],{label:'Cobertura por quintil de base tributária própria',max:100,fmt:x=>f1(x).replace(',0',''),legend:false})}
+  <p class="muted">A cobertura é um pouco menor no quintil de menor base (69,6%) do que nos de maior (75,4%).</p></div>
+  <div class="card"><h3>O que o teste mostra</h3><ul class="chg">
+   <li>População e receita por habitante são parecidas entre calculados e não calculados. Só a receita tributária própria por habitante difere: mediana de R$ 450 contra R$ 414.</li>
+   <li>Com efeito fixo de UF, nem população, nem base própria, nem receita por habitante preveem se o município é calculado.</li>
+   <li>O efeito da base própria sobre a margem é igual com e sem ponderação pelo inverso da probabilidade de ser calculado: 1,17 e 1,17 (margem sobre a receita livre) e 3,21 e 3,19 (sobre a receita total).</li></ul></div></div>
+  <div class="card"><h3>Por que os municípios não foram calculados</h3>
+  <div class="scroll"><table><thead><tr><th>Motivo (um município pode ter mais de um)</th><th class="n">Municípios</th></tr></thead><tbody>
+   <tr><td>Despesa liquidada da MSC diverge da DCA</td><td class="n">1.044</td></tr>
+   <tr><td>Receita da MSC diverge da DCA</td><td class="n">908</td></tr>
+   <tr><td>Fonte de recurso livre atípica</td><td class="n">240</td></tr>
+   <tr><td>RCL suspeita</td><td class="n">178</td></tr>
+   <tr><td>Sem natureza da receita</td><td class="n">154</td></tr>
+   <tr><td>RREO Anexo 3 vazio</td><td class="n">106</td></tr></tbody></table></div>
+  <p class="muted">A qualidade da informação contábil é, em si, um achado: onde a MSC não fecha com a DCA, o município não consegue mostrar sua própria margem. Ainda faltam os limites de pior e melhor caso para os não calculados.</p></div>`};
+
+V.coleta=()=>{
+  const R=[['Siconfi: MSC de encerramento e mensais, DCA, RREO, RGF','2023','ok','coletado','5.570 entes; 710 com lacuna que a coleta pode melhorar'],
+  ['Siconfi: MSC classes 1 e 4 (IPTU lançado, dívida ativa, ITBI)','2023','ok','coletado (5.552 de 5.570 municípios)','H4b; contas de dívida ativa a confirmar no PCASP Estendido'],
+  ['IBGE: população (Censo 2022) e PIB dos Municípios','2021 a 2023','ok','coletado','PIB médio 2021 a 2023 disponível'],
+  ['IBGE: valor adicionado dos serviços (Sidra 5938, variável 6575)','2021','wait','só até 2021','2022 e 2023 não publicados por atividade'],
+  ['IBGE: REGIC 2018 (hierarquia e arranjos populacionais)','2018','ok','coletado (5.570 municípios)','H4c'],
+  ['IBGE: renda do responsável, Censo 2022 (5.570 municípios)','2022','ok','coletado','robustez da H1 e da H4b; ainda sem uso nas telas'],
+  ['Portal da Transparência: transferências por ação e convênios','2023','ok','coletado','116 ações provisórias a classificar'],
+  ['Tesouro Transparente: FPM e transferências constitucionais','2023','ok','coletado (5.569 municípios, 12 meses)','conferência externa e decomposição da H1'],
+  ['Complementação da União ao Fundeb (VAAF e VAAT, via Tesouro)','2023','ok','coletado','controle da H2; VAAR não separado'],
+  ['SIOPS','2023','ok','coletado','conferência do mínimo da saúde'],
+  ['SIOPE (FNDE)','2023','wait','API instável','testar a partir do computador do pesquisador'],
+  ['MSC de 2022','2022','new','disponível','base da exposição da H2 e robustez'],
+  ['MSC de 2024 e 2025','2024-25','new','disponível','coletar e lacrar com hash; abrir só após o registro prévio'],
+  ['Ranking de qualidade da informação contábil (Siconfi)','2023','wait','a incluir','variável do teste de viés de cobertura']];
+  const cm={ok:'coletado',new:'pronto',wait:'pendente',bad:'falta'};
+  return `<h2>De onde vêm os dados e o que ainda falta</h2>
+  <p class="lead">A coleta roda no computador do pesquisador e retoma de onde parou. Cada fonte aparece com a situação atual e o que depende dela.</p>
+  <div class="scroll"><table><thead><tr><th>Fonte</th><th>Ano</th><th>Situação</th><th>Observação</th></tr></thead><tbody>
+  ${R.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${chip(r[3],r[2]==='new'?'new':r[2])}</td><td class="muted">${r[4]}</td></tr>`).join('')}</tbody></table></div>
+  <h3>Guia: o que baixar e como</h3>
+  <p class="muted">Três grupos. No primeiro, basta rodar um comando. No segundo, você baixa o arquivo no site e salva na pasta indicada. No terceiro, quem coleta é o Claude e você não faz nada.</p>
+  <h4>1. Coletas automáticas (rodar no computador)</h4>
+  <p class="muted">Abra o Prompt de Comando na pasta <code>app_coleta</code> do repositório (a pasta de dentro, <code>atlas-encargos-dados-main\\atlas-encargos-dados-main</code>). Todas retomam de onde pararam. Pare com Ctrl+C.</p>
+  <div class="scroll"><table><thead><tr><th>O que</th><th>Comando</th><th>Observação</th></tr></thead><tbody>
+   <tr><td>Recoleta dos municípios com lacuna (710)</td><td><code>recoletar.bat</code> (dois cliques, na raiz)</td><td>pula os já refeitos</td></tr>
+   <tr><td>IPTU lançado, dívida ativa, ITBI (classes 1 e 4)</td><td><code>python atlas.py --pasta dados --etapas h4</code></td><td>repita até não aparecer AVISO</td></tr>
+   <tr><td>Valor adicionado dos serviços (IBGE)</td><td>já vem no <code>rodar_tudo.bat</code></td><td>só existe até 2021</td></tr>
+   <tr><td>MSC de 2022, 2024 e 2025 (só guardar)</td><td><code>python coletar.py --pasta dados --ano 2024</code> (e 2022, 2025)</td><td>só depois do registro de regras selado; não analisar</td></tr>
+   <tr><td>Recalcular tudo e remontar o aplicativo</td><td><code>rodar_tudo.bat</code>, resposta <code>n</code></td><td>depois de qualquer coleta</td></tr></tbody></table></div>
+  <h4>2. Arquivos para baixar no site</h4>
+  <div class="scroll"><table><thead><tr><th>Arquivo</th><th>Onde</th><th>Como</th><th>Salvar em</th></tr></thead><tbody>
+   <tr><td>Portaria do MEC com o reajuste do piso de 2024, 2025 e 2026<br><span class="muted">confere os percentuais da H2</span></td><td>gov.br/mec, página de legislação</td><td>Baixe os três PDFs das portarias. Não salve só o número: o texto é a fonte que será citada.</td><td><code>brutos\\mec\\piso\\</code></td></tr></tbody></table></div>
+  <p class="muted">Depois de salvar, é só me avisar. Eu leio os arquivos da pasta, monto a leitura (carregador da REGIC, por exemplo) e confiro as linhas contra o site.</p>
+  <h4>3. O Claude coleta (você não precisa fazer nada)</h4>
+  <ul class="chg"><li>Já coletados por mim: FPM e Fundeb (Tesouro Transparente, 12 meses de 2023, com a complementação da União) e a renda do Censo 2022.</li>
+  <li>Ainda sem fonte acessível: as portarias do piso (MEC) e o SIOPE (a API do FNDE está fora do ar).</li>
+  <li>Ranking de qualidade da informação contábil (Siconfi): conferência.</li></ul>
+  <h3>Próximos passos, em ordem</h3>
+  <ol class="steps"><li>Rodar a recoleta dirigida dos 710 municípios com lacuna e reprocessar os resultados.</li><li>Coletar FPM e complementação do Fundeb.</li><li>Registrar as regras no repositório com data e só então coletar e abrir 2024 e 2025.</li></ol>`};
+
+/* ===== dados dos municípios (carregados de municipios.json) ===== */
+const FX=['Até 5 mil','5–10 mil','10–20 mil','20–50 mil','50–100 mil','100–500 mil','Mais de 500 mil'];
+const COMP=[['vinc','Receita com destino fixado',8,'var(--s7)','on'],['edu','Mínimo de educação (25% dos impostos)',17,'var(--edu)','on'],['sau','Mínimo de saúde (15% dos impostos)',18,'var(--sau)','on'],['patr','Contribuição patronal',10,'var(--o3)','on'],['leg','Câmara Municipal',11,'var(--o2)','ink'],['div','Dívida',12,'var(--o1)','ink'],['prc','Precatórios',13,'var(--o0)','ink']];
+const IX={cod:0,nome:1,uf:2,pop:3,pib:4,fx:5,q:6,recpc:7,vinc:8,min:9,patr:10,leg:11,div:12,prc:13,amp:14,fol:15,est:16,edu:17,sau:18};
+let SEL=null,GRP='ufpop';
+const med=a=>{a=a.filter(x=>x!=null).sort((x,y)=>x-y);if(!a.length)return null;const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2};
+const mean=a=>a.reduce((s,x)=>s+x,0)/a.length;
+const pc=x=>String(x.toFixed(1)).replace('.',',');
+let CD=null;function loadCD(){return CD?Promise.resolve(CD):fetch('composicao_despesa.json').then(r=>r.json()).then(j=>CD=j).catch(()=>({}))}
+let CR=null;function loadCR(){return CR?Promise.resolve(CR):fetch('composicao.json').then(r=>r.json()).then(j=>CR=j).catch(()=>({}))}
+function loadMun(){return MUN?Promise.resolve(MUN):fetch('municipios.json').then(r=>r.json()).then(j=>MUN=j)}
+function setSel(cod){SEL=cod;try{sessionStorage.setItem('sel',cod)}catch(e){}}
+function getSel(){if(SEL)return SEL;try{const v=sessionStorage.getItem('sel');if(v)return +v}catch(e){}return 2400109}
+const waitHtml=m=>`<div class="wait">${m}</div>`;
+
+/* ---------- Margens: como se lê ---------- */
+V.margens=()=>`<h2>Como ler a margem ampla e a margem estrita</h2>
+  <p class="lead">A margem de decisão é a parte da receita que sobra depois de tirar o que a lei ou compromissos do município já destinaram. A margem ampla tira os encargos de fora. A margem estrita tira também a folha de pessoal paga com recurso livre.</p>
+  <div class="grid">
+   <div class="card"><h3>Margem ampla</h3><p>Receita total, menos a parte que chega com destino fixado, menos os mínimos de educação e saúde, a contribuição patronal, a Câmara, a dívida e os precatórios.</p><p class="muted">Ainda inclui o dinheiro livre que hoje paga o resto da folha. Mede o espaço que existiria se o município reorganizasse esses gastos.</p></div>
+   <div class="card"><h3>Margem estrita</h3><p>Margem ampla menos a folha de pessoal paga com recurso livre, sem a patronal (que já saiu da ampla, para não contar duas vezes).</p><p class="muted">Mede o que sobra para escolher no curto prazo, depois de pagar as pessoas que o município já mantém.</p></div>
+  </div>
+  <h3>Para onde vai cada R$ 100 de receita, por quintil de PIB por habitante</h3>
+  <p class="muted">Média dos municípios calculados de cada quintil. As barras somam 100. A parte com destino fixado vem da lei ou de convênio e não pode ser usada livremente. Do restante, a receita livre, saem os mínimos de educação e de saúde. A margem ampla é a soma das duas últimas partes: a folha paga com recurso livre e a margem estrita.</p>
+  <div class="card"><div id="stk">Carregando…</div></div>
+  <h3>Exemplo passo a passo</h3>
+  <div class="ctrl"><label>Município<input type="search" id="buscaM" list="lstM" placeholder="digite o nome" autocomplete="off"></label><datalist id="lstM"></datalist></div>
+  <div class="card" id="wf">Carregando…</div>
+  <p class="muted" style="margin-top:10px">As duas margens são calculadas com a mesma regra para todos os municípios. Município com a MSC ausente, incompleta ou que não fecha com a DCA fica marcado e não entra.</p>`;
+
+function waterfall(m){
+  const rows=[];let cur=100;
+  rows.push(['Receita total',0,100,'var(--s6)',100,null,'on']);
+  const ds=COMP[0];rows.push([ds[1]+' (não é livre)',100-m[ds[2]],100,ds[3],-m[ds[2]],1,'on']);cur-=m[ds[2]];
+  rows.push(['= Receita livre',0,cur,'var(--s4)',cur,null,'on']);
+  COMP.slice(1).forEach(c=>{const v=m[c[2]];rows.push([c[1],cur-v,cur,c[3],-v,v,c[4]]);cur-=v});
+  rows.push(['= Margem ampla',0,m[IX.amp],'var(--accent)',m[IX.amp],null,'on']);
+  rows.push(['Folha de pessoal paga com recurso livre',m[IX.est],m[IX.amp],'var(--warm)',-m[IX.fol],m[IX.fol],'on']);
+  rows.push(['= Margem estrita',0,m[IX.est],'var(--accent)',m[IX.est],null,'on']);
+  const W=780,L=250,R=170,rh=26,H=rows.length*rh+30,mn=Math.min(0,...rows.map(r=>Math.min(r[1],r[2]))),mx=100;const X=v=>L+(W-L-R)*(v-mn)/(mx-mn);
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Da receita total à margem de decisão" style="max-width:100%;height:auto">`;
+  [0,25,50,75,100].forEach(t=>{s+=`<line x1="${X(t)}" x2="${X(t)}" y1="6" y2="${H-24}" stroke="var(--line)"/><text x="${X(t)}" y="${H-8}" text-anchor="middle">${t}%</text>`});
+  rows.forEach((r,i)=>{const y=10+i*rh,x1=X(Math.min(r[1],r[2])),w=Math.max(2,Math.abs(X(r[2])-X(r[1])));
+    s+=`<text x="${L-8}" y="${y+14}" text-anchor="end" ${r[0].startsWith('=')||i===0?'style="fill:var(--ink);font-weight:500"':''}>${r[0]}</text><rect x="${x1}" y="${y+2}" width="${w}" height="18" fill="${r[3]}" rx="2"/>`;
+    const rs=Math.round(Math.abs(r[4])*m[IX.recpc]/100);
+    s+=`<text class="v" x="${Math.max(x1+w,X(r[2]))+8}" y="${y+15}">${r[4]<0?'−':''}${pc(Math.abs(r[4]))}%</text><text x="${W-4}" y="${y+15}" text-anchor="end">R$ ${f0(rs)}/hab</text>`});
+  return s+'</svg>'}
+
+function hook_margens(){loadMun().then(M=>{
+  const g=[1,2,3,4,5].map(q=>{const x=M.filter(m=>m[IX.q]===q);return{q,v:COMP.map(c=>mean(x.map(m=>m[c[2]]))),fol:mean(x.map(m=>m[IX.fol])),est:mean(x.map(m=>m[IX.est]))}});
+  const parts=[...COMP.map((c,k)=>({n:c[1],c:c[3],t:c[4],v:g.map(x=>x.v[k])})),{n:'Folha de pessoal paga com recurso livre',c:'var(--warm)',t:'on',v:g.map(x=>x.fol)},{n:'Margem estrita',c:'var(--accent)',t:'on',v:g.map(x=>x.est)}];
+  const W=760,L=70,R=20,rh=62,H=5*rh+34;let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Composição de cada R$ 100 de receita por quintil" style="max-width:100%;height:auto">`;
+  const X=v=>L+(W-L-R)*v/100;
+  g.forEach((x,i)=>{const y=6+i*rh,vf=x.v[0];
+    s+=`<text x="${L-8}" y="${y+40}" text-anchor="end">${Q[i]}</text>`;
+    s+=`<line x1="${X(0)+1}" x2="${X(vf)-1}" y1="${y+9}" y2="${y+9}" stroke="var(--s7)" stroke-width="2"/><text x="${X(0)+2}" y="${y+6}" style="font-size:10.5px;fill:var(--ink)">DESTINO FIXADO · ${pc(vf)}</text>`;
+    s+=`<line x1="${X(vf)+1}" x2="${X(100)}" y1="${y+9}" y2="${y+9}" stroke="var(--s4)" stroke-width="2" stroke-dasharray="5 3"/><text x="${X(vf)+4}" y="${y+6}" style="font-size:10.5px;fill:var(--ink)">RECEITA LIVRE · ${pc(100-vf)}</text>`;
+    let a=0;
+    parts.forEach(p=>{const v=p.v[i];s+=`<rect x="${X(a)}" y="${y+16}" width="${Math.max(0,X(a+v)-X(a))}" height="30" fill="${p.c}" stroke="var(--surface)" stroke-width="1"><title>${p.n}: ${pc(v)}%</title></rect>`;if(v>=4.5)s+=`<text x="${X(a+v/2)}" y="${y+35}" text-anchor="middle" style="fill:${p.t==='on'?'var(--on)':'var(--ink)'};font-size:10.5px;font-family:var(--mono)">${pc(v)}</text>`;a+=v})});
+  [0,25,50,75,100].forEach(t=>s+=`<text x="${X(t)}" y="${H-8}" text-anchor="middle">${t}</text>`);
+  s+='</svg><div class="legend">'+parts.map(p=>`<span><i style="background:${p.c}"></i>${p.n}</span>`).join('')+'</div>';
+  $('#stk').innerHTML=s;
+  const dl=$('#lstM');dl.innerHTML=M.slice().sort((a,b)=>a[1].localeCompare(b[1],'pt')).map(m=>`<option value="${m[1]} (${m[2]})">`).join('');
+  const show=cod=>{const m=M.find(x=>x[0]===cod)||M.find(x=>x[0]===2400109);$('#buscaM').value=`${m[1]} (${m[2]})`;
+    $('#wf').innerHTML=`<h3 style="margin-top:0">${m[1]} · ${m[2]} <span class="muted" style="font-weight:400">· ${f0(m[3])} habitantes · receita de R$ ${f0(m[7])} por habitante</span></h3><div class="scroll">${waterfall(m)}</div>
+    <p style="margin-top:8px">De cada R$ 100 recebidos, ${pc(m[IX.vinc])} já chegam com destino fixado. Depois de tirar os mínimos, a patronal, a Câmara, a dívida e os precatórios, sobram <b>${pc(m[IX.amp])}</b> (margem ampla). Descontada a folha paga com recurso livre, sobram <b>${pc(m[IX.est])}</b> (margem estrita).</p>`};
+  show(getSel());$('#buscaM').addEventListener('input',e=>{const m=M.find(x=>`${x[1]} (${x[2]})`===e.target.value);if(m){setSel(m[0]);show(m[0])}});
+ }).catch(()=>$('#stk').innerHTML=waitHtml('Os dados dos municípios não carregaram. Recarregue a página.'))}
+
+/* ---------- Mapa ---------- */
+V.mapa=()=>`<h2>Mapa: onde a margem de decisão é maior ou menor</h2>
+  <p class="lead">Cada município é pintado em sete faixas com o mesmo número de municípios. Na visão por Estado, todos os municípios do Estado recebem a cor da mediana dele. Hachurado: município sem valor calculado. Clique para abrir o município.</p>
+  <div class="ctrl"><label>Indicador<select id="mi"><option value="amp">Margem ampla, % da receita total</option><option value="est">Margem estrita, % da receita total</option><option value="vinc">Receita com destino fixado, %</option><option value="pib">PIB por habitante, R$</option></select></label>
+  <label>Visão<select id="mv"><option value="mun">Por município</option><option value="uf">Por Estado (mediana)</option></select></label>
+  <label>Área<select id="ma"></select></label></div>
+  <div class="two" style="grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);align-items:start"><div><div class="card" style="padding:8px"><div id="mapw">Carregando o mapa…</div></div><div class="legend" id="mleg"></div><div id="minfo" style="min-height:3em;margin-top:6px" class="muted">Passe o mouse sobre um município.</div></div>
+  <div class="card"><h3>Estados, da maior para a menor mediana</h3><div id="rk"></div></div></div>`;
+
+let MAPA=null;
+function hook_mapa(){Promise.all([loadMun(),MAPA?Promise.resolve(MAPA):fetch('mapa.json').then(r=>r.json()).then(j=>MAPA=j)]).then(([M,MP])=>{
+  const UFC={'11':'RO','12':'AC','13':'AM','14':'RR','15':'PA','16':'AP','17':'TO','21':'MA','22':'PI','23':'CE','24':'RN','25':'PB','26':'PE','27':'AL','28':'SE','29':'BA','31':'MG','32':'ES','33':'RJ','35':'SP','41':'PR','42':'SC','43':'RS','50':'MS','51':'MT','52':'GO','53':'DF'};
+  const by={};M.forEach(m=>by[m[0]]=m);
+  const ufs=Object.values(UFC).sort();$('#ma').innerHTML='<option value="BR">Brasil</option>'+ufs.map(u=>`<option>${u}</option>`).join('');
+  const IND={amp:[IX.amp,'%'],est:[IX.est,'%'],vinc:[IX.vinc,'%'],pib:[IX.pib,'R$']};
+  const fmt=(v,k)=>k==='pib'?'R$ '+f0(v):pc(v)+'%';
+  function render(){
+    const k=$('#mi').value,vis=$('#mv').value,area=$('#ma').value,ix=IND[k][0];
+    const cobU={};D.cob.por_uf.forEach(r=>cobU[r[0]]=r);const okU=u=>{const r=cobU[u];return r&&r[2]>=40&&r[2]/r[1]>=.4};
+    const ufMed={},ufFora=[];ufs.forEach(u=>{const x=M.filter(m=>m[2]===u).map(m=>m[ix]);if(x.length&&(vis!=='uf'||okU(u)))ufMed[u]={v:med(x),n:x.length};else{ufMed[u]=null;if(x.length||(cobU[u]&&cobU[u][1]>1))ufFora.push(u)}});
+    const val=cod=>{const m=by[cod];if(!m)return null;return vis==='uf'?(ufMed[m[2]]?ufMed[m[2]].v:null):m[ix]};
+    const vals=vis==='uf'?Object.values(ufMed).filter(Boolean).map(x=>x.v):M.map(m=>m[ix]);
+    const cut=[];const sv=vals.slice().sort((a,b)=>a-b);for(let i=1;i<7;i++)cut.push(sv[Math.min(sv.length-1,Math.floor(i*sv.length/7))]);
+    const cls=v=>{if(v==null)return 'nc';let j=0;while(j<6&&v>=cut[j])j++;return 's'+(j+1)};
+    let keys=Object.keys(MP.p),b=MP.all;if(area!=='BR'){const code=Object.keys(UFC).find(c=>UFC[c]===area);b=MP.box[code];keys=keys.filter(c=>c.slice(0,2)===code)}
+    const pad=8,vb=[b[0]-pad,b[1]-pad,b[2]-b[0]+2*pad,b[3]-b[1]+2*pad];
+    const paths=keys.map(c=>`<path data-c="${c}" class="${cls(val(+c))}" d="${MP.p[c]}"/>`).join('');
+    $('#mapw').innerHTML=`<svg class="mapsvg" viewBox="${vb.join(' ')}" role="img" aria-label="Mapa dos municípios"><defs><pattern id="hach" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="var(--surface)"/><line x1="0" y1="0" x2="0" y2="8" stroke="var(--muted)" stroke-width="1.4"/></pattern></defs>${paths}</svg>`;
+    const lg=[`< ${fmt(cut[0],k)}`,...cut.slice(1).map((c,i)=>`${fmt(cut[i],k)} a ${fmt(c,k)}`),`≥ ${fmt(cut[5],k)}`];
+    $('#mleg').innerHTML=lg.map((t,i)=>`<span><i style="background:var(--s${i+1})"></i>${t}</span>`).join('')+'<span><i style="background:repeating-linear-gradient(45deg,var(--surface) 0 3px,var(--muted) 3px 4px)"></i>sem valor</span>';
+    const rk=ufs.filter(u=>ufMed[u]).sort((a,b)=>ufMed[b].v-ufMed[a].v);const mx=Math.max(...rk.map(u=>ufMed[u].v));
+    $('#rk').innerHTML=rk.map(u=>{const tot=(window.__tot||{})[u]||0;return `<div class="rkrow" data-u="${u}" role="button" tabindex="0"><span class="u">${u}</span><span class="bar"><i style="width:${100*ufMed[u].v/mx}%"></i></span><span class="n">${fmt(ufMed[u].v,k)}</span><span class="c muted">${ufMed[u].n} mun.</span></div>`}).join('')+`<p class="muted" style="margin-top:8px;font-size:12.5px">Mediana dos municípios calculados. Sem leitura por Estado (menos de 40 municípios calculados ou de 40% de cobertura): ${ufs.filter(u=>!okU(u)).join(', ')}.</p>`;
+    $('#mapw').onmouseover=e=>{const p=e.target.closest('path');if(!p)return;const m=by[+p.dataset.c];$('#minfo').innerHTML=m?`<b>${m[1]} · ${m[2]}</b> · ${f0(m[3])} hab. · margem ampla ${pc(m[IX.amp])}% · estrita ${pc(m[IX.est])}% · destino fixado ${pc(m[IX.vinc])}%`:'Sem valor calculado: MSC ausente, incompleta ou divergente da DCA.'};
+    $('#mapw').onclick=e=>{const p=e.target.closest('path');if(!p)return;const m=by[+p.dataset.c];if(m){setSel(m[0]);location.hash='#municipio'}};
+    $('#rk').onclick=e=>{const r=e.target.closest('.rkrow');if(r){$('#ma').value=r.dataset.u;render()}};
+  }
+  ['mi','mv','ma'].forEach(i=>$('#'+i).addEventListener('change',render));render();
+ }).catch(()=>$('#mapw').innerHTML=waitHtml('O mapa não carregou. Recarregue a página.'))}
+
+/* ---------- Município: pares e simulação ---------- */
+V.municipio=()=>`<h2>Município ao lado de municípios parecidos</h2>
+  <p class="lead">Escolha um município e o grupo de comparação. O aplicativo mostra de onde vem a margem dele, onde ele fica entre os pares e o que aconteceria se ele tivesse a estrutura típica deles.</p>
+  <div class="ctrl"><label>Município<input type="search" id="busca" list="lst" placeholder="digite o nome" autocomplete="off"></label><datalist id="lst"></datalist>
+  <label>Comparar com<select id="grp"><option value="ufpop">Mesmo Estado e mesma faixa de população</option><option value="base">Mesma faixa de população e PIB por habitante até 30% de diferença (todo o Brasil)</option><option value="qpop">Mesma faixa de população e mesmo quintil de PIB (todo o Brasil)</option></select></label></div>
+  <div id="fi">Carregando…</div>`;
+
+function peers(M,m,g){
+  let P;
+  if(g==='ufpop')P=M.filter(x=>x[0]!==m[0]&&x[2]===m[2]&&x[5]===m[5]);
+  else if(g==='base')P=M.filter(x=>x[0]!==m[0]&&x[5]===m[5]&&Math.abs(x[4]/m[4]-1)<=.3);
+  else P=M.filter(x=>x[0]!==m[0]&&x[5]===m[5]&&x[6]===m[6]);
+  return P}
+function strip(P,m,ix,label){
+  const W=680,L=130,R=30,H=62;const vals=P.map(x=>x[ix]).concat(m[ix]);const mn=Math.min(0,...vals),mx=Math.max(...vals)*1.05;const X=v=>L+(W-L-R)*(v-mn)/(mx-mn);
+  const md=med(P.map(x=>x[ix])),below=P.filter(x=>x[ix]<m[ix]).length;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${label}" style="max-width:100%;height:auto"><text x="${L-10}" y="26" text-anchor="end" style="fill:var(--ink)">${label}</text>`;
+  const t0=Math.ceil(mn/10)*10;for(let t=t0;t<=mx;t+=10)s+=`<line x1="${X(t)}" x2="${X(t)}" y1="8" y2="42" stroke="var(--line)"/><text x="${X(t)}" y="${H-6}" text-anchor="middle">${t}%</text>`;
+  P.forEach((x,i)=>{s+=`<circle cx="${X(x[ix])}" cy="${14+((i*37)%24)}" r="3" fill="var(--s4)" opacity=".55"/>`});
+  s+=`<line x1="${X(md)}" x2="${X(md)}" y1="6" y2="44" stroke="var(--ink)" stroke-width="2"/><circle cx="${X(m[ix])}" cy="26" r="7" fill="var(--warm)" stroke="var(--ink)" stroke-width="2"/></svg>`;
+  return {s,md,pct:P.length?100*below/P.length:null}}
+
+function hook_municipio(){loadMun().then(M=>{
+  const dl=$('#lst');dl.innerHTML=M.slice().sort((a,b)=>a[1].localeCompare(b[1],'pt')).map(m=>`<option value="${m[1]} (${m[2]})">`).join('');
+  $('#grp').value=GRP;
+  let sim=null;
+  function render(cod){
+    const m=M.find(x=>x[0]===cod)||M.find(x=>x[0]===2400109);setSel(m[0]);$('#busca').value=`${m[1]} (${m[2]})`;
+    let g=$('#grp').value,P=peers(M,m,g),aviso='';
+    if(P.length<8&&g==='ufpop'){P=peers(M,m,'qpop');aviso=`Só ${peers(M,m,'ufpop').length} municípios de mesma faixa no Estado calculados; a comparação usa a mesma faixa e o mesmo quintil de PIB em todo o Brasil.`;}
+    const A=strip(P,m,IX.amp,'Margem ampla'),E=strip(P,m,IX.est,'Margem estrita'),Vv=strip(P,m,IX.vinc,'Destino fixado');
+    const pm={};COMP.forEach(c=>pm[c[0]]=med(P.map(x=>x[c[2]])));pm.fol=med(P.map(x=>x[IX.fol]));
+    sim={ };COMP.forEach(c=>sim[c[0]]=m[c[2]]);sim.fol=m[IX.fol];
+    const near=P.slice().sort((a,b)=>Math.abs(a[4]-m[4])-Math.abs(b[4]-m[4])).slice(0,10);
+    const row=(x,me)=>`<tr ${me?'style="background:var(--warm-bg)"':''}><td>${x[1]} (${x[2]})</td><td class="n">${f0(x[3])}</td><td class="n">${f0(x[4])}</td><td class="n">${pc(x[IX.vinc])}</td><td class="n">${pc(x[IX.amp])}</td><td class="n">${pc(x[IX.est])}</td></tr>`;
+    $('#fi').innerHTML=`<div class="card"><h3 style="margin:0">${m[1]} · ${m[2]}</h3><p class="muted">${f0(m[3])} habitantes (${FX[m[5]]}) · PIB por habitante R$ ${f0(m[4])} · ${Q[m[6]-1]} quintil de PIB · ${P.length} municípios de comparação</p>${aviso?`<p class="muted">${aviso}</p>`:''}
+    <div class="grid" style="margin:10px 0 4px"><div><div class="kpi">${pc(m[IX.amp])}%<small>margem ampla · mediana dos pares ${pc(A.md)}%</small></div></div><div><div class="kpi">${pc(m[IX.est])}%<small>margem estrita · mediana dos pares ${pc(E.md)}%</small></div></div><div><div class="kpi">${A.pct==null?'—':f0(A.pct)+'%'}<small>dos pares têm margem ampla menor que a dele</small></div></div></div></div>
+    <h3>Onde ele fica entre os pares</h3><div class="card"><div class="scroll">${A.s}${E.s}${Vv.s}</div><p class="muted" style="margin:4px 0 0;font-size:12.5px">Cada ponto azul é um município de comparação. A linha escura é a mediana dos pares; o ponto laranja é ${m[1]}.</p></div>
+    <h3>Da receita à margem</h3><div class="card"><div class="scroll">${waterfall(m)}</div></div>
+    <h3>De onde vem a receita</h3><div class="card" id="rc">Carregando…</div>
+    <h3>Em que ele gasta</h3><div class="card" id="dc">Carregando…</div>
+    <h3>Simulação: e se ele tivesse a estrutura típica dos pares?</h3>
+    <div class="card"><p class="muted">Cada linha mostra quanto da receita vai para aquele item no município e na mediana dos pares. Mexa nos valores ou use o botão para ver a margem que resultaria. É um exercício de comparação, e não uma previsão: as diferenças vêm de leis, de escolhas locais e de dados do próprio município.</p>
+    <div class="ctrl"><button id="bPar" class="btn">Usar a mediana dos pares</button><button id="bMe" class="btn">Voltar ao município</button></div>
+    <div class="scroll"><table id="simT"></table></div><div id="simR"></div></div>
+    <h3>Os dez pares de PIB por habitante mais próximo</h3><div class="scroll"><table><thead><tr><th>Município</th><th class="n">Habitantes</th><th class="n">PIB por hab. R$</th><th class="n">Destino fixado %</th><th class="n">Margem ampla %</th><th class="n">Margem estrita %</th></tr></thead><tbody>${row(m,true)}${near.map(x=>row(x,false)).join('')}</tbody></table></div>`;
+    const keys=COMP.map(c=>[c[0],c[1]]).concat([['fol','Folha paga com recurso livre (só na estrita)']]);
+    function paint(){
+      const amp=100-COMP.reduce((s,c)=>s+(+sim[c[0]]),0),est=amp-(+sim.fol);
+      $('#simT').innerHTML=`<thead><tr><th>Item, % da receita total</th><th class="n">Município</th><th class="n">Mediana dos pares</th><th class="n">Simulado</th></tr></thead><tbody>`+keys.map(k=>{const mv=k[0]==='fol'?m[IX.fol]:m[COMP.find(c=>c[0]===k[0])[2]];return `<tr><td>${k[1]}</td><td class="n">${pc(mv)}</td><td class="n">${pc(pm[k[0]])}</td><td class="n"><input type="number" step="0.1" min="0" max="100" data-k="${k[0]}" value="${(+sim[k[0]]).toFixed(1)}" style="width:76px;text-align:right" aria-label="${k[1]}"></td></tr>`}).join('')+`</tbody>`;
+      const d1=amp-m[IX.amp],d2=est-m[IX.est];
+      $('#simR').innerHTML=`<div class="grid" style="margin-top:12px"><div><div class="kpi">${pc(amp)}%<small>margem ampla simulada (hoje ${pc(m[IX.amp])}%) ${Math.abs(d1)<.05?'':chip((d1>0?'+':'−')+pc(Math.abs(d1))+' pontos',d1>0?'ok':'bad')}</small></div></div><div><div class="kpi">${pc(est)}%<small>margem estrita simulada (hoje ${pc(m[IX.est])}%) ${Math.abs(d2)<.05?'':chip((d2>0?'+':'−')+pc(Math.abs(d2))+' pontos',d2>0?'ok':'bad')}</small></div></div></div>`;
+      $('#simT').querySelectorAll('input').forEach(i=>i.addEventListener('input',e=>{sim[e.target.dataset.k]=+e.target.value||0;paintR()}));}
+    function paintR(){const amp=100-COMP.reduce((s,c)=>s+(+sim[c[0]]),0),est=amp-(+sim.fol),d1=amp-m[IX.amp],d2=est-m[IX.est];
+      $('#simR').innerHTML=`<div class="grid" style="margin-top:12px"><div><div class="kpi">${pc(amp)}%<small>margem ampla simulada (hoje ${pc(m[IX.amp])}%) ${Math.abs(d1)<.05?'':chip((d1>0?'+':'−')+pc(Math.abs(d1))+' pontos',d1>0?'ok':'bad')}</small></div></div><div><div class="kpi">${pc(est)}%<small>margem estrita simulada (hoje ${pc(m[IX.est])}%) ${Math.abs(d2)<.05?'':chip((d2>0?'+':'−')+pc(Math.abs(d2))+' pontos',d2>0?'ok':'bad')}</small></div></div></div>`}
+    loadCR().then(C=>{const el=$('#rc');if(!el||getSel()!==m[0])return;const mine=C[m[0]];
+      if(!mine){el.innerHTML='<p class="muted">A composição da receita não está disponível para este município.</p>';return}
+      const pp=P.map(x=>C[x[0]]).filter(Boolean);if(!pp.length){el.innerHTML='<p class="muted">Sem pares com composição calculada.</p>';return}
+      const mean=RG.map((_,j)=>pp.reduce((s,r)=>s+r[j],0)/pp.length),md=RG.map((_,j)=>med(pp.map(r=>r[j])));
+      el.innerHTML=`<div class="scroll">${stack([m[1],'Média dos pares'],[mine,mean],{label:'Composição da receita do município e dos pares'})}</div>
+      <div class="scroll"><table><thead><tr><th>Origem, % da receita total</th><th class="n">Município</th><th class="n">Mediana dos pares</th></tr></thead><tbody>${RG.map((n,j)=>`<tr><td>${n}</td><td class="n">${pc(mine[j])}</td><td class="n">${pc(md[j])}</td></tr>`).join('')}</tbody></table></div>
+      <p class="muted" style="margin:6px 0 0;font-size:12.5px">Arrecadação própria (tributária e outras): ${pc(mine[0]+mine[1])}% no município e ${pc(med(pp.map(r=>r[0]+r[1])))}% na mediana dos pares. A barra dos pares usa a média, que soma 100%; a tabela usa a mediana, que não soma. Receita total sem intraorçamentárias; classificação por natureza da receita (MSC), ainda por conferir com a tabela do MCASP.</p>`});
+    loadCD().then(C=>{const el=$('#dc');if(!el||getSel()!==m[0])return;const mine=C[m[0]];
+      if(!mine){el.innerHTML='<p class="muted">A composição da despesa não está disponível para este município.</p>';return}
+      const pp=P.map(x=>C[x[0]]).filter(Boolean);if(!pp.length){el.innerHTML='<p class="muted">Sem pares com composição calculada.</p>';return}
+      const part=(ix,names,wh,tit)=>{const ps=pp.map(r=>r[ix]).filter(Boolean);if(!mine[ix]||!ps.length)return `<p class="muted">${tit}: o município (ou seus pares) não informa esta abertura na MSCE.</p>`;
+        const mean=names.map((_,j)=>ps.reduce((s,r)=>s+r[j],0)/ps.length),md=names.map((_,j)=>med(ps.map(r=>r[j])));
+        return `<div class="scroll">${stack([m[1],'Média dos pares'],[mine[ix],mean],{label:tit,names,white:wh})}</div>
+        <div class="scroll"><table><thead><tr><th>${tit}, % da despesa liquidada</th><th class="n">Município</th><th class="n">Mediana dos pares</th></tr></thead><tbody>${names.map((n,j)=>`<tr><td>${n}</td><td class="n">${pc(mine[ix][j])}</td><td class="n">${pc(md[j])}</td></tr>`).join('')}</tbody></table></div>`};
+      el.innerHTML=part(1,RF,WF.white,'Por função')+part(0,RN,WN.white,'Por natureza')+`<p class="muted" style="margin:6px 0 0;font-size:12.5px">A barra dos pares usa a média, que soma 100%; a tabela usa a mediana, que não soma. Despesa liquidada pela MSCE, com intraorçamentárias.</p>`});
+    paint();
+    $('#bPar').onclick=()=>{keys.forEach(k=>sim[k[0]]=pm[k[0]]);paint()};
+    $('#bMe').onclick=()=>{COMP.forEach(c=>sim[c[0]]=m[c[2]]);sim.fol=m[IX.fol];paint()};
+  }
+  render(getSel());
+  $('#busca').addEventListener('input',e=>{const m=M.find(x=>`${x[1]} (${x[2]})`===e.target.value);if(m)render(m[0])});
+  $('#grp').addEventListener('change',e=>{GRP=e.target.value;render(getSel())});
+ }).catch(()=>$('#fi').innerHTML=waitHtml('Os dados dos municípios não carregaram. Recarregue a página.'))}
+
+function route(){
+  const id=(location.hash||'#inicio').slice(1);const k=V[id]?id:'inicio';
+  $('#nav').innerHTML=TABS.map(t=>`<a href="#${t[0]}" ${t[0]===k?'aria-current="page"':''}>${t[1]}</a>`).join('');
+  const selo=['h1','h2','h3','h4'].includes(k)?`<div class="selo">${chip('exploratório · 2023','ok')} <span>Não conta como prova. Critérios na página <a href="#regras">Regras registradas</a> (registro ainda não selado).</span></div>`:'';
+  $('#main').innerHTML=`<div class="view">${selo}${V[k]()}</div>`;
+  if(k==='municipio')hook_municipio();if(k==='margens')hook_margens();if(k==='mapa')hook_mapa();if(k==='dados')hook_dados();window.scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+</script>

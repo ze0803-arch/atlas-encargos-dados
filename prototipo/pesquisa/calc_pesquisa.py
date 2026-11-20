@@ -82,6 +82,7 @@ arr = [[int(a.cod_ibge), a.ente, a.uf, int(a['pop']), int(a.pibpc), int(a.fx), i
 json.dump(arr, open('municipios.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 import os
 if os.path.exists(f'{CAT}/composicao_resumo_2023.json'): out['rec'] = json.load(open(f'{CAT}/composicao_resumo_2023.json', encoding='utf-8'))
+if os.path.exists(f'{CAT}/composicao_despesa_resumo_2023.json'): out['desp'] = json.load(open(f'{CAT}/composicao_despesa_resumo_2023.json', encoding='utf-8'))
 if os.path.exists(f'{CAT}/h4b_iptu_2023.csv'):
     k = pd.read_csv(f'{CAT}/h4b_iptu_2023.csv')
     out['h4iptu'] = [[int(x.n), float(x.lancado_pc), float(x.arrecadado_pc), round(float(x.pct_lancado_igual_arrecadado), 1), float(x.taxa_so_competencia), int(x.n_competencia), float(x.da_pc), float(x.recuperacao_da)] for x in k.itertuples()]
