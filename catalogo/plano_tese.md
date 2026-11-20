@@ -24,10 +24,8 @@ A fazer: repetir após a recoleta dirigida (710 municípios); limites de Manski 
 - Cinco municípios conferidos linha a linha com o contador responsável (clientes: Acari, Florânia, Ouro Branco, Timbaúba dos Batistas, São João do Sabugi). Ficha de cada um com a origem de cada número e a conferência.
 - Guaratuba (DCA) e as 116 ações de transferência provisórias entram aqui.
 
-### 5. CNM
-- Pedir à CNM o que ela tem: estimativas de impacto do piso, relatos de associados, casos.
-- Oferecer: simulador, comparação por porte e Estado, ficha por município.
-- Manter independência: a CNM valida e comenta, não escolhe resultados.
+### 5. CNM (retirada em 19/11/2026)
+Decisão do autor: não haverá interlocução com a CNM. O aplicativo é instrumento de pesquisa e de conferência pela banca e pelo orientador, não produto para gestores.
 
 ## O que fica exploratório
 H4c (REGIC) e H4b (decomposição do ISS) só avançam se sobrar tempo. Limites declarados: valor adicionado de 2021 contra ISS de 2023; quintil de PIB circular com o valor adicionado dos serviços.
@@ -40,5 +38,4 @@ H4c (REGIC) e H4b (decomposição do ISS) só avançam se sobrar tempo. Limites 
 2. Preencher e selar registro_regras_2024.md (com o orientador).
 3. Coletar e selar MSC 2022/2024/2025 sem analisar.
 4. Fichas de validação dos cinco municípios.
-5. Contato com a CNM com o protótipo.
-6. Só então abrir 2024 conforme as regras seladas.
+5. Só então abrir 2024 conforme as regras seladas.

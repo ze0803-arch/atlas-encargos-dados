@@ -330,6 +330,5 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 ## D71 · Plano de trabalho revisado (2026-11-19)
 - Frase central única; H2 (piso do magistério, diferenças em diferenças 2024–2026 com placebo saúde) como eixo causal.
 - Regras travadas e seladas (modelo em `registro_regras_2024.md`) antes de abrir 2024; coleta bruta pode ser selada por hash sem análise.
-- Viés de cobertura tratado como achado, com sensibilidade; validação com cinco municípios clientes e comparação SIOPE; contato com a CNM sem perder independência.
+- Viés de cobertura tratado como achado, com sensibilidade; validação com cinco municípios clientes e comparação SIOPE; sem contato com a CNM (retirado pelo autor no mesmo dia).
 - H4b e H4c passam a exploratórias. Detalhe em `plano_tese.md`.
-
