@@ -14,7 +14,7 @@ Margem ampla e estrita como % da receita total da MSC (regra D68). Cobertura mí
 | H2 | exposição = folha da educação ÷ receita livre; efeito do reajuste na margem; placebo saúde | ____ | ____ |
 | H3 | terço rico × terço pobre, dentro de UF e faixa | ≥3/4 das UFs e ≥2/3 dos grupos | ____ |
 | H4a | municípios < 10% da mediana de UF×faixa | ≥10% e razão entre extremos ≥3 | ____ |
-| H4b | ISS e IPTU: base × cobrança | ____ | ____ |
+| H4b | ISS: base (valor adicionado) × alíquota efetiva. IPTU: lançado, taxa de realização, recuperação da dívida ativa. ITBI: sem base direta; ITBI por habitante contra IPTU lançado por habitante (base indireta, exploratório) | ____ | ____ |
 | H5 | jurídica | ____ | ____ |
 
 ## 3. Regras de dados

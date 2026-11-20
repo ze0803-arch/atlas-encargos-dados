@@ -8,6 +8,7 @@ Saída por município:
   da_trib_bruta_ant  o mesmo no ano anterior
   da_rec             dívida ativa recebida (naturezas 11125003 IPTU e 11145113 ISS)
   recuperacao_da     da_rec / da_trib_bruta_ant
+  itbi_arrec         ITBI arrecadado (MSC classe 6, natureza 111253), base indireta do ITBI (H4b): comparado ao IPTU lançado por habitante
 PROVISORIO: os códigos de conta da dívida ativa (121110 bruta, 121119 ajuste para perdas) foram lidos na MSC de um município grande;
 a tese manda confirmá-los no PCASP Estendido de cada exercício (seção 3.8). Se o PCASP indicar outras contas, mude DA_BRUTA e DA_AJUSTE."""
 import csv, glob, gzip, json, sys, collections, os
@@ -23,20 +24,21 @@ def carrega(rel, k):
     return it
 rows = [x for x in csv.DictReader(open(P + '/resultado_2023.csv', encoding='utf-8'))]
 w = csv.writer(open(OUT, 'w', newline='', encoding='utf-8'))
-w.writerow(['cod_ibge', 'iptu_lancado', 'iptu_arrec', 'taxa_realizacao', 'da_trib_bruta', 'da_trib_bruta_ant', 'da_rec', 'recuperacao_da', 'tem_h4'])
+w.writerow(['cod_ibge', 'iptu_lancado', 'iptu_arrec', 'taxa_realizacao', 'da_trib_bruta', 'da_trib_bruta_ant', 'da_rec', 'recuperacao_da', 'itbi_arrec', 'tem_h4'])
 n_ok = 0
 for r in rows:
     k = r['cod_ibge']; c4, c1, c1a, ms = carrega('h4_c4', k), carrega('h4_c1', k), carrega('h4_c1_ant', k), carrega('msce', k)
     tem = bool(c4 or c1)
     lanc = abs(sum((1 if i['natureza_conta'] == 'D' else -1) * i['valor'] for i in c4 if i['conta_contabil'] == VPA_IPTU))
     def estoque(it): return sum((1 if i['natureza_conta'] == 'D' else -1) * i['valor'] for i in it if i['conta_contabil'].startswith(DA_BRUTA))
-    arr = da = 0.0
+    arr = da = itbi = 0.0
     for i in ms:
         if i['conta_contabil'] != '621200000': continue
         nr = i['natureza_receita'] or ''; v = (1 if i['natureza_conta'] == 'D' else -1) * i['valor']
         if nr.startswith('11125001'): arr += v
         elif nr.startswith(('11125003', '11145113')): da += v
+        elif nr.startswith('111253'): itbi += v
     eb, ea = estoque(c1), estoque(c1a)
-    w.writerow([k, round(lanc, 2), round(arr, 2), round(arr / lanc, 4) if lanc > 0 else '', round(eb, 2), round(ea, 2), round(da, 2), round(da / ea, 4) if ea > 0 else '', int(tem)])
+    w.writerow([k, round(lanc, 2), round(arr, 2), round(arr / lanc, 4) if lanc > 0 else '', round(eb, 2), round(ea, 2), round(da, 2), round(da / ea, 4) if ea > 0 else '', round(itbi, 2), int(tem)])
     n_ok += tem
 print(len(rows), 'municípios;', n_ok, 'com dados de classes 1 e 4 coletados')

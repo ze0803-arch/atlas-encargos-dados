@@ -332,3 +332,9 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Regras travadas e seladas (modelo em `registro_regras_2024.md`) antes de abrir 2024; coleta bruta pode ser selada por hash sem análise.
 - Viés de cobertura tratado como achado, com sensibilidade; validação com cinco municípios clientes e comparação SIOPE; sem contato com a CNM (retirado pelo autor no mesmo dia).
 - H4b e H4c passam a exploratórias. Detalhe em `plano_tese.md`.
+
+## D72 · ITBI no H4b (2026-11-19)
+- O ITBI incide sobre o valor das vendas de imóveis, que o município não publica; não há base direta como o valor adicionado (ISS) e o valor lançado (IPTU).
+- Base indireta, exploratória: ITBI por habitante contra IPTU por habitante (2023, receita realizada na MSC): ITBI de R$ 2,4 (Q1) a R$ 96,1 (Q5) e IPTU de R$ 3,4 a R$ 147,7; Spearman 0,69 em 3.396 municípios, mediana 0,44 em 19 UFs com 40 ou mais.
+- Limite: os dois dependem da mesma cobrança; só o IPTU lançado separa base de esforço. `extrai_h4.py` passa a gravar `itbi_arrec` (natureza 111253).
+
