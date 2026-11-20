@@ -1,6 +1,6 @@
 # Testes jurídicos, 2023
 
-Municípios calculados com MSCE e dados de impostos: 3453. Medianas; quintis da receita tributária própria por habitante (Q1 = base menor).
+Municípios calculados com MSCE e dados de impostos: 3640. Medianas; quintis da receita tributária própria por habitante (Q1 = base menor).
 
 ## A. Art. 167, § 7º, da CF: o encargo vem com a fonte correspondente?
 
@@ -10,35 +10,35 @@ Por área, a despesa liquidada na função é separada pela fonte de recursos qu
 
 | area                           | q          |   n |   despesa_pc |   federal_vinculada_pct |   fonte_livre_pct |
 |:-------------------------------|:-----------|----:|-------------:|------------------------:|------------------:|
-| Saúde (função 10)              | Q1 (menor) | 691 |       1183.5 |                    42.6 |              44.5 |
-| Saúde (função 10)              | Q2         | 688 |       1254.1 |                    35.1 |              48.6 |
-| Saúde (função 10)              | Q3         | 679 |       1470.3 |                    22.2 |              58.6 |
-| Saúde (função 10)              | Q4         | 661 |       1592.7 |                    18.4 |              66   |
-| Saúde (função 10)              | Q5 (maior) | 672 |       1616.2 |                    16.4 |              68.3 |
-| Assistência social (função 08) | Q1 (menor) | 679 |        164.7 |                    28.3 |              62.8 |
-| Assistência social (função 08) | Q2         | 683 |        171   |                    22.2 |              65.5 |
-| Assistência social (função 08) | Q3         | 676 |        223.5 |                    10.8 |              69.7 |
-| Assistência social (função 08) | Q4         | 655 |        231.7 |                     7.7 |              75.3 |
-| Assistência social (função 08) | Q5 (maior) | 668 |        223.1 |                     5.2 |              74.5 |
-| Educação (função 12)           | Q1 (menor) | 691 |       1761.9 |                    80.3 |              15.5 |
-| Educação (função 12)           | Q2         | 688 |       1771.9 |                    72.1 |              21.1 |
-| Educação (função 12)           | Q3         | 678 |       1638   |                    53.6 |              33.9 |
-| Educação (função 12)           | Q4         | 660 |       1689.6 |                    51   |              39.5 |
-| Educação (função 12)           | Q5 (maior) | 672 |       1803.5 |                    49.8 |              41.3 |
+| Saúde (função 10)              | Q1 (menor) | 728 |       1196.3 |                    42.6 |              44.5 |
+| Saúde (função 10)              | Q2         | 726 |       1274.9 |                    34.8 |              49   |
+| Saúde (função 10)              | Q3         | 714 |       1487.2 |                    22.2 |              58.8 |
+| Saúde (função 10)              | Q4         | 697 |       1627.1 |                    18.4 |              66.2 |
+| Saúde (função 10)              | Q5 (maior) | 707 |       1658   |                    16.2 |              68.1 |
+| Assistência social (função 08) | Q1 (menor) | 716 |        168.2 |                    28.3 |              62.7 |
+| Assistência social (função 08) | Q2         | 721 |        174.6 |                    22   |              65.6 |
+| Assistência social (função 08) | Q3         | 711 |        227.2 |                    10.8 |              69.8 |
+| Assistência social (função 08) | Q4         | 690 |        241.7 |                     7.7 |              75.2 |
+| Assistência social (função 08) | Q5 (maior) | 703 |        229   |                     5.1 |              74.6 |
+| Educação (função 12)           | Q1 (menor) | 728 |       1785   |                    80.3 |              15.5 |
+| Educação (função 12)           | Q2         | 726 |       1782   |                    71.5 |              21.1 |
+| Educação (função 12)           | Q3         | 713 |       1679.1 |                    53.3 |              34.4 |
+| Educação (função 12)           | Q4         | 696 |       1721.8 |                    51   |              39.7 |
+| Educação (função 12)           | Q5 (maior) | 707 |       1855   |                    49.9 |              41.3 |
 
 ### A2. Testes (Spearman com a receita tributária por habitante; Kruskal-Wallis entre quintis)
 
 | area                           | medida                |    rho |   p_spearman |     p_kw |
 |:-------------------------------|:----------------------|-------:|-------------:|---------:|
-| Saúde (função 10)              | federal vinculada     | -0.542 |     4.4e-258 | 1.1e-217 |
-| Saúde (função 10)              | fonte livre           |  0.481 |     4.4e-196 | 1.8e-174 |
-| Saúde (função 10)              | despesa por habitante |  0.328 |     8.3e-86  | 9.2e-80  |
-| Assistência social (função 08) | federal vinculada     | -0.597 |     0        | 1.7e-254 |
-| Assistência social (função 08) | fonte livre           |  0.21  |     8.7e-35  | 4.3e-32  |
-| Assistência social (função 08) | despesa por habitante |  0.212 |     1.3e-35  | 9.2e-39  |
-| Educação (função 12)           | federal vinculada     | -0.491 |     2.4e-205 | 5.3e-179 |
-| Educação (função 12)           | fonte livre           |  0.539 |     1.5e-254 | 1.2e-212 |
-| Educação (função 12)           | despesa por habitante |  0.028 |     0.11     | 3.8e-07  |
+| Saúde (função 10)              | federal vinculada     | -0.547 |     8.1e-278 | 3.3e-231 |
+| Saúde (função 10)              | fonte livre           |  0.478 |     8.8e-204 | 1.7e-180 |
+| Saúde (função 10)              | despesa por habitante |  0.326 |     5.4e-89  | 2.3e-81  |
+| Assistência social (função 08) | federal vinculada     | -0.6   |     0        | 6.8e-271 |
+| Assistência social (função 08) | fonte livre           |  0.203 |     2.2e-34  | 8.6e-32  |
+| Assistência social (função 08) | despesa por habitante |  0.214 |     5.2e-38  | 3.2e-40  |
+| Educação (função 12)           | federal vinculada     | -0.492 |     1.7e-217 | 6.4e-188 |
+| Educação (função 12)           | fonte livre           |  0.534 |     6.5e-262 | 5.4e-219 |
+| Educação (função 12)           | despesa por habitante |  0.035 |     0.035    | 1.4e-06  |
 
 ### A1b. Quanto da parte paga com fonte livre (saúde e educação juntas) é o mínimo constitucional (25% e 15%) e quanto é excedente
 
@@ -46,13 +46,13 @@ O mínimo vem da CF (arts. 198 e 212), não de lei; o § 7º trata de encargo im
 
 | q          |   minimo_pct_despesa |   excedente_pct_despesa |   municipios_com_excedente_acima_5pct |
 |:-----------|---------------------:|------------------------:|--------------------------------------:|
-| Q1 (menor) |                 34   |                       0 |                                   9.3 |
-| Q2         |                 38.5 |                       0 |                                  11.2 |
-| Q3         |                 50.9 |                       0 |                                  17.7 |
-| Q4         |                 53.3 |                       0 |                                  28.1 |
-| Q5 (maior) |                 52.7 |                       0 |                                  37.5 |
+| Q1 (menor) |                 33.7 |                       0 |                                  11.5 |
+| Q2         |                 37.8 |                       0 |                                  13.3 |
+| Q3         |                 50.3 |                       0 |                                  21.6 |
+| Q4         |                 52.7 |                       0 |                                  31.4 |
+| Q5 (maior) |                 52.4 |                       0 |                                  39   |
 
-Excedente sobre o mínimo: rho com a base própria = 0.294, p = 1.2e-68; KW p = 5.3e-64
+Excedente sobre o mínimo: rho com a base própria = 0.281, p = 5.3e-66; KW p = 1.8e-59
 
 ### A3. Pisos: o lado federal (o custo é tratado no teto de exposição, D54)
 
@@ -60,34 +60,34 @@ Assistência federal ao piso da enfermagem (Lei 14.581/2023, Portaria GM/MS 1.13
 
 | q          |   n |   enf_recebeu |   enf_pc |   enf_pct_pessoal_saude |   acs_pc |   acs_pct_pessoal_saude |
 |:-----------|----:|--------------:|---------:|------------------------:|---------:|------------------------:|
-| Q1 (menor) | 691 |          99.9 |     47.3 |                     8.4 |     43.6 |                     6.9 |
-| Q2         | 690 |          98.8 |     40.3 |                     7   |     64.1 |                     8.7 |
-| Q3         | 691 |          94.4 |     23.6 |                     3.5 |     41.5 |                     5.8 |
-| Q4         | 690 |          91.3 |     13.4 |                     1.9 |     34.7 |                     5.6 |
-| Q5 (maior) | 691 |          93.5 |     14.1 |                     2.2 |     21.5 |                     3.3 |
+| Q1 (menor) | 728 |          99.9 |     47.3 |                     8.3 |     45.7 |                     6.8 |
+| Q2         | 728 |          98.6 |     40.3 |                     6.9 |     64.5 |                     8.8 |
+| Q3         | 728 |          94.2 |     23.3 |                     3.3 |     41.3 |                     5.4 |
+| Q4         | 728 |          91.5 |     13.9 |                     1.9 |     33.4 |                     5.5 |
+| Q5 (maior) | 728 |          93.3 |     13.9 |                     2   |     21.9 |                     3.4 |
 
-- enfermagem (R$/hab): rho = -0.482, p = 3e-200; Kruskal-Wallis p = 4.2e-185
-- ACS/ACE (R$/hab): rho = -0.136, p = 9.1e-16; Kruskal-Wallis p = 4.1e-16
-- enfermagem % pessoal saúde: rho = -0.544, p = 9.7e-258; Kruskal-Wallis p = 1.2e-226
-- ACS % pessoal saúde: rho = -0.175, p = 1.4e-24; Kruskal-Wallis p = 8e-25
+- enfermagem (R$/hab): rho = -0.484, p = 1.8e-213; Kruskal-Wallis p = 1.9e-195
+- ACS/ACE (R$/hab): rho = -0.128, p = 7.2e-15; Kruskal-Wallis p = 3.8e-16
+- enfermagem % pessoal saúde: rho = -0.543, p = 1.3e-270; Kruskal-Wallis p = 3.2e-236
+- ACS % pessoal saúde: rho = -0.174, p = 2.5e-25; Kruskal-Wallis p = 1.5e-26
 
 ### A4. FUNDEB: pessoal (elementos 11, 13 e 16) sobre a despesa nas fontes 1540-1543 (aproximação do mínimo de 70%)
 
-Mediana 82.8%; 70.7% dos 3333 com despesa nessas fontes estão em 70% ou mais. Por quintil (mediana): Q1 (menor) 72.6%; Q2 75.8%; Q3 86.0%; Q4 89.8%; Q5 (maior) 90.7%
+Mediana 82.9%; 70.5% dos 3508 com despesa nessas fontes estão em 70% ou mais. Por quintil (mediana): Q1 (menor) 72.6%; Q2 75.5%; Q3 86.3%; Q4 89.8%; Q5 (maior) 90.6%
 
 ### A5. Poder de investir (grupo de despesa 4)
 
 | q          |   inv_pc |   inv_pct_despesa |   inv_pago_com_fonte_livre_pct |
 |:-----------|---------:|------------------:|-------------------------------:|
-| Q1 (menor) |    342.4 |               6.9 |                           20.5 |
-| Q2         |    397   |               8   |                           18   |
-| Q3         |    497.6 |               8.5 |                           22.4 |
-| Q4         |    494   |               8   |                           28.5 |
-| Q5 (maior) |    508.5 |               7.6 |                           32.7 |
+| Q1 (menor) |    345.9 |               6.8 |                           20.5 |
+| Q2         |    406.3 |               8   |                           18.3 |
+| Q3         |    501.6 |               8.5 |                           22.7 |
+| Q4         |    502   |               7.9 |                           28.4 |
+| Q5 (maior) |    521   |               7.6 |                           32.4 |
 
-- investimento por habitante: rho = 0.193, p = 3.2e-30; KW p = 8.6e-29
-- investimento % da despesa: rho = 0.054, p = 0.0014; KW p = 2.2e-05
-- % do investimento pago com fonte livre: rho = 0.214, p = 5.9e-36; KW p = 4e-37
+- investimento por habitante: rho = 0.194, p = 3.2e-32; KW p = 5e-30
+- investimento % da despesa: rho = 0.052, p = 0.0017; KW p = 4e-05
+- % do investimento pago com fonte livre: rho = 0.209, p = 3.4e-36; KW p = 3e-37
 
 ## B. Art. 11 da LRF: efetiva arrecadação dos impostos municipais
 
@@ -99,36 +99,38 @@ Por quintil de base própria:
 
 | q          |   n |   IPTU_zero |   ITBI_zero |   ISS_zero |   algum_zero |   algum_baixa |
 |:-----------|----:|------------:|------------:|-----------:|-------------:|--------------:|
-| Q1 (menor) | 691 |         5.6 |         5.9 |        0.4 |          9   |          88.1 |
-| Q2         | 690 |         2.8 |         3.2 |        0.1 |          5.7 |          56.4 |
-| Q3         | 691 |         1.9 |         1.2 |        0.1 |          2.2 |          17.4 |
-| Q4         | 690 |         0.6 |         1.4 |        0.4 |          1.9 |           6.8 |
-| Q5 (maior) | 691 |         0.9 |         0.7 |        0.1 |          1.3 |           5.6 |
+| Q1 (menor) | 728 |         5.5 |         5.8 |        0.4 |          8.7 |          87.8 |
+| Q2         | 728 |         2.9 |         3.2 |        0.1 |          5.6 |          55.5 |
+| Q3         | 728 |         1.9 |         1.1 |        0.3 |          2.3 |          16.5 |
+| Q4         | 728 |         0.7 |         1.5 |        0.7 |          2.1 |           6.9 |
+| Q5 (maior) | 728 |         0.7 |         0.8 |        0.1 |          1.2 |           5.8 |
 
 Por porte:
 
-| fx             |   n |   IPTU_zero |   ITBI_zero |   ISS_zero |   algum_zero |   algum_baixa |
-|:---------------|----:|------------:|------------:|-----------:|-------------:|--------------:|
-| até 5 mil      | 818 |         2.7 |         3.8 |        0.1 |          5.5 |          28.7 |
-| 5 a 10 mil     | 738 |         3.5 |         2   |        0   |          4.5 |          37.9 |
-| 10 a 20 mil    | 822 |         2.2 |         3   |        0.6 |          4.4 |          44.3 |
-| 20 a 50 mil    | 662 |         2.3 |         2.1 |        0.5 |          3.5 |          39.4 |
-| 50 mil ou mais | 413 |         0   |         0.2 |        0   |          0.2 |          15.5 |
+| fx              |   n |   IPTU_zero |   ITBI_zero |   ISS_zero |   algum_zero |   algum_baixa |
+|:----------------|----:|------------:|------------:|-----------:|-------------:|--------------:|
+| até 5 mil       | 863 |         2.9 |         3.9 |        0.5 |          5.9 |          28.9 |
+| 5 a 10 mil      | 774 |         3.4 |         1.9 |        0   |          4.3 |          37.3 |
+| 10 a 20 mil     | 864 |         2.1 |         2.9 |        0.6 |          4.2 |          43.6 |
+| 20 a 50 mil     | 703 |         2.3 |         2.1 |        0.4 |          3.4 |          39.1 |
+| 50 a 100 mil    | 221 |         0   |         0.5 |        0   |          0.5 |          24.9 |
+| 100 a 500 mil   | 183 |         0   |         0   |        0   |          0   |           5.5 |
+| mais de 500 mil |  32 |         0   |         0   |        0   |          0   |           0   |
 
-Total (3453): IPTU zero 2.3%; ITBI zero 2.5%; ISS zero 0.3%; algum dos três zero 4.0%; algum abaixo de R$ 10/hab 34.9%.
+Total (3640): IPTU zero 2.3%; ITBI zero 2.5%; ISS zero 0.3%; algum dos três zero 4.0%; algum abaixo de R$ 10/hab 34.5%.
 
 ### B2. Associação com a base fiscal (logit simples com o log da receita tributária por habitante e da população, efeitos fixos de UF omitidos; o sinal indica a direção)
 
 | desfecho      |   coef_log_trib_pc |       p |   coef_log_pop |   p_pop |
 |:--------------|-------------------:|--------:|---------------:|--------:|
-| iptu_zero     |             -1.009 | 1e-11   |         -0.381 | 0.0032  |
-| itbi_zero     |             -1.049 | 5.2e-13 |         -0.434 | 0.00071 |
-| iss_zero      |             -0.076 | 0.86    |          0.041 | 0.89    |
-| qualquer_zero |             -0.993 | 2.5e-17 |         -0.412 | 4.1e-05 |
+| iptu_zero     |             -1.007 | 3.6e-12 |         -0.398 | 0.0017  |
+| itbi_zero     |             -1.027 | 4.2e-13 |         -0.448 | 0.00036 |
+| iss_zero      |              0.118 | 0.75    |         -0.248 | 0.36    |
+| qualquer_zero |             -0.961 | 3.7e-17 |         -0.446 | 6.4e-06 |
 
 ### B3. Exposição à sanção do parágrafo único: transferências voluntárias da União recebidas em 2023
 
-- algum imposto com arrecadação zero: 138 municípios (4.0%); receberam R$ 1.26 bilhões em convênios e ações voluntárias específicas (3.8% do total do grupo analisado); mediana por habitante R$ 681 contra R$ 389 nos demais.
-- algum imposto abaixo de R$ 10/hab: 1204 municípios (34.9%); receberam R$ 11.59 bilhões em convênios e ações voluntárias específicas (35.2% do total do grupo analisado); mediana por habitante R$ 522 contra R$ 334 nos demais.
+- algum imposto com arrecadação zero: 145 municípios (4.0%); receberam R$ 1.30 bilhões em convênios e ações voluntárias específicas (3.8% do total do grupo analisado); mediana por habitante R$ 679 contra R$ 390 nos demais.
+- algum imposto abaixo de R$ 10/hab: 1255 municípios (34.5%); receberam R$ 11.99 bilhões em convênios e ações voluntárias específicas (34.7% do total do grupo analisado); mediana por habitante R$ 524 contra R$ 334 nos demais.
 
 Observação: "outras voluntárias específicas" inclui a assistência ao piso da enfermagem, que é obrigação legal; a soma é limite superior da exposição.

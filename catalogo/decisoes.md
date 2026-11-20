@@ -338,3 +338,9 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Base indireta, exploratória: ITBI por habitante contra IPTU por habitante (2023, receita realizada na MSC): ITBI de R$ 2,4 (Q1) a R$ 96,1 (Q5) e IPTU de R$ 3,4 a R$ 147,7; Spearman 0,69 em 3.396 municípios, mediana 0,44 em 19 UFs com 40 ou mais.
 - Limite: os dois dependem da mesma cobrança; só o IPTU lançado separa base de esforço. `extrai_h4.py` passa a gravar `itbi_arrec` (natureza 111253).
 
+
+## D73 · Tolerância MSC×DCA de 3% como regra (2026-11-20)
+- Diagnóstico da cobertura de 2023 (74,0% com 1%): 71% dos não calculados reprovam na conferência MSC×DCA (receita 704, despesa liquidada 386); 147 sem natureza de receita; 114 fonte livre atípica; 103 RREO anexo 3 vazio; 70 RCL suspeita. A taxa de falha é 18% onde vale a MSCE de dezembro e 60% onde só fecha a soma das 12 matrizes mensais; AC 95%, PB 82%, AL 66%, AP 56%, MT 51%, BA 46% contra PI 5%, RN 8%. Não depende do porte (26% a 31% em todas as faixas).
+- Metade das reprovações por receita está a menos de 3% da DCA; com 3%, 4.336 calculados (77,8%). Cerca de 140 divergem 100% ou mais e parecem erro de envio ao Siconfi.
+- A recoleta dirigida já foi feita (4.037 para 4.121); o que resta não se corrige por coleta.
+- Regra: tolerância de 3% (arquivo `resultado_2023_tol3.csv`), 1% como sensibilidade. Limites de Manski da margem ampla por quintil (pior caso): diferença Q5−Q1 observada 12,8 p.p., limites −3,4 a +21,7; o pior caso não exclui o zero e a tese declara a limitação.

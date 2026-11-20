@@ -18,7 +18,7 @@ Margem ampla e estrita como % da receita total da MSC (regra D68). Cobertura mí
 | H5 | jurídica | ____ | ____ |
 
 ## 3. Regras de dados
-Tolerância MSC×DCA: 1% (sensibilidade 3%). Municípios não calculados: reportar motivo e fazer sensibilidade por ponderação e limites de pior/melhor caso.
+Tolerância MSC×DCA: 3% (regra, D73); 1% como sensibilidade. Cobertura 2023 com 3%: 4.336 de 5.570 entes (77,8%); com 1%: 4.121 (74,0%). Municípios não calculados: reportar motivo (divergência MSC×DCA, natureza de receita ausente, RREO vazio, RCL suspeita) e fazer sensibilidade por limites de pior caso de Manski (`analises/limites_manski.py`) e por ponderação.
 
 ## 4. Anos
 2023 exploratório. 2024, 2025 e 2026 confirmatórios. Nenhuma regra muda depois deste registro; mudanças viram anexo datado.
