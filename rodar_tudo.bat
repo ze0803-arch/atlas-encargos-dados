@@ -13,6 +13,9 @@ set MALHA=%TEMP%\br.json
 
 if not exist "%DADOS%\entes.json" (echo ERRO: nao achei %DADOS%\entes.json & pause & exit /b 1)
 
+echo Conferindo pacotes do Python (scipy, statsmodels, tabulate, pandas, requests)...
+python -c "import scipy, statsmodels, tabulate, pandas, requests" 2>nul || (echo Instalando pacotes que faltam... & python -m pip install scipy statsmodels tabulate pandas requests || (echo ERRO: nao consegui instalar os pacotes & pause & exit /b 1))
+
 echo.
 echo === ETAPA 0 (opcional): atualizar a coleta (Siconfi, SIOPS, SIOPE, Portal da Transparencia) ===
 echo O Siconfi e o SIOPS sao baixados da internet. Demora de 4 a 6 horas e retoma de onde parou.
