@@ -9,9 +9,9 @@ Base: 4336 municípios calculados com FPM, renda e PIB. Margem ampla em % da rec
 | Sem controle | 6.58 | 6.22 a 6.93 | 0.24 |
 | Efeito fixo de UF | 3.45 | 3.05 a 3.85 | 0.47 |
 | + população | 4.23 | 3.84 a 4.63 | 0.52 |
-| + FPM por habitante | 4.10 | 3.70 a 4.50 | 0.52 |
-| + complementação Fundeb pc | 3.84 | 3.45 a 4.24 | 0.54 |
-| + renda do responsável (Censo 2022) | 3.02 | 2.57 a 3.47 | 0.54 |
+| + FPM por habitante | 4.07 | 3.68 a 4.47 | 0.53 |
+| + complementação Fundeb pc | 3.85 | 3.46 a 4.24 | 0.54 |
+| + renda do responsável (Censo 2022) | 3.05 | 2.60 a 3.50 | 0.55 |
 
 Leitura: se o coeficiente do PIB pc cai pouco ao entrar FPM, Fundeb e renda, a diferença entre quintis não é só dependência de transferência nem renda das famílias.
 

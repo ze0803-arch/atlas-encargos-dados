@@ -356,3 +356,7 @@ Cota-Parte FPM do SIOPS contra a natureza 17115111 da MSCE (analises/fpm_naciona
 - Achado de contabilidade: em 67% (Q1) a 21% (Q5) dos municípios o IPTU lançado é igual ao arrecadado (lançamento por caixa); a taxa de realização só é lida onde há competência (0,31 em Q1 a 0,67 em Q5, 224 a 560 municípios).
 - Lançado por habitante R$ 3,1 (Q1) a R$ 165,0 (Q5), 53,7x; arrecadado 49,0x. Base explica a maior parte, mas a cobrança também difere. Recuperação da dívida ativa de 2% a 6%.
 - Pendente: confirmar as contas de dívida ativa no PCASP Estendido de 2023.
+
+## D76 · Definição do FPM no Tesouro e correção dos controles (2026-11-20)
+- A diferença de 5% a 11% entre o FPM da MSC e o do Tesouro era de definição: o Tesouro informa a cota líquida da dedução do Fundeb (FPM/FPM). FPM bruto = cota + DEDU/FUNDEB (R$ 186,4 bi em 2023). Contra a MSCE (naturezas 17115*, 179 municípios): mediana 1,002, 77% dentro de 2%, 87% dentro de 5%; o resíduo (cerca de 13% acima de 5%) não foi investigado.
+- Os controles da H1 usavam cota + FPM/FUNDEB (subestimava o bruto em cerca de 17%); refeitos com `fpm_bruto_est`.

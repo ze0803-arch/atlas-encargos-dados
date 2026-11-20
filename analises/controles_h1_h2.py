@@ -5,7 +5,7 @@ M = pd.DataFrame(json.load(open('prototipo/pesquisa/municipios.json', encoding='
 M.columns = ['cod','nome','uf','pop','pibpc','fx','q','recpc','vinc','min','patr','leg','div','prc','amp','fol','est','edu','sau']
 F = pd.read_csv('catalogo/fpm_fundeb_2023.csv'); R = pd.read_csv('catalogo/renda_censo2022.csv')
 d = M.merge(F, left_on='cod', right_on='cod', how='left').merge(R[['cod_ibge','V06004']], left_on='cod', right_on='cod_ibge', how='left')
-d['fpm_pc'] = (d.fpm_cota + d.fpm_desconto_fundeb) / d['pop']; d['compl_pc'] = d.complem_uniao_fundeb.fillna(0) / d['pop']
+d['fpm_pc'] = d.fpm_bruto_est / d['pop']; d['compl_pc'] = d.complem_uniao_fundeb.fillna(0) / d['pop']
 d['renda'] = d.V06004; d = d[(d.fpm_pc > 0) & (d.renda > 0) & (d.pibpc > 0)].copy()
 for c in ['pibpc','fpm_pc','renda','pop']: d['l_' + c] = np.log(d[c])
 d['pibq'] = d.q
